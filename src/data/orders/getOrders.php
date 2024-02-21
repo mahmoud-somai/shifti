@@ -17,6 +17,7 @@ function get_orders() {
 
     foreach ($results as $result) {
       array_push($orders_data, $result);
+      echo 'from result'.$orders_data;
 
      
         $order_data = array(
