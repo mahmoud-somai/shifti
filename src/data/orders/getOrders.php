@@ -16,6 +16,8 @@ function get_orders() {
     echo $orders;
    
     echo sizeof($orders);
+    echo '<br />';
+    echo '<br />';
     $orders_data =array();
 
     foreach ($orders as $result) {
@@ -27,11 +29,8 @@ echo $result;
 
 
 
-    // Encode orders data as JSON and output$
-    echo "hello world";
 
-    
-    echo json_encode($orders_data);
+  
     echo '<script src="' . plugins_url('shifti-import/src/scripts/index.js') . '"></script>';
 }
 
