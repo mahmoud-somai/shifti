@@ -16,7 +16,7 @@ function get_orders() {
     $orders_data =array();
 
     foreach ($results as $result) {
-      echo $result;
+      array_push($orders_data, $result);
 
      
         $order_data = array(
