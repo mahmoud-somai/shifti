@@ -6,29 +6,22 @@ function get_orders() {
 
     // SQL query to retrieve orders
     $query = "
-        SELECT ID, post_status, post_date, post_modified
-        FROM {$wpdb->posts}
-        WHERE post_type = 'shop_orders'
+        SELECT *
+        FROM wp_posts p
+        WHERE p.post_type = 'shop_order'
     ";
 
     $results = $wpdb->get_results($query);
 
-    $orders_data =[];
+    $orders_data =array();
 
     foreach ($results as $result) {
-        $order_id = $result->ID;
-        $order_status = $result->post_status;
-        $created_at = $result->post_date;
-        $modified_at = $result->post_modified;
+      
 
-        // Add additional fields as needed
-
-        // Construct order data array
+     
         $order_data = array(
             'order_id' => $order_id,
             'status' => $order_status,
-            'created_at' => $created_at,
-            'modified_at' => $modified_at,
             // Add more fields here
         );
 
