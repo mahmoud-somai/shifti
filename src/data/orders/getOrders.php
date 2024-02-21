@@ -25,16 +25,10 @@ function get_orders() {
         // Add additional fields as needed
 
         // Construct order data array
-        $order_data = array(
-            'order_id' => $result->ID,
-            'status' => $result->post_status,
-            'created_at' => $result->post_date,
-            'modified_at' => $result->post_modified,
-            // Add more fields here
-        );
+       
 
         // Push order data to orders array
-        array_push($orders_data, $order_data);
+        array_push($orders_data, $result);
     }
   
 
