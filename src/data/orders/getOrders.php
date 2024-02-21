@@ -13,7 +13,7 @@ function get_orders() {
 
     $results = $wpdb->get_results($query);
 
-    $orders_data = array();
+    $orders_data =[];
 
     foreach ($results as $result) {
         $order_id = $result->ID;
