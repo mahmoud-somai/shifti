@@ -1,0 +1,23 @@
+.top-section {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-sft {
+  width: 14rem;
+  padding: 1rem;
+  background-color: #ec1577;
+  color: white;
+  border-radius: 5px;
+  margin-top: 5%;
+}
+
+.stf-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+}
