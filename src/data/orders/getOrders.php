@@ -26,12 +26,6 @@ echo $result;
     }
   
 
-
-
-
-
-  
-    echo '<script src="' . plugins_url('shifti-import/src/scripts/index.js') . '"></script>';
 }
 
 
