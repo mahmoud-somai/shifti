@@ -12,14 +12,33 @@ function get_orders() {
     $orders_query = new WC_Order_Query($args);
     $orders = $orders_query->get_orders();
 
-    $formatted_orders = array();
-    echo $orders;
-    echo sizeof($orders);
-
    
+    echo $orders;
+   
+    echo sizeof($orders);
+    $orders_data =array();
+
+    foreach ($orders as $result) {
+        // You can access all columns directly from $result object
+        // For example: $result->ID, $result->post_status, $result->post_date, etc.
+
+        // Add additional fields as needed
+
+        // Construct order data array
+        $order_data = array(
+            'order_id' => $result->ID,
+            'status' => $result->post_status,
+            'created_at' => $result->post_date,
+            'modified_at' => $result->post_modified,
+            // Add more fields here
+        );
+
+        // Push order data to orders array
+        array_push($orders_data, $order_data);
+    }
   
 
-    $orders_data =array();
+
 
 
     // Encode orders data as JSON and output$
