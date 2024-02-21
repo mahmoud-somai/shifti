@@ -14,6 +14,7 @@ function get_orders() {
 
     $formatted_orders = array();
     echo $orders;
+    echo sizeof($orders);
 
    
   
