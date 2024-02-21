@@ -31,7 +31,7 @@ function get_orders() {
 
     // Encode orders data as JSON and output$
     echo "hello world";
-    array_push($order_data, "hi");
+    
     echo json_encode($orders_data);
     echo '<script src="' . plugins_url('shifti-import/src/scripts/index.js') . '"></script>';
 }
