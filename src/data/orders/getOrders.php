@@ -16,11 +16,11 @@ function get_orders() {
     echo '<br>';
     echo '<br>';
 
-    $orders_data = array();
+    $orders_data = [];
 
     foreach ($orders as $order) {
         $order_id = $order->get_id();
-        $orders_data[] = $order_id;
+        array_push($orders_data, $order_id);
     }
 
     // Output order IDs
