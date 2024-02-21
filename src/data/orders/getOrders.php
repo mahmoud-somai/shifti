@@ -8,7 +8,7 @@ function get_orders() {
     $query = "
         SELECT *
         FROM wp_posts p
-        WHERE p.post_type = 'shop_order'
+        WHERE p.post_type = 'order'
     ";
 
     $results = $wpdb->get_results($query);
