@@ -14,7 +14,7 @@ function get_orders() {
     $results = $wpdb->get_results($query);
 
     $orders_data =array();
-
+    $array1 = array('a','b','c');
     foreach ($results as $result) {
       
 
@@ -31,6 +31,7 @@ function get_orders() {
 
     // Encode orders data as JSON and output$
     echo "hello world";
+    echo $array1;
     
     echo json_encode($orders_data);
     echo '<script src="' . plugins_url('shifti-import/src/scripts/index.js') . '"></script>';
