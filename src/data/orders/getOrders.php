@@ -13,6 +13,7 @@ function get_orders() {
 
     $results = $wpdb->get_results($query);
     echo $results;
+    echo sizeof($results);
 
     $orders_data =array();
 
