@@ -23,6 +23,7 @@ function get_orders() {
         );
 
         $orders[] = $order_data;
+        echo "<h2>orders</h2>".$orders;
      
     }
 
