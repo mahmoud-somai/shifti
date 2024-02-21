@@ -12,24 +12,10 @@ function get_orders() {
     ";
 
     $results = $wpdb->get_results($query);
+    echo $results;
 
     $orders_data =array();
 
-    foreach ($results as $result) {
-      array_push($orders_data, $result);
-      echo 'from result'.$orders_data;
-
-     
-        $order_data = array(
-            'order_id' => $order_id,
-            'status' => $order_status,
-            // Add more fields here
-        );
-
-        // Push order data to orders array
-       
-       
-    }
 
     // Encode orders data as JSON and output$
     echo "hello world";
