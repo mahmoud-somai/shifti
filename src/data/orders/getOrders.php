@@ -19,15 +19,7 @@ function get_orders() {
     $orders_data =array();
 
     foreach ($orders as $result) {
-        // You can access all columns directly from $result object
-        // For example: $result->ID, $result->post_status, $result->post_date, etc.
-
-        // Add additional fields as needed
-
-        // Construct order data array
-       
-
-        // Push order data to orders array
+echo $result;
         array_push($orders_data, $result);
     }
   
