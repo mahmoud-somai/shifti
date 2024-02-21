@@ -3,7 +3,7 @@ function get_orders() {
     global $wpdb;
 
     $query = "
-      SELECT p.ID, p.post_type, p.post_title, p.post_content, p.post_excerpt, p.post_status
+      SELECT *
       FROM wp_posts p
       WHERE p.post_type = 'order'
     ";
