@@ -5,15 +5,18 @@ function get_orders() {
     global $wpdb;
 
     // SQL query to retrieve orders
-    $query = "
-        SELECT *
-        FROM wp_posts p
-        WHERE p.post_type = 'shop_order'
-    ";
+    $args = array(
+        'limit' => -1, // -1 retrieves all orders
+    );
 
-    $results = $wpdb->get_results($query);
-    echo $results;
-    echo sizeof($results);
+    $orders_query = new WC_Order_Query($args);
+    $orders = $orders_query->get_orders();
+
+    $formatted_orders = array();
+    echo $orders;
+
+   
+  
 
     $orders_data =array();
 
