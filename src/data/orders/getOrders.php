@@ -14,9 +14,9 @@ function get_orders() {
     $results = $wpdb->get_results($query);
 
     $orders_data =array();
-    $array1 = array('a','b','c');
+
     foreach ($results as $result) {
-      
+      echo $result;
 
      
         $order_data = array(
@@ -27,7 +27,7 @@ function get_orders() {
 
         // Push order data to orders array
        
-        array_push($orders_data,$order_data);
+       
     }
 
     // Encode orders data as JSON and output$
