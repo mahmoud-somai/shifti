@@ -8,14 +8,14 @@ function get_orders() {
     $query = "
       SELECT *
       FROM wp_posts p
-      WHERE p.post_type = 'shop_order'
+      WHERE p.post_type = 'Orders'
     ";
     
     $results = $wpdb->get_results($query);
     
     $params = array(
         'posts_per_page' => 1,
-        'post_type' => 'shop_order'
+        'post_type' => 'Orders'
     );
 
     $wc_query = new WP_Query($params); 
