@@ -1,4 +1,7 @@
 <?php
+
+
+
 function get_orders() {
     global $wpdb;
 
@@ -10,26 +13,51 @@ function get_orders() {
     
     $results = $wpdb->get_results($query);
     
+    $params = array(
+        'posts_per_page' => 1,
+        'post_type' => 'order'
+    );
+
+    $wc_query = new WP_Query($params); 
+
     $orders = [];
 
-    foreach ($results as $result) {
-        $order_id = $result->ID;
-        $order = wc_get_order($order_id);
+    if ($wc_query->have_posts()) {
+        while ($wc_query->have_posts()) {
+            $wc_query->the_post();
+            $order_id = get_the_ID();
+           
+            echo $order;
+            echo '<br />';
 
-        $order_data = array(
-            'order_id' => $order_id,
-            'order_status' => $order->get_status(),
-            // Add more order data as needed
-        );
 
-        $orders[] = $order_data;
-        echo "<h2>orders</h2>".$orders;
-     
+            $new_order_object['id'] = $order_id;
+            array_push($orders, $new_product_object);
+        }
+
+        wp_reset_postdata(); // Reset the post data
     }
-
+    echo '<br />';
     echo json_encode($orders);
+
+    
+    // Assuming this script is required for some reason
+    echo '<script src="' . plugins_url('shifti-import/src/scripts/index.js') . '"></script>';
 }
 
-// Call the function to get orders
-echo '<script src="' . plugins_url('shifti-import/src/scripts/index.js') . '"></script>';
+
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
