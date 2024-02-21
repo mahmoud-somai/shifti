@@ -23,6 +23,7 @@ function get_orders() {
         $order_id = $order->get_id();
         $new_order_object['order_id'] = $order_id;
         array_push($orders_data, $new_order_object);
+        echo $new_order_object;
         
     }
 
