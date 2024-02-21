@@ -21,13 +21,14 @@ function get_orders() {
 
     foreach ($orders as $order) {
         $order_id = $order->get_id();
-        $new_order_object['id'] = $order_id;
+        $new_order_object['order_id'] = $order_id;
         array_push($orders_data, $new_order_object);
+        
     }
 
     // Output order IDs
     echo '<br>';
-    print_r($orders_data);
+    echo $orders_data;
     echo '<br>';
 }
 
