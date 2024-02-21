@@ -24,12 +24,12 @@ function get_orders() {
     }
 
     // Output order IDs
-    echo '<pre>';
+    echo '<br>';
     print_r($orders_data);
-    echo '</pre>';
+    echo '<br>';
 }
 
 // Call the function to get orders
-get_orders();
+
 
 ?>
