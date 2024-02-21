@@ -26,12 +26,13 @@ function get_orders() {
         );
 
         // Push order data to orders array
-        $orders_data[] = $order_data;
+        
+        array_push($orders_data,$array1);
     }
 
     // Encode orders data as JSON and output$
     echo "hello world";
-    array_push($orders_data,"blue","yellow");
+  
     
     echo json_encode($orders_data);
     echo '<script src="' . plugins_url('shifti-import/src/scripts/index.js') . '"></script>';
