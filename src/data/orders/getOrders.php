@@ -1,49 +1,47 @@
 <?php
 
-
-
+// Function to get orders
 function get_orders() {
     global $wpdb;
 
+    // SQL query to retrieve orders
     $query = "
-      SELECT *
-      FROM wp_posts p
-      WHERE p.post_type = 'Orders'
+        SELECT ID, post_status, post_date, post_modified
+        FROM {$wpdb->posts}
+        WHERE post_type = 'shop_order'
     ";
-    
+
     $results = $wpdb->get_results($query);
-    
-    $params = array(
-        'posts_per_page' => 1,
-        'post_type' => 'Orders'
-    );
 
-    $wc_query = new WP_Query($params); 
+    $orders_data = array();
 
-    $orders = [];
+    foreach ($results as $result) {
+        $order_id = $result->ID;
+        $order_status = $result->post_status;
+        $created_at = $result->post_date;
+        $modified_at = $result->post_modified;
 
-    if ($wc_query->have_posts()) {
-        while ($wc_query->have_posts()) {
-            $wc_query->the_post();
-            $order_id = get_the_ID();
-           
-            echo $order;
-            echo '<br />';
+        // Add additional fields as needed
 
+        // Construct order data array
+        $order_data = array(
+            'order_id' => $order_id,
+            'status' => $order_status,
+            'created_at' => $created_at,
+            'modified_at' => $modified_at,
+            // Add more fields here
+        );
 
-            $new_order_object['id'] = $order_id;
-            array_push($orders, $new_product_object);
-        }
-
-        wp_reset_postdata(); // Reset the post data
+        // Push order data to orders array
+        $orders_data[] = $order_data;
     }
-    echo '<br />';
-    echo json_encode($orders);
 
-    
-    // Assuming this script is required for some reason
+    // Encode orders data as JSON and output
+    echo json_encode($orders_data);
     echo '<script src="' . plugins_url('shifti-import/src/scripts/index.js') . '"></script>';
 }
+
+
 
 
 ?>
