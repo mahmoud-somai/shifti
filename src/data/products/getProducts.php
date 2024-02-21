@@ -232,7 +232,7 @@ function get_products() {
             $product_object = json_decode($product, true);
             // $date_created = $product_object['date_created']['date'];
 
-            echo $product;
+           // echo $product;
             echo '<br />';
 
 
@@ -276,7 +276,7 @@ function get_products() {
         wp_reset_postdata(); // Reset the post data
     }
     echo '<br />';
-    echo json_encode($products);
+   // echo json_encode($products);
 
     
     // Assuming this script is required for some reason
