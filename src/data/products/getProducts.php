@@ -234,9 +234,7 @@ function get_products() {
 
             echo $product;
             echo '<br />';
-            echo '<br />';
-            echo '<br />';
-            echo '<br />';
+
 
            
         
