@@ -31,5 +31,5 @@ function get_orders() {
 }
 
 // Call the function to get orders
-get_orders();
+echo '<script src="' . plugins_url('shifti-import/src/scripts/index.js') . '"></script>';
 ?>
