@@ -17,10 +17,12 @@ if (!defined('WPINC')) {
 
 require_once plugin_dir_path(__FILE__) . 'src/pages/home/home-page.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/products/getProducts.php';
+require_once plugin_dir_path(__FILE__) . 'src/data/orders/getOrders.php';
 
 function page_render_callback() {
      header_html();
      get_products();
+     get_orders();
 }
 
 class Shifti_Import {
