@@ -29,6 +29,8 @@ function get_orders() {
         $shipping_tax = $order->get_shipping_tax();
         $cart_tax = $order->get_cart_tax();
         $total = $order->get_total();
+        $total_tax = $order->get_total_tax();
+        $customer_id = $order->get_customer_id();
 
 
  
@@ -46,6 +48,8 @@ function get_orders() {
             'shipping_tax' => $shipping_tax,
             'cart_tax' => $cart_tax,
             'total' => $total,
+            'total_tax' => $total_tax,
+            'customer_id' => $customer_id,
             
         );
     }
