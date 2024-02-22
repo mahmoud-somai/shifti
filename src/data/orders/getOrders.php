@@ -17,7 +17,7 @@ function get_orders() {
     echo '<br>';
 
     $orders_data = [];
-
+    echo $orders;
     foreach ($orders as $order) {
         
         $order_id = $order->get_id();
