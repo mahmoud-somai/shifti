@@ -17,10 +17,12 @@ function get_orders() {
         echo '<br>';
         $order_id = $order->get_id();
         $order_parent_id=$order->get_parent_id(); 
+        $order_status = $order->get_status();
  
         $orders_data[] = array(
             'id' => $order_id,
-            'parent_id'=>$order_parent_id
+            'parent_id'=>$order_parent_id,
+            'status' => $order_status
         );
     }
 
