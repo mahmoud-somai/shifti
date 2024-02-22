@@ -32,7 +32,6 @@ function get_orders() {
         $total_tax = $order->get_total_tax();
         $customer_id = $order->get_customer_id();
         $order_key = $order->get_order_key();
-        $shipping = $order->get_shipping();
 
         
         //billing details
