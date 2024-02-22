@@ -15,19 +15,18 @@ function get_orders() {
     echo "Number of Orders: " . sizeof($orders) . "<br>";
     echo '<br>';
     echo '<br>';
-    echo $orders;
 
     $orders_data = [];
 
     foreach ($orders as $order) {
-      
+        $order_id = $order->get_id();
  
-        array_push($orders_data, $order);
+        array_push($orders_data, $order_id);
     }
 
     // Output order IDs
     echo '<br>';
-    echo $orders_data;
+    print_r($orders_data);
     echo '<br>';
 }
 
