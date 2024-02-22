@@ -15,7 +15,7 @@ function get_orders() {
     echo "Number of Orders: " . sizeof($orders) . "<br>";
     echo '<br>';
     echo '<br>';
-    echo"orders ==>"
+    echo"orders ==>";
     echo json_encode($orders);
     $orders_data = [];
 
