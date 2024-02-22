@@ -30,7 +30,7 @@ function get_orders() {
     echo '<br>';
 
     foreach ($orders_data as $order_id) {
-        echo $order_id ;
+        echo ($order_id . '<br>');
     }
 }
 
