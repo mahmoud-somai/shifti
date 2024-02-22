@@ -26,7 +26,7 @@ function get_orders() {
 
     // Output order IDs
     echo '<br>';
-    print_r($orders_data);
+    echo($orders_data);
     echo '<br>';
 }
 
