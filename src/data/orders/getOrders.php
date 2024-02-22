@@ -21,8 +21,8 @@ function get_orders() {
         $order_currency = $order->get_currency();
         $version = $order->get_version();
         $prices_include_tax = $order->get_prices_include_tax();
-        $date_created = $order->get_date_created();
-        $date_modified = $order->get_date_modified();
+        $date_created = $order->get_date_created()->date;
+        $date_modified = $order->get_date_modified()->date;
         $discount_total = $order->get_discount_total();
         $discount_tax = $order->get_discount_tax();
         $shipping_total = $order->get_shipping_total();
