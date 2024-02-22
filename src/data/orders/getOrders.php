@@ -19,7 +19,7 @@ function get_orders() {
     $orders_data = [];
     echo $orders;
     foreach ($orders as $order) {
-        echi $order;
+        echo $order;
         $order_id = $order->get_id();
  
         $orders_data[] = array(
