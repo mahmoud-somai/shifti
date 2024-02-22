@@ -17,8 +17,10 @@ function get_orders() {
     echo '<br>';
 
     $orders_data = [];
-    echo "orders => ".$orders;
+    echo json_encode($orders);
     echo '<br>';
+
+    
     foreach ($orders as $order) {
 
         // product and order details 
@@ -26,6 +28,9 @@ function get_orders() {
         //foreach ($items as $item) {
          //   echo "items ==> <br>" .$item;
         //}
+
+
+        
         echo "order =>". $order;
         echo '<br>';
         $order_id = $order->get_id();
