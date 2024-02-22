@@ -32,8 +32,21 @@ function get_orders() {
         $total_tax = $order->get_total_tax();
         $customer_id = $order->get_customer_id();
         $order_key = $order->get_order_key();
-        $billing = $order->get_billing();
         $shipping = $order->get_shipping();
+
+        
+        //billing details
+        $billing_first_name = $order->get_billing_first_name();
+        $billing_last_name = $order->get_billing_last_name();
+        $billing_company = $order->get_billing_company();
+        $billing_address_1 = $order->get_billing_address_1();
+        $billing_address_2 = $order->get_billing_address_2();
+        $billing_city = $order->get_billing_city();
+        $billing_state = $order->get_billing_state();
+        $billing_postcode = $order->get_billing_postcode();
+        $billing_country = $order->get_billing_country();
+        $billing_email = $order->get_billing_email();
+        $billing_phone = $order->get_billing_phone();
 
 
  
@@ -54,8 +67,17 @@ function get_orders() {
             'total_tax' => $total_tax,
             'customer_id' => $customer_id,
             'order_key' => $order_key,
-            'billing' => $billing,
-            'shipping' => $shipping,
+            'billing_first_name' => $billing_first_name,
+            'billing_last_name' => $billing_last_name,
+            'billing_company' => $billing_company,
+            'billing_address_1' => $billing_address_1,
+            'billing_address_2' => $billing_address_2,
+            'billing_city' => $billing_city,
+            'billing_state' => $billing_state,
+            'billing_postcode' => $billing_postcode,
+            'billing_country' => $billing_country,
+            'billing_email' => $billing_email,
+            'billing_phone' => $billing_phone,
             
         );
     }
