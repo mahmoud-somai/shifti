@@ -25,6 +25,10 @@ function get_orders() {
         $date_modified = $order->get_date_modified();
         $discount_total = $order->get_discount_total();
         $discount_tax = $order->get_discount_tax();
+        $shipping_total = $order->get_shipping_total();
+        $shipping_tax = $order->get_shipping_tax();
+        $cart_tax = $order->get_cart_tax();
+        $total = $order->get_total();
 
 
  
@@ -38,6 +42,10 @@ function get_orders() {
             'date_modified' => $date_modified,
             'discount_total' => $discount_total,
             'discount_tax' => $discount_tax,
+            'shipping_total' => $shipping_total,
+            'shipping_tax' => $shipping_tax,
+            'cart_tax' => $cart_tax,
+            'total' => $total,
             
         );
     }
