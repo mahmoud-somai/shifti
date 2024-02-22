@@ -77,7 +77,7 @@ function get_orders() {
         $order_stock_reduced = $order->get_order_stock_reduced();
         $download_permissions_granted = $order->get_download_permissions_granted();
         $new_order_email_sent = $order->get_new_order_email_sent();
-    //    $recorded_sales = $order->get_recorded_sales();
+        $recorded_sales = $order->get_recorded_sales();
       //  $recorded_coupon_usage_counts = $order->get_recorded_coupon_usage_counts();
         $order_number = $order->get_order_number();
         $meta_data=$order->get_meta_data();
@@ -144,7 +144,7 @@ function get_orders() {
             'order_stock_reduced' => $order_stock_reduced,
             'download_permissions_granted' => $download_permissions_granted,
             'new_order_email_sent' => $new_order_email_sent,
-           // 'recorded_sales' => $recorded_sales,
+            'recorded_sales' => $recorded_sales,
            // 'recorded_coupon_usage_counts' => $recorded_coupon_usage_counts,
            'order_number' => $order_number,
            'all_meta_data' => $meta_data
