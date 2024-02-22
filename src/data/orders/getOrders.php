@@ -22,7 +22,7 @@ function get_orders() {
         $version = $order->get_version();
         $prices_include_tax = $order->get_prices_include_tax();
         $date_created = $order->get_date_created()->format('Y-m-d H:i:s.u');
-    $date_modified = $order->get_date_modified()->format('Y-m-d H:i:s.u');
+        $date_modified = $order->get_date_modified()->format('Y-m-d H:i:s.u');
         $discount_total = $order->get_discount_total();
         $discount_tax = $order->get_discount_tax();
         $shipping_total = $order->get_shipping_total();
@@ -31,6 +31,9 @@ function get_orders() {
         $total = $order->get_total();
         $total_tax = $order->get_total_tax();
         $customer_id = $order->get_customer_id();
+        $order_key = $order->get_order_key();
+        $billing = $order->get_billing();
+        $shipping = $order->get_shipping();
 
 
  
@@ -50,6 +53,9 @@ function get_orders() {
             'total' => $total,
             'total_tax' => $total_tax,
             'customer_id' => $customer_id,
+            'order_key' => $order_key,
+            'billing' => $billing,
+            'shipping' => $shipping,
             
         );
     }
