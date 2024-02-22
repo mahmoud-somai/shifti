@@ -17,9 +17,11 @@ function get_orders() {
     echo '<br>';
 
     $orders_data = [];
-    echo $orders;
+    echo "orders => ".$orders;
+    echo '<br>';
     foreach ($orders as $order) {
-        echo $order;
+        echo "order =>". $order;
+        echo '<br>';
         $order_id = $order->get_id();
  
         $orders_data[] = array(
