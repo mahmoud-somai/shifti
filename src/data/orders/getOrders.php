@@ -6,7 +6,7 @@ function get_orders() {
 
     // SQL query to retrieve orders
     $args = array(
-        'limit' => -1, // -1 retrieves all orders
+        'limit' => 1, // -1 retrieves all orders
     );
 
     $orders_query = new WC_Order_Query($args);
@@ -17,10 +17,10 @@ function get_orders() {
     echo '<br>';
 
     $orders_data = [];
-    echo json_encode($orders);
+   // echo json_encode($orders);
     echo '<br>';
 
-    
+
     foreach ($orders as $order) {
 
         // product and order details 
