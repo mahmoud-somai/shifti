@@ -16,6 +16,7 @@ function get_orders() {
         $items = $order->get_items();
         foreach ($items as $item) {
             echo "items ==> <br>" .$item;
+            echo"<br>"
         }
     
         echo "order =>". $order;
