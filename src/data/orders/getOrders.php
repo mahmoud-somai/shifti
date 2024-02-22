@@ -15,6 +15,7 @@ function get_orders() {
     echo "Number of Orders: " . sizeof($orders) . "<br>";
     echo '<br>';
     echo '<br>';
+    echo $orders;
 
     $orders_data = [];
 
