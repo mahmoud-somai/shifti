@@ -6,7 +6,7 @@ function get_orders() {
 
     // SQL query to retrieve orders
     $args = array(
-        'limit' => -1, // -1 retrieves all orders
+        'limit' => 1, // -1 retrieves all orders
     );
 
     $orders_query = new WC_Order_Query($args);
