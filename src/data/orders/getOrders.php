@@ -24,10 +24,11 @@ function get_orders() {
         echo '<br>';
        
         $order_data = $order->get_data();
+        array_push($orders_data, $order_data);
  
-        $orders_data[] = array(
-            'order_id' => $order_data;
-        );
+        //$orders_data[] = array(
+         //   'order_id' => $order_data;
+        //);
     }
 
     // Output order IDs
