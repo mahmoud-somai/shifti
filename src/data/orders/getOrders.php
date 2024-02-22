@@ -80,7 +80,7 @@ function get_orders() {
         $recorded_sales = $order->get_recorded_sales();
         $recorded_coupon_usage_counts = $order->get_recorded_coupon_usage_counts();
         $order_number = $order->get_order_number();
-        $meta_data=$order->get_meta_data();
+        //$meta_data=$order->get_meta_data();
         
  
     
@@ -147,7 +147,7 @@ function get_orders() {
             'recorded_sales' => $recorded_sales,
             'recorded_coupon_usage_counts' => $recorded_coupon_usage_counts,
             'order_number' => $order_number,
-            'all_meta_data' => $meta_data
+           //'all_meta_data' => $meta_data
           
 
 
