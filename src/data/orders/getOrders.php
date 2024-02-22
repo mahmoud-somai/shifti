@@ -20,10 +20,12 @@ function get_orders() {
     echo "orders => ".$orders;
     echo '<br>';
     foreach ($orders as $order) {
-        $items = $order->get_items();
-        foreach ($items as $item) {
-            echo "items ==> <br>" .$item;
-        }
+
+        // product and order details 
+        //$items = $order->get_items();
+        //foreach ($items as $item) {
+         //   echo "items ==> <br>" .$item;
+        //}
         echo "order =>". $order;
         echo '<br>';
         $order_id = $order->get_id();
