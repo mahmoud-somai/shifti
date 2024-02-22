@@ -37,7 +37,7 @@ function get_orders() {
         $order_parent_id=$order->get_parent_id(); 
  
         $orders_data[] = array(
-            'order_id' => $order_id
+            'order_id' => $order_id,
             'parent_id'=>$order_parent_id
         );
     }
