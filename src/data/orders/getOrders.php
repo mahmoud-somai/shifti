@@ -12,6 +12,11 @@ function get_orders() {
     $orders_data = [];
 
     foreach ($orders as $order) {
+
+        $items = $order->get_items();
+        foreach ($items as $item) {
+            echo "items ==> <br>" .$item;
+        }
     
         echo "order =>". $order;
         echo '<br>';
