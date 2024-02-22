@@ -73,7 +73,7 @@ function get_orders() {
         $date_paid = $order->get_date_paid() ? $order->get_date_paid()->format('Y-m-d H:i:s.u') : null;
 
 
-    //    $cart_hash = $order->get_cart_hash();
+        $cart_hash = $order->get_cart_hash();
       //  $order_stock_reduced = $order->get_order_stock_reduced();
     //    $download_permissions_granted = $order->get_download_permissions_granted();
     //    $new_order_email_sent = $order->get_new_order_email_sent();
@@ -140,7 +140,7 @@ function get_orders() {
             'customer_note' => $customer_note,
             'date_completed' => $date_completed,
             'date_paid' => $date_paid,
-           // 'cart_hash' => $cart_hash,
+            'cart_hash' => $cart_hash,
            // 'order_stock_reduced' => $order_stock_reduced,
           // 'download_permissions_granted' => $download_permissions_granted,
          //   'new_order_email_sent' => $new_order_email_sent,
