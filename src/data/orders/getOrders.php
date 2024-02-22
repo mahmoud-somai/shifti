@@ -23,17 +23,22 @@ function get_orders() {
         echo "order =>". $order;
         echo '<br>';
        
-        $order_data = $order->get_data();
-        array_push($orders_data, $order_data);
+       // $order_data = $order->get_data();
+       // array_push($orders_data, $order_data);
 
         $items = $order->get_items();
         foreach ($items as $item) {
             echo "items ==> <br>" .$item;
         }
+
+
+
+        
+        $order_id = $order->get_id();
  
-        //$orders_data[] = array(
-         //   'order_id' => $order_data;
-        //);
+        $orders_data[] = array(
+        'order_id' => $order_id;
+        );
     }
 
     // Output order IDs
