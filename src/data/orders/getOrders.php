@@ -28,6 +28,10 @@ function get_orders() {
     echo '<br>';
     print_r($orders_data);
     echo '<br>';
+
+    foreach ($orders_data as $order_id) {
+        echo $order_id ;
+    }
 }
 
 // Call the function to get orders
