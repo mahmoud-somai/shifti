@@ -69,8 +69,8 @@ function get_orders() {
         $created_via = $order->get_created_via();
         $customer_note = $order->get_customer_note();
 
-        $date_completed = $order->get_date_completed();
-        $date_paid = $order->get_date_paid();
+        $date_completed = $order->get_date_completed() ? $order->get_date_completed()->format('Y-m-d H:i:s.u') : null;
+        $date_paid = $order->get_date_paid() ? $order->get_date_paid()->format('Y-m-d H:i:s.u') : null;
 
 
     //    $cart_hash = $order->get_cart_hash();
