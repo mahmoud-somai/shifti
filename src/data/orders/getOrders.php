@@ -20,17 +20,17 @@ function get_orders() {
 
     foreach ($orders as $order) {
         $order_id = $order->get_id();
-        $orders_data[] = $order_id;
+ 
+        array_push($orders_data, $order_id);
     }
 
     // Output order IDs
     echo '<br>';
-    foreach ($orders_data as $order_id) {
-        echo $order_id . '<br>';
-    }
+    print_r($orders_data);
+    echo '<br>';
 }
 
 // Call the function to get orders
-get_orders();
+
 
 ?>
