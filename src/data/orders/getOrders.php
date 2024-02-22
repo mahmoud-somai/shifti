@@ -34,9 +34,11 @@ function get_orders() {
         echo "order =>". $order;
         echo '<br>';
         $order_id = $order->get_id();
+        $order_parent_id->get_parent_id(); 
  
         $orders_data[] = array(
             'order_id' => $order_id
+            'parent_id'=> $order_parent_id
         );
     }
 
