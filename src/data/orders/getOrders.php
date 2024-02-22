@@ -22,10 +22,11 @@ function get_orders() {
     foreach ($orders as $order) {
         echo "order =>". $order;
         echo '<br>';
-        $order_id = $order->get_id();
+       
+        $order_data = $order->get_data();
  
         $orders_data[] = array(
-            'order_id' => $order_id
+            'order_id' => $order_data;
         );
     }
 
