@@ -25,26 +25,7 @@ function get_orders() {
         $date_modified = $order->get_date_modified();
         $discount_total = $order->get_discount_total();
         $discount_tax = $order->get_discount_tax();
-        $shipping_total = $order->get_shipping_total();
-        $shipping_tax = $order->get_shipping_tax();
-        $cart_tax = $order->get_cart_tax();
-        $total = $order->get_total();
-        $total_tax = $order->get_total_tax();
-        $customer_id = $order->get_customer_id();
-        $order_key = $order->get_order_key();
-        $billing = $order->get_billing();
-        $shipping = $order->get_shipping();
-        $created_via = $order->get_created_via();
-        $customer_note = $order->get_customer_note();
-        $date_completed = $order->get_date_completed();
-        $date_paid = $order->get_date_paid() ;
-        $order_stock_reduced = $order->get_order_stock_reduced();
-        $download_permissions_granted = $order->get_download_permissions_granted();
-        $new_order_email_sent = $order->get_new_order_email_sent();
-        $recorded_sales = $order->get_recorded_sales();
-        $recorded_coupon_usage_counts = $order->get_recorded_coupon_usage_counts();
-        $number = $order->get_order_number();
-        $meta_data = $order->get_meta_data();
+
 
  
         $orders_data[] = array(
@@ -57,26 +38,7 @@ function get_orders() {
             'date_modified' => $date_modified,
             'discount_total' => $discount_total,
             'discount_tax' => $discount_tax,
-            'shipping_total' => $shipping_total,
-            'shipping_tax' => $shipping_tax,
-            'cart_tax' => $cart_tax,
-            'total' => $total,
-            'total_tax' => $total_tax,
-            'customer_id' => $customer_id,
-            'order_key' => $order_key,
-            'billing' => $billing,
-            'shipping' => $shipping,
-            'created_via' => $created_via,
-            'customer_note' => $customer_note,
-            'date_completed' => $date_completed,
-            'date_paid' => $date_paid,
-            'order_stock_reduced' => $order_stock_reduced,
-            'download_permissions_granted' => $download_permissions_granted,
-            'new_order_email_sent' => $new_order_email_sent,
-            'recorded_sales' => $recorded_sales,
-            'recorded_coupon_usage_counts' => $recorded_coupon_usage_counts,
-            'number' => $number,
-            'meta_data' => $meta_data,
+            
         );
     }
 
