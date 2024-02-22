@@ -30,6 +30,8 @@ function get_orders() {
     }
 
     // Output order IDs
+    echo '<br> Orders Data: <br>';
+    json_encode($orders_data)
     echo '<br>';
 
 
@@ -37,8 +39,6 @@ function get_orders() {
         echo 'Order ID: ' . $order_data['order_id'] . '<br>';
     }
 }
-
-// Call the function to get orders
 
 
 ?>
