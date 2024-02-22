@@ -26,7 +26,7 @@ function get_orders() {
         $order_data = $order->get_data();
         array_push($orders_data, $order_data);
 
-        $items = $order->get_base_data();
+        $items = $order->get_items();
         foreach ($items as $item) {
             echo "items ==> <br>" .$item;
         }
