@@ -21,7 +21,9 @@ function get_orders() {
     foreach ($orders as $order) {
         $order_id = $order->get_id();
  
-        array_push($orders_data, $order_id);
+        $orders_data[] = array(
+            'order_id' => $order_id
+        );
     }
 
     // Output order IDs
