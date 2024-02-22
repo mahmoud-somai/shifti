@@ -63,18 +63,22 @@ function get_orders() {
         $payment_method = $order->get_payment_method();
         $payment_method_title = $order->get_payment_method_title();
         $transaction_id = $order->get_transaction_id();
+
         $customer_ip_address = $order->get_customer_ip_address();
         $customer_user_agent = $order->get_customer_user_agent();
         $created_via = $order->get_created_via();
         $customer_note = $order->get_customer_note();
-        $date_completed = $order->get_date_completed() -> format('Y-m-d H:i:s.u') ;
+
+        $date_completed = $order->get_date_completed()->format('Y-m-d H:i:s.u') ;
         $date_paid = $order->get_date_paid()->format('Y-m-d H:i:s.u');
-        $cart_hash = $order->get_cart_hash();
-        $order_stock_reduced = $order->get_order_stock_reduced();
-        $download_permissions_granted = $order->get_download_permissions_granted();
-        $new_order_email_sent = $order->get_new_order_email_sent();
-        $recorded_sales = $order->get_recorded_sales();
-        $recorded_coupon_usage_counts = $order->get_recorded_coupon_usage_counts();
+
+
+    //    $cart_hash = $order->get_cart_hash();
+      //  $order_stock_reduced = $order->get_order_stock_reduced();
+    //    $download_permissions_granted = $order->get_download_permissions_granted();
+    //    $new_order_email_sent = $order->get_new_order_email_sent();
+    //    $recorded_sales = $order->get_recorded_sales();
+      //  $recorded_coupon_usage_counts = $order->get_recorded_coupon_usage_counts();
         $order_number = $order->get_order_number();
         
  
@@ -135,13 +139,13 @@ function get_orders() {
             'customer_note' => $customer_note,
             'date_completed' => $date_completed,
             'date_paid' => $date_paid,
-            'cart_hash' => $cart_hash,
-            'order_stock_reduced' => $order_stock_reduced,
-            'download_permissions_granted' => $download_permissions_granted,
-            'new_order_email_sent' => $new_order_email_sent,
-            'recorded_sales' => $recorded_sales,
-            'recorded_coupon_usage_counts' => $recorded_coupon_usage_counts,
-            'order_number' => $order_number,
+           // 'cart_hash' => $cart_hash,
+           // 'order_stock_reduced' => $order_stock_reduced,
+          // 'download_permissions_granted' => $download_permissions_granted,
+         //   'new_order_email_sent' => $new_order_email_sent,
+           // 'recorded_sales' => $recorded_sales,
+           // 'recorded_coupon_usage_counts' => $recorded_coupon_usage_counts,
+           'order_number' => $order_number,
           
 
 
