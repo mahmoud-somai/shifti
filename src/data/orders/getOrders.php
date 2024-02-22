@@ -69,8 +69,8 @@ function get_orders() {
         $created_via = $order->get_created_via();
         $customer_note = $order->get_customer_note();
 
-        $date_completed = $order->get_date_completed()->format('Y-m-d H:i:s.u') ;
-        $date_paid = $order->get_date_paid()->format('Y-m-d H:i:s.u');
+      //  $date_completed = $order->get_date_completed()->format('Y-m-d H:i:s.u') ;
+       // $date_paid = $order->get_date_paid()->format('Y-m-d H:i:s.u');
 
 
     //    $cart_hash = $order->get_cart_hash();
@@ -137,8 +137,8 @@ function get_orders() {
             'customer_user_agent' => $customer_user_agent,
             'created_via' => $created_via,
             'customer_note' => $customer_note,
-            'date_completed' => $date_completed,
-            'date_paid' => $date_paid,
+           // 'date_completed' => $date_completed,
+          //  'date_paid' => $date_paid,
            // 'cart_hash' => $cart_hash,
            // 'order_stock_reduced' => $order_stock_reduced,
           // 'download_permissions_granted' => $download_permissions_granted,
