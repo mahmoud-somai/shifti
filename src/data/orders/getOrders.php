@@ -48,6 +48,19 @@ function get_orders() {
         $billing_phone = $order->get_billing_phone();
 
 
+            // Shipping details
+        $shipping_first_name = $order->get_shipping_first_name();
+        $shipping_last_name = $order->get_shipping_last_name();
+        $shipping_company = $order->get_shipping_company();
+        $shipping_address_1 = $order->get_shipping_address_1();
+        $shipping_address_2 = $order->get_shipping_address_2();
+        $shipping_city = $order->get_shipping_city();
+        $shipping_state = $order->get_shipping_state();
+        $shipping_postcode = $order->get_shipping_postcode();
+        $shipping_country = $order->get_shipping_country();
+        $shipping_phone = $order->get_shipping_phone();
+
+
  
         $orders_data[] = array(
             'id' => $order_id,
@@ -66,6 +79,8 @@ function get_orders() {
             'total_tax' => $total_tax,
             'customer_id' => $customer_id,
             'order_key' => $order_key,
+
+            
             'billing_first_name' => $billing_first_name,
             'billing_last_name' => $billing_last_name,
             'billing_company' => $billing_company,
@@ -77,6 +92,18 @@ function get_orders() {
             'billing_country' => $billing_country,
             'billing_email' => $billing_email,
             'billing_phone' => $billing_phone,
+
+
+            'shipping_first_name' => $shipping_first_name,
+            'shipping_last_name' => $shipping_last_name,
+            'shipping_company' => $shipping_company,
+            'shipping_address_1' => $shipping_address_1,
+            'shipping_address_2' => $shipping_address_2,
+            'shipping_city' => $shipping_city,
+            'shipping_state' => $shipping_state,
+            'shipping_postcode' => $shipping_postcode,
+            'shipping_country' => $shipping_country,
+            'shipping_phone' => $shipping_phone,
             
         );
     }
