@@ -23,7 +23,7 @@ function get_orders() {
         echo "order =>". $order;
         echo '<br>';
        
-       // $order_data = $order->get_data();
+       $order_data = $order->get_data();
        // array_push($orders_data, $order_data);
 
         $items = $order->get_items();
@@ -33,7 +33,7 @@ function get_orders() {
 
 
 
-        
+
         $order_id = $order->get_id();
  
         $orders_data[] = array(
