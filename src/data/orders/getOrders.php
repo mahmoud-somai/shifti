@@ -36,9 +36,9 @@ function get_orders() {
     echo '<br>';
 
 
-    foreach ($orders_data as $order_data) {
-        echo 'Order ID: ' . $order_data['order_id'] . '<br>';
-    }
+    //foreach ($orders_data as $order_data) {
+      //  echo 'Order ID: ' . $order_data['order_id'] . '<br>';
+   // }
 }
 
 
