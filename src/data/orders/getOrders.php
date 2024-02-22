@@ -30,14 +30,9 @@ function get_orders() {
         foreach ($items as $item) {
             echo "items ==> <br>" .$item;
         }
-
-
-
-
-        $order_id = $order->get_id();
  
         $orders_data[] = array(
-        'order_id' => $order_id;
+        'order_id' => $order_data;
         );
     }
 
