@@ -15,10 +15,10 @@ function get_orders() {
     echo "Number of Orders: " . sizeof($orders) . "<br>";
     echo '<br>';
     echo '<br>';
-
+    echo"orders ==>"
+    echo json_encode($orders);
     $orders_data = [];
-    echo "orders => ".$orders;
-    echo '<br>';
+
     foreach ($orders as $order) {
         echo "order =>". $order;
         echo '<br>';
