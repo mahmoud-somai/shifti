@@ -30,7 +30,7 @@ function get_orders() {
            // $all_meta_data   = $item->get_meta_data();
           //  $product_type    = $item->get_type();
         }
-        echo "prod id ====> <br>".$variation_id;
+        echo "prod id ====> <br>".$product_name;
         echo '<br>';
         echo "order =>". $order;
         echo '<br>';
