@@ -206,7 +206,7 @@ function get_orders() {
     global $wpdb;
 
     // Define the specific order IDs you want to retrieve
-    $specific_order_ids = array(28);
+    $specific_order_ids = array(50771);
 
     $args = array(
         'post__in' => $specific_order_ids, // Include only the orders with the specified IDs
@@ -222,6 +222,7 @@ function get_orders() {
         echo '<br>';
         echo 'order ==> <br>';
         echo json_encode($order->get_data());
+        echo '<br>';
         echo '<br>';
         $items = $order->get_items();
         $product_items = [];
