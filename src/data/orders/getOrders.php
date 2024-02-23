@@ -3,8 +3,11 @@
 function get_orders() {
     global $wpdb;
 
+    // Define the specific order IDs you want to retrieve
+    $specific_order_ids = array(28);
+
     $args = array(
-        'limit' => 1, 
+        'post__in' => $specific_order_ids, // Include only the orders with the specified IDs
     );
 
     $orders_query = new WC_Order_Query($args);
@@ -12,25 +15,18 @@ function get_orders() {
     $orders_data = [];
 
     foreach ($orders as $order) {
-
         $items = $order->get_items();
         $product_items = [];
         foreach ($items as $item) {
-            echo "items ==> <br>" .$item;
-            echo"<br>";
             $product_name    = $item->get_name();
             $product_id      = $item->get_product_id();
             $variation_id    = $item->get_variation_id();
-      
             $quantity        = $item->get_quantity();
             $tax_class       = $item->get_tax_class();
             $subtotal        = $item->get_subtotal();
             $tax_subtotal    = $item->get_subtotal_tax();
             $total           = $item->get_total();
-            //$product         = $item->get_product(); // Product object gives you access to all product data
             $tax_status      = $item->get_tax_status();
-           // $all_meta_data   = $item->get_meta_data();
-          //  $product_type    = $item->get_type();
         }
         $product_items[] = array(
             'product_name' => $product_name,
@@ -44,10 +40,8 @@ function get_orders() {
             'tax status' => $tax_status,        
         );
 
-        echo "order =>". $order;
-        echo '<br>';
         $order_id = $order->get_id();
-        $order_parent_id=$order->get_parent_id(); 
+        $order_parent_id = $order->get_parent_id(); 
         $order_status = $order->get_status();
         $order_currency = $order->get_currency();
         $version = $order->get_version();
@@ -64,8 +58,6 @@ function get_orders() {
         $customer_id = $order->get_customer_id();
         $order_key = $order->get_order_key();
 
-        
-        //billing details
         $billing_first_name = $order->get_billing_first_name();
         $billing_last_name = $order->get_billing_last_name();
         $billing_company = $order->get_billing_company();
@@ -78,8 +70,6 @@ function get_orders() {
         $billing_email = $order->get_billing_email();
         $billing_phone = $order->get_billing_phone();
 
-
-            // Shipping details
         $shipping_first_name = $order->get_shipping_first_name();
         $shipping_last_name = $order->get_shipping_last_name();
         $shipping_company = $order->get_shipping_company();
@@ -94,33 +84,18 @@ function get_orders() {
         $payment_method = $order->get_payment_method();
         $payment_method_title = $order->get_payment_method_title();
         $transaction_id = $order->get_transaction_id();
-
         $customer_ip_address = $order->get_customer_ip_address();
         $customer_user_agent = $order->get_customer_user_agent();
         $created_via = $order->get_created_via();
         $customer_note = $order->get_customer_note();
-
         $date_completed = $order->get_date_completed() ? $order->get_date_completed()->format('Y-m-d H:i:s.u') : null;
         $date_paid = $order->get_date_paid() ? $order->get_date_paid()->format('Y-m-d H:i:s.u') : null;
-
-
         $cart_hash = $order->get_cart_hash();
         $order_stock_reduced = $order->get_order_stock_reduced();
-        $download_permissions_granted = $order->get_download_permissions_granted();
-        $new_order_email_sent = $order->get_new_order_email_sent();
-        $recorded_sales = $order->get_recorded_sales();
-        $recorded_coupon_usage_counts = $order->get_recorded_coupon_usage_counts();
-        $order_number = $order->get_order_number();
-        //$meta_data=$order->get_meta_data();
-        
- 
-    
 
-
- 
         $orders_data[] = array(
             'id' => $order_id,
-            'parent_id'=>$order_parent_id,
+            'parent_id' => $order_parent_id,
             'status' => $order_status,
             'version' => $version,
             'prices_include_tax' => $prices_include_tax,
@@ -135,8 +110,6 @@ function get_orders() {
             'total_tax' => $total_tax,
             'customer_id' => $customer_id,
             'order_key' => $order_key,
-
-
             'billing_first_name' => $billing_first_name,
             'billing_last_name' => $billing_last_name,
             'billing_company' => $billing_company,
@@ -148,8 +121,6 @@ function get_orders() {
             'billing_country' => $billing_country,
             'billing_email' => $billing_email,
             'billing_phone' => $billing_phone,
-
-
             'shipping_first_name' => $shipping_first_name,
             'shipping_last_name' => $shipping_last_name,
             'shipping_company' => $shipping_company,
@@ -160,8 +131,6 @@ function get_orders() {
             'shipping_postcode' => $shipping_postcode,
             'shipping_country' => $shipping_country,
             'shipping_phone' => $shipping_phone,
-
-
             'payment_method' => $payment_method,
             'payment_method_title' => $payment_method_title,
             'transaction_id' => $transaction_id,
@@ -173,27 +142,13 @@ function get_orders() {
             'date_paid' => $date_paid,
             'cart_hash' => $cart_hash,
             'order_stock_reduced' => $order_stock_reduced,
-            'download_permissions_granted' => $download_permissions_granted,
-            'new_order_email_sent' => $new_order_email_sent,
-            'recorded_sales' => $recorded_sales,
-            'recorded_coupon_usage_counts' => $recorded_coupon_usage_counts,
-            'order_number' => $order_number,
-           //'all_meta_data' => $meta_data
-
-           'product_items' => $product_items,
-          
-
-
-            
-            
+            'product_items' => $product_items,
         );
     }
 
     echo '<br> Orders Data: <br>';
     echo json_encode($orders_data);
     echo '<br>';
-
 }
-
 
 ?>
