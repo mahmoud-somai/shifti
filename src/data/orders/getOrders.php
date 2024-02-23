@@ -214,9 +214,14 @@ function get_orders() {
 
     $orders_query = new WC_Order_Query($args);
     $orders = $orders_query->get_orders();
+   
     $orders_data = [];
 
     foreach ($orders as $order) {
+        echo '<br>';
+        echo 'orders ==> <br>';
+        echo json_encode($orders);
+        echo '<br>';
         $items = $order->get_items();
         $product_items = [];
         foreach ($items as $item) {
