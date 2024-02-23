@@ -21,12 +21,13 @@ function get_orders() {
             $product_name    = $item->get_name();
             $product_id      = $item->get_product_id();
             $variation_id    = $item->get_variation_id();
-           // $product         = $item->get_product(); // Product object gives you access to all product data
+      
             $quantity        = $item->get_quantity();
             $tax_class       = $item->get_tax_class();
             $subtotal        = $item->get_subtotal();
             $tax_subtotal    = $item->get_subtotal_tax();
             $total           = $item->get_total();
+            $product         = $item->get_product(); // Product object gives you access to all product data
           //  $tax_status      = $item->get_tax_status();
            // $all_meta_data   = $item->get_meta_data();
           //  $product_type    = $item->get_type();
@@ -39,7 +40,8 @@ function get_orders() {
             'tax_class' => $tax_class,
             'subtotal' => $subtotal,
             'tax_subtotal' => $tax_subtotal,
-            'total' => $total,           
+            'total' => $total,   
+            'product data' => $product,        
         );
 
         echo "order =>". $order;
