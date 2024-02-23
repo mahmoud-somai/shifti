@@ -19,18 +19,19 @@ function get_orders() {
             echo"<br>";
             $product_id      = $item->get_product_id();
             $variation_id    = $item->get_variation_id();
-            $product         = $item->get_product(); // Product object gives you access to all product data
+           // $product         = $item->get_product(); // Product object gives you access to all product data
             $product_name    = $item->get_name();
             $quantity        = $item->get_quantity();
             $subtotal        = $item->get_subtotal();
             $total           = $item->get_total();
             $tax_subtotal    = $item->get_subtotal_tax();
             $tax_class       = $item->get_tax_class();
-            $tax_status      = $item->get_tax_status();
-            $all_meta_data   = $item->get_meta_data();
-            $product_type    = $item->get_type();
+          //  $tax_status      = $item->get_tax_status();
+           // $all_meta_data   = $item->get_meta_data();
+          //  $product_type    = $item->get_type();
         }
-    
+        echo "prod id ====> <br>".$variation_id;
+        echo '<br>';
         echo "order =>". $order;
         echo '<br>';
         $order_id = $order->get_id();
