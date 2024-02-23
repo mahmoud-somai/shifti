@@ -216,7 +216,7 @@ function get_orders() {
     $orders = $orders_query->get_orders();
     echo '<br>';
     echo 'orders ==> <br>';
-    echo json_encode($orders);
+    echo json_encode($orders->get_data());
     echo '<br>';
    
     $orders_data = [];
