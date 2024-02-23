@@ -14,6 +14,7 @@ function get_orders() {
     foreach ($orders as $order) {
 
         $items = $order->get_items();
+        $product_items = [];
         foreach ($items as $item) {
             echo "items ==> <br>" .$item;
             echo"<br>";
@@ -30,8 +31,17 @@ function get_orders() {
            // $all_meta_data   = $item->get_meta_data();
           //  $product_type    = $item->get_type();
         }
-        echo "prod id ====> <br>".$product_name;
-        echo '<br>';
+        $product_items[] = array(
+            'product_id' => $product_id,
+            'variation_id' => $variation_id,
+            'product_name' => $product_name,
+            'quantity' => $quantity,
+            'subtotal' => $subtotal,
+            'total' => $total,
+            'tax_subtotal' => $tax_subtotal,
+            'tax_class' => $tax_class,
+        );
+
         echo "order =>". $order;
         echo '<br>';
         $order_id = $order->get_id();
@@ -167,6 +177,8 @@ function get_orders() {
             'recorded_coupon_usage_counts' => $recorded_coupon_usage_counts,
             'order_number' => $order_number,
            //'all_meta_data' => $meta_data
+
+           'product_items' => $product_items,
           
 
 
