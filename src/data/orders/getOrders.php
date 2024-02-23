@@ -18,28 +18,28 @@ function get_orders() {
         foreach ($items as $item) {
             echo "items ==> <br>" .$item;
             echo"<br>";
+            $product_name    = $item->get_name();
             $product_id      = $item->get_product_id();
             $variation_id    = $item->get_variation_id();
            // $product         = $item->get_product(); // Product object gives you access to all product data
-            $product_name    = $item->get_name();
             $quantity        = $item->get_quantity();
-            $subtotal        = $item->get_subtotal();
-            $total           = $item->get_total();
-            $tax_subtotal    = $item->get_subtotal_tax();
             $tax_class       = $item->get_tax_class();
+            $subtotal        = $item->get_subtotal();
+            $tax_subtotal    = $item->get_subtotal_tax();
+            $total           = $item->get_total();
           //  $tax_status      = $item->get_tax_status();
            // $all_meta_data   = $item->get_meta_data();
           //  $product_type    = $item->get_type();
         }
         $product_items[] = array(
+            'product_name' => $product_name,
             'product_id' => $product_id,
             'variation_id' => $variation_id,
-            'product_name' => $product_name,
             'quantity' => $quantity,
-            'subtotal' => $subtotal,
-            'total' => $total,
-            'tax_subtotal' => $tax_subtotal,
             'tax_class' => $tax_class,
+            'subtotal' => $subtotal,
+            'tax_subtotal' => $tax_subtotal,
+            'total' => $total,           
         );
 
         echo "order =>". $order;
