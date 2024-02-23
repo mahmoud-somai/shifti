@@ -362,11 +362,11 @@ function get_orders() {
             'date_created' => $date_created,
             'date_modified' => $date_modified,
             'meta_data' => $meta_data,
-            'line_items' => $line_items,
-            'tax_lines' => $tax_lines,
-            'shipping_lines' => $shipping_lines,
-            'fee_lines' => $fee_lines,
-            'coupon_lines' => $coupon_lines,
+           // 'line_items' => $line_items,
+            //'tax_lines' => $tax_lines,
+            //'shipping_lines' => $shipping_lines,
+            //'fee_lines' => $fee_lines,
+           // 'coupon_lines' => $coupon_lines,
         );
     }
 
