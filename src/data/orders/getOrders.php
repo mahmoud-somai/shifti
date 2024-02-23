@@ -220,7 +220,7 @@ function get_orders() {
     foreach ($orders as $order) {
         echo '<br>';
         echo 'orders ==> <br>';
-        echo json_encode($orders);
+        echo json_encode($order);
         echo '<br>';
         $items = $order->get_items();
         $product_items = [];
