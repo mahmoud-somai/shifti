@@ -302,6 +302,12 @@ function get_orders() {
         $cart_hash = $order->get_cart_hash();
         $order_stock_reduced = $order->get_order_stock_reduced();
 
+        $line_items = $order->get_items();
+        $tax_lines =$order->get_tax_lines(),
+        $shipping_lines => $order->get_shipping_lines(),
+        $fee_lines => $order->get_fee_lines(),
+        $coupon_lines => $order->get_coupon_lines(),
+
         $orders_data[] = array(
             'id' => $order_id,
             'parent_id' => $order_parent_id,
@@ -352,6 +358,15 @@ function get_orders() {
             'cart_hash' => $cart_hash,
             'order_stock_reduced' => $order_stock_reduced,
             'product_items' => $product_items,
+            'currency' => $order_currency,
+            'date_created' => $date_created,
+            'date_modified' => $date_modified,
+            'meta_data' => $meta_data,
+            'line_items' => $line_items,
+            'tax_lines' => $tax_lines,
+            'shipping_lines' => $shipping_lines,
+            'fee_lines' => $fee_lines,
+            'coupon_lines' => $coupon_lines,
         );
     }
 
