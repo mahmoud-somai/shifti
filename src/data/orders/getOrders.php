@@ -27,8 +27,8 @@ function get_orders() {
             $subtotal        = $item->get_subtotal();
             $tax_subtotal    = $item->get_subtotal_tax();
             $total           = $item->get_total();
-            $product         = $item->get_product(); // Product object gives you access to all product data
-          //  $tax_status      = $item->get_tax_status();
+            //$product         = $item->get_product(); // Product object gives you access to all product data
+            $tax_status      = $item->get_tax_status();
            // $all_meta_data   = $item->get_meta_data();
           //  $product_type    = $item->get_type();
         }
@@ -41,7 +41,7 @@ function get_orders() {
             'subtotal' => $subtotal,
             'tax_subtotal' => $tax_subtotal,
             'total' => $total,   
-            'product data' => $product,        
+            'tax status' => $tax_status,        
         );
 
         echo "order =>". $order;
