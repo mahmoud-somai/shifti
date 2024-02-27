@@ -251,29 +251,14 @@ function get_orders() {
             // Get the WC_Coupon object
             $coupon = new WC_Coupon($coupon_code);
             echo $coupon;
+            echo '<br>';
         
             $discount_type = $coupon->get_discount_type();
-            $coupon_id=$coupon->get_id();
-            $coupon_code=$coupon->get_code();
-            $coupon_amount=$coupon->get_amount();
-            $coupon_date_expires=$coupon->get_date_expires();
-            $coupon_discount=$coupon->get_discount();
-            $coupon_discount_tax=$coupon->get_discount_tax();
+            
 
             echo $discount_type;
             echo '<br>';
-            echo $coupon_id;
-            echo '<br>';
-            echo $coupon_code;
-            echo '<br>';
-            echo $coupon_amount;
-            echo '<br>';
-            echo $coupon_date_expires;
-            echo '<br>';
-            echo $coupon_discount;
-            echo '<br>';
-            echo $coupon_discount_tax;
-            echo '<br>';
+            
         }
 
         // echo 'coupon ==> <br>';
