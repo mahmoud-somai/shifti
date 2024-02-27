@@ -266,8 +266,6 @@ function get_orders() {
                 'coupon_id' => $coupon_id,
                 'coupon_code' => $coupon_code,
                 'coupon_amount' => $coupon_amount,
-                'coupon_discount' => $coupon_discount,
-                'coupon_discount_tax' => $coupon_discount_tax,
                 'coupon_discount_type' => $discount_type,
             );
         }
