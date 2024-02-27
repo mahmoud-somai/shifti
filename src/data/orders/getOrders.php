@@ -234,7 +234,8 @@ function get_orders() {
         foreach($order->get_coupon_codes() as $coupon_code){
             echo 'coupon code ==> <br>';
             echo $coupon_code;
-            echo $coupon_code->get_discount_total();
+            $coupon_amount = $coupon->get_amount();
+            echo $coupon_amount;
             echo '<br>';
         }
 
