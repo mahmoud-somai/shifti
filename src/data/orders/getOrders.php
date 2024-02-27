@@ -256,7 +256,7 @@ function get_orders() {
             echo '<br>';
             echo $refund->get_parent_id();
             echo '<br>';
-            echo $refund->getçapi_refund();
+            echo $refund->get_api_refund();
 
         }
         echo '<br>';
