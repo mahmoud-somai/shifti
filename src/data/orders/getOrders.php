@@ -245,7 +245,12 @@ function get_orders() {
             echo '<br>';
             echo $coupon->get_meta_data().get_discount_type();
 
-            // Loop through the meta data to find the discount type
+            $mtd=$coupon->get_meta_data();
+            foreach($mtd as $meta){
+                echo $meta;
+                echo '<br>';
+            }
+      
 
 
 
