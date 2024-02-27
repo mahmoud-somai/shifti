@@ -236,6 +236,12 @@ function get_orders() {
         // Loop over refunds
         foreach ($refunds as $refund) {
             echo $refund;
+            echo '<br>';
+            echo $refund->get_id();
+            echo '<br>';
+            echo $refund->get_reason();
+            echo '<br>';
+            echo $refund->get_remaining_refund_amount();
         }
         echo '<br>';
         echo '<br>';
