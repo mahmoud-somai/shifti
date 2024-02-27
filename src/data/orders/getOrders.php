@@ -226,11 +226,13 @@ function get_orders() {
         echo '<br>';
         echo 'order ==> <br>';
         echo json_encode($order->get_data());
-        echo json_encode($order->get_total_refunded());
+       
         echo '<br>';
         echo '<br>';
 
         echo 'refunds ==> <br>';
+
+        echo json_encode($order->get_total_refunded());
         echo json_encode($order->get_remaining_refund_amount());
         echo '<br>';
         echo '<br>';
