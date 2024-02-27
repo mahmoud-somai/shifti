@@ -237,7 +237,7 @@ function get_orders() {
         echo '<br>';
         echo json_encode($order->get_discount_tax());
         echo '<br>';
-        echo json_encode($order->>get_discount_to_display());
+        echo json_encode($order->get_discount_to_display());
 
 
 
