@@ -244,8 +244,9 @@ function get_orders() {
             echo '<br>';
             echo $refund->get_amount();
             echo '<br>';
-            echo $refund->get_date_created();
+            echo $refund->get_date_created() ? $refund->get_date_created()->format('Y-m-d H:i:s.u'): null;;
             echo '<br>';
+            echo $refund->get_refunded_by();
 
         }
         echo '<br>';
