@@ -273,7 +273,7 @@ function get_orders() {
         echo 'One refund ==> <br>';
         $order_refunded=[];
         foreach ($refunds as $refund) {
-            echo $refund;
+            //echo $refund;
             echo '<br>';
             $order_refund_id = $refund->get_id();
             $order_refund_reason = $refund->get_reason();
