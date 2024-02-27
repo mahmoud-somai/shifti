@@ -553,14 +553,14 @@ function get_orders() {
             'shipping_line' => $product_shipping_lines,
             'currency' => $order_currency,
          
-          //  'tax_lines' => $product_tax_lines,
-          //  'refunds' => $order_refunded,
+            'tax_lines' => $product_tax_lines,
+            'refunds' => $order_refunded,
             //'meta_data' => $meta_data,
            // 'line_items' => $line_items,
             //'tax_lines' => $tax_lines,
             //'shipping_lines' => $shipping_lines,
             //'fee_lines' => $fee_lines,
-           // 'coupon_lines' => $coupon_lines,
+            //'coupon_lines' => $coupon_lines,
         );
     }
 
