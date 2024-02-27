@@ -232,9 +232,10 @@ function get_orders() {
 
         echo 'refunds ==> <br>';
 
-       echo json_encode( $order->get_total_refunded());
-        // Loop over refunds
-     /*   foreach ($refunds as $refund) {
+      //  echo json_encode($order->get_total_refunded());
+        $refunds = $order->get_refunds();
+        
+        foreach ($refunds as $refund) {
             echo $refund;
             echo '<br>';
             echo $refund->get_id();
@@ -242,7 +243,11 @@ function get_orders() {
             echo $refund->get_reason();
             echo '<br>';
             echo $refund->get_amount();
-        }*/
+            echo '<br>';
+            echo $refund->get_date_created();
+            echo '<br>';
+
+        }
         echo '<br>';
         echo '<br>';
         //tax lines properties
