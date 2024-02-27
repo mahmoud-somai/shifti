@@ -245,7 +245,7 @@ function get_orders() {
             echo '<br>';
     
 
-            $mtd=$coupon->get_meta_data();
+            $mtd=$coupon->get_meta();
             foreach($mtd as $meta){
                 echo $meta;
                 echo '<br>';
