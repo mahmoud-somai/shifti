@@ -270,8 +270,8 @@ function get_orders() {
             );
         }
         
-        echo '<br> coupon tab ===> <br>';
-        echo json_encode($coupon_tab);
+      //  echo '<br> coupon tab ===> <br>';
+       // echo json_encode($coupon_tab);
 
         // echo 'coupon ==> <br>';
         // echo json_encode($order->get_used_coupons());
@@ -581,6 +581,7 @@ function get_orders() {
          
             'tax_lines' => $product_tax_lines,
             'refunds' => $order_refunded,
+            'coupons' => $coupon_tab,
             //'meta_data' => $meta_data,
            // 'line_items' => $line_items,
             //'tax_lines' => $tax_lines,
@@ -590,9 +591,9 @@ function get_orders() {
         );
     }
 
-   // echo '<br> Orders Data: <br>';
-   // echo json_encode($orders_data);
-   // echo '<br>';
+    echo '<br> Orders Data: <br>';
+    echo json_encode($orders_data);
+    echo '<br>';
 }
 
 ?>
