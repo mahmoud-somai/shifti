@@ -265,8 +265,8 @@ function get_orders() {
         } catch (Exception $e) {
             // Handle the exception here
             echo 'Error: ' . $e->getMessage();
-            // Return null if tax items are empty
-            $product_tax_lines = null;
+            // Return an empty array if tax items are empty
+            $product_tax_lines = [];
         }
         
 
