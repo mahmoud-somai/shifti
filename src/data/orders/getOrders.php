@@ -233,6 +233,7 @@ function get_orders() {
         echo 'refunds ==> <br>';
 
       //  echo json_encode($order->get_total_refunded());
+      echo json_encode($order->get_refunded_payment());
         $refunds = $order->get_refunds();
         
         foreach ($refunds as $refund) {
@@ -248,7 +249,7 @@ function get_orders() {
             echo '<br>';
             echo $refund->get_refunded_by();
             echo '<br>';
-            echo json_encode("ref pay ".$refund->get_refunded_payment());
+            echo $refund->get_refunded_payment();
 
         }
         echo '<br>';
