@@ -227,9 +227,10 @@ function get_orders() {
         echo '<br>';
 
         $product_tax_lines = [];
+        echo 'tax lines ==> <br>';
+        echo json_encode($order->get_items('tax'));
         foreach( $order->get_items('tax') as $item_id => $item ){
-            echo 'tax item ==> <br>';
-            echo json_encode($item->get_data());
+           
            // $tax_item_name        = $item->get_name(); 
           //  $tax_item_rate_code   = $item->get_rate_code(); 
           //  $tax_item_rate_label  = $item->get_label(); 
