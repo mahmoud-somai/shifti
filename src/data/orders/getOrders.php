@@ -260,7 +260,7 @@ function get_orders() {
           echo ' <br> discount type  <br>';
           echo $discount_type;
           echo '<br>';
-            echo ($discount_type, $coupon_id, $coupon_code, $coupon_amount, $coupon_date_expires, $coupon_discount);
+            echo ( $coupon_id, $coupon_code, $coupon_amount, $coupon_date_expires, $coupon_discount);
             echo '<br>';
         }
 
