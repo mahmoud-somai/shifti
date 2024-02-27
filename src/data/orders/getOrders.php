@@ -405,6 +405,7 @@ function get_orders() {
             $tax_subtotal    = $item->get_subtotal_tax();
             $total           = $item->get_total();
             $tax_status      = $item->get_tax_status();
+           $discount_type=item-> get_meta("discount_type",true);
         }
         $product_items[] = array(
             'product_name' => $product_name,
@@ -569,7 +570,7 @@ function get_orders() {
     }
 
     echo '<br> Orders Data: <br>';
-   // echo json_encode($orders_data);
+   echo json_encode($orders_data);
     echo '<br>';
 }
 
