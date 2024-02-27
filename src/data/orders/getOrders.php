@@ -230,7 +230,7 @@ function get_orders() {
         echo '<br>';
         echo '<br>';
 
-        echo 'coupons ==> <br>'
+        echo 'coupons ==> <br>';
         echo json_encode($order->get_coupons());
 
         echo '<br>';
