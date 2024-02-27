@@ -221,8 +221,7 @@ function get_orders() {
 
    
     $orders_data = [];
-    $order_coupon = $order->get_items('coupon');
-    echo json_encode($order_coupon);
+
     foreach ($orders as $order) {
         echo '<br>';
         echo 'order ==> <br>';
