@@ -245,7 +245,7 @@ function get_orders() {
             echo '<br>';
             $coupon_meta_data = $coupon->get_meta_data();
             foreach ($coupon_meta_data as $meta_data) {
-                echo $meta_data->get_discount_type();
+                echo $meta_data
             }
 
 
