@@ -417,7 +417,8 @@ function get_orders() {
             'subtotal_tax' => $tax_subtotal,
             'total' => $total,   
             //total_tax & taxes (tax line ) & metadata & sku & price 
-            'tax status' => $tax_status,        
+            'tax status' => $tax_status,    
+            'discount type'=> $discount_type,    
         );
 
 
@@ -570,7 +571,7 @@ function get_orders() {
     }
 
     echo '<br> Orders Data: <br>';
-   echo json_encode($orders_data);
+    echo json_encode($orders_data);
     echo '<br>';
 }
 
