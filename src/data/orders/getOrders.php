@@ -246,8 +246,13 @@ function get_orders() {
             $coupon_meta_data = $coupon->get_meta_data();
             foreach ($coupon_meta_data as $meta_data) {
                 if ($meta_data['key'] === 'coupon_data') {
+                    // Extract the value from meta data
                     $coupon_data = $meta_data['value'];
-                    $discount_type = $coupon_data['discount_type'];
+        
+                    // Get the discount type from coupon data
+                    $discount_type = isset($coupon_data['discount_type']) ? $coupon_data['discount_type'] : null;
+        
+                    // Echo the discount type
                     echo "Discount Type: $discount_type";
                     echo '<br>';
                 }
