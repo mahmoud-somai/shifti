@@ -229,6 +229,13 @@ function get_orders() {
        
         echo '<br>';
         echo '<br>';
+        
+
+        foreach($order->get_coupon_codes() as $coupon_code){
+            echo 'coupon code ==> <br>';
+            echo $coupon_code;
+            echo '<br>';
+        }
 
         echo 'coupon ==> <br>';
         echo json_encode($order->get_used_coupons());
