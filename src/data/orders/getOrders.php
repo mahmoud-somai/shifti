@@ -231,25 +231,21 @@ function get_orders() {
         echo '<br>';
         
         $coupons=$order->get_coupons();
-        foreach($coupons as $coupon){
-            echo 'coupon ==> <br>';
-            echo $coupon;
-            echo '<br>';
-            echo $coupon->get_id();
-            echo '<br>';
-            echo $coupon->get_code();
-            echo '<br>';
-            echo $coupon->get_discount();;
-            echo '<br>';
-            echo $coupon->get_discount_tax();
-            echo '<br>';
+        // foreach($coupons as $coupon){
+        //     echo 'coupon ==> <br>';
+        //     echo $coupon;
+        //     echo '<br>';
+        //     echo $coupon->get_id();
+        //     echo '<br>';
+        //     echo $coupon->get_code();
+        //     echo '<br>';
+        //     echo $coupon->get_discount();;
+        //     echo '<br>';
+        //     echo $coupon->get_discount_tax();
+        //     echo '<br>';
       
-
-
-
-
            
-        }
+        // }
 
         // echo 'coupon ==> <br>';
         // echo json_encode($order->get_used_coupons());
