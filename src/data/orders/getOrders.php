@@ -230,7 +230,7 @@ function get_orders() {
         echo '<br>';
 
         echo 'fees ==> <br>';
-        echo json_encode($order->get_fees());
+        echo json_encode($order->get_refunds());
         echo '<br>';
         echo '<br>';
         //tax lines properties
