@@ -258,6 +258,8 @@ function get_orders() {
 
             echo json_decode($discount_type);
             echo '<br>';
+            echo $coupon->get_amount();
+            echo '<br>';
             
         }
 
