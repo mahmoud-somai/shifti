@@ -230,13 +230,11 @@ function get_orders() {
         echo '<br>';
         echo '<br>';
         
-
-        foreach($order->get_coupon_codes() as $coupon_code){
-            $coupon = new WC_Coupon($coupon_code);
-            echo 'coupon code ==> <br>';
-            echo $coupon_code;
-            $coupon_amount = $coupon->get_amount();
-            echo $coupon_amount;
+        $coupons=$order->get_coupons();
+        foreach($coupons as $coupon){
+           echo 'coupon ==> <br>';
+            
+            echo $coupon;
             echo '<br>';
         }
 
