@@ -243,10 +243,21 @@ function get_orders() {
             echo '<br>';
             echo $coupon->get_discount_tax();
             echo '<br>';
-            $coupon_meta_data = $coupon->get_meta_data();
-            foreach ($coupon_meta_data as $meta_data) {
-                echo $meta_data;
+            $meta_data = $coupon->get_meta_data();
+
+            // Loop through the meta data to find the discount type
+            foreach ($meta_data as $data) {
+                if ($data['key'] === 'coupon_data') {
+                    $coupon_data = $data['value'];
+                    $discount_type = $coupon_data['discount_type'];
+        
+                    // Display the discount type
+                    echo "Discount Type: $discount_type";
+                    echo '<br>';
+                    break; // Stop looping once discount type is found
+                }
             }
+
 
 
            
