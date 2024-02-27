@@ -257,11 +257,10 @@ function get_orders() {
             $coupon_amount=$coupon->get_amount();
             $coupon_date_expires=$coupon->get_date_expires();
             $coupon_discount=$coupon->get_discount();
-          echo ' <br> discount type  <br>';
+          echo 'discount type ==> <br>';
           echo $discount_type;
           echo '<br>';
-            echo ( $coupon_id, $coupon_code, $coupon_amount, $coupon_date_expires, $coupon_discount);
-            echo '<br>';
+            echo ($coupon_id, $coupon_code, $coupon_amount, $coupon_date_expires, $coupon_discount);
         }
 
         // echo 'coupon ==> <br>';
