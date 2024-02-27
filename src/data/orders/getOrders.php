@@ -206,8 +206,8 @@ function get_orders() {
     global $wpdb;
 
     // Define the specific order IDs you want to retrieve
-    //$specific_order_ids = array(50771);
-    $specific_order_ids = array(28);
+    $specific_order_ids = array(28); //50771
+  
 
     $args = array(
         'post__in' => $specific_order_ids, // Include only the orders with the specified IDs
@@ -228,7 +228,7 @@ function get_orders() {
 
         $product_tax_lines = [];
         echo 'tax lines ==> <br>';
-        echo json_encode($order->get_items('tax'));
+        echo json_encode($order->get_items('tax_lines'));
         foreach( $order->get_items('tax') as $item_id => $item ){
            
            // $tax_item_name        = $item->get_name(); 
