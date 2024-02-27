@@ -264,10 +264,11 @@ function get_orders() {
                 if ($refunded_payment === true) {
                     echo "Payment has been refunded.";
                     echo '<br>';
-                    echo $refinded_payment;
+                    echo $refunded_payment;
                 } elseif ($refunded_payment === false) {
                     echo "Payment has not been refunded.";
-                    echo $refinded_payment;
+                    echo '<br>';
+                    echo $refunded_payment;
                 } else {
                     echo "Unexpected result from get_refunded_payment()";
                 }
