@@ -229,8 +229,8 @@ function get_orders() {
         echo '<br>';
         echo '<br>';
 
-        echo 'fees ==> <br>';
-        echo json_encode($order->get_refunds());
+        echo 'refunds ==> <br>';
+        echo json_encode($order->get_items( 'refunds' ) );
         echo '<br>';
         echo '<br>';
         //tax lines properties
