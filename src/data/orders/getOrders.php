@@ -225,7 +225,7 @@ function get_orders() {
     foreach ($orders as $order) {
         echo '<br>';
         echo 'order ==> <br>';
-        echo json_encode($order->get_data());
+       // echo json_encode($order->get_data());
        
         echo '<br>';
         echo '<br>';
@@ -482,7 +482,7 @@ function get_orders() {
     }
 
     echo '<br> Orders Data: <br>';
-    echo json_encode($orders_data);
+   // echo json_encode($orders_data);
     echo '<br>';
 }
 
