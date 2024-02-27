@@ -228,6 +228,8 @@ function get_orders() {
 
         $product_tax_lines = [];
         foreach( $order->get_items('tax') as $item_id => $item ){
+            echo 'tax item ==> <br>';
+            echo json_encode($item->get_data());
            // $tax_item_name        = $item->get_name(); 
           //  $tax_item_rate_code   = $item->get_rate_code(); 
           //  $tax_item_rate_label  = $item->get_label(); 
@@ -238,7 +240,6 @@ function get_orders() {
            // $tax_item_compound    = $item->get_compound(); 
           
         }
-        echo "tax item id => <h1>" . $tax_item_rate_id;
 
         $product_tax_lines[] = array(
            // 'tax_item_name' => $tax_item_name, // Tax name
