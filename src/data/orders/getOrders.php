@@ -236,6 +236,7 @@ function get_orders() {
         echo json_encode($order->get_coupon_code());
 
         echo '<br>';
+       echo json_encode( $order->get_used_coupons());
         echo '<br>';
 
 
