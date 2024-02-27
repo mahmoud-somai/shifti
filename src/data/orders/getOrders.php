@@ -204,14 +204,16 @@ function get_orders() {
 
 function get_orders() {
     global $wpdb;
-
+   // $args = array(
+    //    'limit' => -1, 
+   // );
     // Define the specific order IDs you want to retrieve
-  //  $specific_order_ids = array(50771); //50771
+    $specific_order_ids = array(28); //50771
   
 
-  //  $args = array(
-   //     'post__in' => $specific_order_ids, // Include only the orders with the specified IDs
-  //  );
+    $args = array(
+        'post__in' => $specific_order_ids, // Include only the orders with the specified IDs
+    );
 
 
     $orders_query = new WC_Order_Query($args);
@@ -227,39 +229,48 @@ function get_orders() {
         echo '<br>';
         echo '<br>';
 
+
+
+        //tax lines
         $product_tax_lines = [];
-        echo 'tax lines ==> <br>';
-        echo json_encode($order->get_items('tax'));
-        echo '<br>';
-        echo '<br>';
 
-        foreach( $order->get_items('tax') as $item_id => $item ){
-           
-           // $tax_item_name        = $item->get_name(); 
-          //  $tax_item_rate_code   = $item->get_rate_code(); 
-          //  $tax_item_rate_label  = $item->get_label(); 
-            $tax_item_rate_id     = $item->get_rate_id(); 
-           // $tax_item_tax_total   = $item->get_tax_total();
-           // $tax_item_shipping_tax_total  = $item->get_shipping_tax_total();
-           // $tax_item_is_compound = $item->is_compound(); 
-           // $tax_item_compound    = $item->get_compound(); 
-          
+        try {
+            $tax_items = $order->get_items('tax');
+            
+            if (empty($tax_items)) {
+                throw new Exception('No tax items found');
+            }
+        
+            foreach ($tax_items as $item_id => $item) {
+                $tax_item_name = $item->get_name();
+                $tax_item_rate_code = $item->get_rate_code();
+                $tax_item_rate_label = $item->get_label();
+                $tax_item_rate_id = $item->get_rate_id();
+                $tax_item_tax_total = $item->get_tax_total();
+                $tax_item_shipping_tax_total = $item->get_shipping_tax_total();
+                $tax_item_is_compound = $item->is_compound();
+                $tax_item_compound = $item->get_compound();
+        
+                $product_tax_lines[] = array(
+                    'tax_item_name' => $tax_item_name, // Tax name
+                    'tax_item_rate_code' => $tax_item_rate_code,
+                    'tax_item_rate_id' => $tax_item_rate_id,
+                    'tax_item_rate_label' => $tax_item_rate_label,
+                    'tax_item_is_compound' => $tax_item_is_compound,
+                    'tax_item_compound' => $tax_item_compound,
+                    'tax_item_tax_total' => $tax_item_tax_total,
+                    'tax_item_shipping_tax_total' => $tax_item_shipping_tax_total,
+                );
+            }
+        } catch (Exception $e) {
+            // Handle the exception here
+            echo 'Error: ' . $e->getMessage();
+            // Return null if tax items are empty
+            $product_tax_lines = null;
         }
+        
 
-        $product_tax_lines[] = array(
-           // 'tax_item_name' => $tax_item_name, // Tax name
-            
-            
-           // 'tax_item_rate_code' => $tax_item_rate_code,
-            'tax_item_rate_id' => $tax_item_rate_id,
-           // 'tax_item_rate_label' => $tax_item_rate_label,
-           // 'tax_item_is_compound' => $tax_item_is_compound,
-           // 'tax_item_compound' => $tax_item_compound,
-           // 'tax_item_tax_total' => $tax_item_tax_total,
-           // 'tax_item_shipping_tax_total' => $tax_item_shipping_tax_total,
-
-        );
-
+        //shipping lines 
 
         $product_shipping_lines = [];
         foreach( $order->get_items( 'shipping' ) as $item_id => $item ){
@@ -283,7 +294,7 @@ function get_orders() {
             'shipping_method_taxes' => $shipping_method_taxes,
         );
 
-
+        //line items
 
         $items = $order->get_items();
         $product_items = [];
