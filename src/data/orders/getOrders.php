@@ -206,8 +206,8 @@ function get_orders() {
     global $wpdb;
 
     // Define the specific order IDs you want to retrieve
+    //$specific_order_ids = array(50771);
     $specific_order_ids = array(28);
-   // $specific_order_ids = array(28);
 
     $args = array(
         'post__in' => $specific_order_ids, // Include only the orders with the specified IDs
@@ -229,26 +229,27 @@ function get_orders() {
         $product_tax_lines = [];
         foreach( $order->get_items('tax') as $item_id => $item ){
            // $tax_item_name        = $item->get_name(); 
-            $tax_item_rate_code   = $item->get_rate_code(); 
-            $tax_item_rate_label  = $item->get_label(); 
+          //  $tax_item_rate_code   = $item->get_rate_code(); 
+          //  $tax_item_rate_label  = $item->get_label(); 
             $tax_item_rate_id     = $item->get_rate_id(); 
-            $tax_item_tax_total   = $item->get_tax_total();
-            $tax_item_shipping_tax_total  = $item->get_shipping_tax_total();
-            $tax_item_is_compound = $item->is_compound(); 
-            $tax_item_compound    = $item->get_compound(); 
+           // $tax_item_tax_total   = $item->get_tax_total();
+           // $tax_item_shipping_tax_total  = $item->get_shipping_tax_total();
+           // $tax_item_is_compound = $item->is_compound(); 
+           // $tax_item_compound    = $item->get_compound(); 
+           echo "tax item id => <h1>" . $tax_item_rate_id;
         }
 
         $product_tax_lines[] = array(
            // 'tax_item_name' => $tax_item_name, // Tax name
             
             
-            'tax_item_rate_code' => $tax_item_rate_code,
+           // 'tax_item_rate_code' => $tax_item_rate_code,
             'tax_item_rate_id' => $tax_item_rate_id,
-            'tax_item_rate_label' => $tax_item_rate_label,
-            'tax_item_is_compound' => $tax_item_is_compound,
-            'tax_item_compound' => $tax_item_compound,
-            'tax_item_tax_total' => $tax_item_tax_total,
-            'tax_item_shipping_tax_total' => $tax_item_shipping_tax_total,
+           // 'tax_item_rate_label' => $tax_item_rate_label,
+           // 'tax_item_is_compound' => $tax_item_is_compound,
+           // 'tax_item_compound' => $tax_item_compound,
+           // 'tax_item_tax_total' => $tax_item_tax_total,
+           // 'tax_item_shipping_tax_total' => $tax_item_shipping_tax_total,
 
         );
 
