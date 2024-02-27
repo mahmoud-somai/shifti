@@ -231,15 +231,13 @@ function get_orders() {
         echo '<br>';
 
         echo 'coupon ==> <br>';
-        echo json_encode($order->get_coupons());
-        echo '<br>';
-        echo json_encode($order->get_coupon_codes());
-        echo '<br>';
         echo json_encode($order->get_used_coupons());
         echo '<br>';
         echo json_encode($order->get_discount_total());
         echo '<br>';
         echo json_encode($order->get_discount_tax());
+        echo '<br>';
+        echo json_encode($order->>get_discount_to_display());
 
 
 
