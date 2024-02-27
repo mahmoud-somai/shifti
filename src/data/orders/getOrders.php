@@ -233,7 +233,7 @@ function get_orders() {
 
 
       //  echo json_encode($order->get_total_refunded());
-      echo json_encode($order->get_item_count_refunded());
+      //echo json_encode($order->get_item_count_refunded());
     
         $refunds = $order->get_refunds();
   
@@ -255,6 +255,8 @@ function get_orders() {
             echo $refund->get_refunded_by();
             echo '<br>';
             echo $refund->get_parent_id();
+            echo '<br>';
+            echo $refund->get_refund_items();
 
         }
         echo '<br>';
