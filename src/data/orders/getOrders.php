@@ -227,28 +227,28 @@ function get_orders() {
         echo '<br>';
 
         $product_tax_lines = [];
-        foreach( $order->get_items('tax') as $item ){
-            $name        = $item->get_name(); 
-            $rate_code   = $item->get_rate_code(); 
-            $rate_label  = $item->get_label(); 
-            $rate_id     = $item->get_rate_id(); 
-            $tax_total   = $item->get_tax_total();
-            $shipping_tax_total  = $item->get_shipping_tax_total();
-            $is_compound = $item->is_compound(); 
-            $compound    = $item->get_compound(); 
+        foreach( $order->get_items('tax') as $item_id => $item ){
+           // $tax_item_name        = $item->get_name(); 
+            $tax_item_rate_code   = $item->get_rate_code(); 
+            $tax_item_rate_label  = $item->get_label(); 
+            $tax_item_rate_id     = $item->get_rate_id(); 
+            $tax_item_tax_total   = $item->get_tax_total();
+            $tax_item_shipping_tax_total  = $item->get_shipping_tax_total();
+            $tax_item_is_compound = $item->is_compound(); 
+            $tax_item_compound    = $item->get_compound(); 
         }
 
         $product_tax_lines[] = array(
-            'name' => $name, // Tax name
+           // 'tax_item_name' => $tax_item_name, // Tax name
             
             
-            'rate_code' => $rate_code,
-            'rate_id' => $rate_id,
-            'rate_label' => $rate_label,
-            'is_compound' => $is_compound,
-            'compound' => $compound,
-            'tax_total' => $tax_total,
-            'shipping_tax_total' => $shipping_tax_total,
+            'tax_item_rate_code' => $tax_item_rate_code,
+            'tax_item_rate_id' => $tax_item_rate_id,
+            'tax_item_rate_label' => $tax_item_rate_label,
+            'tax_item_is_compound' => $tax_item_is_compound,
+            'tax_item_compound' => $tax_item_compound,
+            'tax_item_tax_total' => $tax_item_tax_total,
+            'tax_item_shipping_tax_total' => $tax_item_shipping_tax_total,
 
         );
 
