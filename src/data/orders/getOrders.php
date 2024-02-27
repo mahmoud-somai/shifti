@@ -232,20 +232,30 @@ function get_orders() {
         
         $coupons=$order->get_coupons();
         foreach($coupons as $coupon){
-           echo 'coupon ==> <br>';
-            
-            echo $coupon;
+            echo 'coupon ==> <br>';
+          //  echo $coupon;
+            echo $coupon->get_code();
+            echo '<br>';
+            echo $coupon->get_amount();
+            echo '<br>';
+            echo $coupon->get_discount_type();
+            echo '<br>';
+            echo $coupon->get_date_expires();
+            echo '<br>';
+            echo $coupon->get_date_created();
+            echo '<br>';
+            echo $coupon->get_id();
             echo '<br>';
         }
 
-        echo 'coupon ==> <br>';
-        echo json_encode($order->get_used_coupons());
-        echo '<br>';
-        echo json_encode($order->get_discount_total());
-        echo '<br>';
-        echo json_encode($order->get_discount_tax());
-        echo '<br>';
-        echo json_encode($order->get_discount_to_display());
+        // echo 'coupon ==> <br>';
+        // echo json_encode($order->get_used_coupons());
+        // echo '<br>';
+        // echo json_encode($order->get_discount_total());
+        // echo '<br>';
+        // echo json_encode($order->get_discount_tax());
+        // echo '<br>';
+        // echo json_encode($order->get_discount_to_display());
 
 
 
