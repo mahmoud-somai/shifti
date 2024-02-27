@@ -565,7 +565,7 @@ function get_orders() {
     }
 
     echo '<br> Orders Data: <br>';
-    echo json_encode($orders_data);
+   // echo json_encode($orders_data);
     echo '<br>';
 }
 
