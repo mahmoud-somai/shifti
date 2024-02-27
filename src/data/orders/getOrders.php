@@ -233,7 +233,7 @@ function get_orders() {
 
 
       //  echo json_encode($order->get_total_refunded());
-      //echo json_encode($order->get_item_count_refunded());
+      echo json_encode($order->get_item_count_refunded());
     
         $refunds = $order->get_refunds();
   
@@ -256,7 +256,20 @@ function get_orders() {
             echo '<br>';
             echo $refund->get_parent_id();
             echo '<br>';
-            echo $refund->get_api_refund();
+            try {
+                // Assuming $refund is an instance of a class with the method get_refunded_payment()
+                $refunded_payment = $refund->get_refunded_payment();
+                
+                if ($refunded_payment === true) {
+                    echo "Payment has been refunded.";
+                } elseif ($refunded_payment === false) {
+                    echo "Payment has not been refunded.";
+                } else {
+                    echo "Unexpected result from get_refunded_payment()";
+                }
+            } catch (Exception $e) {
+                echo "Error occurred: " . $e->getMessage();
+            }
 
         }
         echo '<br>';
