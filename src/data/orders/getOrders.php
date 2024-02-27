@@ -243,13 +243,8 @@ function get_orders() {
             echo '<br>';
             echo $coupon->get_discount_tax();
             echo '<br>';
-    
-
-            $mtd=$coupon->get_meta();
-            foreach($mtd as $meta){
-                echo $meta;
-                echo '<br>';
-            }
+            echo $coupon->get_meta("discount_type",true);
+            echo '<br>';
       
 
 
