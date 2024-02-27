@@ -256,7 +256,7 @@ function get_orders() {
             $discount_type = $coupon->get_discount_type();
             
 
-            echo $discount_type;
+            echo json_decode($discount_type);
             echo '<br>';
             
         }
