@@ -239,6 +239,7 @@ function get_orders() {
             echo '<br>';
             echo $coupon->get_discount();;
             echo '<br>';
+            echo $coupon->get_discount_tax();
             // echo $coupon->get_discount_type();
             // echo '<br>';
             // echo $coupon->get_date_expires();
