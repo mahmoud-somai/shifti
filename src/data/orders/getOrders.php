@@ -236,8 +236,9 @@ function get_orders() {
            // $tax_item_shipping_tax_total  = $item->get_shipping_tax_total();
            // $tax_item_is_compound = $item->is_compound(); 
            // $tax_item_compound    = $item->get_compound(); 
-           echo "tax item id => <h1>" . $tax_item_rate_id;
+          
         }
+        echo "tax item id => <h1>" . $tax_item_rate_id;
 
         $product_tax_lines[] = array(
            // 'tax_item_name' => $tax_item_name, // Tax name
