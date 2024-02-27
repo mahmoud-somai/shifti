@@ -250,6 +250,7 @@ function get_orders() {
         foreach( $order->get_coupon_codes() as $coupon_code ) {
             // Get the WC_Coupon object
             $coupon = new WC_Coupon($coupon_code);
+            echo $coupon;
         
             $discount_type = $coupon->get_discount_type();
             $coupon_id=$coupon->get_id();
