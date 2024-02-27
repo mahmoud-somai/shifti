@@ -243,7 +243,7 @@ function get_orders() {
             echo '<br>';
             echo $coupon->get_discount_tax();
             echo '<br>';
-            echo $coupon->get_meta('discount_type',true);
+            echo $coupon->get_meta('discount_type');
             echo '<br>';
       
            
