@@ -248,7 +248,7 @@ function get_orders() {
             echo '<br>';
             echo $refund->get_refunded_by();
             echo '<br>';
-            echo json_encode($refund->get_refunded_payment());
+            echo json_encode("ref pay ".$refund->get_refunded_payment());
 
         }
         echo '<br>';
