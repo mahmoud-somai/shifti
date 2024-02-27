@@ -230,7 +230,7 @@ function get_orders() {
         echo '<br>';
 
         echo 'refunds ==> <br>';
-        echo json_encode($order->get_items( 'refunds' ) );
+        echo json_encode($order->>get_qty_refunded_for_item());
         echo '<br>';
         echo '<br>';
         //tax lines properties
