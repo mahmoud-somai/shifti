@@ -241,7 +241,7 @@ function get_orders() {
             echo '<br>';
             echo $refund->get_reason();
             echo '<br>';
-            echo $refund->get_total_refunded();
+            echo json_encode($refund->get_total_refunded());
         }
         echo '<br>';
         echo '<br>';
