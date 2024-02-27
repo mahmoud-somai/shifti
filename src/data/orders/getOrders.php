@@ -237,7 +237,7 @@ function get_orders() {
             echo '<br>';
             echo $coupon->get_code();
             echo '<br>';
-            echo $coupon->get_discount_total();
+            echo $coupon->get_discount_to_display();
             echo '<br>';
             echo $coupon->get_discount_type();
             echo '<br>';
