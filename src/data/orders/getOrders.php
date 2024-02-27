@@ -230,11 +230,18 @@ function get_orders() {
         echo '<br>';
         echo '<br>';
 
+        echo 'coupons ==> <br>'
+        echo json_encode($order->get_coupons());
+
+        echo '<br>';
+        echo '<br>';
 
 
       //  echo json_encode($order->get_total_refunded());
-      echo json_encode($order->get_item_count_refunded());
+      //echo json_encode($order->get_item_count_refunded());
     
+
+      // refund properties
         $refunds = $order->get_refunds();
   
         echo '<br>';
