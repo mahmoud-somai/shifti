@@ -259,8 +259,8 @@ function get_orders() {
             $coupon_amount = $coupon->get_amount();
             $coupon_id = $coupon->get_id();
             $coupon_code = $coupon->get_code();
-            $coupon_discount = $coupon->get_discount();
-            $coupon_discount_tax = $coupon->get_discount_tax();
+            //$coupon_discount = $coupon->get_discount();
+           // $coupon_discount_tax = $coupon->get_discount_tax();
         
             $coupon_tab[] = array(
                 'coupon_id' => $coupon_id,
