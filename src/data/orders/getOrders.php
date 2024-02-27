@@ -259,12 +259,14 @@ function get_orders() {
             try {
                 // Assuming $refund is an instance of a class with the method get_refunded_payment()
                 $refunded_payment = $refund->get_refunded_payment();
-                echo $refinded_payment;
+
                 
                 if ($refunded_payment === true) {
                     echo "Payment has been refunded.";
+                    echo $refinded_payment;
                 } elseif ($refunded_payment === false) {
                     echo "Payment has not been refunded.";
+                    echo $refinded_payment;
                 } else {
                     echo "Unexpected result from get_refunded_payment()";
                 }
