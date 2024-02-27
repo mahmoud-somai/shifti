@@ -206,8 +206,8 @@ function get_orders() {
     global $wpdb;
 
     // Define the specific order IDs you want to retrieve
-    //$specific_order_ids = array(50771);
-    $specific_order_ids = array(28);
+    $specific_order_ids = array(50771);
+   // $specific_order_ids = array(28);
 
     $args = array(
         'post__in' => $specific_order_ids, // Include only the orders with the specified IDs
@@ -225,6 +225,33 @@ function get_orders() {
         echo json_encode($order->get_data());
         echo '<br>';
         echo '<br>';
+
+        $product_tax_lines = [];
+        foreach( $order->get_items('tax') as $item ){
+            $name        = $item->get_name(); 
+            $rate_code   = $item->get_rate_code(); 
+            $rate_label  = $item->get_label(); 
+            $rate_id     = $item->get_rate_id(); 
+            $tax_total   = $item->get_tax_total();
+            $shipping_tax_total  = $item->get_shipping_tax_total();
+            $is_compound = $item->is_compound(); 
+            $compound    = $item->get_compound(); 
+        }
+
+        $product_tax_lines[] = array(
+            'name' => $name, // Tax name
+            
+            
+            'rate_code' => $rate_code,
+            'rate_id' => $rate_id,
+            'rate_label' => $rate_label,
+            'is_compound' => $is_compound,
+            'compound' => $compound,
+            'tax_total' => $tax_total,
+            'shipping_tax_total' => $shipping_tax_total,
+
+        );
+
 
         $product_shipping_lines = [];
         foreach( $order->get_items( 'shipping' ) as $item_id => $item ){
@@ -247,6 +274,7 @@ function get_orders() {
             'shipping_method_total_tax' => $shipping_method_total_tax,
             'shipping_method_taxes' => $shipping_method_taxes,
         );
+
 
 
         $items = $order->get_items();
@@ -414,7 +442,8 @@ function get_orders() {
             'currency' => $order_currency,
             'date_created' => $date_created,
             'date_modified' => $date_modified,
-            'meta_data' => $meta_data,
+            'tax_lines' => $product_tax_lines,
+            //'meta_data' => $meta_data,
            // 'line_items' => $line_items,
             //'tax_lines' => $tax_lines,
             //'shipping_lines' => $shipping_lines,
