@@ -231,21 +231,23 @@ function get_orders() {
         echo '<br>';
         
         $coupons=$order->get_coupons();
-        // foreach($coupons as $coupon){
-        //     echo 'coupon ==> <br>';
-        //     echo $coupon;
-        //     echo '<br>';
-        //     echo $coupon->get_id();
-        //     echo '<br>';
-        //     echo $coupon->get_code();
-        //     echo '<br>';
-        //     echo $coupon->get_discount();;
-        //     echo '<br>';
-        //     echo $coupon->get_discount_tax();
-        //     echo '<br>';
+        foreach($coupons as $coupon){
+            echo 'coupon ==> <br>';
+            echo $coupon;
+            echo '<br>';
+            echo $coupon->get_id();
+            echo '<br>';
+            echo $coupon->get_code();
+            echo '<br>';
+            echo $coupon->get_discount();;
+            echo '<br>';
+            echo $coupon->get_discount_tax();
+            echo '<br>';
+            echo $coupon->get_meta('discount_type',true);
+            echo '<br>';
       
            
-        // }
+        }
 
         // echo 'coupon ==> <br>';
         // echo json_encode($order->get_used_coupons());
@@ -399,7 +401,7 @@ function get_orders() {
             $tax_subtotal    = $item->get_subtotal_tax();
             $total           = $item->get_total();
             $tax_status      = $item->get_tax_status();
-           $discount_type= $item-> get_meta("discount_type",true);
+        
         }
         $product_items[] = array(
             'product_name' => $product_name,
@@ -412,7 +414,7 @@ function get_orders() {
             'total' => $total,   
             //total_tax & taxes (tax line ) & metadata & sku & price 
             'tax status' => $tax_status,    
-            'discount type'=> $discount_type,    
+           
         );
 
 
@@ -564,9 +566,9 @@ function get_orders() {
         );
     }
 
-    echo '<br> Orders Data: <br>';
-    echo json_encode($orders_data);
-    echo '<br>';
+   // echo '<br> Orders Data: <br>';
+   // echo json_encode($orders_data);
+   // echo '<br>';
 }
 
 ?>
