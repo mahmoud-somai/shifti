@@ -237,16 +237,16 @@ function get_orders() {
             echo '<br>';
             echo $coupon->get_code();
             echo '<br>';
-            echo $coupon->get_discount_to_display();
+            echo $coupon->get_discount_total();;
             echo '<br>';
-            echo $coupon->get_discount_type();
-            echo '<br>';
-            echo $coupon->get_date_expires();
-            echo '<br>';
-            echo $coupon->get_date_created();
-            echo '<br>';
-            echo $coupon->get_id();
-            echo '<br>';
+            // echo $coupon->get_discount_type();
+            // echo '<br>';
+            // echo $coupon->get_date_expires();
+            // echo '<br>';
+            // echo $coupon->get_date_created();
+            // echo '<br>';
+            // echo $coupon->get_id();
+            // echo '<br>';
         }
 
         // echo 'coupon ==> <br>';
