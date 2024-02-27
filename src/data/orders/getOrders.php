@@ -232,6 +232,7 @@ function get_orders() {
         
 
         foreach($order->get_coupon_codes() as $coupon_code){
+            $coupon = new WC_Coupon($coupon_code);
             echo 'coupon code ==> <br>';
             echo $coupon_code;
             $coupon_amount = $coupon->get_amount();
