@@ -231,29 +231,36 @@ function get_orders() {
         echo '<br>';
         
         $coupons=$order->get_coupons();
-        foreach($coupons as $coupon){
-            echo 'coupon ==> <br>';
-            echo $coupon;
-            echo '<br>';
-            echo $coupon->get_id();
-            echo '<br>';
-            echo $coupon->get_code();
-            echo '<br>';
-            echo $coupon->get_discount();;
-            echo '<br>';
-            echo $coupon->get_discount_tax();
-            echo '<br>';
+        // foreach($coupons as $coupon){
+        //     echo 'coupon ==> <br>';
+        //     echo $coupon;
+        //     echo '<br>';
+        //     echo $coupon->get_id();
+        //     echo '<br>';
+        //     echo $coupon->get_code();
+        //     echo '<br>';
+        //     echo $coupon->get_discount();;
+        //     echo '<br>';
+        //     echo $coupon->get_discount_tax();
+        //     echo '<br>';
      
       
            
-        }
+        // }
         foreach( $order->get_coupon_codes() as $coupon_code ) {
             // Get the WC_Coupon object
             $coupon = new WC_Coupon($coupon_code);
         
-            $discount_type = $coupon->get_discount_type(); // Get coupon discount type
+            $discount_type = $coupon->get_discount_type();
+            $coupon_id=$coupon->get_id();
+            $coupon_code=$coupon->get_code();
+            $coupon_amount=$coupon->get_amount();
+            $coupon_date_expires=$coupon->get_date_expires();
+            $coupon_discount=$coupon->get_discount();
           echo 'discount type ==> <br>';
           echo $discount_type;
+          echo '<br>';
+            echo ($coupon_id, $coupon_code, $coupon_amount, $coupon_date_expires, $coupon_discount);
         }
 
         // echo 'coupon ==> <br>';
