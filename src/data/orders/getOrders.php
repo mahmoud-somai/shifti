@@ -256,14 +256,12 @@ function get_orders() {
             echo '<br>';
         
             $discount_type = $coupon->get_discount_type();
+         //   $coupon_amount = $coupon->get_amount();
+           // $coupon_id = $coupon->get_id();
 
             $coupon_tab[] = array(
-                'coupon_id' => $coupon->get_id(),
-                'coupon_code' => $coupon->get_code(),
-                'coupon_discount' => $coupon->get_discount(),
-                'coupon_discount_tax' => $coupon->get_discount_tax(),
                 'coupon_discount_type' => $discount_type,
-                'coupon_amount' => $coupon->get_amount(),
+       
             );
             
 
