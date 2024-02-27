@@ -235,6 +235,8 @@ function get_orders() {
             echo 'coupon ==> <br>';
             echo $coupon;
             echo '<br>';
+            echo $coupon->get_id();
+            echo '<br>';
             echo $coupon->get_code();
             echo '<br>';
             echo $coupon->get_discount();;
