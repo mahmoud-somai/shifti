@@ -235,6 +235,9 @@ function get_orders() {
       //  echo json_encode($order->get_total_refunded());
     
         $refunds = $order->get_refunds();
+        echo '<br>';
+        echo '<br>';
+        echo 'One refund ==> <br>';
         
         foreach ($refunds as $refund) {
             echo $refund;
