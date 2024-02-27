@@ -243,10 +243,17 @@ function get_orders() {
             echo '<br>';
             echo $coupon->get_discount_tax();
             echo '<br>';
-            echo $coupon->get_type();
-            echo '<br>';
+     
       
            
+        }
+        foreach( $order->get_coupon_codes() as $coupon_code ) {
+            // Get the WC_Coupon object
+            $coupon = new WC_Coupon($coupon_code);
+        
+            $discount_type = $coupon->get_discount_type(); // Get coupon discount type
+          echo 'discount type ==> <br>';
+          echo $discount_type;
         }
 
         // echo 'coupon ==> <br>';
