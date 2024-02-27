@@ -233,7 +233,7 @@ function get_orders() {
         $coupons=$order->get_coupons();
         foreach($coupons as $coupon){
             echo 'coupon ==> <br>';
-          //  echo $coupon;
+            echo $coupon;
             echo $coupon->get_code();
             echo '<br>';
             echo $coupon->get_amount();
