@@ -230,12 +230,12 @@ function get_orders() {
         echo '<br>';
         echo '<br>';
 
-        echo 'refunds ==> <br>';
+
 
       //  echo json_encode($order->get_total_refunded());
     
         $refunds = $order->get_refunds();
-        echo json_encode($refunds);
+  
         echo '<br>';
         echo '<br>';
         echo 'One refund ==> <br>';
@@ -253,7 +253,7 @@ function get_orders() {
             echo '<br>';
             echo $refund->get_refunded_by();
             echo '<br>';
-            echo $refund->get_refunded_payment();
+            echo $refund->get_parent_id();
 
         }
         echo '<br>';
