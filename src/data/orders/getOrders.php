@@ -229,9 +229,11 @@ function get_orders() {
         echo '<br>';
         echo '<br>';
 
-
-
-        //tax lines
+        echo 'fees ==> <br>';
+        echo json_encode($order->get_fees());
+        echo '<br>';
+        echo '<br>';
+        //tax lines properties
         $product_tax_lines = [];
 
         try {
@@ -270,7 +272,7 @@ function get_orders() {
         }
         
 
-        //shipping lines 
+        //shipping lines properties
 
         $product_shipping_lines = [];
         foreach( $order->get_items( 'shipping' ) as $item_id => $item ){
@@ -284,17 +286,18 @@ function get_orders() {
             $shipping_method_taxes       = $item->get_taxes();
         }
         $product_shipping_lines= array(
+            'shipping_method_instance_id' => $shipping_method_instance_id,
             'order_item_name' => $order_item_name,
             'order_item_type' => $order_item_type,
+
             'shipping_method_title' => $shipping_method_title,
             'shipping_method_id' => $shipping_method_id,
-            'shipping_method_instance_id' => $shipping_method_instance_id,
             'shipping_method_total' => $shipping_method_total,
             'shipping_method_total_tax' => $shipping_method_total_tax,
             'shipping_method_taxes' => $shipping_method_taxes,
         );
 
-        //line items
+        //line items properties
 
         $items = $order->get_items();
         $product_items = [];
@@ -318,12 +321,14 @@ function get_orders() {
             'quantity' => $quantity,
             'tax_class' => $tax_class,
             'subtotal' => $subtotal,
-            'tax_subtotal' => $tax_subtotal,
+            'subtotal_tax' => $tax_subtotal,
             'total' => $total,   
             //total_tax & taxes (tax line ) & metadata & sku & price 
             'tax status' => $tax_status,        
         );
 
+
+        //order properties
         $order_id = $order->get_id();
         $order_parent_id=$order->get_parent_id(); 
         $order_number = $order->get_order_number();
@@ -369,7 +374,7 @@ function get_orders() {
         
 
         
-        //billing details
+        //billing properties
         $billing_first_name = $order->get_billing_first_name();
         $billing_last_name = $order->get_billing_last_name();
         $billing_company = $order->get_billing_company();
@@ -383,7 +388,7 @@ function get_orders() {
         $billing_phone = $order->get_billing_phone();
 
 
-            // Shipping details
+        // Shipping properties
         $shipping_first_name = $order->get_shipping_first_name();
         $shipping_last_name = $order->get_shipping_last_name();
         $shipping_company = $order->get_shipping_company();
@@ -459,8 +464,7 @@ function get_orders() {
             'product_items' => $product_items,
             'shipping_line' => $product_shipping_lines,
             'currency' => $order_currency,
-            'date_created' => $date_created,
-            'date_modified' => $date_modified,
+         
             'tax_lines' => $product_tax_lines,
             //'meta_data' => $meta_data,
            // 'line_items' => $line_items,
