@@ -229,7 +229,7 @@ function get_orders() {
 
             // The fee name
             $fee_name = $item_fee->get_name();
-            echo $fee_name;
+            echo" fees name =>  <br>".$fee_name;
             echo '<br>';
         
             // The fee total amount
