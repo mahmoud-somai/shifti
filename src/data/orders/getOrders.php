@@ -454,18 +454,9 @@ function get_orders() {
 $product_items = []; // Initialize the product_items array outside of the loop
 
 foreach ($items as $item) {
-    // Initialize variables to hold item details
-    $product_name = null;
-    $product_id = null;
-    $variation_id = null;
-    $quantity = null;
-    $tax_class = null;
-    $subtotal = null;
-    $tax_subtotal = null;
-    $total = null;
-    $tax_status = null;
 
-    echo "items ==> <br>" . $item;
+
+    echo "items ==> <br>" . $item->get_product();
     echo "<br>";
 
     // Retrieve item details
@@ -478,6 +469,7 @@ foreach ($items as $item) {
     $tax_subtotal    = $item->get_subtotal_tax();
     $total           = $item->get_total();
     $tax_status      = $item->get_tax_status();
+    $sku             = $item->get_sku();
 
     // Add item details to the product_items array
     $product_items[] = array(
@@ -490,6 +482,7 @@ foreach ($items as $item) {
         'subtotal_tax' => $tax_subtotal ?? null,
         'total' => $total ?? null,
         'tax status' => $tax_status ?? null,
+        'sku' => $sku ?? null,
     );
 }
 
