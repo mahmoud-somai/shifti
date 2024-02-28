@@ -461,7 +461,7 @@ function get_orders() {
             $total           = $item->get_total();
             $tax_status      = $item->get_tax_status();
             echo "<br>";
-            echo "total line ===> ".$item['total'];
+            echo "sku item line ===> ".$item['sku'];
            
         
         }
