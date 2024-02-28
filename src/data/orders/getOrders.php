@@ -459,6 +459,9 @@ function get_orders() {
             echo "wc prod ======== >>>>   <br>";
             echo $prod;
             echo "<br>";
+            echo "wc prod sku ======== >>>>   <br>";
+            echo $prod->get_sku();
+            echo "<br>";
             // Retrieve item details
             $product_name    = $item->get_name();
             $product_id      = $item->get_product_id();
