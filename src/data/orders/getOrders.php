@@ -473,16 +473,16 @@ foreach ($items as $item) {
 
     // Add item details to the product_items array
     $product_items[] = array(
-        'product_name' => $product_name ? null,
-        'product_id' => $product_id ? null,
-        'variation_id' => $variation_id ? null,
-        'quantity' => $quantity ? null,
-        'tax_class' => $tax_class ? null,
-        'subtotal' => $subtotal ? null,
-        'subtotal_tax' => $tax_subtotal ? null,
-        'total' => $total ? null,
-        'tax status' => $tax_status ? null,
-        'sku' => $sku ? null,
+        'product_name' => $product_name ? null;
+        'product_id' => $product_id ? null;
+        'variation_id' => $variation_id ? null;
+        'quantity' => $quantity ? null;
+        'tax_class' => $tax_class ? null;
+        'subtotal' => $subtotal ? null;
+        'subtotal_tax' => $tax_subtotal ? null;
+        'total' => $total ? null;
+        'tax status' => $tax_status ? null;
+        'sku' => $sku ? null;
     );
 }
 
