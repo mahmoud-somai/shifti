@@ -386,7 +386,7 @@ function get_orders() {
             }
         } catch (Exception $e) {
             // Handle the exception here
-            echo 'Error: ' . $e->getMessage();
+          //  echo 'Error: ' . $e->getMessage();
             // Return an array with null values for all attributes
             $product_tax_lines = [
                 [
