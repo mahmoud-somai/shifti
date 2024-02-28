@@ -456,11 +456,12 @@ function get_orders() {
         foreach ($items as $item) {
             echo "<br>";
             $prod = new WC_Product($item->get_product_id());
+            $ppp= $item->get_product();
             echo "wc prod ======== >>>>   <br>";
             echo $prod;
             echo "<br>";
             echo "wc prod sku ======== >>>>   <br>";
-            echo $prod['sku'];
+            echo $ppp->get_sku();
             echo "<br>";
             // Retrieve item details
             $product_name    = $item->get_name();
