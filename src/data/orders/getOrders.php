@@ -223,10 +223,12 @@ function get_orders() {
     $orders_data = [];
 
     foreach ($orders as $order) {
+
+
+
+        //fee lines properties
         echo '<br>';
         echo 'fees ==> <br>';
-
-
 
         $order_fees = [];
 
@@ -258,7 +260,7 @@ function get_orders() {
         echo '<br>';
         echo '<br>';
         
-        $coupons=$order->get_coupons();
+     
 
 
         // foreach($coupons as $coupon){
@@ -277,6 +279,9 @@ function get_orders() {
       
            
         // }
+
+        //coupon lines properties
+        $coupons=$order->get_coupons();
 
         $coupon_tab = [];
         foreach ($order->get_coupon_codes() as $coupon_code) {
@@ -455,6 +460,8 @@ function get_orders() {
             $tax_subtotal    = $item->get_subtotal_tax();
             $total           = $item->get_total();
             $tax_status      = $item->get_tax_status();
+            echo "total line ===> <br>"
+            echo $line_total = $item_data['total'];
         
         }
         $product_items[] = array(
