@@ -225,9 +225,10 @@ function get_orders() {
     foreach ($orders as $order) {
         echo '<br>';
         echo 'fees ==> <br>';
+        
 
         foreach ( $order->get_fees() as $fee_id => $fee ) {
-            echo $fee;
+            echo json_encode($fee);
          }
        
        
