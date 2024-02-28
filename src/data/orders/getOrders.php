@@ -257,27 +257,35 @@ function get_orders() {
 
 
         //coupon lines properties
-        $coupons=$order->get_coupons();
-
+        $coupons = $order->get_coupons();
         $order_coupons = [];
-        foreach ($order->get_coupon_codes() as $coupon_code) {
-
-            $coupon = new WC_Coupon($coupon_code);
         
-            $discount_type = $coupon->get_discount_type();
-            $coupon_amount = $coupon->get_amount();
-            $coupon_id = $coupon->get_id();
-            $coupon_code = $coupon->get_code();
-            //$coupon_discount = $coupon->get_discount();
-           // $coupon_discount_tax = $coupon->get_discount_tax();
+        if (!empty($coupons)) {
+            foreach ($order->get_coupon_codes() as $coupon_code) {
+                $coupon = new WC_Coupon($coupon_code);
         
-            $order_coupons[] = array(
-                'coupon_id' => $coupon_id,
-                'coupon_code' => $coupon_code,
-                'coupon_amount' => $coupon_amount,
-                'coupon_discount_type' => $discount_type,
-            );
+                $discount_type = $coupon->get_discount_type();
+                $coupon_amount = $coupon->get_amount();
+                $coupon_id = $coupon->get_id();
+                $coupon_code = $coupon->get_code();
+        
+                $order_coupons[] = [
+                    'coupon_id' => $coupon_id,
+                    'coupon_code' => $coupon_code,
+                    'coupon_amount' => $coupon_amount,
+                    'coupon_discount_type' => $discount_type,
+                ];
+            }
+        } else {
+            // Assign null values to attributes
+            $order_coupons[] = [
+                'coupon_id' => null,
+                'coupon_code' => null,
+                'coupon_amount' => null,
+                'coupon_discount_type' => null,
+            ];
         }
+        
         
       //  echo '<br> coupon tab ===> <br>';
        // echo json_encode($order_coupons);
