@@ -208,7 +208,7 @@ function get_orders() {
     //    'limit' => -1, 
    // );
 
-    $specific_order_ids = array(28); //50771
+    $specific_order_ids = array(50771); //50771
   
 
     $args = array(
@@ -303,40 +303,83 @@ function get_orders() {
     
 
       // refund properties
-        $refunds = $order->get_refunds();
+
+        // $refunds = $order->get_refunds();
   
 
-        $order_refunded=[];
-        foreach ($refunds as $refund) {
-            //echo $refund;
-            echo '<br>';
-            $order_refund_id = $refund->get_id();
-            $order_refund_reason = $refund->get_reason();
-            $order_refund_amount = $refund->get_amount();
-            $order_refund_date_created = $refund->get_date_created() ? $refund->get_date_created()->format('Y-m-d H:i:s.u'): null;
-            $order_refunded_by = $refund->get_refunded_by();
-            $order_parent_id = $refund->get_parent_id();
+        // $order_refunded=[];
+        // foreach ($refunds as $refund) {
+        //     //echo $refund;
+        //     echo '<br>';
+        //     $order_refund_id = $refund->get_id();
+        //     $order_refund_reason = $refund->get_reason();
+        //     $order_refund_amount = $refund->get_amount();
+        //     $order_refund_date_created = $refund->get_date_created() ? $refund->get_date_created()->format('Y-m-d H:i:s.u'): null;
+        //     $order_refunded_by = $refund->get_refunded_by();
+        //     $order_parent_id = $refund->get_parent_id();
 
             
-            try {
-                // Assuming $refund is an instance of a class with the method get_refunded_payment()
-                $refunded_payment = $refund->get_refunded_payment();
+        //     try {
+        //         // Assuming $refund is an instance of a class with the method get_refunded_payment()
+        //         $refunded_payment = $refund->get_refunded_payment();
 
                 
-                if ($refunded_payment === true) {
-                    echo "<br> Payment has been refunded. <br>";
-                    $refunded_payment=true;
-                } elseif ($refunded_payment === false) {
-                    echo "<br> Payment has not been refunded. <br>";
-                    $refunded_payment=false;
-                } else {
-                    echo "<br> Unexpected result <br> ";
-                }
-            } catch (Exception $e) {
-                echo "<br> Error occurred: " . $e->getMessage();
+        //         if ($refunded_payment === true) {
+        //             echo "<br> Payment has been refunded. <br>";
+        //             $refunded_payment=true;
+        //         } elseif ($refunded_payment === false) {
+        //             echo "<br> Payment has not been refunded. <br>";
+        //             $refunded_payment=false;
+        //         } else {
+        //             echo "<br> Unexpected result <br> ";
+        //         }
+        //     } catch (Exception $e) {
+        //         echo "<br> Error occurred: " . $e->getMessage();
+        //     }
+        //     $order_refunded_payment = $refunded_payment;
+        // }
+        // $order_refunded[] = array(
+        //     'order_refund_id' => $order_refund_id,
+        //     'order_refund_reason' => $order_refund_reason,
+        //     'order_refund_amount' => $order_refund_amount,
+        //     'order_refund_date_created' => $order_refund_date_created,
+        //     'order_refunded_by' => $order_refunded_by,
+        //     'order_parent_id' => $order_parent_id,
+        //     'order_refunded_payment' => $order_refunded_payment,
+        // );
+
+        $order_refunded = [];
+
+try {
+    $refunds = $order->get_refunds();
+
+    foreach ($refunds as $refund) {
+    
+
+        // Get refund details
+        $order_refund_id = $refund->get_id();
+        $order_refund_reason = $refund->get_reason();
+        $order_refund_amount = $refund->get_amount();
+        $order_refund_date_created = $refund->get_date_created() ? $refund->get_date_created()->format('Y-m-d H:i:s.u') : null;
+        $order_refunded_by = $refund->get_refunded_by();
+        $order_parent_id = $refund->get_parent_id();
+
+        try {
+            // Assuming $refund is an instance of a class with the method get_refunded_payment()
+            $refunded_payment = $refund->get_refunded_payment();
+
+            if ($refunded_payment === true) {
+                $order_refunded_payment = true;
+            } elseif ($refunded_payment === false) {
+                $order_refunded_payment = false;
+            } else {
+                echo "<br> Unexpected result <br> ";
             }
-            $order_refunded_payment = $refunded_payment;
+        } catch (Exception $e) {
+            echo "<br> Error occurred: " . $e->getMessage();
         }
+
+        // Append refund data to the $order_refunded array
         $order_refunded[] = array(
             'order_refund_id' => $order_refund_id,
             'order_refund_reason' => $order_refund_reason,
@@ -346,6 +389,24 @@ function get_orders() {
             'order_parent_id' => $order_parent_id,
             'order_refunded_payment' => $order_refunded_payment,
         );
+    }
+} catch (Exception $e) {
+    // Handle the exception here
+    // echo 'Error: ' . $e->getMessage();
+    // Return an array with null values for all attributes
+    $order_refunded = [
+        [
+            'order_refund_id' => null,
+            'order_refund_reason' => null,
+            'order_refund_amount' => null,
+            'order_refund_date_created' => null,
+            'order_refunded_by' => null,
+            'order_parent_id' => null,
+            'order_refunded_payment' => null,
+        ]
+    ];
+}
+
 
 
 
