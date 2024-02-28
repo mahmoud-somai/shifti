@@ -457,6 +457,8 @@ function get_orders() {
             echo "<br>";
            echo"items ==> <br>" .$item;
            echo "<br>";
+           $product = $item->get_product();
+           echo "product ==> <br>" .$product;
             $product_name    = $item->get_name();
             $product_id      = $item->get_product_id();
             $variation_id    = $item->get_variation_id();
