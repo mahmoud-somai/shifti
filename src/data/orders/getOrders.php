@@ -454,10 +454,7 @@ function get_orders() {
         $product_items = [];
        
         
-        foreach ($items as $item_id => $item) {
-            $product = $item->get_product();
-            echo "product ==> <br>" .$product;
-            echo "<br>";
+        foreach ($items as $item) {
            echo"items ==> <br>" .$item;
            echo "<br>";
   
