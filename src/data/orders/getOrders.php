@@ -226,7 +226,7 @@ function get_orders() {
         echo '<br>';
         echo 'fees ==> <br>';
         foreach( $order->get_fees() as $item_fee ){
-            echo sizeof($item_fee)
+            echo sizeof($item_fee);
             echo $item_fee;
             
         }
