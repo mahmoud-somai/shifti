@@ -208,7 +208,7 @@ function get_orders() {
     //    'limit' => -1, 
    // );
     // Define the specific order IDs you want to retrieve
-    $specific_order_ids = array(50771); //50771
+    $specific_order_ids = array(28); //50771
   
 
     $args = array(
