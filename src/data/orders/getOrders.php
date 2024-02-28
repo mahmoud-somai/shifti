@@ -471,19 +471,7 @@ function get_orders() {
 
         }
 
-        $product_items[] = array(
-            'product_name' => $product_name,
-            'product_id' => $product_id,
-            'variation_id' => $variation_id,
-            'quantity' => $quantity,
-            'tax_class' => $tax_class,
-            'subtotal' => $subtotal,
-            'subtotal_tax' => $tax_subtotal,
-            'total' => $total,   
-            //total_tax & taxes (tax line ) & metadata & sku & price 
-            'tax status' => $tax_status,    
-           
-        );
+        array_push($product_items, $product_items);
 
 
         //order properties
