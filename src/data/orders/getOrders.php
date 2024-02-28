@@ -451,7 +451,9 @@ function get_orders() {
        
         
         foreach ($items as $item) {
+            echo "<br>";
            echo"items ==> <br>" .$item;
+           echo "<br>";
             $product_name    = $item->get_name();
             $product_id      = $item->get_product_id();
             $variation_id    = $item->get_variation_id();
