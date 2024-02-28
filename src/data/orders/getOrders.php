@@ -208,7 +208,7 @@ function get_orders() {
     //    'limit' => -1, 
    // );
     // Define the specific order IDs you want to retrieve
-    $specific_order_ids = array(28); //50771
+    $specific_order_ids = array(50771); //50771
   
 
     $args = array(
@@ -224,8 +224,8 @@ function get_orders() {
 
     foreach ($orders as $order) {
         echo '<br>';
-        echo 'order ==> <br>';
-       // echo json_encode($order->get_data());
+        echo 'fees ==> <br>';
+        echo json_encode($order->get_fees());
        
         echo '<br>';
         echo '<br>';
@@ -252,7 +252,7 @@ function get_orders() {
         foreach ($order->get_coupon_codes() as $coupon_code) {
             // Get the WC_Coupon object
             $coupon = new WC_Coupon($coupon_code);
-            echo $coupon;
+         //   echo $coupon;
             echo '<br>';
         
             $discount_type = $coupon->get_discount_type();
