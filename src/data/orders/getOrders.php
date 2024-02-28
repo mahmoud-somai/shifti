@@ -226,8 +226,7 @@ function get_orders() {
         echo '<br>';
         echo 'fees ==> <br>';
 
-        echo json_encode($order->get_fees() );
-        echo sizeof($order->get_fees());
+
 
         $order_fees = [];
 
@@ -617,7 +616,7 @@ function get_orders() {
            // 'line_items' => $line_items,
             //'tax_lines' => $tax_lines,
             //'shipping_lines' => $shipping_lines,
-            //'fee_lines' => $fee_lines,
+            'fee_lines' => $order_fees,
             //'coupon_lines' => $coupon_lines,
         );
     }
