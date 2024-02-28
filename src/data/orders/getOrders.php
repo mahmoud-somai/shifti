@@ -225,16 +225,18 @@ function get_orders() {
     foreach ($orders as $order) {
         echo '<br>';
         echo 'fees ==> <br>';
-        foreach( $order->get_fees() as $item_fee ){
-            echo sizeof($item_fee);
-            echo $item_fee;
-            
-        }
+
+        foreach ( $order->get_fees() as $fee_id => $fee ) {
+            echo $fee;
+         }
+       
        
         echo '<br>';
         echo '<br>';
         
         $coupons=$order->get_coupons();
+
+
         // foreach($coupons as $coupon){
         //     echo 'coupon ==> <br>';
         //     echo $coupon;
