@@ -451,13 +451,12 @@ function get_orders() {
         //line items properties
 
         $items = $order->get_items();
-        $product_items = [];
-       
+        $product_items = []; // Initialize the product_items array outside of the loop
         
         foreach ($items as $item) {
-           echo"items ==> <br>" .$item;
-           echo "<br>";
-  
+            echo "items ==> <br>" . $item;
+            echo "<br>";
+        
             $product_name    = $item->get_name();
             $product_id      = $item->get_product_id();
             $variation_id    = $item->get_variation_id();
@@ -467,6 +466,8 @@ function get_orders() {
             $tax_subtotal    = $item->get_subtotal_tax();
             $total           = $item->get_total();
             $tax_status      = $item->get_tax_status();
+        
+            // Add item details to the product_items array
             $product_items[] = array(
                 'product_name' => $product_name,
                 'product_id' => $product_id,
@@ -476,15 +477,12 @@ function get_orders() {
                 'subtotal' => $subtotal,
                 'subtotal_tax' => $tax_subtotal,
                 'total' => $total,   
-                //total_tax & taxes (tax line ) & metadata & sku & price 
                 'tax status' => $tax_status,    
-               
             );
-
-
         }
-
-
+        
+        // Now $product_items contains details of all items in the order
+        
        
 
 
