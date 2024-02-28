@@ -453,6 +453,8 @@ function get_orders() {
         foreach ($items as $item) {
             $prod = new WC_Order_Item_Product($item->get_id());
             echo "<br>";
+            echo "prod ==> <br>" .$prod;
+            echo "<br>";
            echo"items ==> <br>" .$item;
            echo "<br>";
             $product_name    = $item->get_name();
@@ -464,9 +466,10 @@ function get_orders() {
             $tax_subtotal    = $item->get_subtotal_tax();
             $total           = $item->get_total();
             $tax_status      = $item->get_tax_status();
-            $sku = $product->get_sku();
+            $sku = $prod->get_sku();
+            echo "sku ==> <br>" .$sku;
 
-       echo " sku ==> ".$sku;
+    
            
         
         }
