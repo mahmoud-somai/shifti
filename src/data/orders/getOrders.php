@@ -225,7 +225,7 @@ function get_orders() {
     foreach ($orders as $order) {
         echo '<br>';
         echo 'fees ==> <br>';
-        foreach( $the_order->get_items('fee') as $item_id => $item_fee ){
+        foreach( $order->get_items('fee') as $fee_id => $item_fee ){
 
             // The fee name
             $fee_name = $item_fee->get_name();
