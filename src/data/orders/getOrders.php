@@ -208,7 +208,7 @@ function get_orders() {
     //    'limit' => -1, 
    // );
     // Define the specific order IDs you want to retrieve
-    $specific_order_ids = array(28); //50771
+    $specific_order_ids = array(50771); //50771
   
 
     $args = array(
@@ -225,7 +225,7 @@ function get_orders() {
     foreach ($orders as $order) {
         echo '<br>';
         echo 'fees ==> <br>';
-        foreach( $order->get_items('fee') as $item_fee ){
+        foreach( $order->get_fees() as $item_fee ){
 
             // The fee name
             $fee_name = $item_fee->get_name();
