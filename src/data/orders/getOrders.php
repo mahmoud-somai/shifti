@@ -406,27 +406,53 @@ function get_orders() {
         //shipping lines properties
 
         $product_shipping_lines = [];
-        foreach( $order->get_items( 'shipping' ) as $item_id => $item ){
-            $order_item_name             = $item->get_name();
-            $order_item_type             = $item->get_type();
-            $shipping_method_title       = $item->get_method_title();
-            $shipping_method_id          = $item->get_method_id(); // The method ID
-            $shipping_method_instance_id = $item->get_instance_id(); // The instance ID
-            $shipping_method_total       = $item->get_total();
-            $shipping_method_total_tax   = $item->get_total_tax();
-            $shipping_method_taxes       = $item->get_taxes();
-        }
-        $product_shipping_lines= array(
-            'shipping_method_instance_id' => $shipping_method_instance_id,
-            'order_item_name' => $order_item_name,
-            'order_item_type' => $order_item_type,
 
-            'shipping_method_title' => $shipping_method_title,
-            'shipping_method_id' => $shipping_method_id,
-            'shipping_method_total' => $shipping_method_total,
-            'shipping_method_total_tax' => $shipping_method_total_tax,
-            'shipping_method_taxes' => $shipping_method_taxes,
-        );
+        try {
+            $shipping_items = $order->get_items('shipping');
+            
+            if (empty($shipping_items)) {
+                throw new Exception('<br> No shipping items found <br>');
+            }
+        
+            foreach ($shipping_items as $item_id => $item) {
+                $order_item_name = $item->get_name();
+                $order_item_type = $item->get_type();
+                $shipping_method_title = $item->get_method_title();
+                $shipping_method_id = $item->get_method_id(); // The method ID
+                $shipping_method_instance_id = $item->get_instance_id(); // The instance ID
+                $shipping_method_total = $item->get_total();
+                $shipping_method_total_tax = $item->get_total_tax();
+                $shipping_method_taxes = $item->get_taxes();
+        
+                $product_shipping_lines[] = array(
+                    'shipping_method_instance_id' => $shipping_method_instance_id,
+                    'order_item_name' => $order_item_name,
+                    'order_item_type' => $order_item_type,
+                    'shipping_method_title' => $shipping_method_title,
+                    'shipping_method_id' => $shipping_method_id,
+                    'shipping_method_total' => $shipping_method_total,
+                    'shipping_method_total_tax' => $shipping_method_total_tax,
+                    'shipping_method_taxes' => $shipping_method_taxes,
+                );
+            }
+        } catch (Exception $e) {
+            // Handle the exception here
+          //  echo 'Error: ' . $e->getMessage();
+            // Return an array with null values for all attributes
+            $product_shipping_lines = [
+                [
+                    'shipping_method_instance_id' => null,
+                    'order_item_name' => null,
+                    'order_item_type' => null,
+                    'shipping_method_title' => null,
+                    'shipping_method_id' => null,
+                    'shipping_method_total' => null,
+                    'shipping_method_total_tax' => null,
+                    'shipping_method_taxes' => null,
+                ]
+            ];
+        }
+        
 
 
 
