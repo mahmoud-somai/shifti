@@ -454,6 +454,10 @@ function get_orders() {
         $product_items = []; // Initialize the product_items array
         
         foreach ($items as $item) {
+            $prod = new WC_Product($item['product_id']);
+            echo "wc prod ======== >>>>   <br>";
+            ecjo $prod;
+            echo "<br>";
             // Retrieve item details
             $product_name    = $item->get_name();
             $product_id      = $item->get_product_id();
