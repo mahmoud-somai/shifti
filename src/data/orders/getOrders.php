@@ -225,17 +225,24 @@ function get_orders() {
     foreach ($orders as $order) {
         echo '<br>';
         echo 'fees ==> <br>';
-        $fees=$order->get_fees();
-        echo json_encode($fees);
-        echo '<br>';
-        echo '<br>';
-        echo 'one fee ==> <br>';
-        foreach ($fees as $fee) {
-            echo $fee;
+        foreach( $the_order->get_items('fee') as $item_id => $item_fee ){
+
+            // The fee name
+            $fee_name = $item_fee->get_name();
+            echo $fee_name;
+            echo '<br>';
+        
+            // The fee total amount
+            $fee_total = $item_fee->get_total();
+            echo $fee_total;
             echo '<br>';
 
+        
+            // The fee total tax amount
+            $fee_total_tax = $item_fee->get_total_tax();
+            echo $fee_total_tax;
+            echo '<br>';
         }
-
        
         echo '<br>';
         echo '<br>';
