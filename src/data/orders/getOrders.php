@@ -446,15 +446,15 @@ function get_orders() {
 
 
 
-
+        
 
         //line items properties
 
         $items = $order->get_items();
         $product_items = [];
-       $odr = wc_get_order( $specific_order_ids );
+       
         
-        foreach ($odr->get_items() as $item_id => $item) {
+        foreach ($items as $item_id => $item) {
             $product = $item->get_product();
             echo "product ==> <br>" .$product;
             echo "<br>";
@@ -470,13 +470,10 @@ function get_orders() {
             $tax_subtotal    = $item->get_subtotal_tax();
             $total           = $item->get_total();
             $tax_status      = $item->get_tax_status();
-            $sku = $product->get_sku();
-            echo "sku ==> <br>" .$sku;
 
-    
-           
-        
+
         }
+
         $product_items[] = array(
             'product_name' => $product_name,
             'product_id' => $product_id,
