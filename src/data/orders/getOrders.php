@@ -227,21 +227,8 @@ function get_orders() {
         echo 'fees ==> <br>';
         foreach( $order->get_fees() as $item_fee ){
 
-            // The fee name
-            $fee_name = $item_fee->get_name();
-            echo" fees name =>  <br>".$fee_name;
-            echo '<br>';
-        
-            // The fee total amount
-            $fee_total = $item_fee->get_total();
-            echo $fee_total;
-            echo '<br>';
-
-        
-            // The fee total tax amount
-            $fee_total_tax = $item_fee->get_total_tax();
-            echo $fee_total_tax;
-            echo '<br>';
+            echo $item_fee;
+            
         }
        
         echo '<br>';
