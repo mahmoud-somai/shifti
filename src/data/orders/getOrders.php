@@ -6,7 +6,7 @@
 function get_orders() {
     global $wpdb;
     $args = array(
-        'limit' => -1, 
+        'limit' => 1, 
    );
 
     //$specific_order_ids = array(28); //50771
