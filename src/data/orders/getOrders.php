@@ -454,15 +454,8 @@ function get_orders() {
         $product_items = []; // Initialize the product_items array
         
         foreach ($items as $item) {
-            echo "<br>";
-            $prod = new WC_Product($item->get_product_id());
-            $ppp= $item->get_product();
-            echo "wc prod ======== >>>>   <br>";
-            echo $prod;
-            echo "<br>";
-            echo "wc prod sku ======== >>>>   <br>";
-            echo $ppp->get_sku();
-            echo "<br>";
+           
+
             // Retrieve item details
             $product_name    = $item->get_name();
             $product_id      = $item->get_product_id();
@@ -473,6 +466,7 @@ function get_orders() {
             $tax_subtotal    = $item->get_subtotal_tax();
             $total           = $item->get_total();
             $tax_status      = $item->get_tax_status();
+            $sku             =$item->get_product()->get_sku();
         
             // Add item details to the product_items array
             $product_items[] = array(
@@ -485,6 +479,7 @@ function get_orders() {
                 'subtotal_tax' => $tax_subtotal ,
                 'total' => $total ,
                 'tax status' => $tax_status ,
+                'sku' => $sku, 
             );
         }
         
