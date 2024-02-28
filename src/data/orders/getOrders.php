@@ -207,19 +207,17 @@ function get_orders() {
    // $args = array(
     //    'limit' => -1, 
    // );
-    // Define the specific order IDs you want to retrieve
+
     $specific_order_ids = array(28); //50771
   
 
     $args = array(
-        'post__in' => $specific_order_ids, // Include only the orders with the specified IDs
+        'post__in' => $specific_order_ids, 
     );
 
 
     $orders_query = new WC_Order_Query($args);
     $orders = $orders_query->get_orders();
-
-   
     $orders_data = [];
 
     foreach ($orders as $order) {
@@ -227,12 +225,10 @@ function get_orders() {
 
 
         //fee lines properties
-        echo '<br>';
-        echo 'fees ==> <br>';
+
 
         $order_fees = [];
 
-        // Check if there are any fees associated with the order
         if ($order->get_fees()) {
             foreach ($order->get_fees() as $fee_id => $fee) {
                 $fee_name = $fee->get_name();
@@ -241,7 +237,7 @@ function get_orders() {
                 $fee_total = $fee->get_total();
                 $fee_total_tax = $fee->get_total_tax();
         
-                // Add fee details to the order_fees array
+               
                 $order_fees[] = array(
                     'fee_name' => $fee_name,
                     'fee_tax_class' => $fee_tax_class,
@@ -252,43 +248,21 @@ function get_orders() {
             }
         }
         
-        // If there are no fees, return an empty array
-        echo json_encode($order_fees);
+        // echo json_encode($order_fees);
         
        
-       
-        echo '<br>';
-        echo '<br>';
-        
-     
 
 
-        // foreach($coupons as $coupon){
-        //     echo 'coupon ==> <br>';
-        //     echo $coupon;
-        //     echo '<br>';
-        //     echo $coupon->get_id();
-        //     echo '<br>';
-        //     echo $coupon->get_code();
-        //     echo '<br>';
-        //     echo $coupon->get_discount();;
-        //     echo '<br>';
-        //     echo $coupon->get_discount_tax();
-        //     echo '<br>';
-     
-      
-           
-        // }
+
+
 
         //coupon lines properties
         $coupons=$order->get_coupons();
 
-        $coupon_tab = [];
+        $order_coupons = [];
         foreach ($order->get_coupon_codes() as $coupon_code) {
-            // Get the WC_Coupon object
+
             $coupon = new WC_Coupon($coupon_code);
-         //   echo $coupon;
-            echo '<br>';
         
             $discount_type = $coupon->get_discount_type();
             $coupon_amount = $coupon->get_amount();
@@ -297,7 +271,7 @@ function get_orders() {
             //$coupon_discount = $coupon->get_discount();
            // $coupon_discount_tax = $coupon->get_discount_tax();
         
-            $coupon_tab[] = array(
+            $order_coupons[] = array(
                 'coupon_id' => $coupon_id,
                 'coupon_code' => $coupon_code,
                 'coupon_amount' => $coupon_amount,
@@ -306,7 +280,10 @@ function get_orders() {
         }
         
       //  echo '<br> coupon tab ===> <br>';
-       // echo json_encode($coupon_tab);
+       // echo json_encode($order_coupons);
+
+
+
 
         // echo 'coupon ==> <br>';
         // echo json_encode($order->get_used_coupons());
@@ -322,16 +299,13 @@ function get_orders() {
 
 
 
-      //  echo json_encode($order->get_total_refunded());
-      //echo json_encode($order->get_item_count_refunded());
+
     
 
       // refund properties
         $refunds = $order->get_refunds();
   
-        echo '<br>';
-        echo '<br>';
-        echo 'One refund ==> <br>';
+
         $order_refunded=[];
         foreach ($refunds as $refund) {
             //echo $refund;
@@ -350,16 +324,16 @@ function get_orders() {
 
                 
                 if ($refunded_payment === true) {
-                    echo "Payment has been refunded.";
+                    echo "<br> Payment has been refunded. <br>";
                     $refunded_payment=true;
                 } elseif ($refunded_payment === false) {
-                    echo "Payment has not been refunded.";
+                    echo "<br> Payment has not been refunded. <br>";
                     $refunded_payment=false;
                 } else {
-                    echo "Unexpected result";
+                    echo "<br> Unexpected result <br> ";
                 }
             } catch (Exception $e) {
-                echo "Error occurred: " . $e->getMessage();
+                echo "<br> Error occurred: " . $e->getMessage();
             }
             $order_refunded_payment = $refunded_payment;
         }
@@ -373,8 +347,7 @@ function get_orders() {
             'order_refunded_payment' => $order_refunded_payment,
         );
 
-        echo '<br>';
-        echo '<br>';
+
 
 
 
@@ -387,7 +360,7 @@ function get_orders() {
             $tax_items = $order->get_items('tax');
             
             if (empty($tax_items)) {
-                throw new Exception('No tax items found');
+                throw new Exception('<br> No tax items found <br>');
             }
         
             foreach ($tax_items as $item_id => $item) {
@@ -454,10 +427,6 @@ function get_orders() {
         $product_items = []; // Initialize the product_items array
         
         foreach ($items as $item) {
-           
-            echo 'item ==> <br>';
-            echo $item->get_product();
-            echo '<br>';
             // Retrieve item details
             $product_name    = $item->get_name();
             $product_id      = $item->get_product_id();
@@ -470,8 +439,6 @@ function get_orders() {
             $tax_status      = $item->get_tax_status();
             $sku             = $item->get_product()->get_sku();
             $item_price      = $item->get_product()->get_price();
-            $item_regular_price = $item->get_product()->get_regular_price();
-        
             // Add item details to the product_items array
             $product_items[] = array(
                 'product_name' => $product_name ,
@@ -485,21 +452,16 @@ function get_orders() {
                 'tax status' => $tax_status ,
                 'sku' => $sku, 
                 'price' => $item_price,
-                'regular_price' => $item_regular_price,
+
             );
         }
         
-        // Now $product_items contains details of all items in the order with null values for missing attributes
-        
-
-// Now $product_items contains details of all items in the order
-
-        // Now $product_items contains details of all items in the order
+        //echo json_encode($product_items);
         
        
 
 
-        //order properties
+        // =========================================================  order properties =========================================================
         $order_id = $order->get_id();
         $order_parent_id=$order->get_parent_id(); 
         $order_number = $order->get_order_number();
@@ -519,17 +481,15 @@ function get_orders() {
         $total_tax = $order->get_total_tax();
         $prices_include_tax = $order->get_prices_include_tax();
         
-
-
      
 
-
+        // =========================================================  customer properties =========================================================
         $customer_id = $order->get_customer_id();
         $customer_ip_address = $order->get_customer_ip_address();
         $customer_user_agent = $order->get_customer_user_agent();
         $customer_note = $order->get_customer_note();
-//billing and shipping
 
+        //=========================================================== Payment properties ==========================================================
         $payment_method = $order->get_payment_method();
         $payment_method_title = $order->get_payment_method_title();
         $transaction_id = $order->get_transaction_id();
@@ -537,15 +497,11 @@ function get_orders() {
         $date_completed = $order->get_date_completed() ? $order->get_date_completed()->format('Y-m-d H:i:s.u') : null;
         $cart_hash = $order->get_cart_hash();
 
-        //metadata & line_items & tax_lines & shipping_lines & fee_lines & coupon_lines & refunds & set_paid
-        
-        
         
 
-        
 
         
-        //billing properties
+        //================================================================ Billing properties ==========================================================
         $billing_first_name = $order->get_billing_first_name();
         $billing_last_name = $order->get_billing_last_name();
         $billing_company = $order->get_billing_company();
@@ -559,7 +515,7 @@ function get_orders() {
         $billing_phone = $order->get_billing_phone();
 
 
-        // Shipping properties
+        // ========================================================= Shipping properties =========================================================
         $shipping_first_name = $order->get_shipping_first_name();
         $shipping_last_name = $order->get_shipping_last_name();
         $shipping_company = $order->get_shipping_company();
@@ -583,6 +539,7 @@ function get_orders() {
        // $order_number = $order->get_order_number();
         //$meta_data=$order->get_meta_data();
 
+        // =========================================================  all data of order =========================================================
         $orders_data[] = array(
             'id' => $order_id,
             'parent_id' => $order_parent_id,
@@ -638,7 +595,7 @@ function get_orders() {
          
             'tax_lines' => $product_tax_lines,
             'refunds' => $order_refunded,
-            'coupons' => $coupon_tab,
+            'coupons' => $order_coupons,
             //'meta_data' => $meta_data,
            // 'line_items' => $line_items,
             //'tax_lines' => $tax_lines,
