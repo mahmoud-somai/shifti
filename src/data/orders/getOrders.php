@@ -471,7 +471,7 @@ function get_orders() {
 
         }
 
-        array_push($product_items, $product_items);
+        array_push($product_items, $item);
 
 
         //order properties
