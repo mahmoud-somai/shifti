@@ -450,41 +450,37 @@ function get_orders() {
 
         //line items properties
 
- $items = $order->get_items();
-$product_items = []; // Initialize the product_items array outside of the loop
-
-foreach ($items as $item) {
-
-
-    echo "items ==> <br>" . $item->get_product();
-    echo "<br>";
-
-    // Retrieve item details
-    $product_name    = $item->get_name();
-    $product_id      = $item->get_product_id();
-    $variation_id    = $item->get_variation_id();
-    $quantity        = $item->get_quantity();
-    $tax_class       = $item->get_tax_class();
-    $subtotal        = $item->get_subtotal();
-    $tax_subtotal    = $item->get_subtotal_tax();
-    $total           = $item->get_total();
-    $tax_status      = $item->get_tax_status();
-    $sku             = $item->get_sku();
-
-    // Add item details to the product_items array
-    $product_items[] = array(
-        'product_name' => $product_name ? null;
-        'product_id' => $product_id ? null;
-        'variation_id' => $variation_id ? null;
-        'quantity' => $quantity ? null;
-        'tax_class' => $tax_class ? null;
-        'subtotal' => $subtotal ? null;
-        'subtotal_tax' => $tax_subtotal ? null;
-        'total' => $total ? null;
-        'tax status' => $tax_status ? null;
-        'sku' => $sku ? null;
-    );
-}
+        $items = $order->get_items();
+        $product_items = []; // Initialize the product_items array
+        
+        foreach ($items as $item) {
+            // Retrieve item details
+            $product_name    = $item->get_name();
+            $product_id      = $item->get_product_id();
+            $variation_id    = $item->get_variation_id();
+            $quantity        = $item->get_quantity();
+            $tax_class       = $item->get_tax_class();
+            $subtotal        = $item->get_subtotal();
+            $tax_subtotal    = $item->get_subtotal_tax();
+            $total           = $item->get_total();
+            $tax_status      = $item->get_tax_status();
+        
+            // Add item details to the product_items array
+            $product_items[] = array(
+                'product_name' => $product_name ? null,
+                'product_id' => $product_id ? null,
+                'variation_id' => $variation_id ? null,
+                'quantity' => $quantity ? null,
+                'tax_class' => $tax_class ? null,
+                'subtotal' => $subtotal ? null,
+                'subtotal_tax' => $tax_subtotal ? null,
+                'total' => $total ? null,
+                'tax status' => $tax_status ? null,
+            );
+        }
+        
+        // Now $product_items contains details of all items in the order with null values for missing attributes
+        
 
 // Now $product_items contains details of all items in the order
 
