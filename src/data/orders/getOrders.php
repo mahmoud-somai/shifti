@@ -460,8 +460,8 @@ function get_orders() {
             $tax_subtotal    = $item->get_subtotal_tax();
             $total           = $item->get_total();
             $tax_status      = $item->get_tax_status();
-            echo "total line ===> <br>";
-            echo $line_total = $item['total'];
+            echo "total line ===> ".$item['total'];
+        
             echo "<br>";
         
         }
