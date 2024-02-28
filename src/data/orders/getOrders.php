@@ -460,7 +460,7 @@ function get_orders() {
             echo $prod;
             echo "<br>";
             echo "wc prod sku ======== >>>>   <br>";
-            echo $prod->get_sku();
+            echo $prod['sku'];
             echo "<br>";
             // Retrieve item details
             $product_name    = $item->get_name();
