@@ -354,7 +354,8 @@ try {
     $refunds = $order->get_refunds();
 
     foreach ($refunds as $refund) {
-    
+        // Initialize refund attributes
+        $order_refund_id = $order_refund_reason = $order_refund_amount = $order_refund_date_created = $order_refunded_by = $order_parent_id = $order_refunded_payment = null;
 
         // Get refund details
         $order_refund_id = $refund->get_id();
