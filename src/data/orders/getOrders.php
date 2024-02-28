@@ -461,7 +461,7 @@ function get_orders() {
             $total           = $item->get_total();
             $tax_status      = $item->get_tax_status();
             echo "total line ===> <br>";
-            echo $line_total = $item_data['total'];
+            echo $line_total = $item['total'];
         
         }
         $product_items[] = array(
