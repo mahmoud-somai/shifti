@@ -466,7 +466,7 @@ function get_orders() {
             $tax_subtotal    = $item->get_subtotal_tax();
             $total           = $item->get_total();
             $tax_status      = $item->get_tax_status();
-            $sku = $product->get_sku();
+            $sku = $product['sku'];
             echo "sku ==> <br>" .$sku;
 
     
