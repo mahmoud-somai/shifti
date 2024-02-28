@@ -444,13 +444,17 @@ function get_orders() {
             'shipping_method_taxes' => $shipping_method_taxes,
         );
 
+
+
+
+
         //line items properties
 
         $items = $order->get_items();
         $product_items = [];
-       
+       $odr = wc_get_order( $specific_order_ids );
         
-        foreach ($items as $item_id => $item) {
+        foreach ($odr->get_items() as $item_id => $item) {
             $product = $item->get_product();
             echo "product ==> <br>" .$product;
             echo "<br>";
