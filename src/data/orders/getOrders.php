@@ -466,7 +466,9 @@ function get_orders() {
             $tax_subtotal    = $item->get_subtotal_tax();
             $total           = $item->get_total();
             $tax_status      = $item->get_tax_status();
-            $sku             =$item->get_product()->get_sku();
+            $sku             = $item->get_product()->get_sku();
+            $item_price      = $item->get_product()->get_price();
+            $item_regular_price = $item->get_product()->get_regular_price();
         
             // Add item details to the product_items array
             $product_items[] = array(
@@ -480,6 +482,8 @@ function get_orders() {
                 'total' => $total ,
                 'tax status' => $tax_status ,
                 'sku' => $sku, 
+                'price' => $item_price,
+                'regular_price' => $item_regular_price,
             );
         }
         
