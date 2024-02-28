@@ -459,39 +459,64 @@ function get_orders() {
         
 
         //line items properties
-
         $items = $order->get_items();
         $product_items = []; // Initialize the product_items array
         
-        foreach ($items as $item) {
-            // Retrieve item details
-            $product_name    = $item->get_name();
-            $product_id      = $item->get_product_id();
-            $variation_id    = $item->get_variation_id();
-            $quantity        = $item->get_quantity();
-            $tax_class       = $item->get_tax_class();
-            $subtotal        = $item->get_subtotal();
-            $tax_subtotal    = $item->get_subtotal_tax();
-            $total           = $item->get_total();
-            $tax_status      = $item->get_tax_status();
-            $sku             = $item->get_product()->get_sku();
-            $item_price      = $item->get_product()->get_price();
-            // Add item details to the product_items array
-            $product_items[] = array(
-                'product_name' => $product_name ,
-                'product_id' => $product_id ,
-                'variation_id' => $variation_id ,
-                'quantity' => $quantity ,
-                'tax_class' => $tax_class ,
-                'subtotal' => $subtotal ,
-                'subtotal_tax' => $tax_subtotal ,
-                'total' => $total ,
-                'tax status' => $tax_status ,
-                'sku' => $sku, 
-                'price' => $item_price,
-
-            );
+        try {
+            if (empty($items)) {
+                throw new Exception('<br> No items found <br>');
+            }
+        
+            foreach ($items as $item) {
+                // Retrieve item details
+                $product_name = $item->get_name();
+                $product_id = $item->get_product_id();
+                $variation_id = $item->get_variation_id();
+                $quantity = $item->get_quantity();
+                $tax_class = $item->get_tax_class();
+                $subtotal = $item->get_subtotal();
+                $tax_subtotal = $item->get_subtotal_tax();
+                $total = $item->get_total();
+                $tax_status = $item->get_tax_status();
+                $sku = $item->get_product()->get_sku();
+                $item_price = $item->get_product()->get_price();
+        
+                // Add item details to the product_items array
+                $product_items[] = array(
+                    'product_name' => $product_name,
+                    'product_id' => $product_id,
+                    'variation_id' => $variation_id,
+                    'quantity' => $quantity,
+                    'tax_class' => $tax_class,
+                    'subtotal' => $subtotal,
+                    'subtotal_tax' => $tax_subtotal,
+                    'total' => $total,
+                    'tax status' => $tax_status,
+                    'sku' => $sku,
+                    'price' => $item_price,
+                );
+            }
+        } catch (Exception $e) {
+            // Handle the exception here
+            //echo 'Error: ' . $e->getMessage();
+            // Return an array with null values for all attributes
+            $product_items = [
+                [
+                    'product_name' => null,
+                    'product_id' => null,
+                    'variation_id' => null,
+                    'quantity' => null,
+                    'tax_class' => null,
+                    'subtotal' => null,
+                    'subtotal_tax' => null,
+                    'total' => null,
+                    'tax status' => null,
+                    'sku' => null,
+                    'price' => null,
+                ]
+            ];
         }
+        
         
         //echo json_encode($product_items);
         
