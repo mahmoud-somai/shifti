@@ -39,7 +39,7 @@ function get_orders() {
 
         $order_data['payment_method'] = method_exists($order, 'get_payment_method') ? $order->get_payment_method() : null;
         $order_data['payment_method_title'] = method_exists($order, 'get_payment_method_title') ? $order->get_payment_method_title() : null;
-        $order_data['transaction_id'] = method_exists($order, 'get_transaction_id') ? $order->get_transaction_id() : null;
+        $order_data['transaction_id'] = method_exists($order, 'get_transaction_id') ? $order->get_transaction_id() : null ;
 
        
         // // Billing details
