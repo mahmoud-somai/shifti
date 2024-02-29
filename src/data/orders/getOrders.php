@@ -49,7 +49,7 @@ function get_orders() {
         $order_data['cart_hash'] = !empty($cart_hash) ? $cart_hash : null;
 
 // -----------------------------------------------------  Billing Details  -----------------------------------------------------------
-
+        $billing = [];
 
         $order_data['billing_first_name'] = method_exists($order, 'get_billing_first_name') ? $order->get_billing_first_name() : null;
         $order_data['billing_last_name'] = method_exists($order, 'get_billing_last_name') ? $order->get_billing_last_name() : null;
@@ -65,18 +65,7 @@ function get_orders() {
 
 
        
-        // // Billing details
-        // $order_data['billing_first_name'] = $order->get_billing_first_name() ?? null;
-        // $order_data['billing_last_name'] = $order->get_billing_last_name() ?? null;
-        // $order_data['billing_company'] = $order->get_billing_company() ?? null;
-        // $order_data['billing_address_1'] = $order->get_billing_address_1() ?? null;
-        // $order_data['billing_address_2'] = $order->get_billing_address_2() ?? null;
-        // $order_data['billing_city'] = $order->get_billing_city() ?? null;
-        // $order_data['billing_state'] = $order->get_billing_state() ?? null;
-        // $order_data['billing_postcode'] = $order->get_billing_postcode() ?? null;
-        // $order_data['billing_country'] = $order->get_billing_country() ?? null;
-        // $order_data['billing_email'] = $order->get_billing_email() ?? null;
-        // $order_data['billing_phone'] = $order->get_billing_phone() ?? null;
+      
 
         // // Shipping details
         // $order_data['shipping_first_name'] = $order->get_shipping_first_name() ?? null;
@@ -104,6 +93,7 @@ function get_orders() {
 
         // Add order data to orders_data array
         $orders_data[] = $order_data;
+        $order_data['Billing'] = $billing;
     }
     echo '<br> Orders Data: <br>';
     echo json_encode($orders_data);
