@@ -102,6 +102,13 @@ function get_orders() {
             $sku             = $item->get_product()->get_sku();
             $item_price      = $item->get_product()->get_price();
             $item_product_meta_data_array = $item->get_meta_data();
+            echo '<br> Item Meta Data: <br>';
+            echo json_encode($item_product_meta_data_array);
+            echo '<br>';
+            echo sizeof($item_product_meta_data_array);
+            echo '<br>';
+            
+
 
             $product_items[] = array(
                 'id' => $id ,
