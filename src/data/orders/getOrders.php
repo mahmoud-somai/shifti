@@ -421,7 +421,7 @@ echo '<br>';
 
 
 
-
+        $order_data['refund_lines'] = $order_refunded;
         $order_data['coupon_lines'] = $coupon_tab;
         $order_data['fee_lines'] = $order_fees;
         $order_data['shipping_lines'] = $product_shipping_lines;
