@@ -43,8 +43,25 @@ function get_orders() {
 
         $order_data['date_completed'] = method_exists($order, 'get_date_completed') ? ($order->get_date_completed() ? $order->get_date_completed()->format('Y-m-d H:i:s.u') : null) : null;
         $order_data['date_paid'] = method_exists($order, 'get_date_paid') ? ($order->get_date_paid() ? $order->get_date_paid()->format('Y-m-d H:i:s.u') : null) : null;
+        
+        
         $cart_hash = method_exists($order, 'get_cart_hash') ? $order->get_cart_hash() : null;
         $order_data['cart_hash'] = !empty($cart_hash) ? $cart_hash : null;
+
+// -----------------------------------------------------  Billing Details  -----------------------------------------------------------
+
+
+        $order_data['billing_first_name'] = method_exists($order, 'get_billing_first_name') ? $order->get_billing_first_name() : null;
+        $order_data['billing_last_name'] = method_exists($order, 'get_billing_last_name') ? $order->get_billing_last_name() : null;
+        $order_data['billing_company'] = method_exists($order, 'get_billing_company') ? $order->get_billing_company() : null;
+        $order_data['billing_address_1'] = method_exists($order, 'get_billing_address_1') ? $order->get_billing_address_1() : null;
+        $order_data['billing_address_2'] = method_exists($order, 'get_billing_address_2') ? $order->get_billing_address_2() : null;
+        $order_data['billing_city'] = method_exists($order, 'get_billing_city') ? $order->get_billing_city() : null;
+        $order_data['billing_state'] = method_exists($order, 'get_billing_state') ? $order->get_billing_state() : null;
+        $order_data['billing_postcode'] = method_exists($order, 'get_billing_postcode') ? $order->get_billing_postcode() : null;
+        $order_data['billing_country'] = method_exists($order, 'get_billing_country') ? $order->get_billing_country() : null;
+        $order_data['billing_email'] = method_exists($order, 'get_billing_email') ? $order->get_billing_email() : null;
+        $order_data['billing_phone'] = method_exists($order, 'get_billing_phone') ? $order->get_billing_phone() : null;
 
 
        
