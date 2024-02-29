@@ -5,15 +5,15 @@
 
 function get_orders() {
     global $wpdb;
-    // $args = array(
-    //     'limit' => -1, 
-    // );
-    $specific_order_ids = array(25); //50771
-
-
     $args = array(
-        'post__in' => $specific_order_ids, // Include only the orders with the specified IDs
+        'limit' => -1, 
     );
+    // $specific_order_ids = array(25); //50771
+
+
+    // $args = array(
+    //     'post__in' => $specific_order_ids, // Include only the orders with the specified IDs
+    // );
     $orders_query = new WC_Order_Query($args);
     $orders = $orders_query->get_orders();
   
