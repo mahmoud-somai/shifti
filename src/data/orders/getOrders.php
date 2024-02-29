@@ -18,13 +18,13 @@ function get_orders() {
         
         //$order_data['key'] = $order->get_order_key() ?? null;
         //$order_data['created_via'] = $order->get_created_via() ?? null;
-
-         $order_data['status'] = $order->get_status() ?? null;
-         $order_data['currency'] = $order->get_currency() ?? null;
         // $order_data['version'] = $order->get_version() ?? null;
+        $order_data['status'] = $order->get_status() ?? null;
+        $order_data['currency'] = $order->get_currency() ?? null;
+       
         // $order_data['prices_include_tax'] = $order->get_prices_include_tax() ?? null;
-        // $order_data['date_created'] = $order->get_date_created() ? $order->get_date_created()->format('Y-m-d H:i:s.u') : null;
-        // $order_data['date_modified'] = $order->get_date_modified() ? $order->get_date_modified()->format('Y-m-d H:i:s.u') : null;
+        $order_data['date_created'] = $order->get_date_created() ? $order->get_date_created()->format('Y-m-d H:i:s.u') : null;
+        $order_data['date_modified'] = $order->get_date_modified() ? $order->get_date_modified()->format('Y-m-d H:i:s.u') : null;
         // $order_data['discount_total'] = $order->get_discount_total() ?? null;
         // $order_data['discount_tax'] = $order->get_discount_tax() ?? null;
         // $order_data['shipping_total'] = $order->get_shipping_total() ?? null;
