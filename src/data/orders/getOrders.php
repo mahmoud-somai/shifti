@@ -264,11 +264,9 @@ $product_tax_lines = [];
         // If there are shipping items, populate the array
         if (!empty($shipping_items)) {
             foreach ($shipping_items as $item_id => $item) {
-                $order_item_name             = $item->get_name();
-                $order_item_type             = $item->get_type();
+                $shipping_item_id            = $item->get_id();
                 $shipping_method_title       = $item->get_method_title();
                 $shipping_method_id          = $item->get_method_id(); // The method ID
-                $shipping_method_instance_id = $item->get_instance_id(); // The instance ID
                 $shipping_method_total       = $item->get_total();
                 $shipping_method_total_tax   = $item->get_total_tax();
                 $shipping_method_taxes       = $item->get_taxes();
@@ -276,9 +274,7 @@ $product_tax_lines = [];
     
             // Add shipping item data to the array
             $product_shipping_lines = array(
-                'shipping_method_instance_id' => $shipping_method_instance_id,
-                'order_item_name' => $order_item_name,
-                'order_item_type' => $order_item_type,
+               'shipping_id' => $shipping_item_id,
                 'shipping_method_title' => $shipping_method_title,
                 'shipping_method_id' => $shipping_method_id,
                 'shipping_method_total' => $shipping_method_total,
@@ -288,9 +284,7 @@ $product_tax_lines = [];
         } else {
             // If there are no shipping items, set all attributes to null
             $product_shipping_lines = array(
-                'shipping_method_instance_id' => null,
-                'order_item_name' => null,
-                'order_item_type' => null,
+                'shipping_id' => null,
                 'shipping_method_title' => null,
                 'shipping_method_id' => null,
                 'shipping_method_total' => null,
@@ -310,7 +304,7 @@ $product_tax_lines = [];
 
 
 
-
+        $order_data['shipping_lines'] = $product_shipping_lines;
         $order_data['tax_lines'] = $product_tax_lines;
         $order_data['line_items'] = $product_items;
         $order_data['Billing'] = $billing;
