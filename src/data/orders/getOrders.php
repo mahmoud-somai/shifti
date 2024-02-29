@@ -128,7 +128,7 @@ function get_orders() {
             'cart_hash' => $cart_hash,
             'order_stock_reduced' => $order_stock_reduced,
             'currency' => $order_currency,
-            'order_number' => $order_number,
+          //  'order_number' => $order_number,
         );
     }
     
