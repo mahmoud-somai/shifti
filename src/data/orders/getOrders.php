@@ -133,38 +133,74 @@ function get_orders() {
 
 //______________________________________________________  taxe Line   ______________________________________________________
 
-$product_tax_lines = [];
+
+        $product_tax_lines = [];
+
+        try {
+            $tax_items = $order->get_items('tax');
+            
+            if (empty($tax_items)) {
+                throw new Exception('No tax items found');
+            }
+        
+            foreach ($tax_items as $item_id => $item) {
+                $tax_item_name = $item->get_name();
+                $tax_item_rate_code = $item->get_rate_code();
+                $tax_item_rate_label = $item->get_label();
+                $tax_item_rate_id = $item->get_rate_id();
+                $tax_item_tax_total = $item->get_tax_total();
+                $tax_item_shipping_tax_total = $item->get_shipping_tax_total();
+                $tax_item_is_compound = $item->is_compound();
+                $tax_item_compound = $item->get_compound();
+        
+                $product_tax_lines[] = array(
+                    'tax_item_name' => $tax_item_name, // Tax name
+                    'tax_item_rate_code' => $tax_item_rate_code,
+                    'tax_item_rate_id' => $tax_item_rate_id,
+                    'tax_item_rate_label' => $tax_item_rate_label,
+                    'tax_item_is_compound' => $tax_item_is_compound,
+                    'tax_item_compound' => $tax_item_compound,
+                    'tax_item_tax_total' => $tax_item_tax_total,
+                    'tax_item_shipping_tax_total' => $tax_item_shipping_tax_total,
+                );
+            }
+        } catch (Exception $e) {
+            // Handle the exception here
+            echo 'Error: ' . $e->getMessage();
+            // Return an empty array if tax items are empty
+            $product_tax_lines = [];
+        }
 
 // Check if the method exists before calling it
-if (method_exists($order, 'get_items')) {
-    $tax_items = $order->get_items('tax');
+// if (method_exists($order, 'get_items')) {
+//     $tax_items = $order->get_items('tax');
 
-    foreach ($tax_items as $item_id => $item) {
-        $tax_item_name = $item->get_name();
-        $tax_item_rate_code = $item->get_rate_code();
-        $tax_item_rate_label = $item->get_label();
-        $tax_item_rate_id = $item->get_rate_id();
-        $tax_item_tax_total = $item->get_tax_total();
-        $tax_item_shipping_tax_total = $item->get_shipping_tax_total();
-        $tax_item_is_compound = $item->is_compound();
-        $tax_item_compound = $item->get_compound();
+//     foreach ($tax_items as $item_id => $item) {
+//         $tax_item_name = $item->get_name();
+//         $tax_item_rate_code = $item->get_rate_code();
+//         $tax_item_rate_label = $item->get_label();
+//         $tax_item_rate_id = $item->get_rate_id();
+//         $tax_item_tax_total = $item->get_tax_total();
+//         $tax_item_shipping_tax_total = $item->get_shipping_tax_total();
+//         $tax_item_is_compound = $item->is_compound();
+//         $tax_item_compound = $item->get_compound();
 
-        $product_tax_lines[] = array(
-            'tax_item_name' => $tax_item_name, // Tax name
-            'tax_item_rate_code' => $tax_item_rate_code,
-            'tax_item_rate_id' => $tax_item_rate_id,
-            'tax_item_rate_label' => $tax_item_rate_label,
-            'tax_item_is_compound' => $tax_item_is_compound,
-            'tax_item_compound' => $tax_item_compound,
-            'tax_item_tax_total' => $tax_item_tax_total,
-            'tax_item_shipping_tax_total' => $tax_item_shipping_tax_total,
-        );
-    }
-} else {
-    // Handle the case where get_items method does not exist or does not work
-    // You can log an error or handle it based on your requirements
-    echo 'Unable to retrieve tax items.';
-}
+//         $product_tax_lines[] = array(
+//             'tax_item_name' => $tax_item_name, // Tax name
+//             'tax_item_rate_code' => $tax_item_rate_code,
+//             'tax_item_rate_id' => $tax_item_rate_id,
+//             'tax_item_rate_label' => $tax_item_rate_label,
+//             'tax_item_is_compound' => $tax_item_is_compound,
+//             'tax_item_compound' => $tax_item_compound,
+//             'tax_item_tax_total' => $tax_item_tax_total,
+//             'tax_item_shipping_tax_total' => $tax_item_shipping_tax_total,
+//         );
+//     }
+// } else {
+//     // Handle the case where get_items method does not exist or does not work
+//     // You can log an error or handle it based on your requirements
+//     echo 'Unable to retrieve tax items.';
+// }
 
         $order_data['Taxes'] = $product_tax_lines;
         $order_data['Line items'] = $product_items;
