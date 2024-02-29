@@ -19,14 +19,12 @@ function get_orders() {
   
     $orders_data = [];
     foreach ($orders as $order) {
-        echo '<br> Order: <br>';
-        echo json_encode($order);
-        echo '<br>';
+
     
         // Order properties
         $order_id = $order->get_id();
         $order_parent_id = $order->get_parent_id() !== false ? $order->get_parent_id() : null;
-        $order_number = $order->get_order_number() !== false ? $order->get_order_number() : null;
+        $order_number = $order->get_order_number() ?: null;
         $order_key = $order->get_order_key() ?: null;
         $created_via = $order->get_created_via() ?: null;
         $version = $order->get_version() ?: null;
