@@ -367,8 +367,9 @@ if (method_exists($order, 'get_coupons')) {
 } else {
     echo 'Unable to retrieve coupons.';
 }
-
+echo '<br> Coupon Lines: <br>';
 echo json_encode($coupon_tab);
+echo '<br>';
 
 
 
