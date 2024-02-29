@@ -108,6 +108,12 @@ function get_orders() {
             $item_product_meta_data_array = $item->get_meta_data();
             $item_taxes_array = $item['taxes'];
 
+            echo '<br> Item Taxes: <br>';
+            echo json_encode($item_taxes_array);
+            echo '<br>';
+            echo sizeof($item_taxes_array);
+            echo '<br>';
+
      
             $product_items[] = array(
                 'id' => $id ,
