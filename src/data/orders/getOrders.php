@@ -255,6 +255,60 @@ $product_tax_lines = [];
     // }
 
 
+//______________________________________________________  Shipping Line   ______________________________________________________
+
+    $product_shipping_lines = [];
+    if (method_exists($order, 'get_items')) {
+        $shipping_items = $order->get_items('shipping');
+    
+        // If there are shipping items, populate the array
+        if (!empty($shipping_items)) {
+            foreach ($shipping_items as $item_id => $item) {
+                $order_item_name             = $item->get_name();
+                $order_item_type             = $item->get_type();
+                $shipping_method_title       = $item->get_method_title();
+                $shipping_method_id          = $item->get_method_id(); // The method ID
+                $shipping_method_instance_id = $item->get_instance_id(); // The instance ID
+                $shipping_method_total       = $item->get_total();
+                $shipping_method_total_tax   = $item->get_total_tax();
+                $shipping_method_taxes       = $item->get_taxes();
+            }
+    
+            // Add shipping item data to the array
+            $product_shipping_lines = array(
+                'shipping_method_instance_id' => $shipping_method_instance_id,
+                'order_item_name' => $order_item_name,
+                'order_item_type' => $order_item_type,
+                'shipping_method_title' => $shipping_method_title,
+                'shipping_method_id' => $shipping_method_id,
+                'shipping_method_total' => $shipping_method_total,
+                'shipping_method_total_tax' => $shipping_method_total_tax,
+                'shipping_method_taxes' => $shipping_method_taxes,
+            );
+        } else {
+            // If there are no shipping items, set all attributes to null
+            $product_shipping_lines = array(
+                'shipping_method_instance_id' => null,
+                'order_item_name' => null,
+                'order_item_type' => null,
+                'shipping_method_title' => null,
+                'shipping_method_id' => null,
+                'shipping_method_total' => null,
+                'shipping_method_total_tax' => null,
+                'shipping_method_taxes' => null,
+            );
+        }
+    } else {
+        // If the method doesn't exist, indicate that shipping items couldn't be retrieved
+        echo 'Unable to retrieve shipping items.';
+    }
+    
+    echo '<br> Shipping Lines: <br>';
+    echo json_encode($product_shipping_lines);
+    echo '<br>';
+
+
+
 
 
         $order_data['tax_lines'] = $product_tax_lines;
@@ -262,9 +316,6 @@ $product_tax_lines = [];
         $order_data['Billing'] = $billing;
         $order_data['Shipping'] = $shipping;
         $orders_data[] = $order_data;
-
-
-
     }
     echo '<br> Orders Data: <br>';
     echo json_encode($orders_data);
