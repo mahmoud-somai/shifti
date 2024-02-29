@@ -336,15 +336,46 @@ $product_tax_lines = [];
     echo 'Unable to retrieve fees.';
 }
 
-// Output the result
-echo json_encode($order_fees);
+
+
+// ________________________________________________________  Coupon Line   ______________________________________________________
+
+$coupon_tab = [];
+
+if (method_exists($order, 'get_coupons')) {
+    $coupons = $order->get_coupons();
+
+    if (!empty($coupons)) {
+        foreach ($order->get_coupon_codes() as $coupon_code) {
+            $coupon = new WC_Coupon($coupon_code);
+
+            $discount_type = $coupon->get_discount_type();
+            $coupon_amount = $coupon->get_amount();
+            $coupon_id     = $coupon->get_id();
+            $coupon_code   = $coupon->get_code();
+
+            $coupon_tab[] = array(
+                'coupon_id'           => $coupon_id,
+                'coupon_code'         => $coupon_code,
+                'coupon_amount'       => $coupon_amount,
+                'coupon_discount_type'=> $discount_type,
+            );
+        }
+    } else {
+        $coupon_tab = [];
+    }
+} else {
+    echo 'Unable to retrieve coupons.';
+}
+
+echo json_encode($coupon_tab);
 
 
 
 
 
-
-        $order_data['fees'] = $order_fees;
+        $order_data['coupon_lines'] = $coupon_tab;
+        $order_data['fee_lines'] = $order_fees;
         $order_data['shipping_lines'] = $product_shipping_lines;
         $order_data['tax_lines'] = $product_tax_lines;
         $order_data['line_items'] = $product_items;
