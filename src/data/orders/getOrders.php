@@ -19,28 +19,23 @@ function get_orders() {
         $order_data['order_key'] = method_exists($order, 'get_order_key') ? $order->get_order_key() : null;
         $order_data['created_via'] = method_exists($order, 'get_created_via') ? $order->get_created_via() : null;
         $order_data['order_version'] = method_exists($order, 'get_version') ? $order->get_version() : null;
+        $order_data['status'] = method_exists($order, 'get_status') ? $order->get_status() : null;
+        $order_data['currency'] = method_exists($order, 'get_currency') ? $order->get_currency() : null;
+        $order_data['date_created'] = method_exists($order, 'get_date_created') ? ($order->get_date_created() ? $order->get_date_created()->format('Y-m-d H:i:s.u') : null) : null;
+        $order_data['date_modified'] = method_exists($order, 'get_date_modified') ? ($order->get_date_modified() ? $order->get_date_modified()->format('Y-m-d H:i:s.u') : null) : null;
+        $order_data['discount_total'] = method_exists($order, 'get_discount_total') ? $order->get_discount_total() : null;
+        $order_data['discount_tax'] = method_exists($order, 'get_discount_tax') ? $order->get_discount_tax() : null;
+        $order_data['shipping_total'] = method_exists($order, 'get_shipping_total') ? $order->get_shipping_total() : null;
+        $order_data['shipping_tax'] = method_exists($order, 'get_shipping_tax') ? $order->get_shipping_tax() : null;
+        $order_data['cart_tax'] = method_exists($order, 'get_cart_tax') ? $order->get_cart_tax() : null;
+        $order_data['total'] = method_exists($order, 'get_total') ? $order->get_total() : null;
+        $order_data['total_tax'] = method_exists($order, 'get_total_tax') ? $order->get_total_tax() : null;
+        $order_data['prices_include_tax'] = method_exists($order, 'get_prices_include_tax') ? $order->get_prices_include_tax() : null;
 
-        $order_data['status'] = $order->get_status() ?? null;
-        $order_data['currency'] = $order->get_currency() ?? null;
-        $order_data['date_created'] = $order->get_date_created() ? $order->get_date_created()->format('Y-m-d H:i:s.u') : null;
-        $order_data['date_modified'] = $order->get_date_modified() ? $order->get_date_modified()->format('Y-m-d H:i:s.u') : null;
-        $order_data['discount_total'] = $order->get_discount_total() ?? null;
-        $order_data['discount_tax'] = $order->get_discount_tax() ?? null;
-        $order_data['shipping_total'] = $order->get_shipping_total() ?? null;
-        $order_data['shipping_tax'] = $order->get_shipping_tax() ?? null;
-        $order_data['cart_tax'] = $order->get_cart_tax() ?? null;
-        $order_data['total'] = $order->get_total() ?? null;
-        $order_data['total_tax'] = $order->get_total_tax() ?? null;
-        $order_data['prices_include_tax'] = $order->get_prices_include_tax() ?? null;
         $order_data['customer_id'] = method_exists($order, 'get_customer_id') ? $order->get_customer_id() : null;
-
- 
-
- 
-        // $order_data['customer_id'] = $order->get_customer_id() ?? null;
-        //$order_data['customer_ip_address'] = $order->get_customer_ip_address() ?? null;
-       // $order_data['customer_user_agent'] = $order->get_customer_user_agent() ?? null;
-        //$order_data['customer_note'] = $order->get_customer_note() ?? null;
+        $order_data['customer_ip_address'] = method_exists($order, 'get_customer_ip_address') ? $order->get_customer_ip_address() : null;
+        $order_data['customer_user_agent'] = method_exists($order, 'get_customer_user_agent') ? $order->get_customer_user_agent() : null;
+        $order_data['customer_note'] = method_exists($order, 'get_customer_note') ? $order->get_customer_note() : null;
        
         // // Billing details
         // $order_data['billing_first_name'] = $order->get_billing_first_name() ?? null;
