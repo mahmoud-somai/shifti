@@ -5,37 +5,30 @@
 
 function get_orders() {
     global $wpdb;
-   $args = array(
-       'limit' => -1, 
-   );
+    $args = array(
+        'limit' => -1, 
+    );
    
     $orders_query = new WC_Order_Query($args);
     $orders = $orders_query->get_orders();
   
-   
     $orders_data = [];
     foreach ($orders as $order) {
         echo '<br> Order: <br>';
         echo json_encode($order);
         echo '<br>';
-        
-       
 
-     
-
-        
-       
-        //order properties
+        // Order properties
         $order_id = $order->get_id();
-        $order_parent_id=$order->get_parent_id(); 
+        $order_parent_id = $order->get_parent_id(); 
         $order_number = $order->get_order_number();
         $order_key = $order->get_order_key();
         $created_via = $order->get_created_via();
         $version = $order->get_version();
         $order_status = $order->get_status();
         $order_currency = $order->get_currency();
-        $date_created = $order->get_date_created() ? $order->get_date_created()->format('Y-m-d H:i:s.u'): null;
-        $date_modified = $order->get_date_modified() ? $order->get_date_modified()->format('Y-m-d H:i:s.u'): null;
+        $date_created = $order->get_date_created() ? $order->get_date_created()->format('Y-m-d H:i:s.u') : null;
+        $date_modified = $order->get_date_modified() ? $order->get_date_modified()->format('Y-m-d H:i:s.u') : null;
         $discount_total = $order->get_discount_total();
         $discount_tax = $order->get_discount_tax();
         $shipping_total = $order->get_shipping_total();
@@ -44,13 +37,11 @@ function get_orders() {
         $total = $order->get_total();
         $total_tax = $order->get_total_tax();
         $prices_include_tax = $order->get_prices_include_tax();
-        
-     
         $customer_id = $order->get_customer_id();
         $customer_ip_address = $order->get_customer_ip_address();
         $customer_user_agent = $order->get_customer_user_agent();
         $customer_note = $order->get_customer_note();
-    //billing and shipping
+        // Billing and shipping
         $payment_method = $order->get_payment_method();
         $payment_method_title = $order->get_payment_method_title();
         $transaction_id = $order->get_transaction_id();
@@ -58,12 +49,7 @@ function get_orders() {
         $date_completed = $order->get_date_completed() ? $order->get_date_completed()->format('Y-m-d H:i:s.u') : null;
         $cart_hash = $order->get_cart_hash();
   
-        
-        
-        
-        
-        
-        //billing properties
+        // Billing properties
         $billing_first_name = $order->get_billing_first_name();
         $billing_last_name = $order->get_billing_last_name();
         $billing_company = $order->get_billing_company();
@@ -85,7 +71,7 @@ function get_orders() {
         $shipping_state = $order->get_shipping_state();
         $shipping_postcode = $order->get_shipping_postcode();
         $shipping_country = $order->get_shipping_country();
-        $shipping_phone = $order->get_shipping_phone(); //+++
+        $shipping_phone = $order->get_shipping_phone() ?: null; // Assign null if empty
         
         $order_stock_reduced = $order->get_order_stock_reduced();
 
@@ -146,5 +132,6 @@ function get_orders() {
     echo json_encode($orders_data);
     echo '<br>';
 }
+
 
 ?>
