@@ -26,9 +26,9 @@ function get_orders() {
         $order_data['date_created'] = $order->get_date_created() ? $order->get_date_created()->format('Y-m-d H:i:s.u') : null;
         $order_data['date_modified'] = $order->get_date_modified() ? $order->get_date_modified()->format('Y-m-d H:i:s.u') : null;
         $order_data['discount_total'] = $order->get_discount_total() ?? null;
-        // $order_data['discount_tax'] = $order->get_discount_tax() ?? null;
-        // $order_data['shipping_total'] = $order->get_shipping_total() ?? null;
-        // $order_data['shipping_tax'] = $order->get_shipping_tax() ?? null;
+        $order_data['discount_tax'] = $order->get_discount_tax() ?? null;
+        $order_data['shipping_total'] = $order->get_shipping_total() ?? null;
+        $order_data['shipping_tax'] = $order->get_shipping_tax() ?? null;
         // $order_data['cart_tax'] = $order->get_cart_tax() ?? null;
         // $order_data['total'] = $order->get_total() ?? null;
         // $order_data['total_tax'] = $order->get_total_tax() ?? null;
