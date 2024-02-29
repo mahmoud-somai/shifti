@@ -81,31 +81,34 @@ function get_orders() {
       
 // -----------------------------------------------------  Line Items  -----------------------------------------------------------
 
-        $items = $order->get_items();
-        $product_items = []; // Initialize the product_items array
+        $product_items = []; 
         
+        if (method_exists($order, 'get_items')) {
+            $items = $order->get_items();
+        } else {
+          
+            $items = [];
+        }
+
         foreach ($items as $item) {
-           
 
-            // Retrieve item details
             $id             = $item->get_id();
-            $product_name    = $item->get_name();
-            $product_id      = $item['product_id'];
-            $variation_id    = $item->get_variation_id();
-            $quantity        = $item->get_quantity();
-            $tax_class       = $item->get_tax_class();
-            $subtotal        = $item->get_subtotal();
-            $tax_subtotal    = $item->get_subtotal_tax();
-            $total           = $item->get_total();
-            $tax_status      = $item->get_tax_status();
-            $total_tax       = $item->get_total_tax(); 
-            $sku             = $item->get_product()->get_sku();
-            $item_price      = $item->get_product()->get_price();
+            $product_name   = $item->get_name();
+            $product_id     = $item->get_product_id();
+            $variation_id   = $item->get_variation_id();
+            $quantity       = $item->get_quantity();
+            $tax_class      = $item->get_tax_class();
+            $subtotal       = $item->get_subtotal();
+            $tax_subtotal   = $item->get_subtotal_tax();
+            $total          = $item->get_total();
+            $tax_status     = $item->get_tax_status();
+            $total_tax      = $item->get_total_tax(); 
+            $sku            = $item->get_product()->get_sku();
+            $item_price     = $item->get_product()->get_price();
             $item_product_meta_data_array = $item->get_meta_data();
+            $item_taxes_array = $item['taxes'];
 
-
-
-
+     
             $product_items[] = array(
                 'id' => $id ,
                 'product_name' => $product_name ,
@@ -121,10 +124,11 @@ function get_orders() {
                 'sku' => $sku, 
                 'price' => $item_price,
                 'meta_data' => $item_product_meta_data_array,
+                'taxes' => $item_taxes_array
             );
-
         }
-        // Add order data to orders_data array
+
+        
         $order_data['Line items'] = $product_items;
         $order_data['Billing'] = $billing;
         $order_data['Shipping'] = $shipping;
