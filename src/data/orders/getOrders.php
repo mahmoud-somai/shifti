@@ -96,12 +96,13 @@ function get_orders() {
             $subtotal        = $item->get_subtotal();
             $tax_subtotal    = $item->get_subtotal_tax();
             $total           = $item->get_total();
-            $tax_status      = $item->get_tax_status();
+           // $tax_status      = $item->get_tax_status();
+            $all_meta_data   = $item->get_meta_data();
             $sku             = $item->get_product()->get_sku();
             $item_price      = $item->get_product()->get_price();
 
             $product_items[] = array(
-                'product_name' => $product_name ,
+                'name' => $product_name ,
                 'product_id' => $product_id ,
                 'variation_id' => $variation_id ,
                 'quantity' => $quantity ,
@@ -109,7 +110,8 @@ function get_orders() {
                 'subtotal' => $subtotal ,
                 'subtotal_tax' => $tax_subtotal ,
                 'total' => $total ,
-                'tax status' => $tax_status ,
+              //  'tax status' => $tax_status ,
+                'meta' => $all_meta_data ,
                 'sku' => $sku, 
                 'price' => $item_price,
             );
