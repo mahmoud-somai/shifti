@@ -15,247 +15,16 @@ function get_orders() {
    
     $orders_data = [];
     foreach ($orders as $order) {
-        //fee lines properties
-        echo '<br>';
-        echo 'fees ==> <br>';
-        echo $order;
-        $order_fees = [];
-        // Check if there are any fees associated with the order
-        // if ($order->get_fees()) {
-        //     foreach ($order->get_fees() as $fee_id => $fee) {
-        //         $fee_name = $fee->get_name();
-        //         $fee_tax_class = $fee->get_tax_class();
-        //         $fee_tax_status = $fee->get_tax_status();
-        //         $fee_total = $fee->get_total();
-        //         $fee_total_tax = $fee->get_total_tax();
-        
-        //         // Add fee details to the order_fees array
-        //         $order_fees[] = array(
-        //             'fee_name' => $fee_name,
-        //             'fee_tax_class' => $fee_tax_class,
-        //             'fee_tax_status' => $fee_tax_status,
-        //             'fee_total' => $fee_total,
-        //             'fee_total_tax' => $fee_total_tax,
-        //         );
-        //     }
-        // }
-        
-        // If there are no fees, return an empty array
-        echo json_encode($order_fees);
-        
        
-       
-        echo '<br>';
-        echo '<br>';
-        
+
      
-        // foreach($coupons as $coupon){
-        //     echo 'coupon ==> <br>';
-        //     echo $coupon;
-        //     echo '<br>';
-        //     echo $coupon->get_id();
-        //     echo '<br>';
-        //     echo $coupon->get_code();
-        //     echo '<br>';
-        //     echo $coupon->get_discount();;
-        //     echo '<br>';
-        //     echo $coupon->get_discount_tax();
-        //     echo '<br>';
-     
-      
-           
-        // }
-        //coupon lines properties
-       // $coupons=$order->get_coupons();
-        $coupon_tab = [];
-        // foreach ($order->get_coupon_codes() as $coupon_code) {
-        //     // Get the WC_Coupon object
-        //     $coupon = new WC_Coupon($coupon_code);
-        //  //   echo $coupon;
-        //     echo '<br>';
-        
-        //     $discount_type = $coupon->get_discount_type();
-        //     $coupon_amount = $coupon->get_amount();
-        //     $coupon_id = $coupon->get_id();
-        //     $coupon_code = $coupon->get_code();
-        //     //$coupon_discount = $coupon->get_discount();
-        //    // $coupon_discount_tax = $coupon->get_discount_tax();
-        
-        //     $coupon_tab[] = array(
-        //         'coupon_id' => $coupon_id,
-        //         'coupon_code' => $coupon_code,
-        //         'coupon_amount' => $coupon_amount,
-        //         'coupon_discount_type' => $discount_type,
-        //     );
-        // }
-        
-      //  echo '<br> coupon tab ===> <br>';
-       // echo json_encode($coupon_tab);
-        // echo 'coupon ==> <br>';
-        // echo json_encode($order->get_used_coupons());
-        // echo '<br>';
-        // echo json_encode($order->get_discount_total());
-        // echo '<br>';
-        // echo json_encode($order->get_discount_tax());
-        // echo '<br>';
-        // echo json_encode($order->get_discount_to_display());
-      //  echo json_encode($order->get_total_refunded());
-      //echo json_encode($order->get_item_count_refunded());
-    
-      // refund properties
-        // $refunds = $order->get_refunds();
-  
-        // echo '<br>';
-        // echo '<br>';
-        // echo 'One refund ==> <br>';
-        // $order_refunded=[];
-        // foreach ($refunds as $refund) {
-        //     //echo $refund;
-        //     echo '<br>';
-        //     $order_refund_id = $refund->get_id();
-        //     $order_refund_reason = $refund->get_reason();
-        //     $order_refund_amount = $refund->get_amount();
-        //     $order_refund_date_created = $refund->get_date_created() ? $refund->get_date_created()->format('Y-m-d H:i:s.u'): null;
-        //     $order_refunded_by = $refund->get_refunded_by();
-        //     $order_parent_id = $refund->get_parent_id();
-            
-        //     try {
-        //         // Assuming $refund is an instance of a class with the method get_refunded_payment()
-        //         $refunded_payment = $refund->get_refunded_payment();
-                
-        //         if ($refunded_payment === true) {
-        //             echo "Payment has been refunded.";
-        //             $refunded_payment=true;
-        //         } elseif ($refunded_payment === false) {
-        //             echo "Payment has not been refunded.";
-        //             $refunded_payment=false;
-        //         } else {
-        //             echo "Unexpected result";
-        //         }
-        //     } catch (Exception $e) {
-        //         echo "Error occurred: " . $e->getMessage();
-        //     }
-        //     $order_refunded_payment = $refunded_payment;
-        // }
-        // $order_refunded[] = array(
-        //     'order_refund_id' => $order_refund_id,
-        //     'order_refund_reason' => $order_refund_reason,
-        //     'order_refund_amount' => $order_refund_amount,
-        //     'order_refund_date_created' => $order_refund_date_created,
-        //     'order_refunded_by' => $order_refunded_by,
-        //     'order_parent_id' => $order_parent_id,
-        //     'order_refunded_payment' => $order_refunded_payment,
-        // );
-        // echo '<br>';
-        // echo '<br>';
-
-
-
-        //tax lines properties
-        $product_tax_lines = [];
-        // try {
-        //     $tax_items = $order->get_items('tax');
-            
-        //     if (empty($tax_items)) {
-        //         throw new Exception('No tax items found');
-        //     }
-        
-        //     foreach ($tax_items as $item_id => $item) {
-        //         $tax_item_name = $item->get_name();
-        //         $tax_item_rate_code = $item->get_rate_code();
-        //         $tax_item_rate_label = $item->get_label();
-        //         $tax_item_rate_id = $item->get_rate_id();
-        //         $tax_item_tax_total = $item->get_tax_total();
-        //         $tax_item_shipping_tax_total = $item->get_shipping_tax_total();
-        //         $tax_item_is_compound = $item->is_compound();
-        //         $tax_item_compound = $item->get_compound();
-        
-        //         $product_tax_lines[] = array(
-        //             'tax_item_name' => $tax_item_name, // Tax name
-        //             'tax_item_rate_code' => $tax_item_rate_code,
-        //             'tax_item_rate_id' => $tax_item_rate_id,
-        //             'tax_item_rate_label' => $tax_item_rate_label,
-        //             'tax_item_is_compound' => $tax_item_is_compound,
-        //             'tax_item_compound' => $tax_item_compound,
-        //             'tax_item_tax_total' => $tax_item_tax_total,
-        //             'tax_item_shipping_tax_total' => $tax_item_shipping_tax_total,
-        //         );
-        //     }
-        // } catch (Exception $e) {
-        //     // Handle the exception here
-        //     echo 'Error: ' . $e->getMessage();
-        //     // Return an empty array if tax items are empty
-        //     $product_tax_lines = [];
-        // }
-        
-        //shipping lines properties
-        $product_shipping_lines = [];
-        // foreach( $order->get_items( 'shipping' ) as $item_id => $item ){
-        //     $order_item_name             = $item->get_name();
-        //     $order_item_type             = $item->get_type();
-        //     $shipping_method_title       = $item->get_method_title();
-        //     $shipping_method_id          = $item->get_method_id(); // The method ID
-        //     $shipping_method_instance_id = $item->get_instance_id(); // The instance ID
-        //     $shipping_method_total       = $item->get_total();
-        //     $shipping_method_total_tax   = $item->get_total_tax();
-        //     $shipping_method_taxes       = $item->get_taxes();
-        // }
-        // $product_shipping_lines= array(
-        //     'shipping_method_instance_id' => $shipping_method_instance_id,
-        //     'order_item_name' => $order_item_name,
-        //     'order_item_type' => $order_item_type,
-        //     'shipping_method_title' => $shipping_method_title,
-        //     'shipping_method_id' => $shipping_method_id,
-        //     'shipping_method_total' => $shipping_method_total,
-        //     'shipping_method_total_tax' => $shipping_method_total_tax,
-        //     'shipping_method_taxes' => $shipping_method_taxes,
-        // );
-        
-        //line items properties
-        $items = $order->get_items();
-        $product_items = []; // Initialize the product_items array
-
-        foreach ($items as $item) {
-
-
-            // Retrieve item details
-            $product_name    = $item->get_name();
-            $product_id      = $item->get_product_id();
-            $variation_id    = $item->get_variation_id();
-            $quantity        = $item->get_quantity();
-            $tax_class       = $item->get_tax_class();
-            $subtotal        = $item->get_subtotal();
-            $tax_subtotal    = $item->get_subtotal_tax();
-            $total           = $item->get_total();
-            $tax_status      = $item->get_tax_status();
-            $sku             = $item->get_product()->get_sku();
-            $item_price      = $item->get_product()->get_price();
-            $item_regular_price = $item->get_product()->get_regular_price();
-        
-            // Add item details to the product_items array
-            $product_items[] = array(
-                'product_name' => $product_name ,
-                'product_id' => $product_id ,
-                'variation_id' => $variation_id ,
-                'quantity' => $quantity ,
-                'tax_class' => $tax_class ,
-                'subtotal' => $subtotal ,
-                'subtotal_tax' => $tax_subtotal ,
-                'total' => $total ,
-                'tax status' => $tax_status ,
-                'sku' => $sku, 
-                'price' => $item_price,
-                'regular_price' => $item_regular_price,
-            );
-        }
-        
 
         
        
         //order properties
         $order_id = $order->get_id();
         $order_parent_id=$order->get_parent_id(); 
-       // $order_number = $order->get_order_number();
+        $order_number = $order->get_order_number();
         $order_key = $order->get_order_key();
         $created_via = $order->get_created_via();
         $version = $order->get_version();
@@ -284,7 +53,7 @@ function get_orders() {
         $date_paid = $order->get_date_paid() ? $order->get_date_paid()->format('Y-m-d H:i:s.u') : null;
         $date_completed = $order->get_date_completed() ? $order->get_date_completed()->format('Y-m-d H:i:s.u') : null;
         $cart_hash = $order->get_cart_hash();
-        //metadata & line_items & tax_lines & shipping_lines & fee_lines & coupon_lines & refunds & set_paid
+  
         
         
         
@@ -315,12 +84,7 @@ function get_orders() {
         $shipping_phone = $order->get_shipping_phone(); //+++
         
         $order_stock_reduced = $order->get_order_stock_reduced();
-       // $download_permissions_granted = $order->get_download_permissions_granted();
-       // $new_order_email_sent = $order->get_new_order_email_sent();
-       // $recorded_sales = $order->get_recorded_sales();
-      //  $recorded_coupon_usage_counts = $order->get_recorded_coupon_usage_counts();
-       // $order_number = $order->get_order_number();
-        //$meta_data=$order->get_meta_data();
+
         $orders_data[] = array(
             'id' => $order_id,
             'parent_id' => $order_parent_id,
@@ -370,9 +134,8 @@ function get_orders() {
             'date_paid' => $date_paid,
             'cart_hash' => $cart_hash,
             'order_stock_reduced' => $order_stock_reduced,
-            'product_items' => $product_items,
-            'shipping_line' => $product_shipping_lines,
             'currency' => $order_currency,
+            'order_number' => $order_number,
          
            // 'tax_lines' => $product_tax_lines,
           //  'refunds' => $order_refunded,
