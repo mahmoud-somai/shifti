@@ -51,17 +51,17 @@ function get_orders() {
 // -----------------------------------------------------  Billing Details  -----------------------------------------------------------
         $billing = [];
 
-        $order_data['billing_first_name'] = method_exists($order, 'get_billing_first_name') ? $order->get_billing_first_name() : null;
-        $order_data['billing_last_name'] = method_exists($order, 'get_billing_last_name') ? $order->get_billing_last_name() : null;
-        $order_data['billing_company'] = method_exists($order, 'get_billing_company') ? $order->get_billing_company() : null;
-        $order_data['billing_address_1'] = method_exists($order, 'get_billing_address_1') ? $order->get_billing_address_1() : null;
-        $order_data['billing_address_2'] = method_exists($order, 'get_billing_address_2') ? $order->get_billing_address_2() : null;
-        $order_data['billing_city'] = method_exists($order, 'get_billing_city') ? $order->get_billing_city() : null;
-        $order_data['billing_state'] = method_exists($order, 'get_billing_state') ? $order->get_billing_state() : null;
-        $order_data['billing_postcode'] = method_exists($order, 'get_billing_postcode') ? $order->get_billing_postcode() : null;
-        $order_data['billing_country'] = method_exists($order, 'get_billing_country') ? $order->get_billing_country() : null;
-        $order_data['billing_email'] = method_exists($order, 'get_billing_email') ? $order->get_billing_email() : null;
-        $order_data['billing_phone'] = method_exists($order, 'get_billing_phone') ? $order->get_billing_phone() : null;
+        $billing['first_name'] = method_exists($order, 'get_billing_first_name') ? $order->get_billing_first_name() : null;
+        $billing['last_name'] = method_exists($order, 'get_billing_last_name') ? $order->get_billing_last_name() : null;
+        $billing['company'] = method_exists($order, 'get_billing_company') ? $order->get_billing_company() : null;
+        $billing['address_1'] = method_exists($order, 'get_billing_address_1') ? $order->get_billing_address_1() : null;
+        $billing['address_2'] = method_exists($order, 'get_billing_address_2') ? $order->get_billing_address_2() : null;
+        $billing['city'] = method_exists($order, 'get_billing_city') ? $order->get_billing_city() : null;
+        $billing['state'] = method_exists($order, 'get_billing_state') ? $order->get_billing_state() : null;
+        $billing['postcode'] = method_exists($order, 'get_billing_postcode') ? $order->get_billing_postcode() : null;
+        $billing['country'] = method_exists($order, 'get_billing_country') ? $order->get_billing_country() : null;
+        $billing['email'] = method_exists($order, 'get_billing_email') ? $order->get_billing_email() : null;
+        $billing['phone'] = method_exists($order, 'get_billing_phone') ? $order->get_billing_phone() : null;
 
 
        
