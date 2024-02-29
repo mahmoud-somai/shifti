@@ -106,13 +106,9 @@ function get_orders() {
             $sku            = $item->get_product()->get_sku();
             $item_price     = $item->get_product()->get_price();
             $item_product_meta_data_array = $item->get_meta_data();
-            $item_taxes_array = $item['taxes'];
-            $total_taxes = $item_taxes_array['total'];
-            echo '<br> Item Taxes: <br>';
-            echo json_encode($item_taxes_array);
-            echo '<br>';
-            echo sizeof($total_taxes);
-            echo '<br>';
+          //  $item_taxes_array = $item['taxes'];
+  
+        
 
      
             $product_items[] = array(
@@ -130,7 +126,7 @@ function get_orders() {
                 'sku' => $sku, 
                 'price' => $item_price,
                 'meta_data' => $item_product_meta_data_array,
-                'taxes' => $item_taxes_array
+              //  'taxes' => $item_taxes_array
             );
         }
 
