@@ -15,7 +15,8 @@ function get_orders() {
         // Retrieve order properties with null coalescing operator
         $order_data['id'] = $order->get_id() ?? null;
         $order_data['parent_id'] = $order->get_parent_id() ?? null; 
-        $order_data['key'] = $order->get_order_key() ?? null;
+        $order_key = $order->get_order_key();
+        $order_data['key'] = isset($order_key) ? $order_key : null;
         // $order_data['status'] = $order->get_status() ?? null;
         // $order_data['version'] = $order->get_version() ?? null;
         // $order_data['prices_include_tax'] = $order->get_prices_include_tax() ?? null;
