@@ -340,10 +340,7 @@ $product_tax_lines = [];
 echo json_encode($order_fees);
 
 
-    
-    echo '<br> Shipping Lines: <br>';
-    echo json_encode($product_shipping_lines);
-    echo '<br>';
+
 
 
 
