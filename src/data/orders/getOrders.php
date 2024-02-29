@@ -92,8 +92,9 @@ function get_orders() {
         // $order_data['order_stock_reduced'] = $order->get_order_stock_reduced() ?? null; 
 
         // Add order data to orders_data array
-        $orders_data[] = $order_data;
         $order_data['Billing'] = $billing;
+        $orders_data[] = $order_data;
+     
     }
     echo '<br> Orders Data: <br>';
     echo json_encode($orders_data);
