@@ -5,15 +5,15 @@
 
 function get_orders() {
     global $wpdb;
-    $args = array(
-        'limit' => -1, 
-    );
-    // $specific_order_ids = array(25); //50771
-
-
     // $args = array(
-    //     'post__in' => $specific_order_ids, // Include only the orders with the specified IDs
+    //     'limit' => -1, 
     // );
+    $specific_order_ids = array(25); //50771
+
+
+    $args = array(
+        'post__in' => $specific_order_ids, // Include only the orders with the specified IDs
+    );
     $orders_query = new WC_Order_Query($args);
     $orders = $orders_query->get_orders();
   
@@ -24,7 +24,7 @@ function get_orders() {
         // Order properties
         $order_id = $order->get_id();
         $order_parent_id = $order->get_parent_id() !== false ? $order->get_parent_id() : null;
-      //  $order_number = $order->get_order_number() ?: null;
+        $order_number = $order->get_order_number() ?: null;
         $order_key = $order->get_order_key() ?: null;
         $created_via = $order->get_created_via() ?: null;
         $version = $order->get_version() ?: null;
@@ -128,7 +128,7 @@ function get_orders() {
             'cart_hash' => $cart_hash,
             'order_stock_reduced' => $order_stock_reduced,
             'currency' => $order_currency,
-          //  'order_number' => $order_number,
+            'order_number' => $order_number,
         );
     }
     
