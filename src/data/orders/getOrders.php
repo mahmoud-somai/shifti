@@ -215,10 +215,6 @@ $product_tax_lines = [];
         echo 'Unable to retrieve tax items.';
     }
     
-echo '<br> Tax Lines: <br>';
-    echo json_encode($product_tax_lines);
-    echo '<br>';
-
 
 
 //solution 2
