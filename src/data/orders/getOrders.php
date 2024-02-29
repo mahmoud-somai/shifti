@@ -412,7 +412,9 @@ if (method_exists($order, 'get_refunds')) {
     echo 'Unable to retrieve refunds.';
 }
 
+echo '<br> Refund Line: <br>';
 echo json_encode($order_refunded);
+echo '<br>';
 
 
 
