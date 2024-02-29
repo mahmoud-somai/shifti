@@ -101,6 +101,7 @@ function get_orders() {
             $total_tax       = $item->get_total_tax(); 
             $sku             = $item->get_product()->get_sku();
             $item_price      = $item->get_product()->get_price();
+            $item_product_meta_data_array = $item->get_meta_data();
 
             $product_items[] = array(
                 'id' => $id ,
@@ -116,6 +117,7 @@ function get_orders() {
                 'total_tax' => $total_tax ,
                 'sku' => $sku, 
                 'price' => $item_price,
+                'meta_data' => $item_product_meta_data_array,
             );
 
         }
