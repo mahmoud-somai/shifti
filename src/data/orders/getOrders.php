@@ -1,26 +1,27 @@
-
-
 <?php
-
 
 function get_orders() {
     global $wpdb;
+  
+    // Remove specific order IDs array
+    // $specific_order_ids = array(28); //50771
+
+    // Remove condition to include only specific orders
     // $args = array(
-    //     'limit' => -1, 
+    //     'post__in' => $specific_order_ids, // Include only the orders with the specified IDs
     // );
-    $specific_order_ids = array(28); //50771
 
-
+    // Query all orders
     $args = array(
-        'post__in' => $specific_order_ids, // Include only the orders with the specified IDs
+        'limit' => -1,  // Fetch all orders
     );
+
     $orders_query = new WC_Order_Query($args);
     $orders = $orders_query->get_orders();
   
     $orders_data = [];
     foreach ($orders as $order) {
 
-    
         // Order properties
         $order_id = $order->get_id();
         $order_parent_id = $order->get_parent_id() !== false ? $order->get_parent_id() : null;
@@ -132,11 +133,13 @@ function get_orders() {
         );
     }
     
-    
+    // Output orders data
     echo '<br> Orders Data: <br>';
     echo json_encode($orders_data);
     echo '<br>';
 }
 
+// Call the function to fetch and display orders
+get_orders();
 
 ?>
