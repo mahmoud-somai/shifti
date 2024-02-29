@@ -8,7 +8,7 @@ function get_orders() {
     // $args = array(
     //     'limit' => -1, 
     // );
-    $specific_order_ids = array(28); //50771
+    $specific_order_ids = array(24); //50771
 
 
     $args = array(
