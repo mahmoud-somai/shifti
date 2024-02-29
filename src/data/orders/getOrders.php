@@ -1,4 +1,6 @@
 <?php
+
+
 function get_orders() {
     global $wpdb;
     $args = array(
@@ -412,9 +414,6 @@ if (method_exists($order, 'get_refunds')) {
     echo 'Unable to retrieve refunds.';
 }
 
-echo '<br> Refund Line: <br>';
-echo json_encode($order_refunded);
-echo '<br>';
 
 
 
@@ -430,9 +429,16 @@ echo '<br>';
         $order_data['Billing'] = $billing;
         $order_data['Shipping'] = $shipping;
         $orders_data[] = $order_data;
+
+
     }
+
+
+    
     echo '<br> Orders Data: <br>';
     echo json_encode($orders_data);
     echo '<br>';
 }
+
+
 ?>
