@@ -4,7 +4,7 @@
 function get_orders() {
     global $wpdb;
     $args = array(
-        'limit' => 1, 
+        'limit' => -1, 
     );
     $orders_query = new WC_Order_Query($args);
     $orders = $orders_query->get_orders();
