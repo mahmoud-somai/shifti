@@ -1,21 +1,19 @@
+
+
 <?php
+
 
 function get_orders() {
     global $wpdb;
-  
-    // Remove specific order IDs array
-    // $specific_order_ids = array(28); //50771
+    $args = array(
+        'limit' => -1, 
+    );
+    // $specific_order_ids = array(24); //50771
 
-    // Remove condition to include only specific orders
+
     // $args = array(
     //     'post__in' => $specific_order_ids, // Include only the orders with the specified IDs
     // );
-
-    // Query all orders
-    $args = array(
-        'limit' => -1,  // Fetch all orders
-    );
-
     $orders_query = new WC_Order_Query($args);
     $orders = $orders_query->get_orders();
   
@@ -139,7 +137,5 @@ function get_orders() {
     echo '<br>';
 }
 
-// Call the function to fetch and display orders
-get_orders();
 
 ?>
