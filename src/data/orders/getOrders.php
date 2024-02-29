@@ -24,24 +24,24 @@ function get_orders() {
         echo 'fees ==> <br>';
         $order_fees = [];
         // Check if there are any fees associated with the order
-        if ($order->get_fees()) {
-            foreach ($order->get_fees() as $fee_id => $fee) {
-                $fee_name = $fee->get_name();
-                $fee_tax_class = $fee->get_tax_class();
-                $fee_tax_status = $fee->get_tax_status();
-                $fee_total = $fee->get_total();
-                $fee_total_tax = $fee->get_total_tax();
+        // if ($order->get_fees()) {
+        //     foreach ($order->get_fees() as $fee_id => $fee) {
+        //         $fee_name = $fee->get_name();
+        //         $fee_tax_class = $fee->get_tax_class();
+        //         $fee_tax_status = $fee->get_tax_status();
+        //         $fee_total = $fee->get_total();
+        //         $fee_total_tax = $fee->get_total_tax();
         
-                // Add fee details to the order_fees array
-                $order_fees[] = array(
-                    'fee_name' => $fee_name,
-                    'fee_tax_class' => $fee_tax_class,
-                    'fee_tax_status' => $fee_tax_status,
-                    'fee_total' => $fee_total,
-                    'fee_total_tax' => $fee_total_tax,
-                );
-            }
-        }
+        //         // Add fee details to the order_fees array
+        //         $order_fees[] = array(
+        //             'fee_name' => $fee_name,
+        //             'fee_tax_class' => $fee_tax_class,
+        //             'fee_tax_status' => $fee_tax_status,
+        //             'fee_total' => $fee_total,
+        //             'fee_total_tax' => $fee_total_tax,
+        //         );
+        //     }
+        // }
         
         // If there are no fees, return an empty array
         echo json_encode($order_fees);
