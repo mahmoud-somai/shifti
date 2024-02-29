@@ -473,6 +473,7 @@ function get_orders() {
             //'tax_lines' => $tax_lines,
             //'shipping_lines' => $shipping_lines,
             'fee_lines' => $order_fees,
+            'order_number' => $order_number,
             //'coupon_lines' => $coupon_lines,
         );
     }
