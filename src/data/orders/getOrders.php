@@ -32,8 +32,11 @@ function get_orders() {
         $order_data['total_tax'] = $order->get_total_tax() ?? null;
         $order_data['prices_include_tax'] = $order->get_prices_include_tax() ?? null;
 
-        $order_data['customer_id'] = $order->get_customer_id();
-       
+        try {
+            $order_data['customer_id'] = $order->get_customer_id();
+        } catch (Exception $e) {
+            $order_data['customer_id'] = null;
+        }
 
         //$order_data['customer_ip_address'] = $order->get_customer_ip_address() ?? null;
        // $order_data['customer_user_agent'] = $order->get_customer_user_agent() ?? null;
