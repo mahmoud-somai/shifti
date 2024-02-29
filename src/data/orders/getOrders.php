@@ -258,7 +258,7 @@ function get_orders() {
         //order properties
         $order_id = $order->get_id();
         $order_parent_id=$order->get_parent_id(); 
-        $order_number = $order->get_order_number();
+       // $order_number = $order->get_order_number();
         $order_key = $order->get_order_key();
         $created_via = $order->get_created_via();
         $version = $order->get_version();
