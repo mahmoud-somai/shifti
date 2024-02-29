@@ -90,7 +90,7 @@ function get_orders() {
             // Retrieve item details
             $id             = $item->get_id();
             $product_name    = $item->get_name();
-            $product_id      = $item->get_product_id();
+            $product_id      = $item['product_id'];
             $variation_id    = $item->get_variation_id();
             $quantity        = $item->get_quantity();
             $tax_class       = $item->get_tax_class();
@@ -102,12 +102,8 @@ function get_orders() {
             $sku             = $item->get_product()->get_sku();
             $item_price      = $item->get_product()->get_price();
             $item_product_meta_data_array = $item->get_meta_data();
-            echo '<br> Item Meta Data: <br>';
-            echo json_encode($item_product_meta_data_array);
-            echo '<br>';
-            echo sizeof($item_product_meta_data_array);
-            echo '<br>';
-            
+
+
 
 
             $product_items[] = array(
