@@ -296,6 +296,50 @@ $product_tax_lines = [];
         // If the method doesn't exist, indicate that shipping items couldn't be retrieved
         echo 'Unable to retrieve shipping items.';
     }
+
+
+
+    //_______________________________________________________ fees Line   ______________________________________________________
+
+
+    $order_fees = [];
+
+// Check if the method exists before calling it
+    if (method_exists($order, 'get_fees')) {
+    // Check if there are any fees associated with the order
+    $fees = $order->get_fees();
+
+    // If there are fees, populate the array
+    if (!empty($fees)) {
+        foreach ($fees as $fee_id => $fee) {
+            $fee_name       = $fee->get_name();
+            $fee_tax_class  = $fee->get_tax_class();
+            $fee_tax_status = $fee->get_tax_status();
+            $fee_total      = $fee->get_total();
+            $fee_total_tax  = $fee->get_total_tax();
+
+            // Add fee details to the order_fees array
+            $order_fees[] = array(
+                'fee_name'       => $fee_name,
+                'fee_tax_class'  => $fee_tax_class,
+                'fee_tax_status' => $fee_tax_status,
+                'fee_total'      => $fee_total,
+                'fee_total_tax'  => $fee_total_tax,
+            );
+        }
+    } else {
+        // If there are no fees, set the order_fees array to an empty array
+        $order_fees = [];
+    }
+} else {
+    // If the method doesn't exist, indicate that fees couldn't be retrieved
+    echo 'Unable to retrieve fees.';
+}
+
+// Output the result
+echo json_encode($order_fees);
+
+
     
     echo '<br> Shipping Lines: <br>';
     echo json_encode($product_shipping_lines);
@@ -303,7 +347,7 @@ $product_tax_lines = [];
 
 
 
-
+        $order_data['fees'] = $order_fees;
         $order_data['shipping_lines'] = $product_shipping_lines;
         $order_data['tax_lines'] = $product_tax_lines;
         $order_data['line_items'] = $product_items;
