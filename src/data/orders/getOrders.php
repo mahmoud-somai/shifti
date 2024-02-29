@@ -69,28 +69,28 @@ function get_orders() {
            
         // }
         //coupon lines properties
-        $coupons=$order->get_coupons();
+       // $coupons=$order->get_coupons();
         $coupon_tab = [];
-        foreach ($order->get_coupon_codes() as $coupon_code) {
-            // Get the WC_Coupon object
-            $coupon = new WC_Coupon($coupon_code);
-         //   echo $coupon;
-            echo '<br>';
+        // foreach ($order->get_coupon_codes() as $coupon_code) {
+        //     // Get the WC_Coupon object
+        //     $coupon = new WC_Coupon($coupon_code);
+        //  //   echo $coupon;
+        //     echo '<br>';
         
-            $discount_type = $coupon->get_discount_type();
-            $coupon_amount = $coupon->get_amount();
-            $coupon_id = $coupon->get_id();
-            $coupon_code = $coupon->get_code();
-            //$coupon_discount = $coupon->get_discount();
-           // $coupon_discount_tax = $coupon->get_discount_tax();
+        //     $discount_type = $coupon->get_discount_type();
+        //     $coupon_amount = $coupon->get_amount();
+        //     $coupon_id = $coupon->get_id();
+        //     $coupon_code = $coupon->get_code();
+        //     //$coupon_discount = $coupon->get_discount();
+        //    // $coupon_discount_tax = $coupon->get_discount_tax();
         
-            $coupon_tab[] = array(
-                'coupon_id' => $coupon_id,
-                'coupon_code' => $coupon_code,
-                'coupon_amount' => $coupon_amount,
-                'coupon_discount_type' => $discount_type,
-            );
-        }
+        //     $coupon_tab[] = array(
+        //         'coupon_id' => $coupon_id,
+        //         'coupon_code' => $coupon_code,
+        //         'coupon_amount' => $coupon_amount,
+        //         'coupon_discount_type' => $discount_type,
+        //     );
+        // }
         
       //  echo '<br> coupon tab ===> <br>';
        // echo json_encode($coupon_tab);
