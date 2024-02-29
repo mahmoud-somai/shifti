@@ -97,7 +97,7 @@ function get_orders() {
             $tax_subtotal    = $item->get_subtotal_tax();
             $total           = $item->get_total();
            // $tax_status      = $item->get_tax_status();
-            $all_meta_data   = $item->get_meta_data();
+           
             $sku             = $item->get_product()->get_sku();
             $item_price      = $item->get_product()->get_price();
 
@@ -111,7 +111,6 @@ function get_orders() {
                 'subtotal_tax' => $tax_subtotal ,
                 'total' => $total ,
               //  'tax status' => $tax_status ,
-                'meta' => $all_meta_data ,
                 'sku' => $sku, 
                 'price' => $item_price,
             );
