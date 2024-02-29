@@ -5,8 +5,13 @@
 
 function get_orders() {
     global $wpdb;
-    $orders = wc_get_orders( array( 'numberposts' => -1 ) );
-    echo json_encode($orders);
+    args = array(
+        'limit' => -1, // -1 retrieves all orders
+    );
+
+    $orders_query = new WC_Order_Query($args);
+    $orders = $orders_query->get_orders();
+
 
     foreach ( $orders->get_items() as $item_id => $item ) {
         echo $item;
