@@ -106,51 +106,54 @@ function get_orders() {
       //echo json_encode($order->get_item_count_refunded());
     
       // refund properties
-        $refunds = $order->get_refunds();
+        // $refunds = $order->get_refunds();
   
-        echo '<br>';
-        echo '<br>';
-        echo 'One refund ==> <br>';
-        $order_refunded=[];
-        foreach ($refunds as $refund) {
-            //echo $refund;
-            echo '<br>';
-            $order_refund_id = $refund->get_id();
-            $order_refund_reason = $refund->get_reason();
-            $order_refund_amount = $refund->get_amount();
-            $order_refund_date_created = $refund->get_date_created() ? $refund->get_date_created()->format('Y-m-d H:i:s.u'): null;
-            $order_refunded_by = $refund->get_refunded_by();
-            $order_parent_id = $refund->get_parent_id();
+        // echo '<br>';
+        // echo '<br>';
+        // echo 'One refund ==> <br>';
+        // $order_refunded=[];
+        // foreach ($refunds as $refund) {
+        //     //echo $refund;
+        //     echo '<br>';
+        //     $order_refund_id = $refund->get_id();
+        //     $order_refund_reason = $refund->get_reason();
+        //     $order_refund_amount = $refund->get_amount();
+        //     $order_refund_date_created = $refund->get_date_created() ? $refund->get_date_created()->format('Y-m-d H:i:s.u'): null;
+        //     $order_refunded_by = $refund->get_refunded_by();
+        //     $order_parent_id = $refund->get_parent_id();
             
-            try {
-                // Assuming $refund is an instance of a class with the method get_refunded_payment()
-                $refunded_payment = $refund->get_refunded_payment();
+        //     try {
+        //         // Assuming $refund is an instance of a class with the method get_refunded_payment()
+        //         $refunded_payment = $refund->get_refunded_payment();
                 
-                if ($refunded_payment === true) {
-                    echo "Payment has been refunded.";
-                    $refunded_payment=true;
-                } elseif ($refunded_payment === false) {
-                    echo "Payment has not been refunded.";
-                    $refunded_payment=false;
-                } else {
-                    echo "Unexpected result";
-                }
-            } catch (Exception $e) {
-                echo "Error occurred: " . $e->getMessage();
-            }
-            $order_refunded_payment = $refunded_payment;
-        }
-        $order_refunded[] = array(
-            'order_refund_id' => $order_refund_id,
-            'order_refund_reason' => $order_refund_reason,
-            'order_refund_amount' => $order_refund_amount,
-            'order_refund_date_created' => $order_refund_date_created,
-            'order_refunded_by' => $order_refunded_by,
-            'order_parent_id' => $order_parent_id,
-            'order_refunded_payment' => $order_refunded_payment,
-        );
-        echo '<br>';
-        echo '<br>';
+        //         if ($refunded_payment === true) {
+        //             echo "Payment has been refunded.";
+        //             $refunded_payment=true;
+        //         } elseif ($refunded_payment === false) {
+        //             echo "Payment has not been refunded.";
+        //             $refunded_payment=false;
+        //         } else {
+        //             echo "Unexpected result";
+        //         }
+        //     } catch (Exception $e) {
+        //         echo "Error occurred: " . $e->getMessage();
+        //     }
+        //     $order_refunded_payment = $refunded_payment;
+        // }
+        // $order_refunded[] = array(
+        //     'order_refund_id' => $order_refund_id,
+        //     'order_refund_reason' => $order_refund_reason,
+        //     'order_refund_amount' => $order_refund_amount,
+        //     'order_refund_date_created' => $order_refund_date_created,
+        //     'order_refunded_by' => $order_refunded_by,
+        //     'order_parent_id' => $order_parent_id,
+        //     'order_refunded_payment' => $order_refunded_payment,
+        // );
+        // echo '<br>';
+        // echo '<br>';
+
+
+
         //tax lines properties
         $product_tax_lines = [];
         try {
@@ -249,10 +252,7 @@ function get_orders() {
             );
         }
         
-        // Now $product_items contains details of all items in the order with null values for missing attributes
-        
-// Now $product_items contains details of all items in the order
-        // Now $product_items contains details of all items in the order
+
         
        
         //order properties
@@ -280,7 +280,7 @@ function get_orders() {
         $customer_ip_address = $order->get_customer_ip_address();
         $customer_user_agent = $order->get_customer_user_agent();
         $customer_note = $order->get_customer_note();
-//billing and shipping
+    //billing and shipping
         $payment_method = $order->get_payment_method();
         $payment_method_title = $order->get_payment_method_title();
         $transaction_id = $order->get_transaction_id();
@@ -378,7 +378,7 @@ function get_orders() {
             'currency' => $order_currency,
          
             'tax_lines' => $product_tax_lines,
-            'refunds' => $order_refunded,
+          //  'refunds' => $order_refunded,
             'coupons' => $coupon_tab,
             //'meta_data' => $meta_data,
            // 'line_items' => $line_items,
