@@ -11,13 +11,14 @@ function get_orders() {
    
     $orders_query = new WC_Order_Query($args);
     $orders = $orders_query->get_orders();
-    echo $orders;
+  
    
     $orders_data = [];
     foreach ($orders as $order) {
         //fee lines properties
         echo '<br>';
         echo 'fees ==> <br>';
+        echo $order;
         $order_fees = [];
         // Check if there are any fees associated with the order
         // if ($order->get_fees()) {
