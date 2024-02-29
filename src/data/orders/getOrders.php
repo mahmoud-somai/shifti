@@ -79,13 +79,44 @@ function get_orders() {
         $shipping['phone'] = method_exists($order, 'get_shipping_phone') ? $order->get_shipping_phone() : null;
        
       
+// -----------------------------------------------------  Line Items  -----------------------------------------------------------
 
-
+        $items = $order->get_items();
+        $product_items = []; // Initialize the product_items array
         
+        foreach ($items as $item) {
+           
 
+            // Retrieve item details
+            $product_name    = $item->get_name();
+            $product_id      = $item->get_product_id();
+            $variation_id    = $item->get_variation_id();
+            $quantity        = $item->get_quantity();
+            $tax_class       = $item->get_tax_class();
+            $subtotal        = $item->get_subtotal();
+            $tax_subtotal    = $item->get_subtotal_tax();
+            $total           = $item->get_total();
+            $tax_status      = $item->get_tax_status();
+            $sku             = $item->get_product()->get_sku();
+            $item_price      = $item->get_product()->get_price();
 
+            $product_items[] = array(
+                'product_name' => $product_name ,
+                'product_id' => $product_id ,
+                'variation_id' => $variation_id ,
+                'quantity' => $quantity ,
+                'tax_class' => $tax_class ,
+                'subtotal' => $subtotal ,
+                'subtotal_tax' => $tax_subtotal ,
+                'total' => $total ,
+                'tax status' => $tax_status ,
+                'sku' => $sku, 
+                'price' => $item_price,
+            );
+
+        }
         // Add order data to orders_data array
-   
+        $order_data['Line items'] = $product_items;
         $order_data['Billing'] = $billing;
         $order_data['Shipping'] = $shipping;
         $orders_data[] = $order_data;
