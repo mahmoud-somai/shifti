@@ -88,6 +88,7 @@ function get_orders() {
            
 
             // Retrieve item details
+            $id             = $item->get_id();
             $product_name    = $item->get_name();
             $product_id      = $item->get_product_id();
             $variation_id    = $item->get_variation_id();
@@ -102,6 +103,7 @@ function get_orders() {
             $item_price      = $item->get_product()->get_price();
 
             $product_items[] = array(
+                'id' => $id ,
                 'product_name' => $product_name ,
                 'product_id' => $product_id ,
                 'variation_id' => $variation_id ,
