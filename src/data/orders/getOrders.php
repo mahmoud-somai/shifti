@@ -15,8 +15,10 @@ function get_orders() {
         // Retrieve order properties with null coalescing operator
         $order_data['id'] = $order->get_id() ?? null;
         $order_data['parent_id'] = $order->get_parent_id() ?? null; 
+        
         //$order_data['key'] = $order->get_order_key() ?? null;
-
+        $order_data['created_via'] = $order->get_created_via() ?? null;
+        
         // $order_data['status'] = $order->get_status() ?? null;
         // $order_data['version'] = $order->get_version() ?? null;
         // $order_data['prices_include_tax'] = $order->get_prices_include_tax() ?? null;
@@ -62,7 +64,7 @@ function get_orders() {
         // $order_data['transaction_id'] = $order->get_transaction_id() ?? null;
         // $order_data['customer_ip_address'] = $order->get_customer_ip_address() ?? null;
         // $order_data['customer_user_agent'] = $order->get_customer_user_agent() ?? null;
-         $order_data['created_via'] = $order->get_created_via() ?? null;
+    
         // $order_data['customer_note'] = $order->get_customer_note() ?? null;
         // $order_data['date_completed'] = $order->get_date_completed() ? $order->get_date_completed()->format('Y-m-d H:i:s.u') : null;
         // $order_data['date_paid'] = $order->get_date_paid() ? $order->get_date_paid()->format('Y-m-d H:i:s.u') : null;
