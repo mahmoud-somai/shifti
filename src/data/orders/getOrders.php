@@ -156,40 +156,40 @@ function get_orders() {
 
         //tax lines properties
         $product_tax_lines = [];
-        try {
-            $tax_items = $order->get_items('tax');
+        // try {
+        //     $tax_items = $order->get_items('tax');
             
-            if (empty($tax_items)) {
-                throw new Exception('No tax items found');
-            }
+        //     if (empty($tax_items)) {
+        //         throw new Exception('No tax items found');
+        //     }
         
-            foreach ($tax_items as $item_id => $item) {
-                $tax_item_name = $item->get_name();
-                $tax_item_rate_code = $item->get_rate_code();
-                $tax_item_rate_label = $item->get_label();
-                $tax_item_rate_id = $item->get_rate_id();
-                $tax_item_tax_total = $item->get_tax_total();
-                $tax_item_shipping_tax_total = $item->get_shipping_tax_total();
-                $tax_item_is_compound = $item->is_compound();
-                $tax_item_compound = $item->get_compound();
+        //     foreach ($tax_items as $item_id => $item) {
+        //         $tax_item_name = $item->get_name();
+        //         $tax_item_rate_code = $item->get_rate_code();
+        //         $tax_item_rate_label = $item->get_label();
+        //         $tax_item_rate_id = $item->get_rate_id();
+        //         $tax_item_tax_total = $item->get_tax_total();
+        //         $tax_item_shipping_tax_total = $item->get_shipping_tax_total();
+        //         $tax_item_is_compound = $item->is_compound();
+        //         $tax_item_compound = $item->get_compound();
         
-                $product_tax_lines[] = array(
-                    'tax_item_name' => $tax_item_name, // Tax name
-                    'tax_item_rate_code' => $tax_item_rate_code,
-                    'tax_item_rate_id' => $tax_item_rate_id,
-                    'tax_item_rate_label' => $tax_item_rate_label,
-                    'tax_item_is_compound' => $tax_item_is_compound,
-                    'tax_item_compound' => $tax_item_compound,
-                    'tax_item_tax_total' => $tax_item_tax_total,
-                    'tax_item_shipping_tax_total' => $tax_item_shipping_tax_total,
-                );
-            }
-        } catch (Exception $e) {
-            // Handle the exception here
-            echo 'Error: ' . $e->getMessage();
-            // Return an empty array if tax items are empty
-            $product_tax_lines = [];
-        }
+        //         $product_tax_lines[] = array(
+        //             'tax_item_name' => $tax_item_name, // Tax name
+        //             'tax_item_rate_code' => $tax_item_rate_code,
+        //             'tax_item_rate_id' => $tax_item_rate_id,
+        //             'tax_item_rate_label' => $tax_item_rate_label,
+        //             'tax_item_is_compound' => $tax_item_is_compound,
+        //             'tax_item_compound' => $tax_item_compound,
+        //             'tax_item_tax_total' => $tax_item_tax_total,
+        //             'tax_item_shipping_tax_total' => $tax_item_shipping_tax_total,
+        //         );
+        //     }
+        // } catch (Exception $e) {
+        //     // Handle the exception here
+        //     echo 'Error: ' . $e->getMessage();
+        //     // Return an empty array if tax items are empty
+        //     $product_tax_lines = [];
+        // }
         
         //shipping lines properties
         $product_shipping_lines = [];
@@ -377,7 +377,7 @@ function get_orders() {
             'shipping_line' => $product_shipping_lines,
             'currency' => $order_currency,
          
-            'tax_lines' => $product_tax_lines,
+           // 'tax_lines' => $product_tax_lines,
           //  'refunds' => $order_refunded,
             'coupons' => $coupon_tab,
             //'meta_data' => $meta_data,
