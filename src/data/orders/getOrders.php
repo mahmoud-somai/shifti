@@ -367,9 +367,54 @@ if (method_exists($order, 'get_coupons')) {
 } else {
     echo 'Unable to retrieve coupons.';
 }
-echo '<br> Coupon Lines: <br>';
-echo json_encode($coupon_tab);
-echo '<br>';
+
+
+// ________________________________________________________  Refund Line   ______________________________________________________
+
+
+$order_refunded = [];
+if (method_exists($order, 'get_refunds')) {
+    $refunds = $order->get_refunds();
+
+    foreach ($refunds as $refund) {
+        $order_refund_id = method_exists($refund, 'get_id') ? $refund->get_id() : null;
+        $order_refund_reason = method_exists($refund, 'get_reason') ? $refund->get_reason() : null;
+        $order_refund_amount = method_exists($refund, 'get_amount') ? $refund->get_amount() : null;
+        $order_refund_date_created = method_exists($refund, 'get_date_created') ? ($refund->get_date_created() ? $refund->get_date_created()->format('Y-m-d H:i:s.u') : null) : null;
+        $order_refunded_by = method_exists($refund, 'get_refunded_by') ? $refund->get_refunded_by() : null;
+        $order_parent_id = method_exists($refund, 'get_parent_id') ? $refund->get_parent_id() : null;
+
+        try {
+            $refunded_payment = method_exists($refund, 'get_refunded_payment') ? $refund->get_refunded_payment() : null;
+
+            if ($refunded_payment === true) {
+                $refunded_payment = true;
+            } elseif ($refunded_payment === false) {
+                $refunded_payment = false;
+            } else {
+                $refunded_payment = null;
+            }
+        } catch (Exception $e) {
+            $refunded_payment = null;
+        }
+
+        $order_refunded[] = array(
+            'order_refund_id' => $order_refund_id ?? null,
+            'order_refund_reason' => $order_refund_reason ?? null,
+            'order_refund_amount' => $order_refund_amount ?? null,
+            'order_refund_date_created' => $order_refund_date_created ?? null,
+            'order_refunded_by' => $order_refunded_by ?? null,
+            'order_parent_id' => $order_parent_id ?? null,
+            'order_refunded_payment' => $refunded_payment ?? null,
+        );
+    }
+} else {
+    echo 'Unable to retrieve refunds.';
+}
+
+echo json_encode($order_refunded);
+
+
 
 
 
