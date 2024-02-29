@@ -85,8 +85,9 @@ function get_orders() {
 
 
         // Add order data to orders_data array
-        $order_data['Shipping'] = $shipping;
+   
         $order_data['Billing'] = $billing;
+        $order_data['Shipping'] = $shipping;
         $orders_data[] = $order_data;
      
     }
