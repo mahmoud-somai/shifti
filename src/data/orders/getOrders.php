@@ -41,6 +41,12 @@ function get_orders() {
         $order_data['payment_method_title'] = method_exists($order, 'get_payment_method_title') ? $order->get_payment_method_title() : null;
         $order_data['transaction_id'] = method_exists($order, 'get_transaction_id') ? $order->get_transaction_id() : null ;
 
+        $order_data['date_completed'] = method_exists($order, 'get_date_completed') ? ($order->get_date_completed() ? $order->get_date_completed()->format('Y-m-d H:i:s.u') : null) : null;
+        $order_data['date_paid'] = method_exists($order, 'get_date_paid') ? ($order->get_date_paid() ? $order->get_date_paid()->format('Y-m-d H:i:s.u') : null) : null;
+        $order_data['cart_hash'] = method_exists($order, 'get_cart_hash') ? $order->get_cart_hash() : null;
+
+
+
        
         // // Billing details
         // $order_data['billing_first_name'] = $order->get_billing_first_name() ?? null;
