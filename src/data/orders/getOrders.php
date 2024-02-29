@@ -43,8 +43,8 @@ function get_orders() {
 
         $order_data['date_completed'] = method_exists($order, 'get_date_completed') ? ($order->get_date_completed() ? $order->get_date_completed()->format('Y-m-d H:i:s.u') : null) : null;
         $order_data['date_paid'] = method_exists($order, 'get_date_paid') ? ($order->get_date_paid() ? $order->get_date_paid()->format('Y-m-d H:i:s.u') : null) : null;
-        $order_data['cart_hash'] = method_exists($order, 'get_cart_hash') ? $order->get_cart_hash() : null;
-
+        $cart_hash = method_exists($order, 'get_cart_hash') ? $order->get_cart_hash() : null;
+        $order_data['cart_hash'] = !empty($cart_hash) ? $cart_hash : null;
 
 
        
