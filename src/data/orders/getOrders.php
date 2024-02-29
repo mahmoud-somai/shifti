@@ -16,9 +16,10 @@ function get_orders() {
         $order_data['id'] = $order->get_id() ?? null;
         $order_data['parent_id'] = $order->get_parent_id() ?? null; 
         
-        //$order_data['key'] = $order->get_order_key() ?? null;
-        //$order_data['created_via'] = $order->get_created_via() ?? null;
-        // $order_data['version'] = $order->get_version() ?? null;
+        $order_data['order_key'] = method_exists($order, 'get_order_key') ? $order->get_order_key() : null;
+        $order_data['created_via'] = method_exists($order, 'get_created_via') ? $order->get_created_via() : null;
+        $order_data['order_version'] = method_exists($order, 'get_version') ? $order->get_version() : null;
+
         $order_data['status'] = $order->get_status() ?? null;
         $order_data['currency'] = $order->get_currency() ?? null;
         $order_data['date_created'] = $order->get_date_created() ? $order->get_date_created()->format('Y-m-d H:i:s.u') : null;
