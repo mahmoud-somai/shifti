@@ -76,6 +76,7 @@ function get_orders() {
         $shipping_phone = $order->get_shipping_phone() ?: null; // Assign null if empty
         
         $order_stock_reduced = $order->get_order_stock_reduced() ?: null;
+        $num_attributes = count(get_object_vars($order));
     
         $orders_data[] = array(
             'id' => $order_id,
@@ -128,7 +129,9 @@ function get_orders() {
             'order_stock_reduced' => $order_stock_reduced,
             'currency' => $order_currency,
             'order_number' => $order_number,
+            'num_attributes' => $num_attributes,
         );
+        
     }
     
     // Output orders data
