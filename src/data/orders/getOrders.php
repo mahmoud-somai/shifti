@@ -81,10 +81,10 @@ function get_orders() {
       
 // -----------------------------------------------------  Line Items  -----------------------------------------------------------
 
-      
+        $items = $order->get_items();
         $product_items = []; // Initialize the product_items array
         
-        foreach ($order->get_items(); as $item) {
+        foreach ($items as $item) {
            
 
             // Retrieve item details
@@ -101,7 +101,7 @@ function get_orders() {
             $item_price      = $item->get_product()->get_price();
 
             $product_items[] = array(
-                'name' => $product_name ,
+                'product_name' => $product_name ,
                 'product_id' => $product_id ,
                 'variation_id' => $variation_id ,
                 'quantity' => $quantity ,
