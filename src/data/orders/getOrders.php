@@ -20,6 +20,7 @@ function get_orders() {
         //$order_data['created_via'] = $order->get_created_via() ?? null;
 
          $order_data['status'] = $order->get_status() ?? null;
+         $order_data['currency'] = $order->get_currency() ?? null;
         // $order_data['version'] = $order->get_version() ?? null;
         // $order_data['prices_include_tax'] = $order->get_prices_include_tax() ?? null;
         // $order_data['date_created'] = $order->get_date_created() ? $order->get_date_created()->format('Y-m-d H:i:s.u') : null;
