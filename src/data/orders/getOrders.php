@@ -178,6 +178,7 @@ $product_tax_lines = [];
         $tax_items = $order->get_items('tax');
         if (!empty($tax_items)) {
             foreach ($tax_items as $item_id => $item) {
+                $tax_item_id = $item->get_id();
                 $tax_item_name = $item->get_name();
                 $tax_item_rate_code = $item->get_rate_code();
                 $tax_item_rate_label = $item->get_label();
@@ -188,6 +189,7 @@ $product_tax_lines = [];
                 $tax_item_compound = $item->get_compound();
 
                 $product_tax_lines[] = array(
+                    'tax_item_id' => $tax_item_id,
                     'tax_item_name' => $tax_item_name,
                     'tax_item_rate_code' => $tax_item_rate_code,
                     'tax_item_rate_id' => $tax_item_rate_id,
@@ -201,6 +203,7 @@ $product_tax_lines = [];
         } else {
    
             $product_tax_lines = [
+                'tax_item_id' => null,
                 'tax_item_name' => null,
                 'tax_item_rate_code' => null,
                 'tax_item_rate_id' => null,
@@ -215,6 +218,10 @@ $product_tax_lines = [];
         echo 'Unable to retrieve tax items.';
     }
     
+// echo '<br> Tax Lines: <br>';
+//     echo json_encode($product_tax_lines);
+//     echo '<br>';
+
 
 
 //solution 2
