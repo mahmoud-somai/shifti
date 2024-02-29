@@ -107,11 +107,11 @@ function get_orders() {
             $item_price     = $item->get_product()->get_price();
             $item_product_meta_data_array = $item->get_meta_data();
             $item_taxes_array = $item['taxes'];
-
+            $total_taxes = $item_taxes_array['total'];
             echo '<br> Item Taxes: <br>';
             echo json_encode($item_taxes_array);
             echo '<br>';
-            echo sizeof($item_taxes_array);
+            echo sizeof($total_taxes);
             echo '<br>';
 
      
