@@ -136,20 +136,11 @@ function get_orders() {
             'order_stock_reduced' => $order_stock_reduced,
             'currency' => $order_currency,
             'order_number' => $order_number,
-         
-           // 'tax_lines' => $product_tax_lines,
-          //  'refunds' => $order_refunded,
-          //  'coupons' => $coupon_tab,
-            //'meta_data' => $meta_data,
-           // 'line_items' => $line_items,
-            //'tax_lines' => $tax_lines,
-            //'shipping_lines' => $shipping_lines,
-         //   'fee_lines' => $order_fees,
-            //'coupon_lines' => $coupon_lines,
         );
     }
     echo '<br> Orders Data: <br>';
     echo json_encode($orders_data);
     echo '<br>';
 }
+
 ?>
