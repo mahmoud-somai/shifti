@@ -379,12 +379,12 @@ function get_orders() {
          
            // 'tax_lines' => $product_tax_lines,
           //  'refunds' => $order_refunded,
-            'coupons' => $coupon_tab,
+          //  'coupons' => $coupon_tab,
             //'meta_data' => $meta_data,
            // 'line_items' => $line_items,
             //'tax_lines' => $tax_lines,
             //'shipping_lines' => $shipping_lines,
-            'fee_lines' => $order_fees,
+         //   'fee_lines' => $order_fees,
             //'coupon_lines' => $coupon_lines,
         );
     }
