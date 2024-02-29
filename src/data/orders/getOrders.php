@@ -15,6 +15,10 @@ function get_orders() {
    
     $orders_data = [];
     foreach ($orders as $order) {
+        echo '<br> Order: <br>';
+        echo json_encode($order);
+        echo '<br>';
+        
        
 
      
