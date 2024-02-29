@@ -113,45 +113,45 @@ function get_orders() {
 
       // refund properties
 
-    $refunds = $order->get_refunds();
-    $order_refunded = [];
+//     $refunds = $order->get_refunds();
+//     $order_refunded = [];
 
-if (!empty($refunds)) {
-    foreach ($refunds as $refund) {
-        $order_refund_id = $refund->get_id();
-        $order_refund_reason = $refund->get_reason();
-        $order_refund_amount = $refund->get_amount();
-        $order_refund_date_created = $refund->get_date_created() ? $refund->get_date_created()->format('Y-m-d H:i:s.u') : null;
-        $order_refunded_by = $refund->get_refunded_by();
-        $order_parent_id = $refund->get_parent_id();
+// if (!empty($refunds)) {
+//     foreach ($refunds as $refund) {
+//         $order_refund_id = $refund->get_id();
+//         $order_refund_reason = $refund->get_reason();
+//         $order_refund_amount = $refund->get_amount();
+//         $order_refund_date_created = $refund->get_date_created() ? $refund->get_date_created()->format('Y-m-d H:i:s.u') : null;
+//         $order_refunded_by = $refund->get_refunded_by();
+//         $order_parent_id = $refund->get_parent_id();
 
-        $refunded_payment = $refund->get_refunded_payment();
+//         $refunded_payment = $refund->get_refunded_payment();
 
-        // Add refund details to the array
-        $order_refunded[] = [
-            'order_refund_id' => $order_refund_id,
-            'order_refund_reason' => $order_refund_reason,
-            'order_refund_amount' => $order_refund_amount,
-            'order_refund_date_created' => $order_refund_date_created,
-            'order_refunded_by' => $order_refunded_by,
-            'order_parent_id' => $order_parent_id,
-            'order_refunded_payment' => $refunded_payment,
-        ];
-    }
-} else {
-    // Initialize the array with null values if there are no refunds
-    $order_refunded = [
-        [
-            'order_refund_id' => null,
-            'order_refund_reason' => null,
-            'order_refund_amount' => null,
-            'order_refund_date_created' => null,
-            'order_refunded_by' => null,
-            'order_parent_id' => null,
-            'order_refunded_payment' => null,
-        ]
-    ];
-}
+//         // Add refund details to the array
+//         $order_refunded[] = [
+//             'order_refund_id' => $order_refund_id,
+//             'order_refund_reason' => $order_refund_reason,
+//             'order_refund_amount' => $order_refund_amount,
+//             'order_refund_date_created' => $order_refund_date_created,
+//             'order_refunded_by' => $order_refunded_by,
+//             'order_parent_id' => $order_parent_id,
+//             'order_refunded_payment' => $refunded_payment,
+//         ];
+//     }
+// } else {
+//     // Initialize the array with null values if there are no refunds
+//     $order_refunded = [
+//         [
+//             'order_refund_id' => null,
+//             'order_refund_reason' => null,
+//             'order_refund_amount' => null,
+//             'order_refund_date_created' => null,
+//             'order_refunded_by' => null,
+//             'order_parent_id' => null,
+//             'order_refunded_payment' => null,
+//         ]
+//     ];
+// }
 
       
 
