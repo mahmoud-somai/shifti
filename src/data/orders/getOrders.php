@@ -31,6 +31,7 @@ function get_orders() {
         $order_data['total'] = $order->get_total() ?? null;
         $order_data['total_tax'] = $order->get_total_tax() ?? null;
         $order_data['prices_include_tax'] = $order->get_prices_include_tax() ?? null;
+
         try {
             $order_data['customer_id'] = $order->get_customer_id();
         } catch (Exception $e) {
