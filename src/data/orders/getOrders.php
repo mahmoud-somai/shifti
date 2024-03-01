@@ -411,7 +411,7 @@ if (method_exists($order, 'get_refunds')) {
         );
     }
 } else {
-    echo 'Unable to retrieve refunds.';
+    echo '<br>';
 }
 
 
