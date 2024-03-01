@@ -47,9 +47,9 @@ function get_ctg(){
   }
 
 
-//   echo "<br>";
-//   echo json_encode($category);
-//   echo "<br>";
+  echo "<br>";
+  echo json_encode($category);
+  echo "<br>";
   return json_encode($category);
 
 }
