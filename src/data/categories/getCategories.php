@@ -6,6 +6,7 @@ function get_ctg(){
     $prod_categories = get_terms( 'product_cat', array(
         'orderby'    => 'name',
         'order'      => 'ASC',
+        'empty' => 0,
     ));
 
     $categories=[];
