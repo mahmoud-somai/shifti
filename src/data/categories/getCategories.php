@@ -22,7 +22,7 @@ function get_ctg(){
    $all_categories = get_categories( $args );
    foreach ($all_categories as $cat) {
         echo 'name category: <br>';
-        $category_id = $cat['id'];
+        $category_id = $cat->get_id();
         echo json_encode($category_id);
         echo "<br>";    
   }
