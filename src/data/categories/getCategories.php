@@ -3,51 +3,26 @@
 function get_ctg(){
     global $wp_query;
 
+    $prod_categories = get_terms( 'product_cat', array(
+        'orderby'    => 'name',
+        'order'      => 'ASC',
+        'hide_empty' => true
+    ));
 
-    $taxonomy     = 'product_cat';
-    $orderby      = 'name';  
-    $show_count   = 0;      // 1 for yes, 0 for no
-    $pad_counts   = 0;      // 1 for yes, 0 for no
-    $hierarchical = 1;      // 1 for yes, 0 for no  
-    $title        = '';  
-    $empty        = 0;
-  
-    $args = array(
-           'taxonomy'     => $taxonomy,
-           'orderby'      => $orderby,
-           'show_count'   => $show_count,
-           'pad_counts'   => $pad_counts,
-           'hierarchical' => $hierarchical,
-           'title_li'     => $title,
-           'hide_empty'   => $empty
-    );
-   $all_categories = get_categories( $args );
+    foreach( $prod_categories as $prod_cat ) {
+        $cat_thumb_id = get_woocommerce_term_meta( $prod_cat->term_id, 'thumbnail_id', true );
+        $shop_catalog_img = wp_get_attachment_image_src( $cat_thumb_id, 'shop_catalog' );
+        $term_link = get_term_link( $prod_cat, 'product_cat' );
 
-   $category=[];
-   foreach ($all_categories as $cat) {
-    echo "<br>";
-    echo json_encode($cat);
-    echo "<br>";
+        echo "<br>";
+        echo $cat_thumb_id;
+        echo "<br>";
+        echo $shop_catalog_img;
+        echo "<br>";
+        echo $term_link;
+        echo "<br>";
 
-        $categories=[];
-
-        $categories['id']=$cat->term_id;
-        $categories['name']=$cat->name;
-        $categories['slug']=$cat->slug;
-        $categories['parent']=$cat->parent;
-        $categories['description']=$cat->description;
-        $categories['display']=$cat->display;
-        //$categories['image']=$cat->image_thumbnail;
-        $categories['menu_order']=$cat->menu_order;
-        $categories['count']=$cat->count;
-        $category[]=$categories;  
-  }
-
-
-  echo "<br>";
-  echo json_encode($category);
-  echo "<br>";
+    }
 }
-
 
 ?>
