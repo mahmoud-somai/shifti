@@ -33,10 +33,10 @@ function get_ctg(){
         $categories['description']=$cat->description;
         $categories['display']=$cat->display;
         $categories['count']=$cat->count;
-        echo "<br>";    
+        $category[]=$categories;  
   }
 
-  $category[]=$categories;
+
   echo "<br>";
   echo json_encode($category);
   echo "<br>";
