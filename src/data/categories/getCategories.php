@@ -34,9 +34,12 @@ function get_ctg(){
         $categories['parent']=$cat->parent;
         $categories['description']=$cat->description;
         $categories['display']=$cat->display;
-        //$categories['image']=$cat->image_thumbnail;
+        $thumbnail_id = get_term_meta( $cat->term_id, 'thumbnail_id', true );
+        $image = wp_get_attachment_url( $thumbnail_id );
+        $categories['image']=$image;
         $categories['menu_order']=$cat->menu_order;
         $categories['count']=$cat->count;
+        
         $category[]=$categories;  
   }
 
