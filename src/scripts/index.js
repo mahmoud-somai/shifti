@@ -1,10 +1,10 @@
 function myFunction() {
   // Your JavaScript code here
   alert("Hello! This is a JavaScript function.");
-}
+};
 
 function myfct() {
-  // Your JavaScript code here
+
   alert("Hello! it's me .");
 }
 
