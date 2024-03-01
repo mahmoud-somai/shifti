@@ -32,11 +32,7 @@ function get_ctg(){
 
     
 
-        echo "<br>";
-        echo $cat_thumb_id;
-        echo "<br>";
-        echo $image;
-        echo "<br>";
+        $categories[] = $category;
 
 
     }
