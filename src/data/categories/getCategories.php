@@ -32,6 +32,8 @@ function get_ctg(){
         $categories['parent']=$cat->parent;
         $categories['description']=$cat->description;
         $categories['display']=$cat->display;
+
+        $categories['menu_order']=$cat->menu_order;
         $categories['count']=$cat->count;
         $category[]=$categories;  
   }
