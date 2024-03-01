@@ -3,11 +3,6 @@
 function get_ctg(){
     global $wp_query;
 
-    $cat_obj = $wp_query->get_queried_object();
-
-    echo "solution one <br>";
-    echo json_encode($cat_obj);
-    echo "<br>";
 
     $taxonomy     = 'product_cat';
     $orderby      = 'name';  
