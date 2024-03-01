@@ -25,11 +25,14 @@ function get_ctg(){
 
    $category=[];
    foreach ($all_categories as $cat) {
+    echo "<br>";
+    echo json_encode($cat);
+    echo "<br>";
 
         $categories=[];
 
         $categories['id']=$cat->term_id;
-        $categories['name cat']=$cat['name'];
+        $categories['name']=$cat->name;
         $categories['slug']=$cat->slug;
         $categories['parent']=$cat->parent;
         $categories['description']=$cat->description;
