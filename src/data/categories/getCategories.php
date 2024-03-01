@@ -1,6 +1,7 @@
 <?php
 
 function get_ctg(){
+    global $wp_query;
 
     $cat_obj = $wp_query->get_queried_object();
 
