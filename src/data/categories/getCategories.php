@@ -24,9 +24,7 @@ function get_ctg(){
 
    $category=[];
    foreach ($all_categories as $cat) {
-    echo "<br>";
-    echo json_encode($cat);
-    echo "<br>";
+
 
         $categories=[];
 
