@@ -83,54 +83,47 @@ function get_orders() {
       
 // -----------------------------------------------------  Line Items  -----------------------------------------------------------
 
-    $product_items = []; 
-        
-        if (method_exists($order, 'get_items')) {
-            $items = $order->get_items();
-        } else {
-          
-            $items = [];
-        }
+$product_items = []; 
 
-        foreach ($items as $item) {
+if (method_exists($order, 'get_items')) {
+    $items = $order->get_items();
+} else {
+    $items = [];
+}
 
-            $id             = $item->get_id();
-            $product_name   = $item->get_name();
-            $product_id     = $item->get_product_id();
-            $variation_id   = $item->get_variation_id();
-            $quantity       = $item->get_quantity();
-            $tax_class      = $item->get_tax_class();
-            $subtotal       = $item->get_subtotal();
-            $tax_subtotal   = $item->get_subtotal_tax();
-            $total          = $item->get_total();
-            $tax_status     = $item->get_tax_status();
-            $total_tax      = $item->get_total_tax(); 
-            $sku            = $item->get_product()->get_sku();
-            $item_price     = $item->get_product()->get_price();
-            $item_product_meta_data_array = $item->get_meta_data();
-          //  $item_taxes_array = $item['taxes'];
-  
-        
+foreach ($items as $item) {
+    $id             = method_exists($item, 'get_id') ? $item->get_id() : null;
+    $product_name   = method_exists($item, 'get_name') ? $item->get_name() : null;
+    $product_id     = method_exists($item, 'get_product_id') ? $item->get_product_id() : null;
+    $variation_id   = method_exists($item, 'get_variation_id') ? $item->get_variation_id() : null;
+    $quantity       = method_exists($item, 'get_quantity') ? $item->get_quantity() : null;
+    $tax_class      = method_exists($item, 'get_tax_class') ? $item->get_tax_class() : null;
+    $subtotal       = method_exists($item, 'get_subtotal') ? $item->get_subtotal() : null;
+    $tax_subtotal   = method_exists($item, 'get_subtotal_tax') ? $item->get_subtotal_tax() : null;
+    $total          = method_exists($item, 'get_total') ? $item->get_total() : null;
+    $tax_status     = method_exists($item, 'get_tax_status') ? $item->get_tax_status() : null;
+    $total_tax      = method_exists($item, 'get_total_tax') ? $item->get_total_tax() : null;
+  //  $sku            = method_exists($item->get_product(), 'get_sku') ? $item->get_product()->get_sku() : null;
+    //$item_price     = method_exists($item->get_product(), 'get_price') ? $item->get_product()->get_price() : null;
+   // $item_product_meta_data_array = method_exists($item, 'get_meta_data') ? $item->get_meta_data() : null;
 
-     
-            $product_items[] = array(
-                'id' => $id ,
-                'product_name' => $product_name ,
-                'product_id' => $product_id ,
-                'variation_id' => $variation_id ,
-                'quantity' => $quantity ,
-                'tax_class' => $tax_class ,
-                'subtotal' => $subtotal ,
-                'subtotal_tax' => $tax_subtotal ,
-                'total' => $total ,
-                'tax status' => $tax_status ,
-                'total_tax' => $total_tax ,
-                'sku' => $sku, 
-                'price' => $item_price,
-                'meta_data' => $item_product_meta_data_array,
-              //  'taxes' => $item_taxes_array
-            );
-        }
+    $product_items[] = array(
+        'id' => $id,
+        'product_name' => $product_name,
+        'product_id' => $product_id,
+        'variation_id' => $variation_id,
+        'quantity' => $quantity,
+        'tax_class' => $tax_class,
+        'subtotal' => $subtotal,
+        'subtotal_tax' => $tax_subtotal,
+        'total' => $total,
+        'tax status' => $tax_status,
+        'total_tax' => $total_tax,
+        //'sku' => $sku,
+        //'price' => $item_price,
+        //'meta_data' => $item_product_meta_data_array,
+    );
+}
 
 
 //______________________________________________________  taxe Line   ______________________________________________________
