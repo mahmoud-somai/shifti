@@ -21,28 +21,9 @@ function get_ctg(){
     );
    $all_categories = get_categories( $args );
    foreach ($all_categories as $cat) {
-      if($cat->category_parent == 0) {
-          $category_id = $cat->term_id;       
-          echo '<br /><a href="'. get_term_link($cat->slug, 'product_cat') .'">'. $cat->name .'</a>';
-  
-          $args2 = array(
-                  'taxonomy'     => $taxonomy,
-                  'child_of'     => 0,
-                  'parent'       => $category_id,
-                  'orderby'      => $orderby,
-                  'show_count'   => $show_count,
-                  'pad_counts'   => $pad_counts,
-                  'hierarchical' => $hierarchical,
-                  'title_li'     => $title,
-                  'hide_empty'   => $empty
-          );
-          $sub_cats = get_categories( $args2 );
-          if($sub_cats) {
-              foreach($sub_cats as $sub_category) {
-                  echo  $sub_category->name ;
-              }   
-          }
-      }       
+        echo "category ==> <br>";
+        echo $cat;
+        echo "<br>";    
   }
 }
 
