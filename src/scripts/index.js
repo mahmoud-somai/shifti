@@ -3,7 +3,7 @@ function myFunction() {
   alert("Hello! This is a JavaScript function.");
 }
 
-function myFunction2() {
+function myfct() {
   // Your JavaScript code here
   alert("Hello! it's me .");
 }
