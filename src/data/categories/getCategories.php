@@ -20,12 +20,26 @@ function get_ctg(){
            'hide_empty'   => $empty
     );
    $all_categories = get_categories( $args );
+
+   $category=[];
    foreach ($all_categories as $cat) {
-        echo 'name category: <br>';
-        $category_id = $cat->term_id;
-        echo json_encode($category_id);
+
+        $categories=[];
+
+        $categories['id']=$cat->term_id;
+        $categories['name']=$cat->name;
+        $categories['slug']=$cat->slug;
+        $categories['parent']=$cat->parent;
+        $categories['description']=$cat->description;
+        $categories['display']=$cat->display;
+        $categories['count']=$cat->count;
         echo "<br>";    
   }
+
+  $category[]=$categories;
+  echo "<br>";
+  echo json_encode($category);
+  echo "<br>";
 }
 
 
