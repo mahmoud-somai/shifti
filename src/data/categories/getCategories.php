@@ -36,6 +36,9 @@ function get_ctg(){
 
 
     }
+    echo "categories: <br> ";
+    echo json_encode($categories);
+    echo "<br>";
 
 }
 ?>
