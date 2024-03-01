@@ -276,6 +276,7 @@ function get_products() {
         wp_reset_postdata(); // Reset the post data
     }
     echo '<br />';
+    echo "products: <br>";
    echo json_encode($products);
    echo '<br>';
 
