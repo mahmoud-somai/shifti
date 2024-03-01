@@ -1,12 +1,6 @@
 <?php
-
 function get_ctg(){
     global $wp_query;
-
-
-
-
-
 
     $prod_categories = get_terms( 'product_cat', array(
         'orderby'    => 'name',
@@ -19,17 +13,15 @@ function get_ctg(){
         echo json_encode($prod_cat);
         echo "<br>";
 
-        $cat_thumb_id = get_term_meta( $prod_cat->term_id, 'thumbnail_id', true );
-        $image = wp_get_attachment_url( $cat_thumb_id ); 
+        $cat_thumb_ids = get_term_meta( $prod_cat->term_id, 'thumbnail_id' ); // Get all thumbnail IDs
 
-        echo "<br>";
-        echo $cat_thumb_id;
-        echo "<br>";
-        echo $image;
-        echo "<br>";
-
-
+        // Loop through each thumbnail ID
+        foreach ($cat_thumb_ids as $cat_thumb_id) {
+            $image = wp_get_attachment_url( $cat_thumb_id ); // Get image URL
+            echo "<br>";
+            echo "Thumbnail ID: " . $cat_thumb_id . "<br>";
+            echo "Image URL: " . $image . "<br>";
+        }
     }
-
 }
 ?>
