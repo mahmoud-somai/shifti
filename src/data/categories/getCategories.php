@@ -3,42 +3,55 @@
 function get_ctg(){
     global $wp_query;
 
-    $prod_categories = get_terms( 'product_cat', array(
-        'orderby'    => 'name',
-        'order'      => 'ASC',
-        'empty' => 0,
-    ));
+    $taxonomy     = 'product_cat';
+    $orderby      = 'name';  
+    $show_count   = 0;      // 1 for yes, 0 for no
+    $pad_counts   = 0;      // 1 for yes, 0 for no
+    $hierarchical = 1;      // 1 for yes, 0 for no  
+    $title        = '';  
+    $empty        = 0;
+  
+    $args = array(
+           'taxonomy'     => $taxonomy,
+           'orderby'      => $orderby,
+           'show_count'   => $show_count,
+           'pad_counts'   => $pad_counts,
+           'hierarchical' => $hierarchical,
+           'title_li'     => $title,
+           'hide_empty'   => $empty
+    );
+   $all_categories = get_categories( $args );
 
-    $categories=[];
+   $category=[];
+   foreach ($all_categories as $cat) {
+    echo "<br>";
+    echo json_encode($cat);
+    echo "<br>";
 
-    foreach( $prod_categories as $prod_cat ) {
-        $category=[];
-        echo "product category name: <br> ";
-        echo json_encode($prod_cat);
-        echo "<br>";
+        $categories=[];
 
-        $category['id'] = $prod_cat->term_id;
-        $category['name'] = $prod_cat->name;
-        $category['slug'] = $prod_cat->slug;
-        $category['parent'] = $prod_cat->parent;
-        $category['description'] = $prod_cat->description;
-        $category['display'] = $prod_cat->display;
-
-        $category['menu_order']= $prod_cat->menu_order;
-        $category['count'] = $prod_cat->count;
-        $cat_thumb_id = get_term_meta( $prod_cat->term_id, 'thumbnail_id', true );
+        $categories['id']=$cat->term_id;
+        $categories['name']=$cat->name;
+        $categories['slug']=$cat->slug;
+        $categories['parent']=$cat->parent;
+        $categories['description']=$cat->description;
+        $categories['display']=$cat->display;
+        //$categories['image']=$cat->image_thumbnail;
+        $cat_thumb_id = get_term_meta( $cat->term_id, 'thumbnail_id', true );
         $image = wp_get_attachment_url( $cat_thumb_id ); 
         $category['image'] = $image;
+        $categories['menu_order']=$cat->menu_order;
+        $categories['count']=$cat->count;
+        $category[]=$categories;  
+  }
 
-    
 
-        $categories[] = $category;
+  echo "<br>";
+  echo json_encode($category);
+  echo "<br>";
 
 
-    }
-    echo "categories: <br> ";
-    echo json_encode($categories);
-    echo "<br>";
+
 
 }
 ?>
