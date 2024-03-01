@@ -20,6 +20,22 @@ require_once plugin_dir_path(__FILE__) . 'src/data/products/getProducts.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/orders/getOrders.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/categories/getCategories.php';
 
+add_action('wp_ajax_download_category_json', 'download_category_json');
+function download_category_json() {
+    // Generate the JSON data
+    $json_data = get_ctg();
+
+    // Set appropriate headers for download
+    header('Content-Type: application/json');
+    header('Content-Disposition: attachment; filename="categories.json"');
+
+    // Output the JSON data
+    echo $json_data;
+    exit();
+}
+
+
+
 function page_render_callback() {
      header_html();
      get_products();
