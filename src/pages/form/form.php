@@ -13,7 +13,6 @@ function form_html(){
         echo '<div class=" ">';
             echo '<label for="token">plugin token</label>';
             echo '<input type="text" name"plugin-token" id="token">';
-        //    echo '<button class="button-sft" onclick="Hello()">Export Data JSON </button>';
         echo '</div>';
         echo '<button class="button-sft" onclick="myFunction()">Import your shop!</button> ';
 
