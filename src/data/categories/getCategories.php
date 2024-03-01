@@ -24,9 +24,7 @@ function get_ctg(){
 
    $category=[];
    foreach ($all_categories as $cat) {
-    echo "<br>";
-    echo json_encode($cat);
-    echo "<br>";
+
 
         $categories=[];
 
@@ -37,8 +35,8 @@ function get_ctg(){
         $categories['description']=$cat->description;
         $categories['display']=$cat->display;
         //$categories['image']=$cat->image_thumbnail;
-        $cat_thumb_id = get_term_meta( $cat->term_id, 'thumbnail_id', true );
-        $image = wp_get_attachment_url( $cat_thumb_id ); 
+        // $cat_thumb_id = get_term_meta( $cat->term_id, 'thumbnail_id', true );
+        // $image = wp_get_attachment_url( $cat_thumb_id ); 
         $category['image'] = $image;
         $categories['menu_order']=$cat->menu_order;
         $categories['count']=$cat->count;
