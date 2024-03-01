@@ -435,9 +435,9 @@ if (method_exists($order, 'get_refunds')) {
 
 
     
-    echo '<br> Orders Data: <br>';
-    echo json_encode($orders_data);
-    echo '<br>';
+    // echo '<br> Orders Data: <br>';
+    // echo json_encode($orders_data);
+    // echo '<br>';
 }
 
 
