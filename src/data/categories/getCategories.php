@@ -16,7 +16,7 @@ function get_ctg(){
 
     foreach( $prod_categories as $prod_cat ) {
         echo "product category name: <br> ";
-        echo $prod_cat;
+        echo json_encode($prod_cat);
         echo "<br>";
 
         $cat_thumb_id = get_term_meta( $prod_cat->term_id, 'thumbnail_id', true );
