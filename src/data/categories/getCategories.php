@@ -27,6 +27,7 @@ function get_ctg(){
 
 
         $categories=[];
+        $imgs=[];
 
         $categories['id']=$cat->term_id;
         $categories['name']=$cat->name;
@@ -36,10 +37,12 @@ function get_ctg(){
         $categories['display']=$cat->display;
         $thumbnail_id = get_term_meta( $cat->term_id, 'thumbnail_id', true );
         $image = wp_get_attachment_url( $thumbnail_id );
-        $categories['image']=$image;
+        $imgs['id']=$thumbnail_id;
+        $imgs['src']=$image;
         $categories['menu_order']=$cat->menu_order;
         $categories['count']=$cat->count;
         
+        $categories['image']=$imgs;
         $category[]=$categories;  
   }
 
