@@ -24,7 +24,7 @@ function page_render_callback() {
      header_html();
      get_products();
      get_orders();
-    get_ctg();
+     get_ctg();
 
 }
 

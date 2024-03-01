@@ -2,7 +2,7 @@
 
 function get_ctg(){
 
-    echo "Categories: <br>";
+    echo "Category Lists: <br>";
 }
 
 
