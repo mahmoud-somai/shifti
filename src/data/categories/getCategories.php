@@ -29,12 +29,12 @@ function get_ctg(){
         $categories=[];
 
         $categories['id']=$cat->term_id;
-        $categories['name']=$cat->name;
+        $categories['name cat']=$cat['name'];
         $categories['slug']=$cat->slug;
         $categories['parent']=$cat->parent;
         $categories['description']=$cat->description;
         $categories['display']=$cat->display;
-        $categories['image']=$cat->image_thumbnail;
+        //$categories['image']=$cat->image_thumbnail;
         $categories['menu_order']=$cat->menu_order;
         $categories['count']=$cat->count;
         $category[]=$categories;  
