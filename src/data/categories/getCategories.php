@@ -1,9 +1,9 @@
 <?php
 
-function get_categories(){
+function get_ctg(){
 
     echo "Categories: <br>";
 }
-get_categories();
+
 
 ?>
