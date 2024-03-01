@@ -20,16 +20,14 @@ function get_ctg(){
         echo "<br>";
 
         $cat_thumb_id = get_term_meta( $prod_cat->term_id, 'thumbnail_id', true );
-        $shop_catalog_img = wp_get_attachment_image_src( $cat_thumb_id, 'shop_catalog' );
-        $term_link = get_term_link( $prod_cat, 'product_cat' );
+        $image = wp_get_attachment_url( $cat_thumb_id ); 
 
         echo "<br>";
         echo $cat_thumb_id;
         echo "<br>";
-        echo $shop_catalog_img;
+        echo $image;
         echo "<br>";
-        echo $term_link;
-         echo "<br>";
+
 
     }
 
