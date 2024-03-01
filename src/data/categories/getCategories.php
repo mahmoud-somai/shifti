@@ -22,7 +22,7 @@ function get_ctg(){
    $all_categories = get_categories( $args );
    foreach ($all_categories as $cat) {
         echo "category ==> <br>";
-        echo $cat;
+        echo json_encode($cat);
         echo "<br>";    
   }
 }
