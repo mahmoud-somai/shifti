@@ -15,6 +15,7 @@ function form_html(){
             echo '<input type="text" name"plugin-token" id="token">';
         echo '</div>';
         echo '<button class="button-sft" onclick="myFunction()">Import your shop!</button>';
+        echo '<br>';
         echo '<button class="button-sft" onclick="myFunction()">Export Data JSON </button>';
     echo '</div>';
     
