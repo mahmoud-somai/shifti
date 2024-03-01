@@ -6,7 +6,7 @@ function get_ctg(){
     $cat_obj = $wp_query->get_queried_object();
 
     echo "solution one <br>";
-    print_r($cat_obj);
+    echo json_encode($cat_obj);
     echo "<br>";
 
     $taxonomy     = 'product_cat';
