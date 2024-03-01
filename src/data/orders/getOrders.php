@@ -440,5 +440,10 @@ if (method_exists($order, 'get_refunds')) {
     // echo '<br>';
 }
 
+function get_categories(){
+    echo "Categories: <br>";
+    
+}
+
 
 ?>
