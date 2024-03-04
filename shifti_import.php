@@ -16,9 +16,10 @@ if (!defined('WPINC')) {
 }
 
 require_once plugin_dir_path(__FILE__) . 'src/pages/home/home-page.php';
-require_once plugin_dir_path(__FILE__) . 'src/data/products/getProducts.php';
+//require_once plugin_dir_path(__FILE__) . 'src/data/products/getProducts.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/orders/getOrders.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/categories/getCategories.php';
+require_once plugin_dir_path(__FILE__) . 'src/data/customers/getCustomers.php';
 
 add_action('wp_ajax_download_category_json', 'download_category_json');
 function download_category_json() {
@@ -50,13 +51,26 @@ function download_orders_json() {
     exit();
 }
 
+add_action('wp_ajax_download_customers_json', 'download_customers_json');
+function download_customers_json() {
+
+    $json_data = get_customers();
+
+    header('Content-Type: application/json');
+    header('Content-Disposition: attachment; filename="cutomers.json"');
+
+    echo $json_data;
+    exit();
+}
+
 
 
 function page_render_callback() {
      header_html();
-     get_products();
+   //  get_products();
      get_orders();
      get_ctg();
+    get_customers();
 
 }
 
