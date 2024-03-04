@@ -23,11 +23,11 @@ require_once plugin_dir_path(__FILE__) . 'src/data/categories/getCategories.php'
 add_action('wp_ajax_download_category_json', 'download_category_json');
 function download_category_json() {
     
-    //$json_data = get_ctg();
+    $json_data = get_ctg();
 
-    $category = get_ctg();
-    $category = array_slice($category, 0, 10);
-    $json_data = json_encode($category);
+    // $category = get_ctg();
+    // $category = array_slice($category, 0, 10);
+    // $json_data = json_encode($category);
 
   
     header('Content-Type: application/json');
