@@ -7,16 +7,17 @@ function get_customers(){
     $args = array(
         'role' => 'customer',
     );
-    $users = get_users($args);
+    $users = get_users();
     $customers = [];
     foreach ($users as $user) {
+
         $customer = [];
         $customer['id'] = $user->ID;
         $customer['date_created'] = $user->user_registered;
         $customer['email'] = $user->user_email;
         $customer['first_name'] = $user->first_name;
         $customer['last_name'] = $user->last_name;
-        $customer['role'] = $user->roles[0];
+        $customer['role'] = !empty($user->roles) ? $user->roles[0] : null;
         $customer['username'] = $user->user_login;
         $customer['password'] = $user->user_pass;
         $customer['avatar_url'] = get_avatar_url($user->ID);
@@ -40,6 +41,7 @@ function get_customers(){
         // Add customer to the array
         $customers[] = $customer;
     }
+
 
     return json_encode($customers);
 }

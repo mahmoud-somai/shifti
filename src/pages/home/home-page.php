@@ -33,6 +33,11 @@ function header_html(){
         echo '<input type="hidden" name="action" value="download_customers_json">';
         echo '<button type="submit">Download Customers JSON</button>';
         echo '</form>';
+
+        echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
+        echo '<input type="hidden" name="action" value="download_orders_notes_json">';
+        echo '<button type="submit">Download Orders Notes JSON</button>';
+        echo '</form>';
         
     echo '</div>';
     
