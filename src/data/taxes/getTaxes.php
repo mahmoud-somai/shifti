@@ -24,7 +24,7 @@ function get_txs(){
         }
     }
 
-    echo "<h2>get_tax_classes:</h2>";
+    echo "<h2>get taxes test rates:</h2>";
     echo json_encode($tab_rates);
     echo "<br>";
 }
