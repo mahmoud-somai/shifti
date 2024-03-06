@@ -21,7 +21,7 @@ function get_txs(){
     if(!empty($tax_rates)){
         foreach ($tax_rates as $tax_rate) {
             echo "<br>";
-            echo json_encode($tax_rate->tax_rate);
+            echo json_encode($tax_rate->tax_rate_id);
             echo "<br>";
             array_push($tab_rates,$tax_rate);
         }
