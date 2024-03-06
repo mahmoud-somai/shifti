@@ -9,23 +9,25 @@ function get_txs(){
     $tax_rates              = WC_Tax::get_rates();
     $tab_tax=[];
     $tab_rates=[];
+
+
     if ( ! empty( $tax_classes ) ) {
         foreach ( $tax_classes as $class ) {
+            $taxes = WC_Tax::get_rates_for_tax_class( $class );
             array_push($tab_tax,$class);
+            array_push($tab_rates,$taxes);
         }
     }
     echo "<h2>get_tax_classes:</h2>";
     echo json_encode($tab_tax);
     echo "<br>";
 
-    if(!empty($tax_rates)){
-        foreach ($tax_rates as $tax_rate) {
-            echo "<br>";
-            echo $tax_rate->get_rate_id();
-            echo "<br>";
-            array_push($tab_rates,$tax_rate);
-        }
-    }
+    // if(!empty($tax_rates)){
+    //     foreach ($tax_rates as $tax_rate) {
+
+    //         array_push($tab_rates,$tax_rate);
+    //     }
+    // }
 
     echo "<h2>get taxes new tests rates:</h2>";
     echo json_encode($tab_rates);
