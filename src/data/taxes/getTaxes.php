@@ -6,7 +6,7 @@ function get_txs(){
 
     global $wpdb;
     $tax_classes           = WC_Tax::get_tax_classes();
-    $tax_rates              = WC_Tax::get_rates();
+    $tax_rates              = WC_Tax::get_rate_id();
     $tab_tax=[];
     $tab_rates=[];
     if ( ! empty( $tax_classes ) ) {
