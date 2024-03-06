@@ -21,6 +21,7 @@ require_once plugin_dir_path(__FILE__) . 'src/data/orders/getOrders.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/categories/getCategories.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/customers/getCustomers.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/notes/getOrderNotes.php';
+require_once plugin_dir_path(__FILE__) . 'src/data/taxes/getTaxes.php';
 
 add_action('wp_ajax_download_category_json', 'download_category_json');
 function download_category_json() {
@@ -85,6 +86,7 @@ function page_render_callback() {
     get_ctg();
     get_customers();
     get_orders_notes();
+    get_txs();
 
 }
 
