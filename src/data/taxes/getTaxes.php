@@ -6,17 +6,27 @@ function get_txs(){
 
     global $wpdb;
     $tax_classes           = WC_Tax::get_tax_classes();
-    $tax_class_options     = array();
-    $tax_class_options[''] = __( 'Standard', 'woocommerce' );
-
+    $tax_rates              = WC_Tax::get_rates();
+    $tab_tax=[];
+    $tab_rates=[];
     if ( ! empty( $tax_classes ) ) {
         foreach ( $tax_classes as $class ) {
-            $tax_class_options[ sanitize_title( $class ) ] = $class;
+            array_push($tab_tax,$class);
         }
     }
-    echo json_encode($tax_class_options);
+    echo "<h2>get_tax_classes:</h2>";
+    echo json_encode($tab_tax);
+    echo "<br>";
 
+    if(!empty($tax_rates)){
+        foreach ($tax_rates as $tax_rate) {
+            array_push($tab_rates,$tax_rate);
+        }
+    }
 
+    echo "<h2>get_tax_classes:</h2>";
+    echo json_encode($tab_rates);
+    echo "<br>";
 }
 
 // function get_txs(){
