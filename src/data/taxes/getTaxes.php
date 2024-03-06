@@ -14,8 +14,13 @@ function get_txs(){
     if ( ! empty( $tax_classes ) ) {
         foreach ( $tax_classes as $class ) {
             $taxes = WC_Tax::get_rates_for_tax_class( $class );
+            $tax_rates_ids = array_column($taxes, 'tax_rate_id');
             array_push($tab_tax,$class);
             array_push($tab_rates,$taxes);
+
+            echo "<h2>get rates ids :</h2>";
+            echo $tax_rates_ids;
+            echo "<br>";
         }
     }
     echo "<h2>get_tax_classes:</h2>";
