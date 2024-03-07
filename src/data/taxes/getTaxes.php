@@ -24,13 +24,18 @@ function get_txs(){
                     foreach ($postcodes as $postcode) {
                         $postcode_array[] = $postcode;
                     }
+                    $cities = is_array($tax->city) ? $tax->city : array($tax->city);
+                    $city_array = array();
+                    foreach ($cities as $city) {
+                        $city_array[] = $city;
+                    }
 
                     $tax_rate_info[] = array(
                         "id" => $tax->tax_rate_id,
                         "country" => $tax->tax_rate_country,
                         "state" => $tax->tax_rate_state,
                         "postcode" => $postcode_array,
-                        // "city" => $tax->tax_rate_city,
+                        "city" => $city_array,
                         "rate" => $tax->tax_rate,
                         "name" => $tax->tax_rate_name,
                         "priority" => $tax->tax_rate_priority,
