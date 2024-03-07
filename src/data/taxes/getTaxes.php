@@ -9,20 +9,20 @@ function get_txs(){
     $tab_rates=[];
 
     if ( ! empty( $tax_classes ) ) {
-        // Check if there is at least a second tax class
-        if (count($tax_classes) > 1) {
-            // Get the second tax class
-            $second_tax_class = $tax_classes[1];
+        // Check if there is at least a third tax class
+        if (count($tax_classes) > 2) {
+            // Get the third tax class
+            $third_tax_class = $tax_classes[2];
             
-            // Get tax rates for the second tax class
-            $taxes = WC_Tax::get_rates_for_tax_class( $second_tax_class );
+            // Get tax rates for the third tax class
+            $taxes = WC_Tax::get_rates_for_tax_class( $third_tax_class );
             
             // Store the tax class and rates
-            $tab_tax[] = $second_tax_class;
+            $tab_tax[] = $third_tax_class;
             $tab_rates[] = $taxes;
         } else {
-            // If there is no second tax class, return a message
-            echo "There is no second tax class.";
+            // If there is no third tax class, return a message
+            echo "There is no third tax class.";
             return;
         }
     }
@@ -32,7 +32,7 @@ function get_txs(){
     echo json_encode($tab_tax);
     echo "<br>";
 
-    echo "<h2>get taxes new tests rates for second tax class:</h2>";
+    echo "<h2>get taxes new tests rates for third tax class:</h2>";
     echo json_encode($tab_rates);
     echo "<br>";
 }
