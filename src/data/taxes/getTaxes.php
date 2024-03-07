@@ -22,14 +22,16 @@ function get_txs(){
                     $tax_rate_ids[] = $tax->tax_rate_id;
                 }
                 // Output tax rate IDs for the current tax class
-                echo "<h3>Tax Rate IDs for $class</h3>";
-                echo json_encode($tax_rate_ids);
-                echo "<br>";
+                // echo "<h3>Tax Rate IDs for $class</h3>";
+                // echo json_encode($tax_rate_ids);
+                // echo "<br>";
      
         }
     } else {
         echo "No tax classes found.";
     }
+    echo json_encode($tax_rate_ids);
+    echo "<br>";
 }
 
 ?>
