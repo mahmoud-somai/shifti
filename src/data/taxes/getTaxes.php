@@ -24,7 +24,7 @@ function get_txs(){
             } else {
                 echo "No tax rates found for class: $class";
             }
-            $all_tax_rate_ids[$class] = $tax_rate_ids;
+            $all_tax_rate_ids[$"id"] = $tax_rate_ids;
         }
     } else {
         echo "No tax classes found.";
