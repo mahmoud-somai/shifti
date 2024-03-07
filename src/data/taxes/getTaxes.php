@@ -27,17 +27,17 @@ function get_txs(){
                 continue; // Skip to the next tax class
             }
 
-echo "<h2>Tax Rates</h2>";
-echo json_encode($tax_rate_ids);
-echo "<br>";
-  
+
 
 
         }
     } else {
         echo "No tax classes found.";
     }
-
+    echo "<h2>Tax Rates</h2>";
+    echo json_encode($tax_rate_ids);
+    echo "<br>";
+      
 
 }
 
