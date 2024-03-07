@@ -18,13 +18,19 @@ function get_txs(){
 
             if (!empty($taxes)) {
                 foreach ($taxes as $tax) {
-                    // Extract tax rate ID and country
+                    // Extract tax rate ID, country, and postcodes
+                    $postcodes = is_array($tax->postcode) ? $tax->postcode : array($tax->postcode);
+                    $postcode_array = array();
+                    foreach ($postcodes as $postcode) {
+                        $postcode_array[] = $postcode;
+                    }
+
                     $tax_rate_info[] = array(
                         "id" => $tax->tax_rate_id,
                         "country" => $tax->tax_rate_country,
                         "state" => $tax->tax_rate_state,
-                        "postcode" => is_array($tax->tax_postcode) ? $tax->tax_postcode : array($tax->tax_postcode),
-                       // "city" => $tax->tax_rate_city,
+                        "postcode" => $postcode_array,
+                        // "city" => $tax->tax_rate_city,
                         "rate" => $tax->tax_rate,
                         "name" => $tax->tax_rate_name,
                         "priority" => $tax->tax_rate_priority,
