@@ -19,13 +19,13 @@ function get_txs(){
             if (!empty($taxes)) {
                 foreach ($taxes as $tax) {
                     // Extract tax rate ID
-                    $tax_rate_ids[] = $tax->tax_rate_id;
+                    $tax_rate_ids["id"] = $tax->tax_rate_id;
                 }
             } else {
                 echo "No tax rates found for class: $class";
             }
 
-            $all_tax_rate_ids["id"] = $tax_rate_ids;
+            $all_tax_rate_ids[] = $tax_rate_ids;
         }
     } else {
         echo "No tax classes found.";
