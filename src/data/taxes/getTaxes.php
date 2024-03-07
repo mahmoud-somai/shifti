@@ -9,27 +9,36 @@ function get_txs(){
     if (!empty($tax_classes)) {
         foreach ($tax_classes as $class) {
             $taxes = WC_Tax::get_rates_for_tax_class($class);
+            // Decode JSON string into an associative array
             $tax_rate_ids = array();
+
 
             echo "<h2>Tax Class: $class</h2>";
             echo json_encode($taxes);
             echo "<br>";
 
-            if (!empty($taxes)) {
-                foreach ($taxes as $tax_id => $tax) {
-                    $tax_rate_ids[] = $tax['tax_rate_id'];
+            if (is_object($taxes) && !empty((array)$taxes)) {
+                foreach ($taxes as $tax) {
+                    // Extract tax rate ID
+                    $tax_rate_ids[] = $tax->tax_rate_id;
                 }
-                echo "<h2>Tax Rates</h2>";
-                echo json_encode($tax_rate_ids);
-                echo "<br>";
             } else {
                 echo "No tax rates found for class: $class";
                 continue; // Skip to the next tax class
             }
+
+echo "<h2>Tax Rates</h2>";
+echo json_encode($tax_rate_ids);
+echo "<br>";
+  
+
+
         }
     } else {
         echo "No tax classes found.";
     }
+
+
 }
 
 ?>
