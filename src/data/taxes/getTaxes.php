@@ -20,6 +20,8 @@ function get_txs(){
                 foreach ($taxes as $tax) {
                     // Extract tax rate ID
                     array_push($tax_rate_ids, $tax->tax_rate_id);
+                    echo "<h3>Tax Rate ID: $tax->tax_rate_id</h3>";
+                    echo "<br>";
                 }
                 // Output tax rate IDs for the current tax class
                 // echo "<h3>Tax Rate IDs for $class</h3>";
