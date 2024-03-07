@@ -49,7 +49,6 @@ function get_txs(){
                 // If no tax rates found for class, add custom attribute
                 $tax_rate_info[] = array(
                     "class" => $class,
-                    "message" => "No tax rates found for this class"
                 );
             }
 
