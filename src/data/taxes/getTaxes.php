@@ -8,10 +8,9 @@ function get_txs(){
 
     if (!empty($tax_classes)) {
         foreach ($tax_classes as $class) {
-            $taxes_json = WC_Tax::get_rates_for_tax_class($class);
+            $taxes = WC_Tax::get_rates_for_tax_class($class);
             // Decode JSON string into an associative array
-            $taxes = json_decode($taxes_json, true);
-            $tax_rate_ids = array();
+            $tax_rate_ids = [];
 
 
             // Output the tax class and rates
@@ -20,10 +19,11 @@ function get_txs(){
             // echo "<br>";
 
   
-            foreach ($taxes as $key => $tax) {
-                // Ensure that the tax is an array (not an associative array)
-                if (is_array($tax)) {
-                    $tax_rate_ids[] = $tax['tax_rate_id'];
+            foreach ($taxes as $tax) {
+                // Ensure that the tax is an object
+                if (is_object($tax)) {
+                    // Access the tax_rate_id property directly
+                    $tax_rate_ids[] = $tax->tax_rate_id;
                 }
             }
 
