@@ -20,10 +20,12 @@ function get_txs(){
                 foreach ($taxes as $tax) {
                     // Extract tax rate ID
                     $tax_rate_ids[] = array("id" => $tax->tax_rate_id);
+                    $all_tax_rate_ids["id"] = $tax->tax_rate_id;
+
                 }
             } 
 
-            $all_tax_rate_ids[] = $tax_rate_ids;
+            // $all_tax_rate_ids[] = $tax_rate_ids;
         }
     } 
     echo "<h2>All Tax Rate IDs</h2>";
