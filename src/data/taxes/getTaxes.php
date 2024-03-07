@@ -19,7 +19,7 @@ function get_txs(){
             if (!empty($taxes)) {
                 foreach ($taxes as $tax) {
                     // Extract tax rate ID
-                    $tax_rate_ids[] = $tax->tax_rate_id;
+                    $tax_rate_ids[] = array("id" => $tax->tax_rate_id);
                 }
             } else {
                 echo "No tax rates found for class: $class";
@@ -34,8 +34,7 @@ function get_txs(){
     // Flatten the array to get only the tax rate IDs
     $flat_tax_rate_ids = array_reduce($all_tax_rate_ids, 'array_merge', []);
     
-    // Output all tax rate IDs without tax class and without the empty arrays
-    echo "<h3>All Tax Rate IDs</h3>";
+    // Output all tax rate IDs in the desired format
     echo json_encode($flat_tax_rate_ids);
     echo "<br>";
 }
