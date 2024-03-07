@@ -24,13 +24,6 @@ function get_txs(){
             } else {
                 echo "No tax rates found for class: $class";
             }
-
-            // Output tax rate IDs for the current tax class
-            echo "<h3>Tax Rate IDs for $class</h3>";
-            echo json_encode($tax_rate_ids);
-            echo "<br>";
-
-            // Add tax rate IDs for the current tax class to the array of all tax rate IDs
             $all_tax_rate_ids[$class] = $tax_rate_ids;
         }
     } else {
