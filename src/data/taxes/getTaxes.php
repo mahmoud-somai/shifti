@@ -12,7 +12,6 @@ function get_txs(){
             // Decode JSON string into an associative array
             $tax_rate_ids = array();
 
-
             echo "<h2>Tax Class: $class</h2>";
             echo json_encode($taxes);
             echo "<br>";
@@ -22,23 +21,17 @@ function get_txs(){
                     // Extract tax rate ID
                     $tax_rate_ids[] = $tax->tax_rate_id;
                 }
+                // Output tax rate IDs for the current tax class
+                echo "<h3>Tax Rate IDs for $class</h3>";
+                echo json_encode($tax_rate_ids);
+                echo "<br>";
             } else {
                 echo "No tax rates found for class: $class";
-                continue; // Skip to the next tax class
             }
-
-
-
-
         }
     } else {
         echo "No tax classes found.";
     }
-    echo "<h2>Tax Rates</h2>";
-    echo json_encode($tax_rate_ids);
-    echo "<br>";
-      
-
 }
 
 ?>
