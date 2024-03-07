@@ -13,21 +13,12 @@ function get_txs(){
             $tax_rate_ids = array();
 
 
-            // Output the tax class and rates
-            // echo "<h2>Tax Class: $class</h2>";
-            // echo json_encode($taxes);
-            // echo "<br>";
+            echo "<h2>Tax Class: $class</h2>";
+            echo json_encode($taxes);
+            echo "<br>";
 
   
-            if (is_array($taxes) && !empty($taxes)) {
-                foreach ($taxes as $tax_id => $tax) {
-                    // Extract tax rate ID
-                    $tax_rate_ids[] = $tax['tax_rate_id'];
-                }
-            } else {
-                echo "No tax rates found for class: $class";
-                continue; // Skip to the next tax class
-            }
+
 
         }
     } else {
