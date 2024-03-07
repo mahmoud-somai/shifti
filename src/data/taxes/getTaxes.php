@@ -25,7 +25,8 @@ function get_txs(){
                 echo "<h3>Tax Rate IDs for $class</h3>";
                 echo json_encode($tax_rate_ids);
                 echo "<br>";
-            
+     
+        }
     } else {
         echo "No tax classes found.";
     }
