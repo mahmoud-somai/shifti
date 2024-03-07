@@ -16,7 +16,7 @@ function get_txs(){
             echo json_encode($taxes);
             echo "<br>";
 
-            if (is_object($taxes) && !empty((array)$taxes)) {
+            
                 foreach ($taxes as $tax) {
                     // Extract tax rate ID
                     $tax_rate_ids[] = $tax->tax_rate_id;
@@ -25,10 +25,7 @@ function get_txs(){
                 echo "<h3>Tax Rate IDs for $class</h3>";
                 echo json_encode($tax_rate_ids);
                 echo "<br>";
-            } else {
-                echo "No tax rates found for class: $class";
-            }
-        }
+            
     } else {
         echo "No tax classes found.";
     }
