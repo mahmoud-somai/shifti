@@ -17,7 +17,7 @@ function get_txs(){
             echo "<br>";
             $tax_rate_ids=[];
             foreach ($taxes as $tax) {
-                $tax_rate_ids[] = $tax['tax_rate_id'];
+                $tax_rate_ids[] = json_decode($tax['tax_rate_id'],true);
             }
 
         }
