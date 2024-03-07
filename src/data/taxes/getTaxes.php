@@ -15,10 +15,19 @@ function get_txs(){
             echo "<h2>Tax Class: $class</h2>";
             echo json_encode($taxes);
             echo "<br>";
+            $tax_rate_ids=[];
+            foreach ($taxes as $tax) {
+                $tax_rate_ids[] = $tax->get_rate_id();
+            }
+
         }
     } else {
         echo "No tax classes found.";
     }
+
+    echo "<h2>Tax Rates</h2>";
+    echo json_encode($tax_rate_ids);
+    echo "<br>";
 }
 
 ?>
