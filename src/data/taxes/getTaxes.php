@@ -34,8 +34,8 @@ function get_txs(){
                         "id" => $tax->tax_rate_id,
                         "country" => $tax->tax_rate_country,
                         "state" => $tax->tax_rate_state,
-                        "postcode" => $postcode_array,
-                        "city" => $city_array,
+                        "postcodes" => $postcode_array,
+                        "cities" => $city_array,
                         "rate" => $tax->tax_rate,
                         "name" => $tax->tax_rate_name,
                         "priority" => $tax->tax_rate_priority,
@@ -46,7 +46,11 @@ function get_txs(){
                     );
                 }
             } else {
-                echo "No tax rates found for class: $class";
+                // If no tax rates found for class, add custom attribute
+                $tax_rate_info[] = array(
+                    "class" => $class,
+                    "message" => "No tax rates found for this class"
+                );
             }
 
             // Add tax rate info for the current tax class to the $all_tax_rate_ids array
