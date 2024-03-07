@@ -21,7 +21,17 @@ function get_txs(){
                     // Extract tax rate ID and country
                     $tax_rate_info[] = array(
                         "id" => $tax->tax_rate_id,
-                        "country" => $tax->tax_rate_country
+                        "country" => $tax->tax_rate_country,
+                        "state" => $tax->tax_rate_state,
+                       // "postcode" => $tax->tax_rate_postcode,
+                        //"city" => $tax->tax_rate_city,
+                        "rate" => $tax->tax_rate,
+                        "name" => $tax->tax_rate_name,
+                        "priority" => $tax->tax_rate_priority,
+                        "compound" => $tax->tax_rate_compound,
+                        "shipping" => $tax->tax_rate_shipping,
+                        "order" => $tax->tax_rate_order,
+                        "class" => $tax->tax_rate_class
                     );
                 }
             } else {
