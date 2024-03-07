@@ -17,10 +17,10 @@ function get_txs(){
             echo json_encode($taxes);
             echo "<br>";
 
-            if (is_array($taxes) && !empty($taxes)) {
+            if (is_object($taxes) && !empty((array)$taxes)) {
                 foreach ($taxes as $tax) {
                     // Extract tax rate ID
-                    $tax_rate_ids[] = $tax['tax_rate_id'];
+                    $tax_rate_ids[] = $tax->tax_rate_id;
                 }
             } else {
                 echo "No tax rates found for class: $class";
