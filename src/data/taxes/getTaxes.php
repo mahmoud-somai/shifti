@@ -12,7 +12,7 @@ function get_txs(){
             $taxes = WC_Tax::get_rates_for_tax_class($class);
             $tax_rate_info = array(); // Array to store tax rate info for current tax class
 
-            echo "<h2>Tax Class: $class</h2>";
+            echo "<h2>Tax Class: $class</h2>"
             echo json_encode($taxes);
             echo "<br>";
 
