@@ -23,7 +23,7 @@ function get_txs(){
                         "id" => $tax->tax_rate_id,
                         "country" => $tax->tax_rate_country,
                         "state" => $tax->tax_rate_state,
-                        "postcode" => $tax->tax_rate_postcode,
+                        "postcode" => is_array($tax->tax_rate_postcode) ? $tax->tax_rate_postcode : array($tax->tax_rate_postcode),
                         "city" => $tax->tax_rate_city,
                         "rate" => $tax->tax_rate,
                         "name" => $tax->tax_rate_name,
