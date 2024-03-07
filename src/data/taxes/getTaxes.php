@@ -19,7 +19,7 @@ function get_txs(){
             
                 foreach ($taxes as $tax) {
                     // Extract tax rate ID
-                    $tax_rate_ids[] = $tax->tax_rate_id;
+                    array_push($tax_rate_ids, $tax->tax_rate_id);
                 }
                 // Output tax rate IDs for the current tax class
                 // echo "<h3>Tax Rate IDs for $class</h3>";
@@ -30,8 +30,9 @@ function get_txs(){
     } else {
         echo "No tax classes found.";
     }
-    echo json_encode($tax_rate_ids);
-    echo "<br>";
+                echo "<h3>Tax Rate IDs </h3>";
+                echo json_encode($tax_rate_ids);
+                echo "<br>";
 }
 
 ?>
