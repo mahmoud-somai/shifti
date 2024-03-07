@@ -8,17 +8,18 @@ function get_txs(){
 
     if (!empty($tax_classes)) {
         foreach ($tax_classes as $class) {
-            // Get tax rates for the current tax class
-             $taxes_json = WC_Tax::get_rates_for_tax_class($class);
-             $taxes = json_decode($taxes_json, true);
+            $taxes_json = WC_Tax::get_rates_for_tax_class($class);
+            // Decode JSON string into an associative array
+            $taxes = json_decode($taxes_json, true);
+            $tax_rate_ids = array();
+
 
             // Output the tax class and rates
-            echo "<h2>Tax Class: $class</h2>";
-            echo json_encode($taxes);
-            echo "<br>";
+            // echo "<h2>Tax Class: $class</h2>";
+            // echo json_encode($taxes);
+            // echo "<br>";
 
-     
-            $tax_rate_ids=[];
+  
             foreach ($taxes as $key => $tax) {
                 // Ensure that the tax is an array (not an associative array)
                 if (is_array($tax)) {
