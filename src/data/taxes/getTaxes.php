@@ -17,6 +17,19 @@ function get_txs(){
             echo json_encode($taxes);
             echo "<br>";
 
+            if (is_array($taxes) && !empty($taxes)) {
+                foreach ($taxes as $tax) {
+                    // Extract tax rate ID
+                    $tax_rate_ids[] = $tax['tax_rate_id'];
+                }
+            } else {
+                echo "No tax rates found for class: $class";
+                continue; // Skip to the next tax class
+            }
+
+echo "<h2>Tax Rates</h2>";
+echo json_encode($tax_rate_ids);
+echo "<br>";
   
 
 
@@ -25,9 +38,7 @@ function get_txs(){
         echo "No tax classes found.";
     }
 
-    echo "<h2>Tax Rates</h2>";
-    echo json_encode($tax_rate_ids);
-    echo "<br>";
+
 }
 
 ?>
