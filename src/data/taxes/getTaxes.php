@@ -21,21 +21,13 @@ function get_txs(){
                     // Extract tax rate ID
                     $tax_rate_ids[] = array("id" => $tax->tax_rate_id);
                 }
-            } else {
-                echo "No tax rates found for class: $class";
-            }
+            } 
 
             $all_tax_rate_ids[] = $tax_rate_ids;
         }
-    } else {
-        echo "No tax classes found.";
-    }
-
-    // Flatten the array to get only the tax rate IDs
-    $flat_tax_rate_ids = array_reduce($all_tax_rate_ids, 'array_merge', []);
-    
-    // Output all tax rate IDs in the desired format
-    echo json_encode($flat_tax_rate_ids);
+    } 
+    echo "<h2>All Tax Rate IDs</h2>";
+    echo json_encode($all_tax_rate_ids);
     echo "<br>";
 }
 
