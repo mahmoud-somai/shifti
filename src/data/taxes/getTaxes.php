@@ -10,14 +10,17 @@ function get_txs(){
         foreach ($tax_classes as $class) {
             // Get tax rates for the current tax class
             $taxes = WC_Tax::get_rates_for_tax_class($class);
+            
 
             // Output the tax class and rates
             echo "<h2>Tax Class: $class</h2>";
             echo json_encode($taxes);
             echo "<br>";
+
+            $taxes = json_decode($taxes_json, true);
             $tax_rate_ids=[];
             foreach ($taxes as $tax) {
-                $tax_rate_ids[] = $tax;
+                $tax_rate_ids[] = $tax['tax_rate_id'];
             }
 
         }
