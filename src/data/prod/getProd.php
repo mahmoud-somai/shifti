@@ -12,24 +12,15 @@ function get_prod(){
 
     foreach ($products as $product) {
 
-        $tab_prod['id']=$product->get_id();
-        $tab_prod['name']=$product->get_name();
-        $tab_prod['slug']=$product->get_slug();
-        $tab_prod['permalink']=$product->get_permalink();
+        $temp_prod=array();
 
+        $temp_prod['id']=$product->get_id();
+        $temp_prod['name']=$product->get_name();
+        $temp_prod['slug']=$product->get_slug();
+        $temp_prod['permalink']=$product->get_permalink();
 
+        $tab_prod[] = $temp_prod;
 
-        // echo  $product->get_status();  // Product status
-        // echo  $product->get_type();  // Product type
-        // echo  $product->get_id();    // Product ID
-        // echo  $product->get_title(); // Product title
-        // echo  $product->get_slug(); // Product slug
-        // echo  $product->get_price(); // Product price
-        // echo  $product->get_catalog_visibility(); // Product visibility
-        // echo  $product->get_stock_status(); // Product stock status
-        // // product date information
-        // echo $product->get_date_created()->date('Y-m-d H:i:s');
-        // echo $product->get_date_modified()->date('Y-m-d H:i:s');
     }
 
     echo json_encode($tab_prod);
