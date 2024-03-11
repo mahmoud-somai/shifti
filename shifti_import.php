@@ -23,6 +23,7 @@ require_once plugin_dir_path(__FILE__) . 'src/data/customers/getCustomers.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/notes/getOrderNotes.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/taxes/getTaxes.php';
 
+
 add_action('wp_ajax_download_category_json', 'download_category_json');
 function download_category_json() {
     
@@ -72,6 +73,18 @@ function download_orders_notes_json() {
 
     header('Content-Type: application/json');
     header('Content-Disposition: attachment; filename="orders_notes.json"');
+
+    echo $json_data;
+    exit();
+}
+
+add_action('wp_ajax_download_taxes_json', 'download_taxes_json');
+function download_taxes_json() {
+
+    $json_data = get_txs();
+
+    header('Content-Type: application/json');
+    header('Content-Disposition: attachment; filename="taxes.json"');
 
     echo $json_data;
     exit();

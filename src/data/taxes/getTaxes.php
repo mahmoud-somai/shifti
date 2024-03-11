@@ -12,9 +12,9 @@ function get_txs(){
             $taxes = WC_Tax::get_rates_for_tax_class($class);
             $tax_rate_info = array(); // Array to store tax rate info for current tax class
 
-            echo "<h2>Tax Class: $class</h2>";
-            echo json_encode($taxes);
-            echo "<br>";
+            // echo "<h2>Tax Class: $class</h2>";
+            // echo json_encode($taxes);
+            // echo "<br>";
 
             if (!empty($taxes)) {
                 foreach ($taxes as $tax) {
@@ -58,9 +58,9 @@ function get_txs(){
     } 
 
     // Output all tax rate IDs with country in the desired format
-    echo "<h2>All Tax Rate IDs with Country</h2>";
-    echo json_encode($all_tax_rate_ids);
-    echo "<br>";
+    // echo "<h2>All Tax Rate IDs with Country</h2>";
+    // echo json_encode($all_tax_rate_ids);
+    // echo "<br>";
 }
 
 ?>
