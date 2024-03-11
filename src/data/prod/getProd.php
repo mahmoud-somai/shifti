@@ -5,7 +5,7 @@ function get_prod(){
     global $wpdb;
 
     $args = array(
-        'limit' => -1,
+        'limit' => 1,
         'status'=> array( 'draft', 'pending', 'private', 'publish' ),
     );
 
@@ -28,6 +28,15 @@ function get_prod(){
 
         $temp_prod=array();
 
+
+            $dimensions = $product->get_dimensions();
+                    if ( ! empty( $dimensions ) ) {
+                        echo '<div class="dimensions"><b>Height:</b> ' . $product->get_height() . get_option( 'woocommerce_dimension_unit' );
+                        echo '<br><b>Width:</b> ' . $product->get_width() . get_option( 'woocommerce_dimension_unit' );
+                        echo '<br><b>Length:</b> ' . $product->get_length() . get_option( 'woocommerce_dimension_unit' );
+                         echo '</div>';        
+                    }
+                    
         $temp_prod['id']=$product->get_id();
         $temp_prod['name']=$product->get_name();
         $temp_prod['slug']=$product->get_slug();
@@ -64,7 +73,10 @@ function get_prod(){
         $temp_prod['backorders_allowed']=$product->backorders_allowed();
         $temp_prod['sold_individually']=$product->is_sold_individually();
         $temp_prod['weight']=$product->get_weight();
-        $temp_prod['dimensions']=$product->get_dimensions();
+
+        $temp_prod['dimensions']=$dimensions_tab;
+
+
         $temp_prod['shipping_required']=$product->needs_shipping();
         $temp_prod['shipping_taxable']=$product->is_shipping_taxable();
         $temp_prod['shipping_class']=$product->get_shipping_class();
