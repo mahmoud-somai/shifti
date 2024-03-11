@@ -4,9 +4,9 @@ function get_prod(){
     $products = wc_get_products( array('limit' => -1 ) );
     
 
-    echo "<h2>Products</h2>";
-    echo json_encode($products);
-    echo "<br>";
+    // echo "<h2>Products</h2>";
+    // echo json_encode($products);
+    // echo "<br>";
 
     $tab_prod=[];
 
