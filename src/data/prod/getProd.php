@@ -6,6 +6,7 @@ function get_prod(){
 
     $query = new WC_Product_Query( array(
         'limit' => -1,
+        'status' => 'draft',
     ) );
     $products = $query->get_products();
 
