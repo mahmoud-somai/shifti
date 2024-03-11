@@ -107,7 +107,14 @@ function get_prod(){
         $temp_prod['categories'] = $category_info;
 
 
-        $temp_prod['tags']=$product->get_tag();
+       // $temp_prod['tags']=$product->get_tag_ids();
+
+       $tags = $product->tag_ids;
+        foreach($tags as $tag) {
+            echo get_term($tag)->name;
+            }
+
+
         $temp_prod['images']=$product->get_image_id();
         //$temp_pord['attribute']=$product->get_attributes();
         $temp_prod['default_attributes']=$product->get_default_attributes();
@@ -126,6 +133,6 @@ function get_prod(){
         $tab_prod[] = $temp_prod;
     }
 
-    echo json_encode($tab_prod);
+   // echo json_encode($tab_prod);
 }
 ?>
