@@ -1,6 +1,7 @@
 <?php
 
 function get_prod(){
+    global $wpdb;
     $products = wc_get_products( array('limit' => -1 ) );
     
 
