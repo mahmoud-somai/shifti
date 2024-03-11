@@ -51,7 +51,7 @@ function get_prod(){
             }
 
         $tags = $product->get_tag_ids();
-        $tag_info = array();
+       
         foreach ($tags as $tag_id) {
             $tag = get_term($tag_id, 'product_tag');
             if (!is_wp_error($tag)) {
@@ -60,7 +60,7 @@ function get_prod(){
                     'name' => $tag->name,
                     'slug' => $tag->slug
                 );
-            $tag_info[] = $tag_data;
+            $tags_tab[] = $tag_data;
             }
         }
                     
