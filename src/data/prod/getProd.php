@@ -111,9 +111,9 @@ function get_prod(){
 
         foreach ($downloads as $download) {
             $download_data = array(
-                'id' => $download['id'],
-                'name' => $download['name'],
-                'file' => $download['file']
+                'id' => $download->get_id(),
+                'name' => $download->get_name(),
+                'file' => $download->get_file();
             );
             $download_tab[] = $download_data;
         }
