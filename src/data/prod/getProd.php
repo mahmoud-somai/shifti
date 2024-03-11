@@ -113,7 +113,7 @@ function get_prod(){
             $download_data = array(
                 'id' => $download->get_id(),
                 'name' => $download->get_name(),
-                'file' => $download->get_file();
+               // 'file' => $download->get_file();
             );
             $download_tab[] = $download_data;
         }
