@@ -2,8 +2,13 @@
 
 function get_prod(){
     global $wpdb;
-
-    $products = wc_get_products();
+    $args = [
+        'status' => 'publish',
+      ];
+      
+      $products = wc_get_products($args);
+      
+    
 
     echo "<h2>Products</h2>";
     echo json_encode($products);
