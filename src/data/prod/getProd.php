@@ -29,7 +29,7 @@ function get_prod(){
         $temp_prod=array();
 
         $categories = $product->get_category_ids();
-        $category_info = array();
+
         foreach ($categories as $category_id) {
             $category = get_term($category_id, 'product_cat');
             if (!is_wp_error($category)) {
@@ -38,7 +38,7 @@ function get_prod(){
                     'name_category' => $category->name,
                     'slug_category' => $category->slug
                 );
-                $category_info[] = $category_data;
+                $categories_tab[] = $category_data;
             }
         }
        
@@ -89,6 +89,21 @@ function get_prod(){
                 );
                 $default_attributes_tab[] = $default_attribute_data;
             }
+        }
+
+        $image_ids = $product->get_gallery_image_ids();
+
+        foreach ($image_ids as $image_id) {
+            $image = wp_get_attachment_image_src($image_id, 'full');
+            $image_data = array(
+                'id' => $image_id,
+                'name' => get_post_field('post_title', $image_id),
+                'alt' => get_post_meta($image_id, '_wp_attachment_image_alt', true),
+                'src' => $image[0],
+                'date_created' => get_the_date('Y-m-d H:i:s', $image_id),
+                'date_modified' => get_the_modified_date('Y-m-d H:i:s', $image_id)
+            );
+            $images_tab[] = $image_data;
         }
                     
         $temp_prod['id']=$product->get_id();
@@ -145,7 +160,7 @@ function get_prod(){
         $temp_prod['purchase_note']=$product->get_purchase_note();
 
 
-        $temp_prod['categories'] = $category_info;
+        $temp_prod['categories'] = $categories_tab;
 
 
 
@@ -153,7 +168,7 @@ function get_prod(){
 
  
 
-        $temp_prod['images']=$product->get_image_id();
+        $temp_prod['images']=$images_tab;
 
 
         $temp_prod['attributes']=$attributes_tab;
