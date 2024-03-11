@@ -34,9 +34,9 @@ function get_prod(){
             $category = get_term($category_id, 'product_cat');
             if (!is_wp_error($category)) {
                 $category_data = array(
-                    'id' => $category->term_id,
-                    'name' => $category->name,
-                    'slug' => $category->slug
+                    'id_category' => $category->term_id,
+                    'name_category' => $category->name,
+                    'slug_category' => $category->slug
                 );
                 $category_info[] = $category_data;
             }
@@ -107,7 +107,7 @@ function get_prod(){
         $temp_prod['categories'] = $category_info;
 
 
-        $temp_prod['tags']=$product->get_tag_ids();
+        $temp_prod['tags']=$product->get_the_terms();
         $temp_prod['images']=$product->get_image_id();
         //$temp_pord['attribute']=$product->get_attributes();
         $temp_prod['default_attributes']=$product->get_default_attributes();
