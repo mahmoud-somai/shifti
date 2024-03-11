@@ -70,7 +70,7 @@ function get_prod(){
                 'id' => $attribute->get_id(),
                 'name' => $attribute->get_name(),
                 'position' => $attribute->get_position(),
-                'visible' => $attribute->is_visible(),
+                //'visible' => $attribute->is_visible(),
                 'variation' => $attribute->is_variation(),
                 'options' => $attribute->get_options()
             );
