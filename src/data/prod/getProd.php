@@ -71,8 +71,8 @@ function get_prod(){
                 'name' => $attribute->get_name(),
                 'position' => $attribute->get_position(),
                 //'visible' => $attribute->is_visible(),
-                'variation' => $attribute->is_variation(),
-                'options' => $attribute->get_options()
+               // 'variation' => $attribute->is_variation(),
+               // 'options' => $attribute->get_options()
             );
             $attributes_tab[] = $attribute_data;
         }
