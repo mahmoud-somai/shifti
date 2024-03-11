@@ -109,7 +109,7 @@ function get_prod(){
 
        // $temp_prod['tags']=$product->get_tag_ids();
 
-       $tags = $product->tag_ids;
+       $tags = $product->get_tag_ids();
         foreach($tags as $tag) {
             echo get_term($tag)->name;
             }
