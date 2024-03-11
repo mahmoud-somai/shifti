@@ -107,7 +107,7 @@ function get_prod(){
         $temp_prod['categories'] = $category_info;
 
 
-        $temp_prod['tags']=$product->get_the_terms();
+        $temp_prod['tags']=$product->get_the_terms($product->get_id(), 'product_tag');
         $temp_prod['images']=$product->get_image_id();
         //$temp_pord['attribute']=$product->get_attributes();
         $temp_prod['default_attributes']=$product->get_default_attributes();
