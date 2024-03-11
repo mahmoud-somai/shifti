@@ -24,6 +24,7 @@ function get_prod(){
         $temp_prod['status']=$product->get_status();
         $temp_prod['catalog visibility']=$product->get_catalog_visibility();
        // $temp_prod['description']=$product->get_description();
+       $temp_prod['short_description']=$product->get_short_description();
 
 
 
