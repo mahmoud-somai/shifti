@@ -11,7 +11,7 @@ function get_prod(){
 
     $products = wc_get_products($args);
     
-    echo "<h2>Products</h2>";
+   // echo "<h2>Products</h2>";
 
 
     $tab_prod=[];
@@ -210,7 +210,7 @@ function get_prod(){
         $tab_prod[] = $temp_prod;
     }
 
-    echo json_encode($tab_prod);
-    //return json_encode($tab_prod);
+    //echo json_encode($tab_prod);
+    return json_encode($tab_prod);
 }
 ?>
