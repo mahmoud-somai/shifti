@@ -96,7 +96,7 @@ function download_products_json() {
     $json_data = get_prod();
 
     header('Content-Type: application/json');
-    header('Content-Disposition: attachment; filename="hela.json"');
+    header('Content-Disposition: attachment; filename="products.json"');
 
     echo $json_data;
     exit();

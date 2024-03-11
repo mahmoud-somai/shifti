@@ -128,8 +128,8 @@ function get_prod(){
         $temp_prod['type']=$product->get_type(); 
         $temp_prod['status']=$product->get_status();
         $temp_prod['catalog visibility']=$product->get_catalog_visibility();
-        // $temp_prod['description']=$product->get_description();
-        //$temp_prod['short_description']=$product->get_short_description();
+        $temp_prod['description']=$product->get_description();
+        $temp_prod['short_description']=$product->get_short_description();
         $temp_prod['sku']=$product->get_sku();
         $temp_prod['price']=$product->get_price();
         $temp_prod['regular_price']=$product->get_regular_price();
