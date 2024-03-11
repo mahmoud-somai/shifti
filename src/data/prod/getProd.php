@@ -122,7 +122,7 @@ function get_prod(){
 
 
 
-        $temp_prod['tags'] = $tag_info;
+        $temp_prod['tags'] = $tags_tab;
 
  
 
