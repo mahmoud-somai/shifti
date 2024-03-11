@@ -9,9 +9,17 @@ function get_prod(){
     echo "<br>";
 
     foreach ($products as $product) {
-        echo "<h2>Prod</h2>";
-        echo json_encode($product);
-        echo "<br>";
+        echo  $product->get_status();  // Product status
+        echo  $product->get_type();  // Product type
+        echo  $product->get_id();    // Product ID
+        echo  $product->get_title(); // Product title
+        echo  $product->get_slug(); // Product slug
+        echo  $product->get_price(); // Product price
+        echo  $product->get_catalog_visibility(); // Product visibility
+        echo  $product->get_stock_status(); // Product stock status
+        // product date information
+        echo $product->get_date_created()->date('Y-m-d H:i:s');
+        echo $product->get_date_modified()->date('Y-m-d H:i:s');
     }
 
 }
