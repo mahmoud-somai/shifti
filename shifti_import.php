@@ -90,6 +90,17 @@ function download_taxes_json() {
     echo $json_data;
     exit();
 }
+add_action('wp_ajax_download_products_json', 'download_products_json');
+function download_products_json() {
+
+    $json_data = get_prod();
+
+    header('Content-Type: application/json');
+    header('Content-Disposition: attachment; filename="hela.json"');
+
+    echo $json_data;
+    exit();
+}
 
 
 

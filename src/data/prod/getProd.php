@@ -161,6 +161,7 @@ function get_prod(){
         $tab_prod[] = $temp_prod;
     }
 
-    echo json_encode($tab_prod);
+    //echo json_encode($tab_prod);
+    return json_encode($tab_prod);
 }
 ?>
