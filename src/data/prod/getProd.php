@@ -40,7 +40,12 @@ function get_prod(){
         $temp_prod['on_sale']=$product->is_on_sale();
         $temp_prod['purchasable']=$product->is_purchasable();
         $temp_prod['total_sales']=$product->get_total_sales();
-        
+        $temp_prod['virtual']=$product->is_virtual();
+        $temp_prod['downloadable']=$product->is_downloadable();
+        $temp_prod['downloads']=$product->get_downloads();
+        $temp_prod['download_limit']=$product->get_download_limit();
+        $temp_prod['download_expiry']=$product->get_download_expiry();
+
         
 
 
