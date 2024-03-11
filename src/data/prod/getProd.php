@@ -9,13 +9,12 @@ function get_prod(){
         'sku'               => '',
         'category'          => array(),
         'tag'               => array(),
-        'limit'             => get_option( 'posts_per_page' ),  // -1 for unlimited
+        'limit'             => -1,  // -1 for unlimited
         'offset'            => null,
         'page'              => 1,
         'include'           => array(),
         'exclude'           => array(),
-        'orderby'           => 'date',
-        'order'             => 'DESC',
+      
         'return'            => 'objects',
         'paginate'          => false,
         'shipping_class'    => array(),
