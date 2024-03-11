@@ -127,8 +127,8 @@ function get_prod(){
  
 
         $temp_prod['images']=$product->get_image_id();
-        //$temp_pord['attribute']=$product->get_attributes();
-        $temp_prod['default_attributes']=$product->get_default_attributes();
+        $temp_prod['attribute']=$product->get_attributes();
+        //$temp_prod['default_attributes']=$product->get_default_attributes();
         $temp_prod['variations']=$product->get_children();
         $temp_prod['grouped_products']=$product->get_children();
         $temp_prod['menu_order']=$product->get_menu_order();
