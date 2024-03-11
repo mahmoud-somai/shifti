@@ -13,22 +13,10 @@ function get_prod(){
     
     echo "<h2>Products</h2>";
 
-    // Initialize counters
-    $greater_than_zero_count = 0;
-    $zero_count = 0;
 
     $tab_prod=[];
 
     foreach ($products as $product) {
-        // Get the stock quantity of the product
-        $stock_quantity = $product->get_stock_quantity();
-
-        // Check if the stock quantity is greater than 0
-        if ($stock_quantity > 0) {
-            $greater_than_zero_count++;
-        } elseif ($stock_quantity == 0) {
-            $zero_count++;
-        }
 
         $temp_prod=array();
 
@@ -42,8 +30,15 @@ function get_prod(){
         $temp_prod['status']=$product->get_status();
         $temp_prod['catalog visibility']=$product->get_catalog_visibility();
         // $temp_prod['description']=$product->get_description();
-        $temp_prod['short_description']=$product->get_short_description();
+        //$temp_prod['short_description']=$product->get_short_description();
         $temp_prod['sku']=$product->get_sku();
+        $temp_prod['price']=$product->get_price();
+        $temp_prod['regular_price']=$product->get_regular_price();
+        $temp_prod['sale_price']=$product->get_sale_price();
+        $temp_prod['date_on_sale_from']=$product->get_date_on_sale_from();
+        $temp_prod['date_on_sale_to']=$product->get_date_on_sale_to();
+
+
 
         $tab_prod[] = $temp_prod;
     }
