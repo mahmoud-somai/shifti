@@ -57,7 +57,16 @@ function get_prod(){
         $temp_prod['sold_individually']=$product->is_sold_individually();
         $temp_prod['weight']=$product->get_weight();
         $temp_prod['dimensions']=$product->get_dimensions();
+        $temp_prod['shipping_required']=$product->needs_shipping();
+        $temp_prod['shipping_taxable']=$product->is_shipping_taxable();
+        $temp_prod['shipping_class']=$product->get_shipping_class();
+        $temp_prod['shipping_class_id']=$product->get_shipping_class_id();
+        $temp_prod['reviews_allowed']=$product->get_reviews_allowed();
+        $temp_prod['average_rating']=$product->get_average_rating();
+        $temp_prod['rating_count']=$product->get_rating_count();
+        $temp_prod['related_ids']=$product->get_related();
         
+
 
 
         
