@@ -31,9 +31,9 @@ function get_prod(){
 
             $dimensions = $product->get_dimensions();
                     if ( ! empty( $dimensions ) ) {
-                        echo '<div class="dimensions"><b>Height:</b> ' . $product->get_height() . get_option( 'woocommerce_dimension_unit' );
-                        echo '<br><b>Width:</b> ' . $product->get_width() . get_option( 'woocommerce_dimension_unit' );
-                        echo '<br><b>Length:</b> ' . $product->get_length() . get_option( 'woocommerce_dimension_unit' );
+                        echo '<div class="dimensions"><b>Height:</b> ' . $product->get_height();
+                        echo '<br><b>Width:</b> ' . $product->get_width();
+                        echo '<br><b>Length:</b> ' . $product->get_length();
                          echo '</div>';        
                     }
                     
