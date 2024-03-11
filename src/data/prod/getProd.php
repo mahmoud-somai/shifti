@@ -46,7 +46,7 @@ function get_prod(){
         $temp_prod['download_limit']=$product->get_download_limit();
         $temp_prod['download_expiry']=$product->get_download_expiry();
         //$temp_prod['external_url']=$product->get_external_url();
-        $temp_prod['button_text']=$product->get_button_text();
+        //$temp_prod['button_text']=$product->get_button_text();
         $temp_prod['tax_status']=$product->get_tax_status();
         $temp_prod['tax_class']=$product->get_tax_class();
         $temp_prod['manage_stock']=$product->managing_stock();
