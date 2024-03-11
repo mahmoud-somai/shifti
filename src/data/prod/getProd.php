@@ -2,26 +2,20 @@
 
 function get_prod(){
 
-    $args = array(
-        'status'            => array( 'draft', 'pending', 'private', 'publish' ),
-        'type'              => array_merge( array_keys( wc_get_product_types() ) ),
-        'parent'            => null,
-        'sku'               => '',
-        'category'          => array(),
-        'tag'               => array(),
-        'limit'             => -1,  // -1 for unlimited
-        'offset'            => null,
-        'page'              => 1,
-        'include'           => array(),
-        'exclude'           => array(),
-      
-        'return'            => 'objects',
-        'paginate'          => false,
-        'shipping_class'    => array(),
-    );
+    
     //$products = wc_get_products( array( 'status' => array( 'draft', 'pending', 'private', 'publish' ), 'limit' => -1 ) );
-    $products = wc_get_products( $args );
+    
+    $args = array(
 
+        'limit' => -1,
+    
+    );
+    
+    // Perform Query
+    $query = new WC_Product_Query($args);
+    
+    // Collect Product Object
+    $products = $query->get_products();
     echo "<h2>Products</h2>";
     echo json_encode($products);
     echo "<br>";
