@@ -105,6 +105,19 @@ function get_prod(){
             );
             $images_tab[] = $image_data;
         }
+        
+
+        $downloads = $product->get_downloads();
+
+        foreach ($downloads as $download) {
+            $download_data = array(
+                'id' => $download['id'],
+                'name' => $download['name'],
+                'file' => $download['file']
+            );
+            $download_tab[] = $download_data;
+        }
+
                     
         $temp_prod['id']=$product->get_id();
         $temp_prod['name']=$product->get_name();
@@ -128,7 +141,12 @@ function get_prod(){
         $temp_prod['total_sales']=$product->get_total_sales();
         $temp_prod['virtual']=$product->is_virtual();
         $temp_prod['downloadable']=$product->is_downloadable();
-       // $temp_prod['downloads']=$product->get_downloads();
+
+
+       $temp_prod['downloads']=$download_tab;
+
+
+
         $temp_prod['download_limit']=$product->get_download_limit();
         $temp_prod['download_expiry']=$product->get_download_expiry();
         //$temp_prod['external_url']=$product->get_external_url();
@@ -175,6 +193,8 @@ function get_prod(){
 
 
         $temp_prod['default_attributes']=$default_attributes_tab;
+
+
         $temp_prod['variations']=$product->get_children();
         $temp_prod['grouped_products']=$product->get_children();
         $temp_prod['menu_order']=$product->get_menu_order();
