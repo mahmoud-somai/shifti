@@ -5,7 +5,7 @@ function get_prod(){
     global $wpdb;
 
     $args = array(
-        'limit' => 1,
+        'limit' => -1,
         'status'=> array( 'draft', 'pending', 'private', 'publish' ),
     );
 
