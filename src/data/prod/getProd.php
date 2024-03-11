@@ -5,7 +5,7 @@ function get_prod(){
     global $wpdb;
 
     $args = array(
-        'limit' => -1,
+        'limit' => 1,
         'status'=> array( 'draft', 'pending', 'private', 'publish' ),
     );
 
@@ -65,7 +65,20 @@ function get_prod(){
         $temp_prod['average_rating']=$product->get_average_rating();
         $temp_prod['rating_count']=$product->get_rating_count();
         $temp_prod['related_ids']=$product->get_related();
-        
+        $temp_prod['upsell_ids']=$product->get_upsell_ids();
+        $temp_prod['cross_sell_ids']=$product->get_cross_sell_ids();
+        $temp_prod['parent_id']=$product->get_parent_id();
+        $temp_prod['purchase_note']=$product->get_purchase_note();
+        $temp_prod['categories']=$product->get_category_ids();
+        $temp_prod['tags']=$product->get_tag_ids();
+        $temp_prod['images']=$product->get_image_id();
+        $temp_pord['attributes']=$product->get_attributes();
+        $temp_prod['default_attributes']=$product->get_default_attributes();
+        $temp_prod['variations']=$product->get_children();
+        $temp_prod['grouped_products']=$product->get_children();
+        $temp_prod['menu_order']=$product->get_menu_order();
+
+
 
 
 
