@@ -21,7 +21,7 @@ function get_prod(){
         'shipping_class'    => array(),
     );
     //$products = wc_get_products( array( 'status' => array( 'draft', 'pending', 'private', 'publish' ), 'limit' => -1 ) );
-    $products = wc_get_products( $args )
+    $products = wc_get_products( $args );
 
     echo "<h2>Products</h2>";
     echo json_encode($products);
