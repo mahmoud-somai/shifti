@@ -63,6 +63,19 @@ function get_prod(){
             $tags_tab[] = $tag_data;
             }
         }
+
+        $attributes = $product->get_attributes();
+        foreach ($attributes as $attribute) {
+            $attribute_data = array(
+                'id' => $attribute->get_id(),
+                'name' => $attribute->get_name(),
+                'position' => $attribute->get_position(),
+                'visible' => $attribute->is_visible(),
+                'variation' => $attribute->is_variation(),
+                'options' => $attribute->get_options()
+            );
+            $attributes_tab[] = $attribute_data;
+        }
                     
         $temp_prod['id']=$product->get_id();
         $temp_prod['name']=$product->get_name();
@@ -127,8 +140,12 @@ function get_prod(){
  
 
         $temp_prod['images']=$product->get_image_id();
-        $temp_prod['attribute']=$product->get_attributes();
-        //$temp_prod['default_attributes']=$product->get_default_attributes();
+
+
+        $temp_prod['attributes']=$attributes_tab;
+
+
+        $temp_prod['default_attributes']=$product->get_default_attributes();
         $temp_prod['variations']=$product->get_children();
         $temp_prod['grouped_products']=$product->get_children();
         $temp_prod['menu_order']=$product->get_menu_order();
