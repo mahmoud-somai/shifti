@@ -28,13 +28,27 @@ function get_prod(){
 
         $temp_prod=array();
 
+        $categories = $product->get_category_ids();
+        $category_info = array();
+        foreach ($categories as $category_id) {
+            $category = get_term($category_id, 'product_cat');
+            if (!is_wp_error($category)) {
+                $category_data = array(
+                    'id' => $category->term_id,
+                    'name' => $category->name,
+                    'slug' => $category->slug
+                );
+                $category_info[] = $category_data;
+            }
+        }
+       
 
-            $dimensions = $product->get_dimensions();
-                    if ( ! empty( $dimensions ) ) {
-                        $dimensions_tab['height']= $product->get_height();
-                        $dimensions_tab['width'] =$product->get_width();
-                        $dimensions_tab['length'] =$product->get_width();      
-                    }
+        $dimensions = $product->get_dimensions();
+            if ( ! empty( $dimensions ) ) {
+                $dimensions_tab['height']= $product->get_height();
+                $dimensions_tab['width'] =$product->get_width();
+                $dimensions_tab['length'] =$product->get_width();      
+            }
                     
         $temp_prod['id']=$product->get_id();
         $temp_prod['name']=$product->get_name();
@@ -88,7 +102,11 @@ function get_prod(){
         $temp_prod['cross_sell_ids']=$product->get_cross_sell_ids();
         $temp_prod['parent_id']=$product->get_parent_id();
         $temp_prod['purchase_note']=$product->get_purchase_note();
-        $temp_prod['categories']=$product->get_category_ids();
+
+
+        $ $temp_prod['categories'] = $category_info;
+
+
         $temp_prod['tags']=$product->get_tag_ids();
         $temp_prod['images']=$product->get_image_id();
         //$temp_pord['attribute']=$product->get_attributes();
