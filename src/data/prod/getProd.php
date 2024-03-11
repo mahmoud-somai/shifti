@@ -37,14 +37,13 @@ function get_prod(){
         $temp_prod['sale_price']=$product->get_sale_price();
         $temp_prod['date_on_sale_from']=$product->get_date_on_sale_from();
         $temp_prod['date_on_sale_to']=$product->get_date_on_sale_to();
+        
 
 
 
         $tab_prod[] = $temp_prod;
     }
 
-    echo "Products with stock greater than 0: " . $greater_than_zero_count . "<br>";
-    echo "Products with stock equal to 0: " . $zero_count . "<br>";
     echo json_encode($tab_prod);
 }
 ?>
