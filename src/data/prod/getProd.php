@@ -5,7 +5,7 @@ function get_prod(){
     global $wpdb;
 
     $args = array(
-        'limit' => 1,
+        'limit' => -1,
         'status'=> array( 'draft', 'pending', 'private', 'publish' ),
     );
 
@@ -17,6 +17,14 @@ function get_prod(){
     $tab_prod=[];
 
     foreach ($products as $product) {
+
+        $download_tab=array();
+        $dimensions_tab=array();
+        $categories_tab=array();
+        $tags_tab=array();
+        $images_tab=array();
+        $attributes_tab=array();
+        $default_attributes_tab=array();
 
         $temp_prod=array();
 
@@ -42,7 +50,7 @@ function get_prod(){
         $temp_prod['total_sales']=$product->get_total_sales();
         $temp_prod['virtual']=$product->is_virtual();
         $temp_prod['downloadable']=$product->is_downloadable();
-        $temp_prod['downloads']=$product->get_downloads();
+       // $temp_prod['downloads']=$product->get_downloads();
         $temp_prod['download_limit']=$product->get_download_limit();
         $temp_prod['download_expiry']=$product->get_download_expiry();
         //$temp_prod['external_url']=$product->get_external_url();
@@ -72,7 +80,7 @@ function get_prod(){
         $temp_prod['categories']=$product->get_category_ids();
         $temp_prod['tags']=$product->get_tag_ids();
         $temp_prod['images']=$product->get_image_id();
-        $temp_pord['attribute']=$product->get_attributes();
+        //$temp_pord['attribute']=$product->get_attributes();
         $temp_prod['default_attributes']=$product->get_default_attributes();
         $temp_prod['variations']=$product->get_children();
         $temp_prod['grouped_products']=$product->get_children();
