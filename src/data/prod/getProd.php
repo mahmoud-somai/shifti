@@ -7,18 +7,28 @@ function get_prod(){
     $args = array(
         'limit' => -1,
         'status'=> array( 'draft', 'pending', 'private', 'publish' ),
-
     );
 
     $products = wc_get_products($args);
     
     echo "<h2>Products</h2>";
-    echo json_encode($products);
-    echo "<br>";
+
+    // Initialize counters
+    $greater_than_zero_count = 0;
+    $zero_count = 0;
 
     $tab_prod=[];
 
     foreach ($products as $product) {
+        // Get the stock quantity of the product
+        $stock_quantity = $product->get_stock_quantity();
+
+        // Check if the stock quantity is greater than 0
+        if ($stock_quantity > 0) {
+            $greater_than_zero_count++;
+        } elseif ($stock_quantity == 0) {
+            $zero_count++;
+        }
 
         $temp_prod=array();
 
@@ -31,19 +41,15 @@ function get_prod(){
         $temp_prod['type']=$product->get_type(); 
         $temp_prod['status']=$product->get_status();
         $temp_prod['catalog visibility']=$product->get_catalog_visibility();
-       // $temp_prod['description']=$product->get_description();
+        // $temp_prod['description']=$product->get_description();
         $temp_prod['short_description']=$product->get_short_description();
         $temp_prod['sku']=$product->get_sku();
 
-
-
-
-
         $tab_prod[] = $temp_prod;
-
     }
 
+    echo "Products with stock greater than 0: " . $greater_than_zero_count . "<br>";
+    echo "Products with stock equal to 0: " . $zero_count . "<br>";
     echo json_encode($tab_prod);
-
 }
 ?>
