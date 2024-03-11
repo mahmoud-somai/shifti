@@ -49,6 +49,20 @@ function get_prod(){
                 $dimensions_tab['width'] =$product->get_width();
                 $dimensions_tab['length'] =$product->get_width();      
             }
+
+        $tags = $product->get_tag_ids();
+        $tag_info = array();
+        foreach ($tags as $tag_id) {
+            $tag = get_term($tag_id, 'product_tag');
+            if (!is_wp_error($tag)) {
+                $tag_data = array(
+                    'id' => $tag->term_id,
+                    'name' => $tag->name,
+                    'slug' => $tag->slug
+                );
+            $tag_info[] = $tag_data;
+            }
+        }
                     
         $temp_prod['id']=$product->get_id();
         $temp_prod['name']=$product->get_name();
@@ -107,13 +121,10 @@ function get_prod(){
         $temp_prod['categories'] = $category_info;
 
 
-       // $temp_prod['tags']=$product->get_tag_ids();
 
-       $tags = $product->get_tag_ids();
-        foreach($tags as $tag) {
-            echo get_term($tag)->name;
-            }
+        $temp_prod['tags'] = $tag_info;
 
+ 
 
         $temp_prod['images']=$product->get_image_id();
         //$temp_pord['attribute']=$product->get_attributes();
@@ -133,6 +144,6 @@ function get_prod(){
         $tab_prod[] = $temp_prod;
     }
 
-   // echo json_encode($tab_prod);
+    echo json_encode($tab_prod);
 }
 ?>
