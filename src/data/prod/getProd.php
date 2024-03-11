@@ -1,7 +1,7 @@
 <?php
 
 function get_prod(){
-    $products = wc_get_products( array( 'status' => 'publish', 'limit' => -1 ) );
+    $products = wc_get_products( array('limit' => -1 ) );
     
 
     echo "<h2>Products</h2>";
