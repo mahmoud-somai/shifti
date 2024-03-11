@@ -37,6 +37,10 @@ function get_prod(){
         $temp_prod['sale_price']=$product->get_sale_price();
         $temp_prod['date_on_sale_from']=$product->get_date_on_sale_from();
         $temp_prod['date_on_sale_to']=$product->get_date_on_sale_to();
+        $temp_prod['on_sale']=$product->is_on_sale();
+        $temp_prod['purchasable']=$product->is_purchasable();
+        $temp_prod['total_sales']=$product->get_total_sales();
+        
         
 
 
