@@ -4,13 +4,12 @@ function get_prod(){
 
     global $wpdb;
 
-    $args = array(
+    $query = new WC_Product_Query( array(
         'limit' => -1,
-        'status'=> array( 'draft', 'pending', 'private', 'publish' ),
+    ) );
+    $products = $query->get_products();
 
-    );
-
-    $products = wc_get_products($args);
+   // $products = wc_get_products($args);
     
     echo "<h2>Products</h2>";
     echo json_encode($products);
