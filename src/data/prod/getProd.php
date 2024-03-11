@@ -104,7 +104,7 @@ function get_prod(){
         $temp_prod['purchase_note']=$product->get_purchase_note();
 
 
-        $ $temp_prod['categories'] = $category_info;
+        $temp_prod['categories'] = $category_info;
 
 
         $temp_prod['tags']=$product->get_tag_ids();
