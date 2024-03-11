@@ -76,6 +76,20 @@ function get_prod(){
             );
             $attributes_tab[] = $attribute_data;
         }
+
+        $default_attributes = $product->get_default_attributes();
+
+        foreach ($default_attributes as $name => $option) {
+            $attribute_term = get_term_by('slug', $option, $name);
+            if ($attribute_term) {
+                $default_attribute_data = array(
+                    'id' => $attribute_term->term_id,
+                    'name' => $attribute_term->name,
+                    'option' => $option
+                );
+                $default_attributes_tab[] = $default_attribute_data;
+            }
+        }
                     
         $temp_prod['id']=$product->get_id();
         $temp_prod['name']=$product->get_name();
@@ -145,7 +159,7 @@ function get_prod(){
         $temp_prod['attributes']=$attributes_tab;
 
 
-        //$temp_prod['default_attributes']=$product->get_default_attributes();
+        $temp_prod['default_attributes']=$default_attributes_tab;
         $temp_prod['variations']=$product->get_children();
         $temp_prod['grouped_products']=$product->get_children();
         $temp_prod['menu_order']=$product->get_menu_order();
@@ -161,7 +175,7 @@ function get_prod(){
         $tab_prod[] = $temp_prod;
     }
 
-    //echo json_encode($tab_prod);
-    return json_encode($tab_prod);
+    echo json_encode($tab_prod);
+    //return json_encode($tab_prod);
 }
 ?>
