@@ -53,6 +53,11 @@ function get_prod(){
         $temp_prod['stock_quantity']=$product->get_stock_quantity();
         $temp_prod['stock_status']=$product->get_stock_status();
         $temp_prod['backorders']=$product->get_backorders();
+        $temp_prod['backorders_allowed']=$product->backorders_allowed();
+        $temp_prod['sold_individually']=$product->is_sold_individually();
+        $temp_prod['weight']=$product->get_weight();
+        $temp_prod['dimensions']=$product->get_dimensions();
+        
 
 
         
