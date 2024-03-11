@@ -1,13 +1,7 @@
 <?php
 
 function get_prod(){
-    global $wpdb;
-    $args = [
-        'status' => 'publish',
-      ];
-      
-      $products = wc_get_products($args);
-      
+    $products = wc_get_products( array( 'status' => 'publish', 'limit' => -1 ) );
     
 
     echo "<h2>Products</h2>";
