@@ -5,7 +5,7 @@ function get_prod(){
     global $wpdb;
 
     $args = array(
-        'limit' => -1,
+        'limit' => 1,
         'status'=> array( 'draft', 'pending', 'private', 'publish' ),
     );
 
@@ -31,10 +31,9 @@ function get_prod(){
 
             $dimensions = $product->get_dimensions();
                     if ( ! empty( $dimensions ) ) {
-                        echo '<div class="dimensions"><b>Height:</b> ' . $product->get_height();
-                        echo '<br><b>Width:</b> ' . $product->get_width();
-                        echo '<br><b>Length:</b> ' . $product->get_length();
-                         echo '</div>';        
+                        $dimensions_tab['height']= $product->get_height();
+                        $dimensions_tab['width'] =$product->get_width();
+                        $dimensions_tab['length'] =$product->get_width();      
                     }
                     
         $temp_prod['id']=$product->get_id();
@@ -109,6 +108,6 @@ function get_prod(){
         $tab_prod[] = $temp_prod;
     }
 
-   // echo json_encode($tab_prod);
+    echo json_encode($tab_prod);
 }
 ?>
