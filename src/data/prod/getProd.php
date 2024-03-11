@@ -1,8 +1,27 @@
 <?php
 
 function get_prod(){
-    $products = wc_get_products( array( 'status' => array( 'draft', 'pending', 'private', 'publish' ), 'limit' => -1 ) );
-    
+
+    $args = array(
+        'status'            => array( 'draft', 'pending', 'private', 'publish' ),
+        'type'              => array_merge( array_keys( wc_get_product_types() ) ),
+        'parent'            => null,
+        'sku'               => '',
+        'category'          => array(),
+        'tag'               => array(),
+        'limit'             => get_option( 'posts_per_page' ),  // -1 for unlimited
+        'offset'            => null,
+        'page'              => 1,
+        'include'           => array(),
+        'exclude'           => array(),
+        'orderby'           => 'date',
+        'order'             => 'DESC',
+        'return'            => 'objects',
+        'paginate'          => false,
+        'shipping_class'    => array(),
+    );
+    //$products = wc_get_products( array( 'status' => array( 'draft', 'pending', 'private', 'publish' ), 'limit' => -1 ) );
+    $products = wc_get_products( $args )
 
     echo "<h2>Products</h2>";
     echo json_encode($products);
