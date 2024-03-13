@@ -12,6 +12,7 @@ function header_html(){
  
     echo '<link rel="stylesheet" href="' . plugins_url( 'shifti-import/src/styles/main.css') . '">';
 
+
     echo '<div style="text-align: center; padding: 20px; background-color: #f0f0f0;">';
         echo '<img src="' . plugins_url( 'shifti-import/src/img/logo.png') . '" alt="Logo" style="width: 150px; height: 100px;">';
         echo '<h1 style="font-size: 24px; margin-top: 20px;">Welcome to Shifti WordPress Plugin</h1>';
@@ -55,6 +56,26 @@ function header_html(){
         echo '<button id="send-orders-notes-to-api-button" type="button">Send Orders Notes to API</button>';
         echo '</form>';
 
+            // JavaScript code
+    echo '<script type="text/javascript">';
+    echo 'jQuery(document).ready(function($) {';
+    echo '$("#send-orders-notes-to-api-button").click(function() {';
+    echo '    $.ajax({';
+    echo '        type: "POST",';
+    echo '        url: ajaxurl,';
+    echo '        data: {';
+    echo '            action: "send_orders_notes_to_api"';
+    echo '        },';
+    echo '        success: function(response) {';
+    echo '            alert("Data sent to API successfully!");';
+    echo '        },';
+    echo '        error: function(xhr, status, error) {';
+    echo '            alert("Error sending data to API: " + error);';
+    echo '        }';
+    echo '    });';
+    echo '});';
+    echo '});';
+    echo '</script>';
 
 
     echo '</div>';
