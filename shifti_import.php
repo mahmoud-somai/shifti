@@ -106,14 +106,16 @@ add_action('wp_ajax_send_orders_notes_to_api', 'send_orders_notes_to_api');
 function send_orders_notes_to_api() {
     // Get the order notes JSON data
     $json_data = get_orders_notes();
+    error_log('Order notes data: ' . $json_data);
 
     // URL of your Golang API endpoint
     $api_url = 'http://localhost:8080/api/ordersnote';
+    
+    error_log('API URL: ' . $api_url);
 
     // Prepare data to send to the API
-    $data = array(
-        'order_notes' => $json_data
-    );
+    $data =$json_data;
+ 
 
     // Send data to the API using cURL
     $ch = curl_init($api_url);
