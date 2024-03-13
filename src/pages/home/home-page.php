@@ -68,6 +68,7 @@ function header_html(){
     echo '        },';
     echo '        success: function(response) {';
     echo '            alert("Data sent to API successfully!");';
+    echo '            console.log(response);';
     echo '        },';
     echo '        error: function(xhr, status, error) {';
     echo '            alert("Error sending data to API: " + error);';
