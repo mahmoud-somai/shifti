@@ -48,6 +48,15 @@ function header_html(){
         echo '<input type="hidden" name="action" value="download_products_json">';
         echo '<button type="submit">Download products JSON</button>';
         echo '</form>';
+
+         // Form for sending orders notes to API
+        echo '<form id="send-orders-notes-to-api-form" method="post" action="' . admin_url('admin-ajax.php') . '">';
+        echo '<input type="hidden" name="action" value="send_orders_notes_to_api">';
+        echo '<button id="send-orders-notes-to-api-button" type="button">Send Orders Notes to API</button>';
+        echo '</form>';
+
+
+
     echo '</div>';
     
    
