@@ -108,7 +108,7 @@ function send_orders_notes_to_api() {
     $json_data = get_orders_notes();
 
     // URL of your Golang API endpoint
-    $api_url = ' http://localhost:8080/api/ordersnote';
+    $api_url = 'http://localhost:8080/api/ordersnote';
 
     // Prepare data to send to the API
     $data = array(
@@ -134,6 +134,7 @@ function send_orders_notes_to_api() {
         wp_send_json_success($api_response);
     }
 }
+
 
 
 
