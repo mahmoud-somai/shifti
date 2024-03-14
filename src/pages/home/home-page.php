@@ -50,6 +50,8 @@ function header_html(){
         echo '<button type="submit">Download products JSON</button>';
         echo '</form>';
 
+
+
         echo '<script type="text/javascript">';
         echo 'function sendOrdersNotesToAPI() {';
         echo '    jQuery.ajax({';
@@ -70,7 +72,7 @@ function header_html(){
 
         // Form to trigger sending orders notes to API
         echo '<form>';
-        echo '<button type="button" onclick="sendOrdersNotesToAPI()">Send Orders Notes </button>';
+        echo '<button type="button" onclick="sendOrdersNotesToAPI()">Send Orders Notes to API </button>';
         echo '</form>';
 
 
