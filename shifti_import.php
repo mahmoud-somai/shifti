@@ -111,8 +111,10 @@ function fetch_golang_data() {
     // Log the API call
     error_log('Fetching data from Golang API at: ' . date('Y-m-d H:i:s') . ', API Endpoint: ' . $api_endpoint);
 
-    // Make GET request to Golang API
-    $response = wp_remote_get($api_endpoint);
+    // Make GET request to Golang API with timeout
+    $response = wp_remote_get($api_endpoint, array(
+        'timeout' => 10 // Set timeout to 10 seconds
+    ));
 
     if (!is_wp_error($response) && $response['response']['code'] == 200) {
         // Get the body of the response
