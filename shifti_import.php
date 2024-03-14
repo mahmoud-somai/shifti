@@ -105,8 +105,12 @@ function download_products_json() {
 add_action('wp_ajax_fetch_golang_data', 'fetch_golang_data');
 
 function fetch_golang_data() {
+    // Log the API call
+ 
+
     // Make GET request to Golang API
-    $response = wp_remote_get('http://localhost:8080/api/ordersnote');
+    $response = wp_remote_get('http://localhost:8080/api/data');
+    error_log('Fetching data from Golang API at: ' . date('Y-m-d H:i:s') . ', API Endpoint: ' . $api_endpoint);
 
     if (!is_wp_error($response) && $response['response']['code'] == 200) {
         // Get the body of the response
@@ -115,10 +119,19 @@ function fetch_golang_data() {
         // Send data back to JavaScript
         wp_send_json_success($data);
     } else {
+        // Log the error
+        if (is_wp_error($response)) {
+            $error_message = $response->get_error_message();
+        } else {
+            $error_message = 'Failed to fetch data from Golang API';
+        }
+        error_log('Error: ' . $error_message);
+
         // Send error response
-        wp_send_json_error('Failed to fetch data from Golang API');
+        wp_send_json_error($error_message);
     }
 }
+
 
 
 // add_action('wp_ajax_send_orders_notes_to_api', 'send_orders_notes_to_api');
