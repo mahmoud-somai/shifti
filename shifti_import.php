@@ -104,31 +104,9 @@ function download_products_json() {
 
 
 
-// add_action('wp_ajax_send_orders_notes_to_api', 'send_orders_notes_to_api');
-// function send_orders_notes_to_api() {
-//     $api_url = 'http://localhost:8080/api/ordersnote';
-
-//     $response = wp_remote_post($api_url, array(
-//         'timeout'   => 15,
-//         'body'      => array()
-//     ));
-
-//     if (is_wp_error($response)) {
-//         wp_send_json_error($response->get_error_message());
-//     } else {
-//         $response_code = wp_remote_retrieve_response_code($response);
-//         $response_body = wp_remote_retrieve_body($response);
-//         if ($response_code === 200) {
-//             wp_send_json_success($response_body);
-//         } else {
-//             wp_send_json_error('Error sending orders notes to API. Response code: ' . $response_code);
-//         }
-//     }
-//     exit;
-// }
-
-
-// Define the URL of your API endpoint
+add_action('wp_ajax_send_orders_notes_to_api', 'send_orders_notes_to_api');
+function send_orders_notes_to_api() {
+   // Define the URL of your API endpoint
 $api_url = 'http://localhost:8080/api/ordersnote';
 
 // Prepare the data to be sent in the request body
@@ -169,6 +147,8 @@ if (!is_wp_error($response)) {
     // Handle the error if the request failed
     $error_message = $response->get_error_message();
     echo 'Error: ' . $error_message;
+}
+
 }
 
 
