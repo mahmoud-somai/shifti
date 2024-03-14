@@ -104,27 +104,71 @@ function download_products_json() {
 
 
 
-add_action('wp_ajax_send_orders_notes_to_api', 'send_orders_notes_to_api');
-function send_orders_notes_to_api() {
-    $api_url = 'http://localhost:8080/api/ordersnote';
+// add_action('wp_ajax_send_orders_notes_to_api', 'send_orders_notes_to_api');
+// function send_orders_notes_to_api() {
+//     $api_url = 'http://localhost:8080/api/ordersnote';
 
-    $response = wp_remote_post($api_url, array(
-        'timeout'   => 15,
-        'body'      => array()
-    ));
+//     $response = wp_remote_post($api_url, array(
+//         'timeout'   => 15,
+//         'body'      => array()
+//     ));
 
-    if (is_wp_error($response)) {
-        wp_send_json_error($response->get_error_message());
-    } else {
-        $response_code = wp_remote_retrieve_response_code($response);
-        $response_body = wp_remote_retrieve_body($response);
-        if ($response_code === 200) {
-            wp_send_json_success($response_body);
-        } else {
-            wp_send_json_error('Error sending orders notes to API. Response code: ' . $response_code);
-        }
-    }
-    exit;
+//     if (is_wp_error($response)) {
+//         wp_send_json_error($response->get_error_message());
+//     } else {
+//         $response_code = wp_remote_retrieve_response_code($response);
+//         $response_body = wp_remote_retrieve_body($response);
+//         if ($response_code === 200) {
+//             wp_send_json_success($response_body);
+//         } else {
+//             wp_send_json_error('Error sending orders notes to API. Response code: ' . $response_code);
+//         }
+//     }
+//     exit;
+// }
+
+
+// Define the URL of your API endpoint
+$api_url = 'http://localhost:8080/api/ordersnote';
+
+// Prepare the data to be sent in the request body
+$data = array(
+    array(
+        'id_foreign' => 123,
+        'date' => '2024-03-13T12:00:00Z',
+        'author' => 'John Doe',
+        'content' => 'This is a sample note for an order.'
+    ),
+    array(
+        'id_foreign' => 456,
+        'date' => '2024-03-14T12:00:00Z',
+        'author' => 'Jane Smith',
+        'content' => 'Another sample note for an order.'
+    )
+);
+
+// Prepare the arguments for the wp_remote_post function
+$args = array(
+    'body' => json_encode($data), // Convert the data array to JSON format
+    'headers' => array(
+        'Content-Type' => 'application/json', // Specify JSON content type
+    ),
+);
+
+// Send the POST request to the API endpoint
+$response = wp_remote_post($api_url, $args);
+
+// Check if the request was successful
+if (!is_wp_error($response)) {
+    $response_code = wp_remote_retrieve_response_code($response);
+    $response_body = wp_remote_retrieve_body($response);
+    // Process the response as needed
+    echo 'Response code: ' . $response_code . '<br>';
+    echo 'Response body: ' . $response_body;
+} else {
+    // Handle the error if the request failed
+    $error_message = $response->get_error_message();
+    echo 'Error: ' . $error_message;
 }
 
 
