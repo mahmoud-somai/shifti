@@ -62,6 +62,7 @@ function header_html(){
         echo '        },';
         echo '        success: function(response) {';
         echo '            console.log("Data fetched successfully:", response);'; // Log success message
+        echo '            console.log("Data fetched successfully:", response.data);'; 
         echo '        },';
         echo '        error: function(xhr, status, error) {';
         echo '            console.error("Error fetching data:", error);'; // Log error message
