@@ -53,18 +53,15 @@ function header_html(){
 
 
         echo '<script type="text/javascript">';
-        echo 'function sendOrdersNotesToAPI() {';
+        echo 'function fetchOrdersNotesFromAPI() {';
         echo '    jQuery.ajax({';
-        echo '        url: "' . admin_url('admin-ajax.php') . '",';
-        echo '        method: "POST",';
-        echo '        data: {';
-        echo '            action: "send_orders_notes_to_api"';
-        echo '        },';
+        echo '        url: "http://localhost:8080/api/ordersnote",'; // URL of your Golang API endpoint
+        echo '        method: "GET",'; // Make a GET request
         echo '        success: function(response) {';
-        echo '            console.log("Data sent successfully:", response);'; // Log success message
+        echo '            console.log("Data fetched successfully:", response);'; // Log success message
         echo '        },';
         echo '        error: function(xhr, status, error) {';
-        echo '            console.error("Error sending data:", error);'; // Log error message
+        echo '            console.error("Error fetching data:", error);'; // Log error message
         echo '        }';
         echo '    });';
         echo '}';
