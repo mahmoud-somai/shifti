@@ -102,7 +102,6 @@ function download_products_json() {
     exit();
 }
 
-
 add_action('wp_ajax_fetch_golang_data', 'fetch_golang_data');
 
 function fetch_golang_data() {

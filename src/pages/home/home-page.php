@@ -53,30 +53,26 @@ function header_html(){
         echo '<script type="text/javascript">';
         echo 'function fetchGolangData() {';
         echo '    jQuery.ajax({';
-        echo '        url: "' . admin_url('admin-ajax.php') . '",'; // URL of your WordPress AJAX endpoint
-        echo '        method: "POST",'; // Make a POST request
-        echo '        data: {'; // Data to send with the request
-        echo '            action: "fetch_golang_data"'; // Specify the action for your AJAX handler
+        echo '        url: "' . admin_url('admin-ajax.php') . '",';
+        echo '        method: "POST",';
+        echo '        data: {';
+        echo '            action: "fetch_golang_data"';
         echo '        },';
         echo '        success: function(response) {';
-        echo '            console.log("Data fetched successfully:", response);'; // Log success message
-        echo '            // Update plugin interface with fetched data';
-        echo '            document.getElementById("fetchedData").innerText = response.data;'; // Update placeholder with fetched data
+        echo '            console.log("Data fetched successfully:", response);';
         echo '        },';
         echo '        error: function(xhr, status, error) {';
-        echo '            console.error("Error fetching data:", error);'; // Log error message
+        echo '            console.error("Error fetching data:", error);';
         echo '        }';
         echo '    });';
         echo '}';
         echo '</script>';
     
-        // HTML form element to trigger data fetch
         echo '<form>';
-        echo '<button type="button" onclick="fetchGolangData()">Fetch Data from Golang API</button>';
+        echo '<button type="button" onclick="fetchGolangData()">Fetch Data from  API</button>';
         echo '</form>';
     
-        // Placeholder to display fetched data
-        echo '<div id="fetchedData"></div>';
+        echo '</div>';
 
 
 
