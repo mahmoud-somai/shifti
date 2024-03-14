@@ -124,15 +124,6 @@ function fetch_golang_data() {
         CURLOPT_FOLLOWLOCATION => true,
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => 'GET',
-        CURLOPT_POSTFIELDS => '[ {
-            "id_foreign": 789,
-            "date": "2024-03-15T12:00:00Z",
-            "author": "Alice bilel",
-            "content": "Yet another sample note for an order."
-        }]',
-        CURLOPT_HTTPHEADER => array(
-            'Content-Type: application/json'
-        ),
     ));
 
     // Execute cURL request
