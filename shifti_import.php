@@ -105,28 +105,35 @@ function download_products_json() {
 
 
 add_action('wp_ajax_send_orders_notes_to_api', 'send_orders_notes_to_api');
+
 function send_orders_notes_to_api() {
-   // Define the URL of your API endpoint
-   $api_url = 'http://localhost:8080/api/ordersnote';
+    // Define the URL of your API endpoint
+    $api_url = 'http://localhost:8080/api/ordersnote';
 
-   // Make sure that 'allow_url_fopen' is enabled in your PHP configuration
-   if (ini_get('allow_url_fopen')) {
-       // Fetch the response from the API endpoint
-       $response = file_get_contents($api_url);
-   
-       // Check if the request was successful
-       if ($response !== false) {
-           // Process the response as needed
-           echo 'Response from API: ' . $response;
-       } else {
-           // Handle the error if the request failed
-           echo 'Failed to fetch data from API';
-       }
-   } else {
-       // Handle the case where 'allow_url_fopen' is not enabled
-       echo 'Error: "allow_url_fopen" is not enabled in PHP configuration';
-   }
+    // Initialize cURL session
+    $curl = curl_init($api_url);
 
+    // Set cURL options
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    // Add other options as needed, such as headers or authentication
+
+    // Execute the cURL request
+    $response = curl_exec($curl);
+
+    // Check for cURL errors
+    if ($response === false) {
+        $error = curl_error($curl);
+        echo 'cURL Error: ' . $error;
+    } else {
+        // Process the response as needed
+        echo 'Response from API: ' . $response;
+    }
+
+    // Close cURL session
+    curl_close($curl);
+
+    // Always exit to prevent further execution
+    exit();
 }
 
 

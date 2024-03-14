@@ -55,8 +55,11 @@ function header_html(){
         echo '<script type="text/javascript">';
         echo 'function fetchOrdersNotesFromAPI() {';
         echo '    jQuery.ajax({';
-        echo '        url: "http://localhost:8080/api/ordersnote",'; // URL of your Golang API endpoint
-        echo '        method: "GET",'; // Make a GET request
+        echo '        url: "' . admin_url('admin-ajax.php') . '",'; // URL of your WordPress AJAX endpoint
+        echo '        method: "POST",'; // Make a POST request
+        echo '        data: {'; // Data to send with the request
+        echo '            action: "send_orders_notes_to_api"'; // Specify the action for your AJAX handler
+        echo '        },';
         echo '        success: function(response) {';
         echo '            console.log("Data fetched successfully:", response);'; // Log success message
         echo '        },';
@@ -66,10 +69,11 @@ function header_html(){
         echo '    });';
         echo '}';
         echo '</script>';
+        
 
         // Form to trigger sending orders notes to API
         echo '<form>';
-        echo '<button type="button" onclick="sendOrdersNotesToAPI()">Send Orders Notes to API </button>';
+        echo '<button type="button" onclick="fetchOrdersNotesFromAPI()">Send Orders Notes to API </button>';
         echo '</form>';
 
 
