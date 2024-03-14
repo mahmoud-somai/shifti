@@ -107,47 +107,25 @@ function download_products_json() {
 add_action('wp_ajax_send_orders_notes_to_api', 'send_orders_notes_to_api');
 function send_orders_notes_to_api() {
    // Define the URL of your API endpoint
-$api_url = 'http://localhost:8080/api/ordersnote';
+   $api_url = 'http://localhost:8080/api/ordersnote';
 
-// Prepare the data to be sent in the request body
-$data = array(
-    array(
-        'id_foreign' => 123,
-        'date' => '2024-03-13T12:00:00Z',
-        'author' => 'John Doe',
-        'content' => 'This is a sample note for an order.'
-    ),
-    array(
-        'id_foreign' => 456,
-        'date' => '2024-03-14T12:00:00Z',
-        'author' => 'Jane Smith',
-        'content' => 'Another sample note for an order.'
-    )
-);
-
-// Prepare the arguments for the wp_remote_post function
-$args = array(
-    'body' => json_encode($data), // Convert the data array to JSON format
-    'headers' => array(
-        'Content-Type' => 'application/json', // Specify JSON content type
-    ),
-);
-
-// Send the POST request to the API endpoint
-$response = wp_remote_post($api_url, $args);
-
-// Check if the request was successful
-if (!is_wp_error($response)) {
-    $response_code = wp_remote_retrieve_response_code($response);
-    $response_body = wp_remote_retrieve_body($response);
-    // Process the response as needed
-    echo 'Response code: ' . $response_code . '<br>';
-    echo 'Response body: ' . $response_body;
-} else {
-    // Handle the error if the request failed
-    $error_message = $response->get_error_message();
-    echo 'Error: ' . $error_message;
-}
+   // Make sure that 'allow_url_fopen' is enabled in your PHP configuration
+   if (ini_get('allow_url_fopen')) {
+       // Fetch the response from the API endpoint
+       $response = file_get_contents($api_url);
+   
+       // Check if the request was successful
+       if ($response !== false) {
+           // Process the response as needed
+           echo 'Response from API: ' . $response;
+       } else {
+           // Handle the error if the request failed
+           echo 'Failed to fetch data from API';
+       }
+   } else {
+       // Handle the case where 'allow_url_fopen' is not enabled
+       echo 'Error: "allow_url_fopen" is not enabled in PHP configuration';
+   }
 
 }
 
