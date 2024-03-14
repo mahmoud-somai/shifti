@@ -105,12 +105,14 @@ function download_products_json() {
 add_action('wp_ajax_fetch_golang_data', 'fetch_golang_data');
 
 function fetch_golang_data() {
+    // Define the API endpoint
+    $api_endpoint = 'http://localhost:8080/api/data';
+
     // Log the API call
- 
+    error_log('Fetching data from Golang API at: ' . date('Y-m-d H:i:s') . ', API Endpoint: ' . $api_endpoint);
 
     // Make GET request to Golang API
-    $response = wp_remote_get('http://localhost:8080/api/data');
-    error_log('Fetching data from Golang API at: ' . date('Y-m-d H:i:s') . ', API Endpoint: ' . $api_endpoint);
+    $response = wp_remote_get($api_endpoint);
 
     if (!is_wp_error($response) && $response['response']['code'] == 200) {
         // Get the body of the response
