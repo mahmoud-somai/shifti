@@ -109,9 +109,9 @@ function fetch_golang_data() {
     $api_endpoint = 'http://192.168.1.26:8080/api/ordersnote';
 
     // Log the API call
-    echo '<script>';
-    echo 'console.log("API Endpoint: ' . $api_endpoint . '");';
-    echo '</script>';
+    error_log(' API Endpoint: ' . $api_endpoint);
+    
+    
 
     // Make GET request to Golang API with timeout
     $response = wp_remote_get($api_endpoint, array(
