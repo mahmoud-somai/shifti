@@ -106,7 +106,7 @@ add_action('wp_ajax_fetch_golang_data', 'fetch_golang_data');
 
 function fetch_golang_data() {
     // Define the API endpoint
-    $api_endpoint = 'http://localhost:8080/api/data';
+    $api_endpoint = 'http://0.0.0.0:8080/api/data';
 
     // Log the API call
     error_log('Fetching data from Golang API at: ' . date('Y-m-d H:i:s') . ', API Endpoint: ' . $api_endpoint);
