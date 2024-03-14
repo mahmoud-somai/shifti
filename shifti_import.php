@@ -111,27 +111,48 @@ function fetch_golang_data() {
     // Log the API call
     error_log('Fetching data from Golang API at: ' . date('Y-m-d H:i:s') . ', API Endpoint: ' . $api_endpoint);
 
-    // Make GET request to Golang API
-    $response = wp_remote_get($api_endpoint);
+    // Initialize cURL session
+    $curl = curl_init();
 
-    if (!is_wp_error($response) && $response['response']['code'] == 200) {
-        // Get the body of the response
-        $data = wp_remote_retrieve_body($response);
+    // Set cURL options
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => $api_endpoint,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS => '[ {
+            "id_foreign": 789,
+            "date": "2024-03-15T12:00:00Z",
+            "author": "Alice bilel",
+            "content": "Yet another sample note for an order."
+        }]',
+        CURLOPT_HTTPHEADER => array(
+            'Content-Type: application/json'
+        ),
+    ));
 
-        // Send data back to JavaScript
-        wp_send_json_success($data);
-    } else {
-        // Log the error
-        if (is_wp_error($response)) {
-            $error_message = $response->get_error_message();
-        } else {
-            $error_message = 'Failed to fetch data from Golang API';
-        }
+    // Execute cURL request
+    $response = curl_exec($curl);
+
+    // Check for cURL errors
+    if ($response === false) {
+        $error_message = 'cURL error: ' . curl_error($curl);
         error_log('Error: ' . $error_message);
-
-        // Send error response
         wp_send_json_error($error_message);
     }
+
+    // Close cURL session
+    curl_close($curl);
+
+    // Log the API response
+    error_log('Response from Golang API: ' . $response);
+
+    // Send data back to JavaScript
+    wp_send_json_success($response);
 }
 
 
