@@ -102,38 +102,38 @@ function download_products_json() {
     exit();
 }
 
-add_action('wp_ajax_send_orders_notes_to_api', 'send_orders_notes_to_api');
-function send_orders_notes_to_api() {
-    // Get the order notes JSON data
-    $json_data = get_orders_notes();
-    echo('Order notes data: ' . $json_data);
+// add_action('wp_ajax_send_orders_notes_to_api', 'send_orders_notes_to_api');
+// function send_orders_notes_to_api() {
+//     // Get the order notes JSON data
+//     $json_data = get_orders_notes();
+//     echo('Order notes data: ' . $json_data);
 
-    // URL of your Golang API endpoint
-    $api_url = 'http://localhost:8080/api/ordersnote';
+//     // URL of your Golang API endpoint
+//     $api_url = 'http://localhost:8080/api/ordersnote';
     
-    echo('API URL: ' . $api_url);
+//     echo('API URL: ' . $api_url);
 
 
-    $data =$json_data;
+//     $data =$json_data;
  
 
     
-    // $ch = curl_init($api_url);
-    // curl_setopt($ch, CURLOPT_POST, 1);
-    // curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
-    // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    // $response = curl_exec($ch);
-    // curl_close($ch);
+//     // $ch = curl_init($api_url);
+//     // curl_setopt($ch, CURLOPT_POST, 1);
+//     // curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+//     // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+//     // $response = curl_exec($ch);
+//     // curl_close($ch);
 
     
-    // if ($response === false) {
-    //     $error_message = 'Error sending data to API: ' . curl_error($ch);
-    //     wp_send_json_error($error_message);
-    // } else {
-    //     $api_response = json_decode($response, true);
-    //     wp_send_json_success($api_response);
-    // }
-}
+//     // if ($response === false) {
+//     //     $error_message = 'Error sending data to API: ' . curl_error($ch);
+//     //     wp_send_json_error($error_message);
+//     // } else {
+//     //     $api_response = json_decode($response, true);
+//     //     wp_send_json_success($api_response);
+//     // }
+// }
 
 
 

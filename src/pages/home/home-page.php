@@ -50,11 +50,29 @@ function header_html(){
         echo '<button type="submit">Download products JSON</button>';
         echo '</form>';
 
-         // Form for sending orders notes to API
-        echo '<form id="send-orders-notes-to-api-form" method="post" action="' . admin_url('admin-ajax.php') . '">';
-        echo '<input type="hidden" name="action" value="send_orders_notes_to_api">';
-        echo '<button id="send-orders-notes-to-api-button" type="button">Send Orders Notes to API</button>';
-        echo '</form>';
+        echo '<script type="text/javascript">';
+    echo 'function sendOrdersNotesToAPI() {';
+    echo '    jQuery.ajax({';
+    echo '        url: "' . admin_url('admin-ajax.php') . '",';
+    echo '        method: "POST",';
+    echo '        data: {';
+    echo '            action: "send_orders_notes_to_api"';
+    echo '        },';
+    echo '        success: function(response) {';
+    echo '            console.log("Data sent successfully:", response);'; // Log success message
+    echo '        },';
+    echo '        error: function(xhr, status, error) {';
+    echo '            console.error("Error sending data:", error);'; // Log error message
+    echo '        }';
+    echo '    });';
+    echo '}';
+    echo '</script>';
+
+    // Form to trigger sending orders notes to API
+    echo '<form>';
+    echo '<button type="button" onclick="sendOrdersNotesToAPI()">Send Orders Notes to API</button>';
+    echo '</form>';
+
 
    
    
