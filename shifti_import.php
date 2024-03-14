@@ -103,6 +103,24 @@ function download_products_json() {
 }
 
 
+add_action('wp_ajax_fetch_golang_data', 'fetch_golang_data');
+
+function fetch_golang_data() {
+    // Make GET request to Golang API
+    $response = wp_remote_get('http://localhost:8080/api/ordersnote');
+
+    if (!is_wp_error($response) && $response['response']['code'] == 200) {
+        // Get the body of the response
+        $data = wp_remote_retrieve_body($response);
+
+        // Send data back to JavaScript
+        wp_send_json_success($data);
+    } else {
+        // Send error response
+        wp_send_json_error('Failed to fetch data from Golang API');
+    }
+}
+
 
 // add_action('wp_ajax_send_orders_notes_to_api', 'send_orders_notes_to_api');
 
