@@ -104,38 +104,34 @@ function download_products_json() {
 
 add_action('wp_ajax_fetch_golang_data', 'fetch_golang_data');
 
-function fetch_golang_data() {
-    // Define the API endpoint
-    $api_endpoint = 'http://192.168.1.26:8080/api/ordersnote';
+function send_orders_notes_to_api() {
+    // Define the URL of your API endpoint
+    $api_url = 'http://192.168.1.26:8080/api/ordersnote';
 
-    // Log the API call
-    error_log(' API Endpoint: ' . $api_endpoint);
-    
-    
+    // Initialize cURL session
+    $curl = curl_init($api_url);
 
-    // Make GET request to Golang API with timeout
-    $response = wp_remote_get($api_endpoint, array(
-        'timeout' => 10 // Set timeout to 10 seconds
-    ));
+    // Set cURL options
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    // Add other options as needed, such as headers or authentication
 
-    if (!is_wp_error($response) && $response['response']['code'] == 200) {
-        // Get the body of the response
-        $data = wp_remote_retrieve_body($response);
+    // Execute the cURL request
+    $response = curl_exec($curl);
 
-        // Send data back to JavaScript
-        wp_send_json_success($data);
+    // Check for cURL errors
+    if ($response === false) {
+        $error = curl_error($curl);
+        echo 'cURL Error: ' . $error;
     } else {
-        // Log the error
-        if (is_wp_error($response)) {
-            $error_message = $response->get_error_message();
-        } else {
-            $error_message = 'Failed to fetch data from Golang API';
-        }
-        error_log('Error: ' . $error_message);
-
-        // Send error response
-        wp_send_json_error($error_message);
+        // Process the response as needed
+        echo 'Response from API: ' . $response;
     }
+
+    // Close cURL session
+    curl_close($curl);
+
+    // Always exit to prevent further execution
+    exit();
 }
 
 
