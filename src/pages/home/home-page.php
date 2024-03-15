@@ -51,6 +51,10 @@ function header_html(){
         echo '</form>';
 
         echo '<script type="text/javascript">';
+        echo 'document.getElementById("fetch-golang-data-button").addEventListener("click", function() {';
+        echo '    fetchGolangData();';
+        echo '});';
+    
         echo 'function fetchGolangData() {';
         echo '    jQuery.ajax({';
         echo '        url: "' . admin_url('admin-ajax.php') . '",';
@@ -67,10 +71,28 @@ function header_html(){
         echo '    });';
         echo '}';
         echo '</script>';
+
+        // echo '<script type="text/javascript">';
+        // echo 'function fetchGolangData() {';
+        // echo '    jQuery.ajax({';
+        // echo '        url: "' . admin_url('admin-ajax.php') . '",';
+        // echo '        method: "POST",';
+        // echo '        data: {';
+        // echo '            action: "fetch_golang_data"';
+        // echo '        },';
+        // echo '        success: function(response) {';
+        // echo '            console.log("Data fetched successfully:", response);';
+        // echo '        },';
+        // echo '        error: function(xhr, status, error) {';
+        // echo '            console.error("Error fetching data:", error);';
+        // echo '        }';
+        // echo '    });';
+        // echo '}';
+        // echo '</script>';
     
-        echo '<form>';
-        echo '<button type="button" onclick="fetchGolangData()">Fetch Data from  API</button>';
-        echo '</form>';
+        // echo '<form>';
+        // echo '<button type="button" onclick="fetchGolangData()">Fetch Data from  API</button>';
+        // echo '</form>';
     
         echo '</div>';
 
