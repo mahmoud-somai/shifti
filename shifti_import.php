@@ -105,34 +105,48 @@ function download_products_json() {
 add_action('wp_ajax_fetch_golang_data', 'fetch_golang_data');
 
 function send_orders_notes_to_api() {
-    // Define the URL of your API endpoint
-    $api_url = 'http://192.168.1.26:8080/api/ordersnote';
+    $url = 'http://192.168.18.88:8080/api/ordersnote';
+    $response = wp_remote_get($url);
 
-    // Initialize cURL session
-    $curl = curl_init($api_url);
-
-    // Set cURL options
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    // Add other options as needed, such as headers or authentication
-
-    // Execute the cURL request
-    $response = curl_exec($curl);
-
-    // Check for cURL errors
-    if ($response === false) {
-        $error = curl_error($curl);
-        echo 'cURL Error: ' . $error;
+    if (is_wp_error($response)) {
+        $error_message = $response->get_error_message();
+        echo "Error: $error_message";
     } else {
-        // Process the response as needed
-        echo 'Response from API: ' . $response;
+        $body = wp_remote_retrieve_body($response);
+        echo "Response: $body";
     }
-
-    // Close cURL session
-    curl_close($curl);
-
-    // Always exit to prevent further execution
-    exit();
 }
+
+
+// function send_orders_notes_to_api() {
+//     // Define the URL of your API endpoint
+//     $api_url = 'http://192.168.1.26:8080/api/ordersnote';
+
+//     // Initialize cURL session
+//     $curl = curl_init($api_url);
+
+//     // Set cURL options
+//     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+//     // Add other options as needed, such as headers or authentication
+
+//     // Execute the cURL request
+//     $response = curl_exec($curl);
+
+//     // Check for cURL errors
+//     if ($response === false) {
+//         $error = curl_error($curl);
+//         echo 'cURL Error: ' . $error;
+//     } else {
+//         // Process the response as needed
+//         echo 'Response from API: ' . $response;
+//     }
+
+//     // Close cURL session
+//     curl_close($curl);
+
+//     // Always exit to prevent further execution
+//     exit();
+// }
 
 
 
