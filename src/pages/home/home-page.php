@@ -49,6 +49,8 @@ function header_html(){
         echo '<input type="hidden" name="action" value="download_products_json">';
         echo '<button type="submit">Download products JSON</button>';
         echo '</form>';
+        echo '<button type="button" id="fetch-golang-data-button">Fetch Data from Golang API</button>';
+        echo '</div>';
 
         echo '<script type="text/javascript">';
         echo 'document.getElementById("fetch-golang-data-button").addEventListener("click", function() {';
@@ -94,7 +96,7 @@ function header_html(){
         // echo '<button type="button" onclick="fetchGolangData()">Fetch Data from  API</button>';
         // echo '</form>';
     
-        echo '</div>';
+
 
 
 
