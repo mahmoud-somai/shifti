@@ -49,9 +49,29 @@ function header_html(){
         echo '<input type="hidden" name="action" value="download_products_json">';
         echo '<button type="submit">Download products JSON</button>';
         echo '</form>';
-        echo '<button type="button" id="fetch-golang-data-button" onclick="myFunction()">Fetch Data from Golang API</button>';
+
+        echo '<button type="button" id="fetch-golang-data-button" onclick="fetchDataFromAPI()">Fetch Data from Golang API</button>';
+
         echo '</div>';
 
+        echo '<script>
+function fetchDataFromAPI() {
+    // Make AJAX request to fetch data from the API
+    jQuery.ajax({
+        url: \'' . admin_url('admin-ajax.php') . '\',
+        type: \'POST\',
+        data: {
+            action: \'fetch_golang_data\'
+        },
+        success: function(response) {
+            console.log(\'Data from API:\', response.data);
+        },
+        error: function(xhr, status, error) {
+            console.error(\'Error fetching data:\', error);
+        }
+    });
+}
+</script>';
        
 
         // echo '<script type="text/javascript">';
