@@ -102,38 +102,36 @@ function download_products_json() {
     exit();
 }
 
-add_action('wp_enqueue_scripts', 'shifti_import_enqueue_scripts');
-function shifti_import_enqueue_scripts() {
-    // Enqueue custom JavaScript file
-    wp_enqueue_script('shifti-import-custom-js', plugins_url('./src/scripts/index.js'), array('jquery'), false, true);
-
-    // Localize AJAX URL for use in JavaScript
-    wp_localize_script('shifti-import-custom-js', 'ajax_object', array(
-        'ajax_url' => admin_url('admin-ajax.php'),
-    ));
-}
-
 
 
 add_action('wp_ajax_fetch_golang_data', 'fetch_golang_data');
 
 // Function to fetch data from Golang API and display it directly
-
 function fetch_golang_data() {
-    // Make AJAX request to fetch data from the Golang API
-    $response = wp_remote_get('http://192.168.1.18:8080/api/ordersnote');
+    // Initialize cURL session
+    $curl = curl_init();
     
-    // Check if the request was successful
-    if (!is_wp_error($response)) {
-        // Retrieve the response body
-        $body = wp_remote_retrieve_body($response);
-        
-        // Log the response body in the console
-        echo "<script>console.log('Data from Golang API:', " . json_encode($body) . ");</script>";
-    } else {
+    // Set the URL for the request
+    curl_setopt($curl, CURLOPT_URL, 'http://192.168.1.18:8080/api/ordersnote');
+    
+    // Return the transfer as a string
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    
+    // Execute the request
+    $response = curl_exec($curl);
+    
+    // Check for errors
+    if(curl_errno($curl)) {
         // If there was an error, echo an error message
-        echo "<script>console.error('Error fetching data from the API.');</script>";
+        echo "Error fetching data from the API: " . curl_error($curl);
+    } else {
+        // Echo the response body directly
+        echo "Data from Golang API: $response";
     }
+    
+    // Close cURL session
+    curl_close($curl);
+    
     // Always exit to prevent further execution
     exit();
 }
