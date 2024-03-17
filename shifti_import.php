@@ -107,6 +107,7 @@ function download_products_json() {
 add_action('wp_ajax_fetch_golang_data', 'fetch_golang_data');
 
 // Function to fetch data from Golang API and display it directly
+
 function fetch_golang_data() {
     // Make AJAX request to fetch data from the Golang API
     $response = wp_remote_get('http://192.168.1.18:8080/api/ordersnote');
@@ -116,15 +117,16 @@ function fetch_golang_data() {
         // Retrieve the response body
         $body = wp_remote_retrieve_body($response);
         
-        // Echo the response body directly
-        echo "Data from Golang API: $body";
+        // Log the response body in the console
+        echo "<script>console.log('Data from Golang API:', " . json_encode($body) . ");</script>";
     } else {
         // If there was an error, echo an error message
-        echo "Error fetching data from the API.";
+        echo "<script>console.error('Error fetching data from the API.');</script>";
     }
     // Always exit to prevent further execution
     exit();
 }
+
 
 
 

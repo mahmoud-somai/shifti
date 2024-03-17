@@ -50,67 +50,14 @@ function header_html(){
         echo '<button type="submit">Download products JSON</button>';
         echo '</form>';
 
-        //echo '<button type="button" id="fetch-golang-data-button" onclick="getalldata()">Fetch Data from Golang API</button>';
-        echo '<form method="get" action="' . admin_url('admin-ajax.php') . '">';
-        echo '<input type="hidden" name="action" value="fetch_golang_data ">';
-        echo '<button type="submit">fetch_golang_data</button>';
-        echo '</form>';
+      
+        echo '<button type="button" id="fetch-golang-data-button">Fetch Data from Golang API</button>';
 
         echo '</div>';
 
        
 
-        // echo '<script type="text/javascript">';
-        // echo 'function fetchGolangData() {';
-        // echo '    jQuery.ajax({';
-        // echo '        url: "' . admin_url('admin-ajax.php') . '",';
-        // echo '        method: "POST",';
-        // echo '        data: {';
-        // echo '            action: "fetch_golang_data"';
-        // echo '        },';
-        // echo '        success: function(response) {';
-        // echo '            console.log("Data fetched successfully:", response);';
-        // echo '        },';
-        // echo '        error: function(xhr, status, error) {';
-        // echo '            console.error("Error fetching data:", error);';
-        // echo '        }';
-        // echo '    });';
-        // echo '}';
-        // echo '</script>';
-    
-        // echo '<form>';
-        // echo '<button type="button" onclick="fetchGolangData()">Fetch Data from  API</button>';
-        // echo '</form>';
-    
-
-
-
-
-        // echo '<script type="text/javascript">';
-        // echo 'function fetchOrdersNotesFromAPI() {';
-        // echo '    jQuery.ajax({';
-        // echo '        url: "' . admin_url('admin-ajax.php') . '",'; // URL of your WordPress AJAX endpoint
-        // echo '        method: "POST",'; // Make a POST request
-        // echo '        data: {'; // Data to send with the request
-        // echo '            action: "send_orders_notes_to_api"'; // Specify the action for your AJAX handler
-        // echo '        },';
-        // echo '        success: function(response) {';
-        // echo '            console.log("Data fetched successfully:", response);'; // Log success message
-        // echo '        },';
-        // echo '        error: function(xhr, status, error) {';
-        // echo '            console.error("Error fetching data:", error);'; // Log error message
-        // echo '        }';
-        // echo '    });';
-        // echo '}';
-        // echo '</script>';
         
-
-        // // Form to trigger sending orders notes to API
-        // echo '<form>';
-        // echo '<button type="button" onclick="fetchOrdersNotesFromAPI()">Send Orders Notes to API </button>';
-        // echo '</form>';
-
-
    
    
 
