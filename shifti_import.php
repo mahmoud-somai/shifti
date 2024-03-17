@@ -102,31 +102,54 @@ function download_products_json() {
     exit();
 }
 
+
+
 add_action('wp_ajax_fetch_golang_data', 'fetch_golang_data');
 
-function send_orders_notes_to_api() {
-    $url = 'http://192.168.18.88:8080/api/ordersnote';
-
-    // Get headers for the URL
-    $headers = @get_headers($url);
-
-    // Check if headers are received and the status code is 200 (OK)
-    if ($headers && strpos($headers[0], '200')) {
-        // URL is reachable, proceed with the request
-        $response = wp_remote_get($url);
-
-        if (is_wp_error($response)) {
-            $error_message = $response->get_error_message();
-            echo "Error: $error_message";
-        } else {
-            $body = wp_remote_retrieve_body($response);
-            echo "Response: $body";
-        }
+function fetch_golang_data() {
+    // Fetch data from the Golang API
+    $response = wp_remote_get('http://192.168.18.88:8080/api/ordersnote');
+    
+    // Check if the request was successful
+    if (!is_wp_error($response)) {
+        // Retrieve the response body
+        $body = wp_remote_retrieve_body($response);
+        
+        // Return the response as JSON
+        wp_send_json_success($body);
     } else {
-        // URL is unreachable or returned a non-200 status code
-        echo "Error: Unable to reach the API endpoint or it returned a non-200 status code.";
+        // If there was an error, return an error response
+        wp_send_json_error('Error fetching data from the API.');
     }
 }
+
+
+
+
+
+// function send_orders_notes_to_api() {
+//     $url = 'http://192.168.18.88:8080/api/ordersnote';
+
+//     // Get headers for the URL
+//     $headers = @get_headers($url);
+
+//     // Check if headers are received and the status code is 200 (OK)
+//     if ($headers && strpos($headers[0], '200')) {
+//         // URL is reachable, proceed with the request
+//         $response = wp_remote_get($url);
+
+//         if (is_wp_error($response)) {
+//             $error_message = $response->get_error_message();
+//             echo "Error: $error_message";
+//         } else {
+//             $body = wp_remote_retrieve_body($response);
+//             echo "Response: $body";
+//         }
+//     } else {
+//         // URL is unreachable or returned a non-200 status code
+//         echo "Error: Unable to reach the API endpoint or it returned a non-200 status code.";
+//     }
+// }
 
 
 // function send_orders_notes_to_api() {
