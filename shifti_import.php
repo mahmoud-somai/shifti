@@ -102,6 +102,17 @@ function download_products_json() {
     exit();
 }
 
+add_action('wp_enqueue_scripts', 'shifti_import_enqueue_scripts');
+function shifti_import_enqueue_scripts() {
+    // Enqueue custom JavaScript file
+    wp_enqueue_script('shifti-import-custom-js', plugins_url('./src/scripts/index.js'), array('jquery'), false, true);
+
+    // Localize AJAX URL for use in JavaScript
+    wp_localize_script('shifti-import-custom-js', 'ajax_object', array(
+        'ajax_url' => admin_url('admin-ajax.php'),
+    ));
+}
+
 
 
 add_action('wp_ajax_fetch_golang_data', 'fetch_golang_data');
