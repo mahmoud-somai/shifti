@@ -50,8 +50,11 @@ function header_html(){
         echo '<button type="submit">Download products JSON</button>';
         echo '</form>';
 
-        echo '<button type="button" id="fetch-golang-data-button" onclick="getalldata()">Fetch Data from Golang API</button>';
-
+        //echo '<button type="button" id="fetch-golang-data-button" onclick="getalldata()">Fetch Data from Golang API</button>';
+        echo '<form method="get" action="' . admin_url('admin-ajax.php') . '">';
+        echo '<input type="hidden" name="action" value="fetch_golang_data ">';
+        echo '<button type="submit">fetch_golang_data</button>';
+        echo '</form>';
 
         echo '</div>';
 
