@@ -108,7 +108,7 @@ add_action('wp_ajax_fetch_golang_data', 'fetch_golang_data');
 
 function fetch_golang_data() {
     // Fetch data from the Golang API
-    $response = wp_remote_get('http://192.168.18.88:8080/api/ordersnote');
+    $response = wp_remote_get('http://192.168.1.18:8080/api/ordersnote');
     
     // Check if the request was successful
     if (!is_wp_error($response)) {
