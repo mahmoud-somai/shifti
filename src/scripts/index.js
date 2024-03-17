@@ -1,7 +1,12 @@
+function myFunction() {
+  // Your JavaScript code here
+  alert("Hello! This is a JavaScript function.");
+};
 
+// index.js
 
 // Define a function to fetch data from the Go API
-function fetchDataFromGoAPI() {
+function getalldata() {
   jQuery.ajax({
       url: 'http://192.168.1.18:8080/api/ordersnote', // Replace with your API endpoint
       type: 'GET',
