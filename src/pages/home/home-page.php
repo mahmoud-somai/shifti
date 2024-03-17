@@ -49,30 +49,10 @@ function header_html(){
         echo '<input type="hidden" name="action" value="download_products_json">';
         echo '<button type="submit">Download products JSON</button>';
         echo '</form>';
-        echo '<button type="button" id="fetch-golang-data-button">Fetch Data from Golang API</button>';
+        echo '<button type="button" id="fetch-golang-data-button" onclick="myFunction()">Fetch Data from Golang API</button>';
         echo '</div>';
 
-        echo '<script type="text/javascript">';
-        echo 'document.getElementById("fetch-golang-data-button").addEventListener("click", function() {';
-        echo '    fetchGolangData();';
-        echo '});';
-    
-        echo 'function fetchGolangData() {';
-        echo '    jQuery.ajax({';
-        echo '        url: "' . admin_url('admin-ajax.php') . '",';
-        echo '        method: "POST",';
-        echo '        data: {';
-        echo '            action: "fetch_golang_data"';
-        echo '        },';
-        echo '        success: function(response) {';
-        echo '            console.log("Data fetched successfully:", response);';
-        echo '        },';
-        echo '        error: function(xhr, status, error) {';
-        echo '            console.error("Error fetching data:", error);';
-        echo '        }';
-        echo '    });';
-        echo '}';
-        echo '</script>';
+       
 
         // echo '<script type="text/javascript">';
         // echo 'function fetchGolangData() {';
