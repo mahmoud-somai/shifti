@@ -112,11 +112,11 @@ function fetch_golang_data() {
 
     // Check if the request was successful
     if (!is_wp_error($response)) {
+        wp_send_json_success("success".$response['body']);
         // Retrieve the response body
-       
 
         // Send the response as JSON
-        wp_send_json_success("success".$url);
+       // wp_send_json_success("success".$url);
     } else {
         // If there was an error, send an error response
         wp_send_json_error("Error fetchi.".$url);
