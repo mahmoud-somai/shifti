@@ -121,20 +121,6 @@ function fetch_golang_data() {
         wp_send_json_error("Error fetching data from the API.");
     }
 }
-// Enqueue your script and define the ajax_object variable
-function enqueue_my_scripts() {
-    wp_enqueue_script('my-script', plugin_dir_url(__FILE__) . 'path/to/your/index.js', array('jquery'), '1.0', true);
-
-    // Localize the script with new data
-    $data = array(
-        'ajax_url' => admin_url('admin-ajax.php'),
-    );
-    wp_localize_script('my-script', 'ajax_object', $data);
-}
-add_action('wp_enqueue_scripts', 'enqueue_my_scripts');
-
-
-
 
 
 

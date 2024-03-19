@@ -50,7 +50,7 @@ function header_html(){
         echo '<button type="submit">Download products JSON</button>';
         echo '</form>';
        
-        echo '<button type="button" id="fetch-golang-data-button">Fetch Data from Golang API</button>';
+        echo '<button type="button" id="fetch-golang-data-button">Fetch Data</button>';
     
 
     
