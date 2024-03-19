@@ -80,7 +80,7 @@ function download_taxes_json() {
 
 add_action('wp_ajax_download_products_json', 'download_products_json');
 function download_products_json() {
-    $json_data = get_products();
+    $json_data = get_prod();
 
     header('Content-Type: application/json');
     header('Content-Disposition: attachment; filename="products.json"');
@@ -113,7 +113,7 @@ function page_render_callback() {
     get_customers();
     get_orders_notes();
     get_taxes();
-    get_products();
+    get_prod();
 }
 
 class Shifti_Import {
