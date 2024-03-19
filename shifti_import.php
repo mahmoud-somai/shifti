@@ -15,8 +15,6 @@ if (!defined('WPINC')) {
     die("Please don't run via command line.");
 }
 
-
-
 require_once plugin_dir_path(__FILE__) . 'src/pages/home/home-page.php';
 //require_once plugin_dir_path(__FILE__) . 'src/data/products/getProducts.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/orders/getOrders.php';
