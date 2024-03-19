@@ -169,4 +169,5 @@ if (class_exists('Shifti_Import')) {
     register_activation_hook(__FILE__, array($plugin_shifti, 'activate'));
     register_deactivation_hook(__FILE__, array($plugin_shifti, 'deactivate'));
 }
+
 ?>
