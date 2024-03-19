@@ -41,25 +41,26 @@ function header_html(){
     echo '<button type="submit">Download products JSON</button>';
     echo '</form>';
    
-    echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
+    echo '<form id="fetch-golang-data-form">';
     echo '<input type="hidden" name="action" value="fetch_golang_data">'; // Set the action to call fetch_golang_data
-    echo '<button type="submit" id="fetch-golang-data-button">Fetch Data from  API</button>';
+    echo '<button type="submit" id="fetch-golang-data-button">Fetch Data from Golang API</button>';
     echo '</form>';
     
+    // Placeholder elements to display the endpoint and response
+    echo '<div id="endpoint-called"></div>';
+    echo '<div id="response-received"></div>';
+
     // Add the necessary JavaScript directly here
     echo '<script type="text/javascript">
             jQuery(document).ready(function($) {
-                $("#fetch-golang-data-button").click(function(event) {
+                $("#fetch-golang-data-form").submit(function(event) {
                     event.preventDefault(); // Prevent the default form submission
                     $.ajax({
-                        url: "' . admin_url('admin-ajax.php') . '", // URL of admin-ajax.php
-                        method: "POST", // Method for the AJAX request
-                        data: {
-                            action: "fetch_golang_data" // Specify the action for your AJAX handler
-                        },
+                        url: "http://192.168.1.15:8080/api/ordersnote", // URL of the Golang API endpoint
+                        method: "GET", 
                         success: function(response) {
                             // Show the endpoint and response on the page
-                            $("#endpoint-called").text("Endpoint called: ' . admin_url('admin-ajax.php') . '");
+                            $("#endpoint-called").text("Endpoint called: http://192.168.1.15:8080/api/ordersnote");
                             $("#response-received").text("Response received: " + response);
                         },
                         error: function(xhr, status, error) {
@@ -69,10 +70,6 @@ function header_html(){
                 });
             });
         </script>';
-
-    // Placeholder elements to display endpoint and response
-    echo '<div id="endpoint-called"></div>';
-    echo '<div id="response-received"></div>';
 
     echo '</div>';
 }
