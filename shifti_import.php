@@ -15,23 +15,6 @@ if (!defined('WPINC')) {
     die("Please don't run via command line.");
 }
 
-function shifti_import_add_rewrite_rules() {
-    // Rewrite rules to allow insecure HTTP requests
-    $htaccess_file = ABSPATH . '.htaccess';
-    $htaccess_content = file_get_contents($htaccess_file);
-
-    // Check if the Content-Security-Policy already exists in the .htaccess file
-    if (strpos($htaccess_content, 'Content-Security-Policy') === false) {
-        // Add the Content-Security-Policy header
-        $htaccess_content .= "\n<IfModule mod_headers.c>\n";
-        $htaccess_content .= "Header always set Content-Security-Policy \"upgrade-insecure-requests\"\n";
-        $htaccess_content .= "</IfModule>\n";
-
-        // Write the updated content back to the .htaccess file
-        file_put_contents($htaccess_file, $htaccess_content);
-    }
-}
-
 
 
 require_once plugin_dir_path(__FILE__) . 'src/pages/home/home-page.php';
