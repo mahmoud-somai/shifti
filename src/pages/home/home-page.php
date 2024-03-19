@@ -50,10 +50,32 @@ function header_html(){
         echo '<button type="submit">Download products JSON</button>';
         echo '</form>';
        
-        echo '<form id="fetch-golang-data-form" method="post" action="' . admin_url('admin-ajax.php') . '">';
-        echo '<input type="hidden" name="action" value="fetch_golang_data">';
+        echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
+        echo '<input type="hidden" name="action" value="fetch_golang_data">'; // Set the action to call fetch_golang_data
         echo '<button type="submit" id="fetch-golang-data-button">Fetch Data from Golang API</button>';
         echo '</form>';
+    
+        // Add the necessary JavaScript directly here
+        echo '<script type="text/javascript">
+                jQuery(document).ready(function($) {
+                    $("#fetch-golang-data-button").click(function(event) {
+                        event.preventDefault(); // Prevent the default form submission
+                        $.ajax({
+                            url: "' . admin_url('admin-ajax.php') . '", // URL of admin-ajax.php
+                            method: "POST", // Method for the AJAX request
+                            data: {
+                                action: "fetch_golang_data" // Specify the action for your AJAX handler
+                            },
+                            success: function(response) {
+                                console.log("Data from Golang API:", response);
+                            },
+                            error: function(xhr, status, error) {
+                                console.error("Error fetching data:", error);
+                            }
+                        });
+                    });
+                });
+            </script>';
     
     
 

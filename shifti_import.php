@@ -102,134 +102,27 @@ function download_products_json() {
     exit();
 }
 
-
-
 add_action('wp_ajax_fetch_golang_data', 'fetch_golang_data');
 
-// Function to fetch data from Golang API and display it directly
+// Function to fetch data from Golang API and send it as JSON response
 function fetch_golang_data() {
-    // Initialize cURL session
-    $curl = curl_init();
-    
-    // Set the URL for the request
-    curl_setopt($curl, CURLOPT_URL, 'http://192.168.1.18:8080/api/ordersnote');
-    
-    // Return the transfer as a string
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    
-    // Execute the request
-    $response = curl_exec($curl);
-    
-    // Check for errors
-    if(curl_errno($curl)) {
-        // If there was an error, echo an error message
-        echo "Error fetching data from the API: " . curl_error($curl);
+    // Make AJAX request to fetch data from the Golang API
+    $response = wp_remote_get('http://192.168.1.15:8080/api/ordersnote');
+
+    // Check if the request was successful
+    if (!is_wp_error($response)) {
+        // Retrieve the response body
+        $body = wp_remote_retrieve_body($response);
+
+        // Send the response as JSON
+        wp_send_json_success($body);
     } else {
-        // Echo the response body directly
-        echo "Data from Golang API: $response";
+        // If there was an error, send an error response
+        wp_send_json_error("Error fetching data from the API.");
     }
-    
-    // Close cURL session
-    curl_close($curl);
-    
-    // Always exit to prevent further execution
-    exit();
 }
 
 
-
-
-
-
-
-// function send_orders_notes_to_api() {
-//     $url = 'http://192.168.18.88:8080/api/ordersnote';
-
-//     // Get headers for the URL
-//     $headers = @get_headers($url);
-
-//     // Check if headers are received and the status code is 200 (OK)
-//     if ($headers && strpos($headers[0], '200')) {
-//         // URL is reachable, proceed with the request
-//         $response = wp_remote_get($url);
-
-//         if (is_wp_error($response)) {
-//             $error_message = $response->get_error_message();
-//             echo "Error: $error_message";
-//         } else {
-//             $body = wp_remote_retrieve_body($response);
-//             echo "Response: $body";
-//         }
-//     } else {
-//         // URL is unreachable or returned a non-200 status code
-//         echo "Error: Unable to reach the API endpoint or it returned a non-200 status code.";
-//     }
-// }
-
-
-// function send_orders_notes_to_api() {
-//     // Define the URL of your API endpoint
-//     $api_url = 'http://192.168.1.26:8080/api/ordersnote';
-
-//     // Initialize cURL session
-//     $curl = curl_init($api_url);
-
-//     // Set cURL options
-//     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-//     // Add other options as needed, such as headers or authentication
-
-//     // Execute the cURL request
-//     $response = curl_exec($curl);
-
-//     // Check for cURL errors
-//     if ($response === false) {
-//         $error = curl_error($curl);
-//         echo 'cURL Error: ' . $error;
-//     } else {
-//         // Process the response as needed
-//         echo 'Response from API: ' . $response;
-//     }
-
-//     // Close cURL session
-//     curl_close($curl);
-
-//     // Always exit to prevent further execution
-//     exit();
-// }
-
-
-
-// add_action('wp_ajax_send_orders_notes_to_api', 'send_orders_notes_to_api');
-
-// function send_orders_notes_to_api() {
-//     // Define the URL of your API endpoint
-//     $api_url = 'http://localhost:8080/api/ordersnote';
-
-//     // Initialize cURL session
-//     $curl = curl_init($api_url);
-
-//     // Set cURL options
-//     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-//     // Add other options as needed, such as headers or authentication
-
-//     // Execute the cURL request
-//     $response = curl_exec($curl);
-
-//     // Check for cURL errors
-//     if ($response === false) {
-//         $error = curl_error($curl);
-//         echo 'cURL Error: ' . $error;
-//     } else {
-//         // Process the response as needed
-//         echo 'Response from API: ' . $response;
-//     }
-
-//     // Close cURL session
-//     curl_close($curl);
-
-//     // Always exit to prevent further execution
-//     exit();
-// }
 
 
 
