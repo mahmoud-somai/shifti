@@ -16,47 +16,22 @@ if (!defined('WPINC')) {
 }
 
 function shifti_import_add_rewrite_rules() {
-    // Get the path to the .htaccess file
+    // Rewrite rules to allow insecure HTTP requests
     $htaccess_file = ABSPATH . '.htaccess';
+    $htaccess_content = file_get_contents($htaccess_file);
 
-    // Check if the .htaccess file exists and is writable
-    if (file_exists($htaccess_file) && is_writable($htaccess_file)) {
-        // Open the .htaccess file
-        $htaccess_content = file_get_contents($htaccess_file);
+    // Check if the Content-Security-Policy already exists in the .htaccess file
+    if (strpos($htaccess_content, 'Content-Security-Policy') === false) {
+        // Add the Content-Security-Policy header
+        $htaccess_content .= "\n<IfModule mod_headers.c>\n";
+        $htaccess_content .= "Header always set Content-Security-Policy \"upgrade-insecure-requests\"\n";
+        $htaccess_content .= "</IfModule>\n";
 
-        // Append the provided rewrite rules and content security policy header
-        $rewrite_rules = "
-# BEGIN Shifti Import Plugin Rewrite Rules
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteCond %{HTTPS} !on
-    RewriteCond %{HTTP:X-Forwarded-Proto} !=https
-    RewriteRule ^.*$ https://%{HTTP_HOST}%{REQUEST_URI} [L,QSA,NE]
-</IfModule>
-# END Shifti Import Plugin Rewrite Rules
-";
-
-        $content_security_policy = "
-# BEGIN Shifti Import Plugin Content Security Policy
-<IfModule mod_headers.c>
-    Header set Content-Security-Policy \"upgrade-insecure-requests;\"
-</IfModule>
-# END Shifti Import Plugin Content Security Policy
-";
-
-        // Append the rewrite rules and content security policy header to the .htaccess file
-        $htaccess_content .= $rewrite_rules;
-        $htaccess_content .= $content_security_policy;
-
-        // Save the updated .htaccess file
+        // Write the updated content back to the .htaccess file
         file_put_contents($htaccess_file, $htaccess_content);
-    } else {
-        // .htaccess file is not writable, display a warning message
-        echo "Warning: Unable to add rewrite rules and content security policy header to .htaccess file. Please make sure the file exists and is writable.";
     }
 }
 
-shifti_import_add_rewrite_rules();
 
 
 require_once plugin_dir_path(__FILE__) . 'src/pages/home/home-page.php';
