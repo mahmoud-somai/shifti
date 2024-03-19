@@ -50,7 +50,7 @@ function header_html(){
         echo '<button type="submit">Download products JSON</button>';
         echo '</form>';
        
-        echo '<button type="button" id="fetch-golang-data-button">Fetch Data</button>';
+        echo '<button type="button" id="fetch-golang-data-button">Fetch Data API</button>';
     
 
     
@@ -75,7 +75,7 @@ jQuery(document).ready(function($) {
                 // Handle successful response here (you can leave this function empty)
             },
             error: function(xhr, status, error) {
-                // Handle error here (you can leave this function empty)
+                console.log('Error fetch ');
             }
         });
     });
