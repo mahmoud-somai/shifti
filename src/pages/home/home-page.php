@@ -5,7 +5,7 @@ require_once dirname(__FILE__) . '/../form/form.php';
 function header_html(){
     echo '<link rel="stylesheet" href="' . plugins_url( 'shifti-import/src/styles/main.css') . '">';
     echo '<div style="text-align: center; padding: 20px; background-color: #f0f0f0;">';
-    echo '<img src="' . plugins_url( 'shifti-import/src/img/logo.png') . '" alt="Logo" style="width: 150px; height: 100px;">';
+    echo '<img class="logo_img" src="' . plugins_url( 'shifti-import/src/img/logo.png') . '" alt="Logo" style=" height: 100px;">';
     echo '<h1 style="font-size: 24px; margin-top: 20px;">Welcome to the Shifti Data Connector module!</h1>';
     echo '<p style="font-size: 16px;"">This versatile module allows seamless integration between your WooCommerce Shop and the Shifti web app.
     Easily configure the module using the intuitive form below.
