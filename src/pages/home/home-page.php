@@ -6,7 +6,7 @@ function header_html(){
     echo '<link rel="stylesheet" href="' . plugins_url( 'shifti-import/src/styles/main.css') . '">';
     echo '<div style="text-align: center; padding: 20px; background-color: #f0f0f0;">';
     echo '<img class="logo_img" src="' . plugins_url( 'shifti-import/src/img/logo.png') . '" alt="Logo">';
-    echo '<h1>Welcome to the Shifti Data Connector module!</h1>';
+    echo '<h1>Welcome to the Shifti Data Connector Plugin !</h1>';
     
     
     // Styling for the paragraph box with shadow
