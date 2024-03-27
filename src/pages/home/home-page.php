@@ -5,14 +5,14 @@ require_once dirname(__FILE__) . '/../form/form.php';
 function header_html(){
     echo '<link rel="stylesheet" href="' . plugins_url( 'shifti-import/src/styles/main.css') . '">';
     echo '<div style="text-align: center; padding: 20px; background-color: #f0f0f0;">';
-    echo '<img class="logo_img" src="' . plugins_url( 'shifti-import/src/img/logo.png') . '" alt="Logo" style="width: 150px; height: 100px;">';
-    echo '<h1 style="font-size: 24px; margin-top: 20px;">Welcome to the Shifti Data Connector module!</h1>';
-    echo '<p style="font-size: 16px;"">This versatile module allows seamless integration between your WooCommerce Shop and the Shifti web app.
-    Easily configure the module using the intuitive form below.
-    Experience enhanced data management and boost your sales with this powerful module</p>';
-    // echo '<p style="font-size: 16px;">By entering your plugin shop secret key and pressing import, you can import your WooCommerce data to your shop!</p>';
-   
-    echo '<p style="font-size: 16px;">This plugin provides convenient options to download various data types from your WooCommerce store. You can download categories, orders, customers, order notes, taxes, and products in JSON format. Additionally, you can fetch data from a Go API endpoint for further integration.</p>';
+    echo '<img class="logo_img" src="' . plugins_url( 'shifti-import/src/img/logo.png') . '" alt="Logo">';
+    echo '<h1>Welcome to the Shifti Data Connector module!</h1>';
+    echo '<p>This versatile module allows seamless integration between your WooCommerce Shop and the Shifti web app. Easily configure the module using the intuitive form below. Experience enhanced data management and boost your sales with this powerful module.</p>';
+    
+    // Styling for the paragraph box with shadow
+    echo '<div style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; margin-top: 20px;">';
+    echo '<p>This plugin provides convenient options to download various data types from your WooCommerce store. You can download categories, orders, customers, order notes, taxes, and products in JSON format. Additionally, you can fetch data from a Go API endpoint for further integration.</p>';
+    echo '</div>';
     form_html();
     // echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
     // echo '<input type="hidden" name="action" value="download_category_json">';
