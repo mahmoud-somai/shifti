@@ -10,7 +10,7 @@ function header_html(){
     echo '<p style="font-size: 16px;"">This versatile module allows seamless integration between your WooCommerce Shop and the Shifti web app.
     Easily configure the module using the intuitive form below.
     Experience enhanced data management and boost your sales with this powerful module</p>';
-    echo '<p style="font-size: 16px;">By entering your plugin shop secret key and pressing import, you can import your WooCommerce data to your shop!</p>';
+    // echo '<p style="font-size: 16px;">By entering your plugin shop secret key and pressing import, you can import your WooCommerce data to your shop!</p>';
    
     echo '<p style="font-size: 16px;">This plugin provides convenient options to download various data types from your WooCommerce store. You can download categories, orders, customers, order notes, taxes, and products in JSON format. Additionally, you can fetch data from a Go API endpoint for further integration.</p>';
     form_html();
