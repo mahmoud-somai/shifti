@@ -9,69 +9,69 @@ function header_html(){
     echo '<h1 style="font-size: 24px; margin-top: 20px;">Welcome to Shifti WordPress Plugin</h1>';
     echo '<p style="font-size: 16px; margin-top: 10px;">Here you can import the data of your shop</p>';
     echo '<p style="font-size: 16px;">By entering your plugin shop secret key and pressing import, you can import your WooCommerce data to your shop!</p>';
-    form_html();
-    echo '<p style="font-size: 16px;">This plugin provides convenient options to download various data types from your WooCommerce store. You can download categories, orders, customers, order notes, taxes, and products in JSON format. Additionally, you can fetch data from a Go API endpoint for further integration.</p>';
-
-    echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
-    echo '<input type="hidden" name="action" value="download_category_json">';
-    echo '<button type="submit">Download Categories JSON</button>';
-    echo '</form>';
-
-    echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
-    echo '<input type="hidden" name="action" value="download_orders_json">';
-    echo '<button type="submit">Download Orders JSON</button>';
-    echo '</form>';
-
-    echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
-    echo '<input type="hidden" name="action" value="download_customers_json">';
-    echo '<button type="submit">Download Customers JSON</button>';
-    echo '</form>';
-
-    echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
-    echo '<input type="hidden" name="action" value="download_orders_notes_json">';
-    echo '<button type="submit">Download Orders Notes JSON</button>';
-    echo '</form>';
-    
-    echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
-    echo '<input type="hidden" name="action" value="download_taxes_json">';
-    echo '<button type="submit">Download Taxes JSON</button>';
-    echo '</form>';
-
-    echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
-    echo '<input type="hidden" name="action" value="download_products_json">';
-    echo '<button type="submit">Download products JSON</button>';
-    echo '</form>';
    
-    echo '<form id="fetch-golang-data-form">';
-    echo '<input type="hidden" name="action" value="fetch_golang_data">'; // Set the action to call fetch_golang_data
-    echo '<button type="submit" id="fetch-golang-data-button">Fetch Data from  DB</button>';
-    echo '</form>';
+    echo '<p style="font-size: 16px;">This plugin provides convenient options to download various data types from your WooCommerce store. You can download categories, orders, customers, order notes, taxes, and products in JSON format. Additionally, you can fetch data from a Go API endpoint for further integration.</p>';
+    form_html();
+    // echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
+    // echo '<input type="hidden" name="action" value="download_category_json">';
+    // echo '<button type="submit">Download Categories JSON</button>';
+    // echo '</form>';
+
+    // echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
+    // echo '<input type="hidden" name="action" value="download_orders_json">';
+    // echo '<button type="submit">Download Orders JSON</button>';
+    // echo '</form>';
+
+    // echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
+    // echo '<input type="hidden" name="action" value="download_customers_json">';
+    // echo '<button type="submit">Download Customers JSON</button>';
+    // echo '</form>';
+
+    // echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
+    // echo '<input type="hidden" name="action" value="download_orders_notes_json">';
+    // echo '<button type="submit">Download Orders Notes JSON</button>';
+    // echo '</form>';
     
-    // Placeholder elements to display the endpoint and response
-    echo '<div id="endpoint-called"></div>';
-    echo '<div id="response-received"></div>';
+    // echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
+    // echo '<input type="hidden" name="action" value="download_taxes_json">';
+    // echo '<button type="submit">Download Taxes JSON</button>';
+    // echo '</form>';
 
-    // Add the necessary JavaScript directly here
-    echo '<script type="text/javascript">
-            jQuery(document).ready(function($) {
-                $("#fetch-golang-data-form").submit(function(event) {
-                    event.preventDefault(); // Prevent the default form submission
-                    $.ajax({
-                        url: "http://192.168.1.15:8080/api/ordersnote", // URL of the Golang API endpoint
-                        method: "GET", 
-                        success: function(response) {
-                            // Show the endpoint and response on the page
-                            $("#endpoint-called").text("Endpoint called: http://192.168.1.15:8080/api/ordersnote");
-                            $("#response-received").text("Response received: " + response);
-                        },
-                        error: function(xhr, status, error) {
-                            console.error("Error fetching data:", error);
-                        }
-                    });
-                });
-            });
-        </script>';
+    // echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
+    // echo '<input type="hidden" name="action" value="download_products_json">';
+    // echo '<button type="submit">Download products JSON</button>';
+    // echo '</form>';
+   
+    // echo '<form id="fetch-golang-data-form">';
+    // echo '<input type="hidden" name="action" value="fetch_golang_data">'; // Set the action to call fetch_golang_data
+    // echo '<button type="submit" id="fetch-golang-data-button">Fetch Data from  DB</button>';
+    // echo '</form>';
+    
+    // // Placeholder elements to display the endpoint and response
+    // echo '<div id="endpoint-called"></div>';
+    // echo '<div id="response-received"></div>';
 
-    echo '</div>';
+    // // Add the necessary JavaScript directly here
+    // echo '<script type="text/javascript">
+    //         jQuery(document).ready(function($) {
+    //             $("#fetch-golang-data-form").submit(function(event) {
+    //                 event.preventDefault(); // Prevent the default form submission
+    //                 $.ajax({
+    //                     url: "http://192.168.1.15:8080/api/ordersnote", // URL of the Golang API endpoint
+    //                     method: "GET", 
+    //                     success: function(response) {
+    //                         // Show the endpoint and response on the page
+    //                         $("#endpoint-called").text("Endpoint called: http://192.168.1.15:8080/api/ordersnote");
+    //                         $("#response-received").text("Response received: " + response);
+    //                     },
+    //                     error: function(xhr, status, error) {
+    //                         console.error("Error fetching data:", error);
+    //                     }
+    //                 });
+    //             });
+    //         });
+    //     </script>';
+
+    // echo '</div>';
 }
 ?>
