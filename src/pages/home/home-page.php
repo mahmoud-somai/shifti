@@ -10,6 +10,7 @@ function header_html(){
     echo '<p style="font-size: 16px; margin-top: 10px;">Here you can import the data of your shop</p>';
     echo '<p style="font-size: 16px;">By entering your plugin shop secret key and pressing import, you can import your WooCommerce data to your shop!</p>';
     form_html();
+    echo '<p style="font-size: 16px;">This plugin provides convenient options to download various data types from your WooCommerce store. You can download categories, orders, customers, order notes, taxes, and products in JSON format. Additionally, you can fetch data from a Go API endpoint for further integration.</p>';
 
     echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
     echo '<input type="hidden" name="action" value="download_category_json">';
