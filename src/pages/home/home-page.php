@@ -6,8 +6,11 @@ function header_html(){
     echo '<link rel="stylesheet" href="' . plugins_url( 'shifti-import/src/styles/main.css') . '">';
     echo '<div style="text-align: center; padding: 20px; background-color: #f0f0f0;">';
     echo '<img src="' . plugins_url( 'shifti-import/src/img/logo.png') . '" alt="Logo" style="width: 150px; height: 100px;">';
-    echo '<h1 style="font-size: 24px; margin-top: 20px;">Shifti Data Connector</h1>';
-    echo '<p style="font-size: 16px; margin-top: 10px;">Here you can import the data of your shop</p>';
+    echo '<h1 style="font-size: 24px; margin-top: 20px;">Welcome to the Shifti Data Connector module!</h1>';
+    echo '<p style="font-size: 16px; margin-top: 10px;">This versatile module allows seamless integration between your PrestaShop store and the Shifti web app.
+    Easily configure the module using the intuitive form below.
+    <br><br>
+    Experience enhanced data management and boost your sales with this powerful module</p>';
     echo '<p style="font-size: 16px;">By entering your plugin shop secret key and pressing import, you can import your WooCommerce data to your shop!</p>';
    
     echo '<p style="font-size: 16px;">This plugin provides convenient options to download various data types from your WooCommerce store. You can download categories, orders, customers, order notes, taxes, and products in JSON format. Additionally, you can fetch data from a Go API endpoint for further integration.</p>';
