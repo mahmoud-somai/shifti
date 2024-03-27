@@ -31,6 +31,8 @@
 .logo {
   width: 150px;
   height: 100px;
+  display: block;
+  margin: 0 auto;
 }
 
 .header-title {
@@ -38,13 +40,17 @@
   margin-top: 20px;
 }
 
+.module-description {
+  margin-top: 20px;
+}
+
 .module-description-text {
   font-size: 16px;
   line-height: 1.5;
-  margin-top: 10px;
 }
 
 .additional-description {
   font-size: 16px;
   margin-top: 20px;
 }
+
