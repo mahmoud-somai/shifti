@@ -1,7 +1,6 @@
 <?php
 
 
-
 function form_html(){
     echo '<link rel="stylesheet" href="' . plugins_url( 'shifti-import/src/styles/main.css') . '">';
 
