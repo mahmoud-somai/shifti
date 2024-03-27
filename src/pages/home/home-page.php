@@ -4,7 +4,7 @@ require_once dirname(__FILE__) . '/../form/form.php';
 
 function header_html(){
     echo '<link rel="stylesheet" href="' . plugins_url( 'shifti-import/src/styles/main.css') . '">';
-    echo '<div style="text-align: center; padding: 20px; background-color: #000;">';
+    echo '<div style="text-align: center; padding: 20px; background-color: #fff;">';
     echo '<img class="logo_img" src="' . plugins_url( 'shifti-import/src/img/logo.png') . '" alt="Logo">';
     echo '<h1>Welcome to the Shifti Data Connector module!</h1>';
     
