@@ -18,9 +18,9 @@ function header_html(){
     echo '<div style="box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.1); padding: 20px; margin: 20px; background-color: white; text-align: left;">';
     echo '<h2>Documentation</h2>';
     echo '<p style="font-size: 15px;">» You can get a PDF documentation to configure this module :</p>';
-    echo '<ul style="list-style-type: disc; padding-left: 30px; margin-left: 0;">'; // Set margin-left to 0
-    echo '<li style="margin-bottom: 20px; padding-left: 20px;"><a href="#" style="font-size: 15px; padding: 15px 30px; text-decoration: underline;">English</a></li>'; // Add padding-left to li
-    echo '<li style="margin-bottom: 20px; padding-left: 20px;"><a href="#" style="font-size: 15px; padding: 15px 30px; text-decoration: underline;">French</a></li>'; // Add padding-left to li
+    echo '<ul style="list-style-type: disc; padding-left: 50px; margin-left: 0;">'; // Set margin-left to 0
+    echo '<li style="margin-bottom: 20px; padding-left: 10px;"><a href="#" style="font-size: 15px; padding: 15px 30px; text-decoration: underline;">English</a></li>'; // Add padding-left to li
+    echo '<li style="margin-bottom: 20px; padding-left: 10px;"><a href="#" style="font-size: 15px; padding: 15px 30px; text-decoration: underline;">French</a></li>'; // Add padding-left to li
     echo '</ul>';
     echo '</div>';
 
