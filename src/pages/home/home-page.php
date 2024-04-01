@@ -18,8 +18,10 @@ function header_html(){
     echo '<div style="box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.1); padding: 20px; margin: 20px; background-color: white; text-align: left;">';
     echo '<h2>Documentation</h2>';
     echo '<p style="font-size: 15px;">» You can get a PDF documentation to configure this module :</p>';
-    echo '<button style="font-size: 15px; padding: 10px 20px; margin-right: 10px;">English</button>';
-    echo '<button style="font-size: 15px; padding: 10px 20px;">French</button>';
+    echo '<ul>';
+    echo '<li><button style="font-size: 15px; padding: 10px 20px; margin-right: 10px;">English</button></li>';
+    echo '<li><button style="font-size: 15px; padding: 10px 20px;">French</button></li>';
+    echo '</ul>';
     echo '</div>';
 
     form_html();
