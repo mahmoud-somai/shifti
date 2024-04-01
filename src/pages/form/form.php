@@ -10,7 +10,7 @@ function form_html(){
     echo '<div class="form-group" style="display: flex; align-items: center; justify-content: center;">'; // Adjusted style for same line display
     echo '<span style="font-size: 16px; color: #333; width: 20%; text-align: left;">Plugin Token : </span>'; // Removed inline-block for better alignment
     echo '<input type="text" name="plugin-token" id="token" style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; width: 40%; height:35px;">'; // Removed inline-block for better alignment
-    echo '<button class="button-sft" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; width: 30%; margin-left: 20px;">Export Your Shop!</button>'; // Adjusted margin-left
+    echo '<button class="button-sft" style="background-color: #4CAF50; color: white; padding: 10px 20px; height:35px; border: none; border-radius: 4px; cursor: pointer; width: 30%; margin-left: 20px;">Export Your Shop!</button>'; // Adjusted margin-left
     echo '</div>';
     echo '</form>'; // Closing form tag
     echo '</div>';
