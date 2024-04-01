@@ -19,8 +19,8 @@ function header_html(){
     echo '<h2>Documentation</h2>';
     echo '<p style="font-size: 15px;">» You can get a PDF documentation to configure this module :</p>';
     echo '<ul style="list-style-type: disc; padding-left: 30px;">';
-    echo '<li style="margin-bottom: 20px;"><a href="#" style="font-size: 15px; padding: 15px 30px; text-decoration: underline;">English</a></li>';
-    echo '<li style="margin-bottom: 20px;"><a href="#" style="font-size: 15px; padding: 15px 30px; text-decoration: underline;">French</a></li>';
+    echo '<li style="margin-bottom: 20px; padding-left: 10px;"><a href="#" style="font-size: 15px; padding: 15px 30px; text-decoration: underline;">English</a></li>';
+    echo '<li style="margin-bottom: 20px; padding-left: 10px;"><a href="#" style="font-size: 15px; padding: 15px 30px; text-decoration: underline;">French</a></li>';
     echo '</ul>';
     echo '</div>';
 
