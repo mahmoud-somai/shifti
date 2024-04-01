@@ -9,13 +9,22 @@ function header_html(){
     echo '<h1>Welcome to the Shifti Data Connector Plugin !</h1>';
     
     
-    // Styling for the paragraph box with shadow
+
     echo '<div style="box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.1); padding: 20px; margin: 20px; background-color: white;">';
     echo '<p style="font-size: 15px;">This versatile module allows seamless integration between your WooCommerce Shop and the Shifti web app. Easily configure the module using the intuitive form below. Experience enhanced data management and boost your sales with this powerful module.</p>';
     echo '<p style="font-size: 15px;">This plugin provides convenient options to download various data types from your WooCommerce store. You can download categories, orders, customers, order notes, taxes, and products in JSON format. Additionally, you can fetch data from a Go API endpoint for further integration.</p>';
     echo '</div>';
+
+    echo '<div style="box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.1); padding: 20px; margin: 20px; background-color: white;">';
+    echo '<h2>Documentation</h2>';
+    echo '<p style="font-size: 15px;">» You can get a PDF documentation to configure this module :</p>';
+    echo '<button style="font-size: 15px; padding: 10px 20px; margin-right: 10px;">English</button>';
+    echo '<button style="font-size: 15px; padding: 10px 20px;">French</button>';
+    echo '</div>';
     form_html();
-    // echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
+   
+}
+ // echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
     // echo '<input type="hidden" name="action" value="download_category_json">';
     // echo '<button type="submit">Download Categories JSON</button>';
     // echo '</form>';
@@ -76,5 +85,4 @@ function header_html(){
     //     </script>';
 
     // echo '</div>';
-}
 ?>
