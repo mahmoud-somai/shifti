@@ -43,7 +43,7 @@ function form_html(){
     // JavaScript function to trigger file download
     echo 'function downloadFile() {';
     echo '    var fileUrl = "download_category_json";';
-    echo '    var fileName = "res";'; // You can set the file name here
+    echo '    var fileName = "res.json";'; // You can set the file name here
     echo '    var link = document.createElement("a");';
     echo '    link.href = fileUrl;';
     echo '    link.download = fileName;';
