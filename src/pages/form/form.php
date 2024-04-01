@@ -17,8 +17,12 @@
 // }
 
 
+<?php
+
 function form_html(){
     echo '<link rel="stylesheet" href="' . plugins_url( 'shifti-import/src/styles/main.css') . '">';
+
+    echo '<form>'; // Start the form tag
 
     echo '<div class="stf-form" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; margin: 20px auto; background-color: white; width: 50%; text-align: center;">';
     echo '<h2 style="width: 100%; margin-bottom: 10px;">Link Shop</h2>'; 
@@ -32,6 +36,8 @@ function form_html(){
     echo '</div>';
     echo '</div>';
 
+    echo '</form>'; // End the form tag
+
     echo '<script src="' . plugins_url( 'shifti-import/src/scripts/index.js') . '"></script>';
     echo '<script>';
     echo 'document.getElementById("export-button").addEventListener("click", function() {';
@@ -39,6 +45,9 @@ function form_html(){
     echo '});';
     echo '</script>';
 }
+
+?>
+
 
 
 ?>
