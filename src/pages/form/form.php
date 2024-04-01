@@ -23,6 +23,7 @@ function form_html(){
     echo '});';
     echo '</script>';
 }
+?>
 
 
 
