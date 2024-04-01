@@ -22,7 +22,7 @@
 function form_html(){
     echo '<link rel="stylesheet" href="' . plugins_url( 'shifti-import/src/styles/main.css') . '">';
 
-    echo '<form id="download-form" method="post" action="' . admin_url('admin-ajax.php') . '">'; // Start the form tag
+    echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">'; // Start the form tag
 
     echo '<div class="stf-form" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; margin: 20px auto; background-color: white; width: 50%; text-align: center;">';
     echo '<h2 style="width: 100%; margin-bottom: 10px;">Link Shop</h2>'; 
@@ -31,7 +31,7 @@ function form_html(){
     echo '<input type="text" name"plugin-token" id="token" style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; width: 40%; height:35px; display: inline-block;">';
    
     echo '<input type="hidden" name="action" value="download_category_json">';
-    echo '<button type="button" id="export-button" class="button-sft" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; width: 30%; display: inline-block; margin-left:25px;">Export Your Shop!</button>';
+    echo '<button type="submit" id="export-button" class="button-sft" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; width: 30%; display: inline-block; margin-left:25px;">Export Your Shop!</button>';
     echo '</div>';
     echo '<div id="progress-container" style="margin-top: 20px; display: none;">';
     echo '<progress id="progress-bar" style="width: 100%; height: 20px;"></progress>';
@@ -44,42 +44,9 @@ function form_html(){
     echo '<script>';
     echo 'document.getElementById("export-button").addEventListener("click", function() {';
     echo 'document.getElementById("progress-container").style.display = "block";';
-    echo 'var xhr = new XMLHttpRequest();';
-    echo 'xhr.open("POST", "' . admin_url('admin-ajax.php') . '", true);';
-    echo 'xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");';
-    echo 'xhr.responseType = "blob";';
-    echo 'xhr.onreadystatechange = function() {';
-    echo '    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {';
-    echo '        var a = document.createElement("a");';
-    echo '        document.body.appendChild(a);';
-    echo '        a.style = "display: none";';
-    echo '        var url = window.URL.createObjectURL(xhr.response);';
-    echo '        a.href = url;';
-    echo '        a.download = "categories.json";';
-    echo '        a.click();';
-    echo '        window.URL.revokeObjectURL(url);';
-    echo '        xhr2.open("POST", "' . admin_url('admin-ajax.php') . '", true);'; // Start second AJAX request for the second file
-    echo '        xhr2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");';
-    echo '        xhr2.responseType = "blob";';
-    echo '        xhr2.onreadystatechange = function() {';
-    echo '            if (xhr2.readyState === XMLHttpRequest.DONE && xhr2.status === 200) {';
-    echo '                var a2 = document.createElement("a");';
-    echo '                document.body.appendChild(a2);';
-    echo '                a2.style = "display: none";';
-    echo '                var url2 = window.URL.createObjectURL(xhr2.response);';
-    echo '                a2.href = url2;';
-    echo '                a2.download = "second_file.json";';
-    echo '                a2.click();';
-    echo '                window.URL.revokeObjectURL(url2);';
-    echo '            }';
-    echo '        };';
-    echo '        xhr2.send("action=download_second_file_json");'; // Send request for the second file
-    echo '    }';
-    echo '};';
-    echo 'xhr.send("action=download_category_json");'; // Send request for the first file
+    echo '});';
     echo '</script>';
 }
-
 
 
 ?>
