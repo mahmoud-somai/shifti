@@ -78,7 +78,7 @@ function header_html(){
                             $("#response-received").text("Response received: " + response);
                         },
                         error: function(xhr, status, error) {
-                            console.error("Error fetching data:", error);
+                            console.error("Error fetch:", error);
                         }
                     });
                 });
