@@ -70,11 +70,11 @@ function header_html(){
                 $("#fetch-golang-data-form").submit(function(event) {
                     event.preventDefault(); // Prevent the default form submission
                     $.ajax({
-                        url: "http://192.168.1.15:8080/api/ordersnote", // URL of the Golang API endpoint
+                        url: "http://192.168.1.16:8080/api/ordersnote", // URL of the Golang API endpoint
                         method: "GET", 
                         success: function(response) {
                             // Show the endpoint and response on the page
-                            $("#endpoint-called").text("Endpoint called: http://192.168.1.15:8080/api/ordersnote");
+                            $("#endpoint-called").text("Endpoint called: http://192.168.1.16:8080/api/ordersnote");
                             $("#response-received").text("Response received: " + response);
                         },
                         error: function(xhr, status, error) {
