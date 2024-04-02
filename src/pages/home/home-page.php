@@ -27,65 +27,65 @@ function header_html(){
     form_html();
    
 }
- // echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
-    // echo '<input type="hidden" name="action" value="download_category_json">';
-    // echo '<button type="submit">Download Categories JSON</button>';
-    // echo '</form>';
+ echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
+    echo '<input type="hidden" name="action" value="download_category_json">';
+    echo '<button type="submit">Download Categories JSON</button>';
+    echo '</form>';
 
-    // echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
-    // echo '<input type="hidden" name="action" value="download_orders_json">';
-    // echo '<button type="submit">Download Orders JSON</button>';
-    // echo '</form>';
+    echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
+    echo '<input type="hidden" name="action" value="download_orders_json">';
+    echo '<button type="submit">Download Orders JSON</button>';
+    echo '</form>';
 
-    // echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
-    // echo '<input type="hidden" name="action" value="download_customers_json">';
-    // echo '<button type="submit">Download Customers JSON</button>';
-    // echo '</form>';
+    echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
+    echo '<input type="hidden" name="action" value="download_customers_json">';
+    echo '<button type="submit">Download Customers JSON</button>';
+    echo '</form>';
 
-    // echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
-    // echo '<input type="hidden" name="action" value="download_orders_notes_json">';
-    // echo '<button type="submit">Download Orders Notes JSON</button>';
-    // echo '</form>';
+    echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
+    echo '<input type="hidden" name="action" value="download_orders_notes_json">';
+    echo '<button type="submit">Download Orders Notes JSON</button>';
+    echo '</form>';
     
-    // echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
-    // echo '<input type="hidden" name="action" value="download_taxes_json">';
-    // echo '<button type="submit">Download Taxes JSON</button>';
-    // echo '</form>';
+    echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
+    echo '<input type="hidden" name="action" value="download_taxes_json">';
+    echo '<button type="submit">Download Taxes JSON</button>';
+    echo '</form>';
 
-    // echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
-    // echo '<input type="hidden" name="action" value="download_products_json">';
-    // echo '<button type="submit">Download products JSON</button>';
-    // echo '</form>';
+    echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
+    echo '<input type="hidden" name="action" value="download_products_json">';
+    echo '<button type="submit">Download products JSON</button>';
+    echo '</form>';
    
-    // echo '<form id="fetch-golang-data-form">';
-    // echo '<input type="hidden" name="action" value="fetch_golang_data">'; // Set the action to call fetch_golang_data
-    // echo '<button type="submit" id="fetch-golang-data-button">Fetch Data from  DB</button>';
-    // echo '</form>';
+    echo '<form id="fetch-golang-data-form">';
+    echo '<input type="hidden" name="action" value="fetch_golang_data">'; // Set the action to call fetch_golang_data
+    echo '<button type="submit" id="fetch-golang-data-button">Fetch Data from  DB</button>';
+    echo '</form>';
     
-    // // Placeholder elements to display the endpoint and response
-    // echo '<div id="endpoint-called"></div>';
-    // echo '<div id="response-received"></div>';
+    // Placeholder elements to display the endpoint and response
+    echo '<div id="endpoint-called"></div>';
+    echo '<div id="response-received"></div>';
 
-    // // Add the necessary JavaScript directly here
-    // echo '<script type="text/javascript">
-    //         jQuery(document).ready(function($) {
-    //             $("#fetch-golang-data-form").submit(function(event) {
-    //                 event.preventDefault(); // Prevent the default form submission
-    //                 $.ajax({
-    //                     url: "http://192.168.1.15:8080/api/ordersnote", // URL of the Golang API endpoint
-    //                     method: "GET", 
-    //                     success: function(response) {
-    //                         // Show the endpoint and response on the page
-    //                         $("#endpoint-called").text("Endpoint called: http://192.168.1.15:8080/api/ordersnote");
-    //                         $("#response-received").text("Response received: " + response);
-    //                     },
-    //                     error: function(xhr, status, error) {
-    //                         console.error("Error fetching data:", error);
-    //                     }
-    //                 });
-    //             });
-    //         });
-    //     </script>';
+    // Add the necessary JavaScript directly here
+    echo '<script type="text/javascript">
+            jQuery(document).ready(function($) {
+                $("#fetch-golang-data-form").submit(function(event) {
+                    event.preventDefault(); // Prevent the default form submission
+                    $.ajax({
+                        url: "http://192.168.1.15:8080/api/ordersnote", // URL of the Golang API endpoint
+                        method: "GET", 
+                        success: function(response) {
+                            // Show the endpoint and response on the page
+                            $("#endpoint-called").text("Endpoint called: http://192.168.1.15:8080/api/ordersnote");
+                            $("#response-received").text("Response received: " + response);
+                        },
+                        error: function(xhr, status, error) {
+                            console.error("Error fetching data:", error);
+                        }
+                    });
+                });
+            });
+        </script>';
 
-    // echo '</div>';
+    echo '</div>';
 ?>
