@@ -11,7 +11,8 @@ jQuery(document).ready(function($) {
             },
             error: function(xhr, status, error) {
                 // Log an error message to the console
-                console.error("Error fetching: " + this.url);
+                console.log("Error fetching: " + this.url);
+               
             }
         });
     });
