@@ -123,7 +123,6 @@ function fetch_golang_data() {
     }
 }
 
-
 add_action('wp_ajax_post_orders_notes', 'post_orders_notes');
 function post_orders_notes() {
     // Get the orders notes JSON data
@@ -142,7 +141,6 @@ function post_orders_notes() {
             ),
         ));
         
-
         // Check if the request was successful
         if (!is_wp_error($response) && wp_remote_retrieve_response_code($response) === 200) {
             // Log the success message to the console
@@ -152,7 +150,7 @@ function post_orders_notes() {
         } else {
             // Log an error message to the console
             echo '<script>';
-            echo 'console.log("Fail !!!!!!!!!!");';
+            echo 'console.log("Failed to post orders notes.");';
             echo '</script>';
         }
     } else {
@@ -161,7 +159,51 @@ function post_orders_notes() {
         echo 'console.log("No orders notes data to post.");';
         echo '</script>';
     }
+
+    // Add JavaScript code to handle form submission
+    echo '<script type="text/javascript">
+        jQuery(document).ready(function($) {
+            // Prevent the default form submission
+            $("#post-orders-notes-form").submit(function(event) {
+                event.preventDefault();
+                
+                // Fetch the JSON data from the server-side PHP function using AJAX
+                $.ajax({
+                    url: "' . admin_url('admin-ajax.php') . '",
+                    method: "POST",
+                    data: {
+                        action: "get_orders_notes" // Specify the action to retrieve orders notes
+                    },
+                    success: function(json_data) {
+                        // Log the JSON data to the console
+                        console.log("JSON data to be sent:", json_data);
+                        
+                        // Define the URL to post the data
+                        var url = "http://localhost:8080/api/ordersnote";
+                        
+                        // Make an AJAX request to post orders notes to the server
+                        $.ajax({
+                            url: url,
+                            method: "POST",
+                            data: json_data, // Send the JSON data
+                            contentType: "application/json", // Specify the content type as JSON
+                            success: function(response) {
+                                console.log("Orders notes posted successfully.");
+                            },
+                            error: function(xhr, status, error) {
+                                console.log("Failed to post orders notes.");
+                            }
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.log("Failed to retrieve orders notes.");
+                    }
+                });
+            });
+        });
+    </script>';
 }
+
 
 
 

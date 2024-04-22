@@ -56,47 +56,50 @@ function header_html(){
     echo '<input type="hidden" name="action" value="post_orders_notes">';
     echo '<button type="submit">Post Orders Notes</button>';
     echo '</form>';
-
+    
     echo '<script type="text/javascript">
-    jQuery(document).ready(function($) {
-        $("#post-orders-notes-form").submit(function(event) {
-            event.preventDefault(); 
-            
-            // Fetch the JSON data from the server-side PHP function using AJAX
-            $.ajax({
-                url: "' . admin_url('admin-ajax.php') . '",
-                method: "POST",
-                data: {
-                    action: "get_orders_notes" // Specify the action to retrieve orders notes
-                },
-                success: function(json_data) {
-                    // Log the JSON data to the console
-                    console.log("JSON data to be sent:", json_data);
-                    
-                    // Define the URL to post the data
-                    var url = "http://localhost:8080/api/ordersnote";
-                    
-                    // Make an AJAX request to post orders notes to the server
-                    $.ajax({
-                        url: url,
-                        method: "POST",
-                        data: json_data, // Send the JSON data
-                        contentType: "application/json", // Specify the content type as JSON
-                        success: function(response) {
-                            console.log("Orders notes posted successfully.");
-                        },
-                        error: function(xhr, status, error) {
-                            console.log("Failed to post orders notes.");
-                        }
-                    });
-                },
-                error: function(xhr, status, error) {
-                    console.log("Failed to retrieve orders notes.");
-                }
+        jQuery(document).ready(function($) {
+            $("#post-orders-notes-form").submit(function(event) {
+                event.preventDefault(); 
+                
+                // Fetch the JSON data from the server-side PHP function using AJAX
+                $.ajax({
+                    url: "' . admin_url('admin-ajax.php') . '",
+                    method: "POST",
+                    data: {
+                        action: "get_orders_notes" // Specify the action to retrieve orders notes
+                    },
+                    success: function(json_data) {
+                        // Log the JSON data to the console
+                        console.log("JSON data to be sent:", json_data);
+                        
+                        // Define the URL to post the data
+                        var url = "http://localhost:8080/api/ordersnote";
+                        
+                        // Make an AJAX request to post orders notes to the server
+                        $.ajax({
+                            url: url,
+                            method: "POST",
+                            data: json_data, // Send the JSON data
+                            contentType: "application/json", // Specify the content type as JSON
+                            success: function(response) {
+                                console.log("Orders notes posted successfully.");
+                            },
+                            error: function(xhr, status, error) {
+                                console.log("Failed to post orders notes.");
+                            }
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.log("Failed to retrieve orders notes.");
+                    }
+                });
             });
         });
-    });
-</script>';
+    </script>';
+    
+
+   
 
 //     echo '<form id="fetch-golang-data-form">';
 //     echo '<input type="hidden" name="action" value="fetch_golang_data">'; // Set the action to call fetch_golang_data
