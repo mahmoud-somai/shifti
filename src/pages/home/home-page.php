@@ -60,14 +60,26 @@ function header_html(){
     echo '<button type="submit" id="fetch-golang-data-button">Fetch Data from  DB</button>';
     echo '</form>';
     
-    // Placeholder elements to display the endpoint and response
-    echo '<div id="endpoint-called"></div>';
-    echo '<div id="response-received"></div>';
-
-
-
 
     echo '</div>';
+
+    echo '<script>
+    document.getElementById("fetch-golang-data-button").addEventListener("click", function() {
+        fetchGolangData();
+    });
+
+    function fetchGolangData() {
+        // Make AJAX request to fetch data from the Golang API
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "' . admin_url('admin-ajax.php') . '?action=fetch_golang_data", true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log("Response from server:", xhr.responseText);
+            }
+        };
+        xhr.send();
+    }
+  </script>';
    
 }
  
