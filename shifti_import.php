@@ -42,7 +42,6 @@ function download_category_json() {
     echo $json_data;
     exit();
 }
-
 add_action('wp_ajax_download_orders_json', 'download_orders_json');
 function download_orders_json() {
 
@@ -54,7 +53,6 @@ function download_orders_json() {
     echo $json_data;
     exit();
 }
-
 add_action('wp_ajax_download_customers_json', 'download_customers_json');
 function download_customers_json() {
 
@@ -66,7 +64,6 @@ function download_customers_json() {
     echo $json_data;
     exit();
 }
-
 add_action('wp_ajax_download_orders_notes_json', 'download_orders_notes_json');
 function download_orders_notes_json() {
 
@@ -78,7 +75,6 @@ function download_orders_notes_json() {
     echo $json_data;
     exit();
 }
-
 add_action('wp_ajax_download_taxes_json', 'download_taxes_json');
 function download_taxes_json() {
 
@@ -132,8 +128,9 @@ add_action('wp_ajax_post_orders_notes', 'post_orders_notes');
 function post_orders_notes() {
     // Make AJAX request to post orders notes to the Golang API
     $url = 'http://localhost:8080/api/ordersnote';
+    $json_data = get_orders_notes();
     $response = wp_remote_post($url, array(
-        'body' => array(), // Ajoutez les données à envoyer si nécessaire
+        'body' => $json_data, // Ajoutez les données à envoyer si nécessaire
     ));
 
     // Vérifiez si la requête a réussi
