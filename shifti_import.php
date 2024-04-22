@@ -151,7 +151,7 @@ function post_orders_notes() {
         } else {
             // Log an error message to the console
             echo '<script>';
-            echo 'console.log("Failed to post orders notes.");';
+            echo 'console.log("Fail !!!!!!!!!!");';
             echo '</script>';
         }
     } else {
