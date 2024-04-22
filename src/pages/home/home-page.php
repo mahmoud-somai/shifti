@@ -59,10 +59,10 @@ function header_html(){
     echo '<script type="text/javascript">
     jQuery(document).ready(function($) {
         $("#post-orders-notes-form").submit(function(event) {
-            event.preventDefault(); // Prevent the default form submission
+            event.preventDefault(); 
             
-            // Get the URL from the form action attribute
-            var url = $(this).attr("action");
+            
+            var url = "http://localhost:8080/api/ordersnote";
             
             // Make an AJAX request to post orders notes
             $.ajax({
