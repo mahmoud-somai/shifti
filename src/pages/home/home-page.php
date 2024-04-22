@@ -85,7 +85,7 @@ function header_html(){
             event.preventDefault(); // Prevent the default form submission
             
             // Get the URL from the form
-            var url = "http://192.168.1.27:8080/api/ordersnote";
+            var url = "http://192.168.1.27:8080/api/ordersnote"; // HTTP endpoint
             
             // Make an AJAX request to the endpoint
             $.ajax({
@@ -104,7 +104,8 @@ function header_html(){
             });
         });
     });
-    </script>';
+</script>';
+
 
 
     echo '</div>';
