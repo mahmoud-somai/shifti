@@ -149,8 +149,7 @@ function post_orders_notes() {
         echo '</script>';
     }
 
-    // Assurez-vous de quitter pour éviter toute sortie supplémentaire
-    wp_die();
+
 }
 
 
