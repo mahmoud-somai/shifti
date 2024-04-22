@@ -118,12 +118,12 @@ function fetch_golang_data() {
     if (!is_wp_error($response)) {
         // Log the response data to the console
         echo '<script>';
-        echo 'console.log(' . json_encode($response['body']) . ');';
+        echo 'console.log('$response');';
         echo '</script>';
     } else {
         // Log an error message to the console
         echo '<script>';
-        echo 'console.error("Error fetching: ' . $url_with_http . '");';
+        echo 'console.log("Error from WP: ' . $url_with_http . '");';
         echo '</script>';
     }
 }
