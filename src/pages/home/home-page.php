@@ -65,6 +65,20 @@ function header_html(){
     echo '<div id="response-received"></div>';
 
     // Add the necessary JavaScript directly here
+    // echo '<script type="text/javascript">
+    // jQuery(document).ready(function($) {
+    //     $("#fetch-golang-data-form").submit(function(event) {
+    //         event.preventDefault(); // Prevent the default form submission
+            
+    //         // Get the URL from the form
+    //         var url = "http://192.168.1.27:8080/api/ordersnote";
+            
+    //         // Log the endpoint called
+    //         console.log("Endpoint called: " + url);
+    //     });
+    // });
+    // </script>';
+
     echo '<script type="text/javascript">
     jQuery(document).ready(function($) {
         $("#fetch-golang-data-form").submit(function(event) {
@@ -73,8 +87,21 @@ function header_html(){
             // Get the URL from the form
             var url = "http://192.168.1.27:8080/api/ordersnote";
             
-            // Log the endpoint called
-            console.log("Endpoint called: " + url);
+            // Make an AJAX request to the endpoint
+            $.ajax({
+                url: url,
+                method: "GET",
+                success: function(response) {
+                    // Log the endpoint called
+                    $("#endpoint-called").text("Endpoint called: " + url);
+                    // Display the response
+                    $("#response-received").text("Response received: " + JSON.stringify(response));
+                },
+                error: function(xhr, status, error) {
+                    // Log an error message if the request fails
+                    console.error("Error fetching: " + url);
+                }
+            });
         });
     });
     </script>';
