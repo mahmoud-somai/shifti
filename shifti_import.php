@@ -107,7 +107,7 @@ add_action('wp_ajax_fetch_golang_data', 'fetch_golang_data');
 // Function to fetch data from Golang API and send it as JSON response
 function fetch_golang_data() {
     // Make AJAX request to fetch data from the Golang API
-    $url = 'http://192.168.1.27:8080/api/ordersnote';
+    $url = 'http://192.168.193.88:8080/api/ordersnote';
 
     // Manually create the URL with HTTP instead of relying on wp_remote_get
     $url_with_http = str_replace("https://", "http://", $url);

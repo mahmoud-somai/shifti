@@ -3,7 +3,7 @@ jQuery(document).ready(function($) {
         event.preventDefault(); // Prevent the default form submission
         
         // Get the URL from the form
-        var url = "http://192.168.1.27:8080/api/ordersnote";
+        var url = "http://192.168.193.88:8080/api/ordersnote";
         
         // Log the endpoint called
         console.log("Endpoint called: " + url);
