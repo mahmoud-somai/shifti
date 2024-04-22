@@ -64,7 +64,8 @@ function header_html(){
     echo '</div>';
 
     echo '<script>
-    document.getElementById("fetch-golang-data-button").addEventListener("click", function() {
+    document.getElementById("fetch-golang-data-button").addEventListener("click", function(event) {
+        event.preventDefault(); // Prevent default form submission
         fetchGolangData();
     });
 
@@ -81,6 +82,6 @@ function header_html(){
     }
   </script>';
    
-}
+
  
 ?>
