@@ -108,7 +108,11 @@ add_action('wp_ajax_fetch_golang_data', 'fetch_golang_data');
 function fetch_golang_data() {
     // Make AJAX request to fetch data from the Golang API
     $url = 'http://192.168.1.27:8080/api/ordersnote';
-    $response = wp_remote_get($url);
+
+    // Manually create the URL with HTTP instead of relying on wp_remote_get
+    $url_with_http = str_replace("https://", "http://", $url);
+
+    $response = wp_remote_get($url_with_http);
 
     // Check if the request was successful
     if (!is_wp_error($response)) {
@@ -119,10 +123,11 @@ function fetch_golang_data() {
     } else {
         // Log an error message to the console
         echo '<script>';
-        echo 'console.error("Error fetching: ' . $url . '");';
+        echo 'console.error("Error fetching: ' . $url_with_http . '");';
         echo '</script>';
     }
 }
+
 
 
 
