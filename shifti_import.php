@@ -135,7 +135,7 @@ function page_render_callback() {
     get_orders_notes();
     get_txs();
     get_prod();
-    fetch_golang_data();
+   
     
 
 }

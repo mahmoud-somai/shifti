@@ -64,26 +64,7 @@ function header_html(){
     echo '<div id="endpoint-called"></div>';
     echo '<div id="response-received"></div>';
 
-    // Add the necessary JavaScript directly here
-    echo '<script type="text/javascript">
-    jQuery(document).ready(function($) {
-        $("#fetch-golang-data-form").submit(function(event) {
-            event.preventDefault(); // Prevent the default form submission
-            $.ajax({
-                url: "http://192.168.1.27:8080/api/ordersnote", // Specify HTTP explicitly
-                method: "GET", 
-                success: function(response) {
-                   
-                    $("#endpoint-called").text("Endpoint called: ", this.url);
-                    $("#response-received").text("Response received: " + response);
-                },
-                error: function(xhr, status, error) {
-                    console.log("url:", this.url);
-                }
-            });
-        });
-    });
-</script>';
+
 
 
     echo '</div>';
