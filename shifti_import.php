@@ -136,8 +136,10 @@ function post_orders_notes() {
         
         // Make the AJAX request to post orders notes to the Golang API
         $response = wp_remote_post($url, 
-            $json_data  
-
+            'body' => $json_data, // Pass the JSON data in the body of the request
+            'headers' => array(
+                'Content-Type' => 'application/json', // Specify the content type as JSON
+            ,
         );
 
         // Check if the request was successful
