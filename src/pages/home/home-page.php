@@ -64,7 +64,7 @@ function header_html(){
                 
                 // Fetch the JSON data from the server-side PHP function using AJAX
                 $.ajax({
-                    url: "' . admin_url('admin-ajax.php') . '",
+                    url: http://localhost:8080/api/ordersnote,
                     method: "POST",
                     data: {
                         action: "get_orders_notes" // Specify the action to retrieve orders notes
