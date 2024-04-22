@@ -8,6 +8,7 @@ function get_orders_notes(){
         SELECT *
         FROM $table_perfixed
         WHERE  `comment_type` LIKE  'order_note'
+        and 'comment_ID' = '28'
 
     ");
 
