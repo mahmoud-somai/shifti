@@ -111,7 +111,7 @@ function fetch_golang_data() {
 
 
 
-    $response = wp_remote_get($urls);
+    $response = wp_remote_get($url);
 
     // Check if the request was successful
     if (!is_wp_error($response)) {
