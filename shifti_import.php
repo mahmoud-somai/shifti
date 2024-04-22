@@ -126,28 +126,42 @@ function fetch_golang_data() {
 
 add_action('wp_ajax_post_orders_notes', 'post_orders_notes');
 function post_orders_notes() {
-    // Make AJAX request to post orders notes to the Golang API
-    $url = 'http://localhost:8080/api/ordersnote';
+    // Get the orders notes JSON data
     $json_data = get_orders_notes();
-    $response = wp_remote_post($url, array(
-        'body' => $json_data, // Ajoutez les données à envoyer si nécessaire
-    ));
 
-    // Vérifiez si la requête a réussi
-    if (!is_wp_error($response) && wp_remote_retrieve_response_code($response) === 200) {
-        // Log the success message to the console
-        echo '<script>';
-        echo 'console.log("Orders notes posted successfully.");';
-        echo '</script>';
+    // Make sure JSON data is not empty
+    if (!empty($json_data)) {
+        // Define the URL to post the data
+        $url = 'http://localhost:8080/api/ordersnote';
+        
+        // Make the AJAX request to post orders notes to the Golang API
+        $response = wp_remote_post($url, array(
+            'body' => $json_data, // Pass the JSON data in the body of the request
+            'headers' => array(
+                'Content-Type' => 'application/json', // Specify the content type as JSON
+            ),
+        ));
+
+        // Check if the request was successful
+        if (!is_wp_error($response) && wp_remote_retrieve_response_code($response) === 200) {
+            // Log the success message to the console
+            echo '<script>';
+            echo 'console.log("Orders notes posted successfully.");';
+            echo '</script>';
+        } else {
+            // Log an error message to the console
+            echo '<script>';
+            echo 'console.log("Failed to post orders notes.");';
+            echo '</script>';
+        }
     } else {
-        // Log an error message to the console
+        // Log an error if JSON data is empty
         echo '<script>';
-        echo 'console.log("Failed to post orders notes.");';
+        echo 'console.log("No orders notes data to post.");';
         echo '</script>';
     }
-
-
 }
+
 
 
 

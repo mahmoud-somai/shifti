@@ -56,6 +56,30 @@ function header_html(){
     echo '<input type="hidden" name="action" value="post_orders_notes">';
     echo '<button type="submit">Post Orders Notes</button>';
     echo '</form>';
+    echo '<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $("#post-orders-notes-form").submit(function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            
+            // Get the URL from the form action attribute
+            var url = $(this).attr("action");
+            
+            // Make an AJAX request to post orders notes
+            $.ajax({
+                url: url,
+                method: "POST",
+                success: function(response) {
+                    // Log the success message to the console
+                    console.log("Orders notes posted successfully.");
+                },
+                error: function(xhr, status, error) {
+                    // Log an error message to the console
+                    console.log("Failed to post orders notes.");
+                }
+            });
+        });
+    });
+</script>';
 
     echo '<form id="fetch-golang-data-form">';
     echo '<input type="hidden" name="action" value="fetch_golang_data">'; // Set the action to call fetch_golang_data
