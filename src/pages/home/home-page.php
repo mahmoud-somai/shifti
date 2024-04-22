@@ -1,5 +1,4 @@
 <?php
-
 require_once dirname(__FILE__) . '/../form/form.php';
 
 function header_html(){
@@ -7,8 +6,6 @@ function header_html(){
     echo '<div style="text-align: center; padding: 20px; background-color: #f0f0f0;">';
     echo '<img class="logo_img" src="' . plugins_url( 'shifti-import/src/img/logo.png') . '" alt="Logo">';
     echo '<h1>Welcome to the Shifti Data Connector Plugin !</h1>';
-    
-    
 
     echo '<div style="box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.1); padding: 20px; margin: 20px; background-color: white;">';
     echo '<p style="font-size: 15px;">This versatile module allows seamless integration between your WooCommerce Shop and the Shifti web app. Easily configure the module using the intuitive form below. Experience enhanced data management and boost your sales with this powerful module.</p>';
@@ -44,7 +41,7 @@ function header_html(){
     echo '<input type="hidden" name="action" value="download_orders_notes_json">';
     echo '<button type="submit">Download Orders Notes JSON</button>';
     echo '</form>';
-    
+
     echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
     echo '<input type="hidden" name="action" value="download_taxes_json">';
     echo '<button type="submit">Download Taxes JSON</button>';
@@ -55,20 +52,24 @@ function header_html(){
     echo '<button type="submit">Download products JSON</button>';
     echo '</form>';
 
-    echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
-echo '<input type="hidden" name="action" value="post_orders_notes">';
-echo '<button type="submit">Post Orders Notes</button>';
-echo '</form>';
+    echo '<form method="post" id="post-orders-notes-form">';
+    echo '<input type="hidden" name="action" value="post_orders_notes">';
+    echo '<button type="submit">Post Orders Notes</button>';
+    echo '</form>';
 
-   
     echo '<form id="fetch-golang-data-form">';
     echo '<input type="hidden" name="action" value="fetch_golang_data">'; // Set the action to call fetch_golang_data
-    echo '<button type="submit" id="fetch-golang-data-button">Fetch Data from  DB</button>';
+    echo '<button type="submit" id="fetch-golang-data-button">Fetch Data from DB</button>';
     echo '</form>';
-    
+
     // Placeholder elements to display the endpoint and response
     echo '<div id="endpoint-called"></div>';
     echo '<div id="response-received"></div>';
+
+    echo '</div>';
+
+
+
 
     // Add the necessary JavaScript directly here
     // echo '<script type="text/javascript">
