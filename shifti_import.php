@@ -109,10 +109,9 @@ function fetch_golang_data() {
     // Make AJAX request to fetch data from the Golang API
     $url = 'http://localhost:8080/api/ordersnote';
 
-    // Manually create the URL with HTTP instead of relying on wp_remote_get
-    $url_with_http = str_replace("https://", "http://", $url);
 
-    $response = wp_remote_get($url_with_http);
+
+    $response = wp_remote_get($urls);
 
     // Check if the request was successful
     if (!is_wp_error($response)) {
