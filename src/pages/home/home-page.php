@@ -79,7 +79,7 @@ function header_html(){
                 },
                 error: function(xhr, status, error) {
                     // Log an error message to the console
-                    console.error("Error fetching: ' + this.url);
+                    console.error("Error fetching: " + this.url);
                 }
             });
         });
@@ -90,5 +90,5 @@ function header_html(){
     echo '</div>';
    
 }
-
+ 
 ?>
