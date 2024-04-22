@@ -122,7 +122,7 @@ function fetch_golang_data() {
     } else {
         // Log an error message to the console
         echo '<script>';
-        echo 'console.log("Error from WP: ' . $url_with_http . '");';
+        echo 'console.log("Error from WP: ' . $url . '");';
         echo '</script>';
     }
 }
