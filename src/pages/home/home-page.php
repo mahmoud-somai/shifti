@@ -57,32 +57,37 @@ function header_html(){
    
     echo '<form id="fetch-golang-data-form">';
     echo '<input type="hidden" name="action" value="fetch_golang_data">'; // Set the action to call fetch_golang_data
-    echo '<button type="button" id="fetch-golang-data-button">Fetch Data from DB</button>'; // Change type to button
+    echo '<button type="submit" id="fetch-golang-data-button">Fetch Data from  DB</button>';
     echo '</form>';
     
-    
+    // Placeholder elements to display the endpoint and response
+    echo '<div id="endpoint-called"></div>';
+    echo '<div id="response-received"></div>';
+
+    // Add the necessary JavaScript directly here
+    echo '<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $("#fetch-golang-data-form").submit(function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            $.ajax({
+                url: "http://192.168.1.27:8080/api/ordersnote", // Specify HTTP explicitly
+                method: "GET", 
+                success: function(response) {
+                   
+                    $("#endpoint-called").text("Endpoint called: ", this.url);
+                    $("#response-received").text("Response received: " + response);
+                },
+                error: function(xhr, status, error) {
+                    console.log("url:", this.url);
+                }
+            });
+        });
+    });
+</script>';
+
 
     echo '</div>';
-
-    echo '<script>
-    document.getElementById("fetch-golang-data-button").addEventListener("click", function(event) {
-        event.preventDefault(); // Prevent default form submission
-        fetchGolangData();
-    });
-
-    function fetchGolangData() {
-        // Make AJAX request to fetch data from the Golang API
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "' . admin_url('admin-ajax.php') . '?action=fetch_golang_data", true);
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                console.log("Response from server:", xhr.responseText);
-            }
-        };
-        xhr.send();
-    }
-  </script>';
    
-
+}
  
 ?>
