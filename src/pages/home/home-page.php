@@ -57,7 +57,7 @@ function header_html(){
    
     echo '<form id="fetch-golang-data-form">';
     echo '<input type="hidden" name="action" value="fetch_golang_data">'; // Set the action to call fetch_golang_data
-    echo '<button type="button" id="fetch-golang-data-button">Fetch Data from  DB</button>';
+    echo '<button type="submit" id="fetch-golang-data-button">Fetch Data from  DB</button>';
     echo '</form>';
     
     // Placeholder elements to display the endpoint and response
