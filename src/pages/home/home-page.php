@@ -73,12 +73,13 @@ function header_html(){
                 url: "http://192.168.1.27:8080/api/ordersnote", // Specify HTTP explicitly
                 method: "GET", 
                 success: function(response) {
-                   
+                    // Log the endpoint called and response received
                     $("#endpoint-called").text("Endpoint called: ", this.url);
                     $("#response-received").text("Response received: " + response);
                 },
                 error: function(xhr, status, error) {
-                    console.log("url:", this.url);
+                    // Log an error message to the console
+                    console.error("Error fetching: ' + this.url);
                 }
             });
         });
@@ -89,5 +90,5 @@ function header_html(){
     echo '</div>';
    
 }
- 
+
 ?>
