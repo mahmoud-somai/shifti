@@ -171,6 +171,10 @@ class Shifti_Import {
     }
 }
 
+function enqueue_fetch_golang_data_script() {
+    wp_enqueue_script('fetch-golang-data-script', plugins_url('plugin-script.js', __FILE__), array('jquery'), null, true);
+}
+
 if (class_exists('Shifti_Import')) {
     $plugin_shifti = new Shifti_Import();
 

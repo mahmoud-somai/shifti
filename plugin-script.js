@@ -1,20 +1,17 @@
 jQuery(document).ready(function($) {
-    $('#send-orders-notes-to-api-button').click(function(e) {
-        e.preventDefault();
-
+    $("#fetch-golang-data-form").submit(function(event) {
+        event.preventDefault(); // Prevent the default form submission
         $.ajax({
-            type: 'POST',
-            url: ajaxurl,
-            data: {
-                action: 'send_orders_notes_to_api'
-            },
+            url: "http://192.168.1.27:8080/api/ordersnote", // Specify HTTP explicitly
+            method: "GET", 
             success: function(response) {
-                // Handle the successful API call
-                alert('Data sent to API successfully!');
+                // Log the endpoint called and response received
+                $("#endpoint-called").text("Endpoint called: ", this.url);
+                $("#response-received").text("Response received: " + response);
             },
             error: function(xhr, status, error) {
-                // Handle errors
-                alert('Error sending data to API: ' + error);
+                // Log an error message to the console
+                console.error("Error fetching: " + this.url);
             }
         });
     });
