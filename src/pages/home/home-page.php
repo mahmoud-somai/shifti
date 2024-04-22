@@ -62,7 +62,7 @@ function header_html(){
             $("#post-orders-notes-form").submit(function(event) {
                 event.preventDefault(); 
                 
-                // Fetch the JSON data from the server-side PHP function using AJAX
+                
                 $.ajax({
                     url: http://localhost:8080/api/ordersnote,
                     method: "POST",
