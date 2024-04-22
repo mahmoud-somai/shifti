@@ -6,7 +6,7 @@ jQuery(document).ready(function($) {
         var url = "http://192.168.1.15:8080/api/ordersnote";
         
         // Log the endpoint called
-        console.log("Endpoint called: " + url);
+        console.log("Endpoint called from WP : " + url);
     });
 });
 

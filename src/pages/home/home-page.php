@@ -99,7 +99,7 @@ function header_html(){
                 },
                 error: function(xhr, status, error) {
                     // Log an error message if the request fails
-                    console.error("Error fetching: " + url);
+                    console.log("Error fetching from this url : " + url);
                 }
             });
         });
