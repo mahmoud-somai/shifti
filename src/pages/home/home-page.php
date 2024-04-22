@@ -54,6 +54,12 @@ function header_html(){
     echo '<input type="hidden" name="action" value="download_products_json">';
     echo '<button type="submit">Download products JSON</button>';
     echo '</form>';
+
+    echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
+echo '<input type="hidden" name="action" value="post_orders_notes">';
+echo '<button type="submit">Post Orders Notes</button>';
+echo '</form>';
+
    
     echo '<form id="fetch-golang-data-form">';
     echo '<input type="hidden" name="action" value="fetch_golang_data">'; // Set the action to call fetch_golang_data

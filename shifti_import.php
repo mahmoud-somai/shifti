@@ -128,6 +128,32 @@ function fetch_golang_data() {
 }
 
 
+add_action('wp_ajax_post_orders_notes', 'post_orders_notes');
+function post_orders_notes() {
+    // Make AJAX request to post orders notes to the Golang API
+    $url = 'http://localhost:8080/api/ordersnote';
+    $response = wp_remote_post($url, array(
+        'body' => array(), // Ajoutez les données à envoyer si nécessaire
+    ));
+
+    // Vérifiez si la requête a réussi
+    if (!is_wp_error($response) && wp_remote_retrieve_response_code($response) === 200) {
+        // Log the success message to the console
+        echo '<script>';
+        echo 'console.log("Orders notes posted successfully.");';
+        echo '</script>';
+    } else {
+        // Log an error message to the console
+        echo '<script>';
+        echo 'console.log("Failed to post orders notes.");';
+        echo '</script>';
+    }
+
+    // Assurez-vous de quitter pour éviter toute sortie supplémentaire
+    wp_die();
+}
+
+
 
 
 
