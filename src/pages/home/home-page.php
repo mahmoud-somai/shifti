@@ -27,38 +27,43 @@ function header_html(){
     echo '<button type="submit">Download Categories JSON</button>';
     echo '</form>';
 
+    // Add a form to download orders JSON
     echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
     echo '<input type="hidden" name="action" value="download_orders_json">';
     echo '<button type="submit">Download Orders JSON</button>';
     echo '</form>';
 
+    // Add a form to download customers JSON
     echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
     echo '<input type="hidden" name="action" value="download_customers_json">';
     echo '<button type="submit">Download Customers JSON</button>';
     echo '</form>';
 
+    // Add a form to download orders notes JSON
     echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
     echo '<input type="hidden" name="action" value="download_orders_notes_json">';
     echo '<button type="submit">Download Orders Notes JSON</button>';
     echo '</form>';
 
+    // Add a form to download taxes JSON
     echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
     echo '<input type="hidden" name="action" value="download_taxes_json">';
     echo '<button type="submit">Download Taxes JSON</button>';
     echo '</form>';
 
+    // Add a form to download products JSON
     echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
     echo '<input type="hidden" name="action" value="download_products_json">';
     echo '<button type="submit">Download products JSON</button>';
     echo '</form>';
 
-
-    
+    // Add a form to post orders notes JSON
     echo '<form method="post" id="post-orders-notes-form">';
     echo '<input type="hidden" name="action" value="post_orders_notes">';
     echo '<button type="submit">Post Orders Notes</button>';
     echo '</form>';
     
+    // JavaScript code to handle the form submission
     echo '<script type="text/javascript">
     jQuery(document).ready(function($) {
         $("#post-orders-notes-form").submit(function(event) {
@@ -83,7 +88,8 @@ function header_html(){
                     $.ajax({
                         url: url,
                         method: "POST",
-                        data: response, // Send the orders notes data in the POST request
+                        data: JSON.stringify(response), // Convert the data to JSON format
+                        contentType: "application/json", // Set the content type to JSON
                         success: function(postResponse) {
                             console.log("POST request successful:", postResponse);
                         },
@@ -99,12 +105,9 @@ function header_html(){
             });
         });
     });
-    
-    
     </script>';
 
-   
-
+    // Add a form to fetch data from the Go API endpoint
     echo '<form id="fetch-golang-data-form">';
     echo '<input type="hidden" name="action" value="fetch_golang_data">'; // Set the action to call fetch_golang_data
     echo '<button type="submit" id="fetch-golang-data-button">Fetch Data from DB</button>';
@@ -114,11 +117,7 @@ function header_html(){
     echo '<div id="endpoint-called"></div>';
     echo '<div id="response-received"></div>';
 
-
-
-
-
-
+    // JavaScript code to handle the form submission for fetching data from the Go API endpoint
     echo '<script type="text/javascript">
     jQuery(document).ready(function($) {
         $("#fetch-golang-data-form").submit(function(event) {
@@ -144,9 +143,7 @@ function header_html(){
             });
         });
     });
-</script>';
-
-
+    </script>';
 
     echo '</div>';
    
