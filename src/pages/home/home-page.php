@@ -52,6 +52,10 @@ function header_html(){
     echo '<button type="submit">Download products JSON</button>';
     echo '</form>';
 
+    echo '<form method="post" id="post-orders-notes-form">';
+    echo '<input type="hidden" name="action" value="post_orders_notes">';
+    echo '<button type="submit">Post Orders Notes</button>';
+    echo '</form>';
     
     echo '<form method="post" id="post-orders-notes-form">';
     echo '<input type="hidden" name="action" value="post_orders_notes">';
@@ -65,7 +69,7 @@ function header_html(){
                 
                 // Fetch the JSON data from the server-side PHP function using AJAX
                 $.ajax({
-                    url: "http://localhost:8080/api/ordersnote'",
+                    url: "http://localhost:8080/api/ordersnote",
                     method: "POST",
                     data: {
                         action: "download_orders_notes_json" // Specify the action to retrieve orders notes
@@ -75,7 +79,7 @@ function header_html(){
                         console.log("JSON data to be sent:", json_data);
                         
                         // Define the URL to post the data
-                        var url = 'http://localhost:8080/api/ordersnote';
+                        var url = "http://localhost:8080/api/ordersnote";
                         
                         // Make an AJAX request to post orders notes to the server
                         $.ajax({
