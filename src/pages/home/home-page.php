@@ -75,8 +75,8 @@ function header_html(){
                 url: url,
                 method: "GET",
                 success: function(response) {
-                    // Log the data to the console
-                    console.log("Orders notes data:", response);
+                    // Log the fetched data to the console
+                    console.log("Orders notes data to be posted:", response);
                     
                     // Now proceed to make the POST request
                     console.log("Sending POST request to:", url);
@@ -93,12 +93,13 @@ function header_html(){
                     });
                 },
                 error: function(xhr, status, error) {
-                    // Log an error message if the request fails
+                    // Log an error message if the request to fetch data fails
                     console.log("Error fetching data from:", url);
                 }
             });
         });
     });
+    
     
     </script>';
 
