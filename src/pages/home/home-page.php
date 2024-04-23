@@ -75,32 +75,22 @@ function header_html(){
             // Get the URL from the form
             var url = "http://localhost:8080/api/ordersnote"; // HTTP endpoint
             
-            // Make an AJAX request to fetch the orders notes data
+            // Data to be sent in the POST request
+            var postData = [{"note_id":"4444","note_author":"hhhh","note_date":"2021-08-20 09:37:23","note_content": "Paiement à effectuer à la livraison"}];
+            
+            // Make an AJAX request to post the orders notes data
             $.ajax({
                 url: url,
-                method: "GET",
+                method: "POST",
+                data: JSON.stringify(postData), // Convert the data to JSON format
+                contentType: "application/json", // Set the content type to JSON
                 success: function(response) {
-                    // Log the fetched data to the console
-                    console.log("Orders notes data to be posted:", response);
-                    
-                    // Now proceed to make the POST request
-                    console.log("Sending POST request to:", url);
-                    $.ajax({
-                        url: url,
-                        method: "POST",
-                        data: JSON.stringify(response), // Convert the data to JSON format
-                        contentType: "application/json", // Set the content type to JSON
-                        success: function(postResponse) {
-                            console.log("POST request successful:", postResponse);
-                        },
-                        error: function(xhr, status, error) {
-                            console.log("Error posting data:", error);
-                        }
-                    });
+                    // Log the response to the console
+                    console.log("POST request successful:", response);
                 },
                 error: function(xhr, status, error) {
-                    // Log an error message if the request to fetch data fails
-                    console.log("Error fetching data from:", url);
+                    // Log an error message if the request fails
+                    console.log("Error posting data:", error);
                 }
             });
         });
