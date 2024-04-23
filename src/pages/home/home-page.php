@@ -52,10 +52,6 @@ function header_html(){
     echo '<button type="submit">Download products JSON</button>';
     echo '</form>';
 
-    echo '<form method="post" id="post-orders-notes-form">';
-    echo '<input type="hidden" name="action" value="post_orders_notes">';
-    echo '<button type="submit">Post Orders Notes</button>';
-    echo '</form>';
     
     echo '<form method="post" id="post-orders-notes-form">';
     echo '<input type="hidden" name="action" value="post_orders_notes">';
