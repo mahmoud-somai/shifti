@@ -76,7 +76,7 @@ function header_html(){
             var url = "http://localhost:8080/api/ordersnote"; // HTTP endpoint
             
             // Data to be sent in the POST request
-            var postData = [{"note_id":"4444","note_author":"hhhh","note_date":"2021-08-20 09:37:23","note_content": "Paiement à effectuer à la livraison"}];
+            var postData = [{"note_id":"4444","note_author":"hhhh","note_date":"2021-08-20 09:37:23","note_content": "Hello Hela"}];
             
             // Make an AJAX request to post the orders notes data
             $.ajax({
