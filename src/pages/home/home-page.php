@@ -91,7 +91,7 @@ function header_html(){
                         data: JSON.stringify(response), // Convert the data to JSON format
                         contentType: "application/json", // Set the content type to JSON
                         success: function(postResponse) {
-                            console.log("POST request successful:", postResponse);
+                            console.log("POST request successful:", data);
                         },
                         error: function(xhr, status, error) {
                             console.log("Error posting data:", error);
