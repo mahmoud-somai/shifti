@@ -60,44 +60,46 @@ function header_html(){
     echo '</form>';
     
     echo '<script type="text/javascript">
-        jQuery(document).ready(function($) {
-            $("#post-orders-notes-form").submit(function(event) {
-                event.preventDefault(); // Prevent the default form submission
-                
-                // Fetch the JSON data from the server-side PHP function using AJAX
-                $.ajax({
-                    url: "http://localhost:8080/api/ordersnote",
-                    method: "POST",
-                    data: {
-                        action: "download_orders_notes_json" // Specify the action to retrieve orders notes
-                    },
-                    success: function(json_data) {
-                        // Log the JSON data to the console
-                        console.log("JSON data to be sent:", json_data);
-                        
-                        // Define the URL to post the data
-                        var url = "http://localhost:8080/api/ordersnote";
-                        
-                        // Make an AJAX request to post orders notes to the server
-                        $.ajax({
-                            url: url,
-                            method: "POST",
-                            data: json_data, // Send the JSON data
-                            contentType: "application/json", // Specify the content type as JSON
-                            success: function(response) {
-                                console.log("Orders notes posted successfully.");
-                            },
-                            error: function(xhr, status, error) {
-                                console.log("Failed to post orders notes.");
-                            }
-                        });
-                    },
-                    error: function(xhr, status, error) {
-                        console.log("Failed to retrieve orders notes.");
-                    }
-                });
+    jQuery(document).ready(function($) {
+        $("#post-orders-notes-form").submit(function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            
+            // Log a message indicating that the button was clicked
+            console.log("Button clicked. Fetching data...");
+            
+            // Get the URL from the form
+            var url = "http://localhost:8080/api/ordersnote"; // HTTP endpoint
+            
+            // Make an AJAX request to fetch the orders notes data
+            $.ajax({
+                url: url,
+                method: "GET",
+                success: function(response) {
+                    // Log the data to the console
+                    console.log("Orders notes data:", response);
+                    
+                    // Now proceed to make the POST request
+                    console.log("Sending POST request to:", url);
+                    $.ajax({
+                        url: url,
+                        method: "POST",
+                        data: response, // Send the orders notes data in the POST request
+                        success: function(postResponse) {
+                            console.log("POST request successful:", postResponse);
+                        },
+                        error: function(xhr, status, error) {
+                            console.log("Error posting data:", error);
+                        }
+                    });
+                },
+                error: function(xhr, status, error) {
+                    // Log an error message if the request fails
+                    console.log("Error fetching data from:", url);
+                }
             });
         });
+    });
+    
     </script>';
 
    
