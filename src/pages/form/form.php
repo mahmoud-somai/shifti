@@ -44,6 +44,10 @@ function form_html(){
     echo '        <div style="text-align: center;">';
     echo '            <progress id="progress-bar-1" style="width: 100%; height: 20px; margin-bottom: 10px;"></progress>'; // First progress bar
     echo '            <progress id="progress-bar-2" style="width: 100%; height: 20px;"></progress>'; // Second progress bar
+    echo '            <div style="margin-top: 20px;">'; // Container for buttons
+    echo '                <button id="cancel-button" class="button-sft" style="background-color: #ff5722; color: white; padding: 8px 20px; border: none; border-radius: 4px; cursor: pointer; margin-right: 10px;">Cancel</button>';
+    echo '                <button id="done-button" class="button-sft" style="background-color: #4CAF50; color: white; padding: 8px 20px; border: none; border-radius: 4px; cursor: pointer;">Done</button>';
+    echo '            </div>'; // End of button container
     echo '        </div>';
     echo '    </div>';
     echo '</div>';
