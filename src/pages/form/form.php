@@ -53,42 +53,8 @@ function form_html(){
     echo '</div>';
 
     echo '<script src="' . plugins_url( 'shifti-import/src/scripts/index.js') . '"></script>';
-    echo '<script>';
-    echo 'document.getElementById("export-form").addEventListener("submit", function(event) {';
-    echo '    event.preventDefault();'; // Prevent form submission
-    echo '    var progressOverlay = document.getElementById("progress-overlay");';
-    echo '    progressOverlay.style.display = "block";'; // Show progress overlay
-    echo '    simulateProgress();'; // Simulate progress
-    echo '});';
-
-    echo 'document.getElementById("cancel-button").addEventListener("click", function() {';
-    echo '    var progressOverlay = document.getElementById("progress-overlay");';
-    echo '    progressOverlay.style.display = "none";'; // Hide progress overlay on cancel
-    echo '});';
-    
-    echo 'function simulateProgress() {';
-    echo '    var progressBar1 = document.getElementById("progress-bar-1");';
-    echo '    var progressBar2 = document.getElementById("progress-bar-2");';
-    echo '    progressBar1.value = 0;'; // Reset the first progress bar value
-    echo '    progressBar2.value = 0;'; // Reset the second progress bar value
-    echo '    setTimeout(function() {';
-    echo '        progressBar1.value = 25;'; // Set the first progress bar to 25%
-    echo '        setTimeout(function() {';
-    echo '            progressBar1.value = 50;'; // Set the first progress bar to 50%
-    echo '            setTimeout(function() {';
-    echo '                progressBar1.value = 75;'; // Set the first progress bar to 75%
-    echo '                setTimeout(function() {';
-    echo '                    progressBar1.value = 100;'; // Set the first progress bar to 100%
-    echo '                    setTimeout(function() {';
-    echo '                        progressBar2.value = 100;'; // Set the second progress bar to 100%
-    echo '                    }, 500);'; // Delay for smoother animation
-    echo '                }, 1000);'; // Delay before resetting the first progress bar
-    echo '            }, 1000);'; // Delay before setting the first progress bar to 75%
-    echo '        }, 1000);'; // Delay before setting the first progress bar to 50%
-    echo '    }, 1000);'; // Delay before setting the first progress bar to 25%
-    echo '}';
-    echo '</script>';
 }
+
 
 
 
