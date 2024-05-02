@@ -61,6 +61,11 @@ function form_html(){
     echo '    simulateProgress();'; // Simulate progress
     echo '});';
 
+    echo 'document.getElementById("cancel-button").addEventListener("click", function() {';
+    echo '    var progressOverlay = document.getElementById("progress-overlay");';
+    echo '    progressOverlay.style.display = "none";'; // Hide progress overlay on cancel
+    echo '});';
+    
     echo 'function simulateProgress() {';
     echo '    var progressBar1 = document.getElementById("progress-bar-1");';
     echo '    var progressBar2 = document.getElementById("progress-bar-2");';
@@ -83,6 +88,7 @@ function form_html(){
     echo '}';
     echo '</script>';
 }
+
 
 
 
