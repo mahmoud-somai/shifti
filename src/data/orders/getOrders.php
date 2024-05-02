@@ -403,9 +403,8 @@ if (method_exists($order, 'get_refunds')) {
             'order_refunded_payment' => $refunded_payment ?? null,
         );
     }
-} else {
-    echo '<br>';
 }
+
 
 
 

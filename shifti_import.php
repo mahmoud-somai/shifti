@@ -1,9 +1,9 @@
 <?php
 /*
  * Plugin Name:       Shifti Import 
- * Description:       This is a plugin to import woocommerce data from your shop.
+ * Description:       This is a plugin to Export woocommerce data from your shop.
  * Version:           1.0.0
- * Author:            Feres Guedich
+ * Author:            Mahmoud Somai
  * License:           MIT License
  */
 
