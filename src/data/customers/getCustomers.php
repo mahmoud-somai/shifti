@@ -1,5 +1,4 @@
 <?php
-
 function get_customers(){
 
     global $wp_query;
@@ -7,9 +6,11 @@ function get_customers(){
     $args = array(
         'role' => 'customer',
     );
-    $users = get_users();
+    $customer_users = get_users($args); // Fetch customers with 'customer' role
+
     $customers = [];
-    foreach ($users as $user) {
+
+    foreach ($customer_users as $user) {
 
         $customer = [];
         $customer['id'] = $user->ID;
@@ -42,9 +43,11 @@ function get_customers(){
         $customers[] = $customer;
     }
 
-
     return json_encode($customers);
 }
+
+
+
 
 ?>
 
