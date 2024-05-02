@@ -33,8 +33,10 @@ function form_html(){
     echo '<input type="hidden" name="action" value="download_orders_notes_json">';
     echo '<button type="submit" id="export-button" class="button-sft" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; width: 30%; display: inline-block; margin-left:25px;" disabled>Export Your Shop!</button>'; // Button initially disabled
     echo '</div>';
-    echo '<div id="progress-container" style="margin-top: 20px; display: none;">';
-    echo '<progress id="progress-bar" style="width: 100%; height: 20px;"></progress>';
+    echo '<div id="progress-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.7); z-index: 9999; display: none;">';
+    echo '    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">';
+    echo '        <progress id="progress-bar" style="width: 200px; height: 20px;"></progress>';
+    echo '    </div>';
     echo '</div>';
     echo '</div>';
 
@@ -53,6 +55,7 @@ function form_html(){
     echo '});';
     echo '</script>';
 }
+
 
 
 ?>
