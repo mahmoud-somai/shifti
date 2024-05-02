@@ -2,7 +2,7 @@
 require_once dirname(__FILE__) . '/../form/form.php';
 
 function header_html(){
-    echo '<link rel="stylesheet" href="' . plugins_url( 'shifti-import/src/styles/main.css') . '">';
+    echo '<link rel="stylesheeft" href="' . plugins_url( 'shifti-import/src/styles/main.css') . '">';
     echo '<div style="text-align: center; padding: 20px; background-color: #f0f0f0;">';
     echo '<img class="logo_img" src="' . plugins_url( 'shifti-import/src/img/logo.png') . '" alt="Logo">';
     echo '<h1>Welcome to the Shifti Data Connector Plugin !</h1>';
@@ -24,7 +24,7 @@ function header_html(){
 
     // Add English documentation download link
     echo '<li style="margin-bottom: 20px; padding-left: 10px;">';
-    echo '<a href="shifti-import\\sample.pdf" download style="font-size: 15px; padding: 15px 10px; text-decoration: underline;">English Documentation</a>';
+    echo '<a href="../../../sample.pdf" download style="font-size: 15px; padding: 15px 10px; text-decoration: underline;">English Documentation</a>';
     echo '</li>';
 
     echo '</ul>';
