@@ -57,23 +57,23 @@ function get_workers(){
     );
     $customer_users = get_users($args); // Fetch customers with 'customer' role
 
-    $non_customers = [];
+    $workers = [];
 
     foreach ($customer_users as $user) {
         $role = !empty($user->roles) ? $user->roles[0] : null;
         
         // Check if the user's role is not "customer"
         if ($role !== 'customer') {
-            $non_customer = [];
-            $non_customer['id'] = $user->ID;
-            $non_customer['date_created'] = $user->user_registered;
-            $non_customer['email'] = $user->user_email;
-            $non_customer['first_name'] = $user->first_name;
-            $non_customer['last_name'] = $user->last_name;
-            $non_customer['role'] = $role;
-            $non_customer['username'] = $user->user_login;
-            $non_customer['password'] = $user->user_pass;
-            $non_customer['avatar_url'] = get_avatar_url($user->ID);
+            $worker = [];
+            $worker['id'] = $user->ID;
+            $worker['date_created'] = $user->user_registered;
+            $worker['email'] = $user->user_email;
+            $worker['first_name'] = $user->first_name;
+            $worker['last_name'] = $user->last_name;
+            $worker['role'] = $role;
+            $worker['username'] = $user->user_login;
+            $worker['password'] = $user->user_pass;
+            $worker['avatar_url'] = get_avatar_url($user->ID);
 
             // Billing information
             $billing = [];
@@ -89,14 +89,14 @@ function get_workers(){
             $billing['email'] = method_exists($user, 'get_billing_email') ? $user->get_billing_email() : null;
             $billing['phone'] = method_exists($user, 'get_billing_phone') ? $user->get_billing_phone() : null;
 
-            $non_customer['billing'] = $billing;
+            $worker['billing'] = $billing;
 
             // Add non-customer to the array
-            $non_customers[] = $non_customer;
+            $workers[] = $worker;
         }
     }
 
-    return json_encode($non_customers);
+    return json_encode($workers);
 }
 
 
