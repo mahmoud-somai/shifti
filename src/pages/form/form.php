@@ -69,25 +69,34 @@ function form_html(){
     echo 'function simulateProgress() {';
     echo '    var progressBar1 = document.getElementById("progress-bar-1");';
     echo '    var progressBar2 = document.getElementById("progress-bar-2");';
-    echo '    var interval = setInterval(function() {';
-    echo '        if (progressBar1.value < 100) {';
-    echo '            progressBar1.value += 5;'; // Increase the value of the first progress bar
-    echo '        } else {';
-    echo '            clearInterval(interval);'; // Stop the interval when the first progress bar reaches 100%
-    echo '            var interval2 = setInterval(function() {';
-    echo '                if (progressBar2.value < 100) {';
-    echo '                    progressBar2.value += 25;'; // Increase the value of the second progress bar
-    echo '                } else {';
-    echo '                    clearInterval(interval2);'; // Stop the interval when the second progress bar reaches 100%
-    echo '                    progressBar1.value = 0;'; // Reset the first progress bar value
-    echo '                    simulateProgress();'; // Start the process again
-    echo '                }';
-    echo '            }, 1000);'; // Interval for the second progress bar
-    echo '        }';
-    echo '    }, 500);'; // Interval for the first progress bar
+    echo '    progressBar1.value = 0;'; // Reset the first progress bar value
+    echo '    progressBar2.value = 0;'; // Reset the second progress bar value
+    echo '    progressBar1.classList.remove("complete-animation");'; // Remove any existing animation class
+    echo '    progressBar1.classList.add("animate");'; // Add animation class to the first progress bar
+    echo '    setTimeout(function() {';
+    echo '        progressBar1.value = 100;'; // Set the first progress bar to 100%
+    echo '        progressBar1.classList.remove("animate");'; // Remove animation class
+    echo '        progressBar1.classList.add("complete-animation");'; // Add animation class for complete animation
+    echo '        setTimeout(function() {';
+    echo '            progressBar2.value = 25;'; // Set the second progress bar to 25%
+    echo '            progressBar1.classList.remove("complete-animation");'; // Remove animation class from the first progress bar
+    echo '            progressBar1.value = 0;'; // Reset the first progress bar value
+    echo '            progressBar1.classList.add("animate");'; // Add animation class to the first progress bar for the next cycle
+    echo '            setTimeout(function() {';
+    echo '                progressBar1.value = 100;'; // Set the first progress bar to 100%
+    echo '                progressBar1.classList.remove("animate");'; // Remove animation class
+    echo '                progressBar1.classList.add("complete-animation");'; // Add animation class for complete animation
+    echo '                setTimeout(function() {';
+    echo '                    progressBar2.value = 50;'; // Set the second progress bar to 50%
+    echo '                    progressBar1.classList.remove("complete-animation");'; // Remove animation class from the first progress bar
+    echo '                }, 1000);'; // Wait for the second progress bar animation to complete
+    echo '            }, 1000);'; // Wait for the first progress bar animation to complete
+    echo '        }, 1000);'; // Wait for the second progress bar to complete
+    echo '    }, 1000);'; // Wait for the first progress bar animation to complete
     echo '}';
     echo '</script>';
 }
+
 
 
 
