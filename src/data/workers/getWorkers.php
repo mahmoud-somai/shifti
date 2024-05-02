@@ -7,7 +7,7 @@ function get_workers(){
     $args = array(
         'role' => 'customer',
     );
-    $customer_users = get_users($args); // Fetch customers with 'customer' role
+    $customer_users = get_users(); // Fetch customers with 'customer' role
 
     $workers = [];
 
