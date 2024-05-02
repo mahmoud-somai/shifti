@@ -31,7 +31,7 @@ function form_html(){
     echo '<input type="text" name="plugin-token" id="token" style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; width: 40%; height:35px; display: inline-block;">';
    
     echo '<input type="hidden" name="action" value="download_orders_notes_json">';
-    echo '<button type="submit" id="export-button" class="button-sft" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; width: 30%; display: inline-block; margin-left:25px;" disabled>Export Your Shop!</button>'; // Button initially disabled
+    echo '<button type="submit" id="export-button" class="button-sft" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; width: 30%; display: inline-block; margin-left:25px;">Export Your Shop!</button>'; // Button initially disabled
     echo '</div>';
     echo '<div id="progress-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.7); z-index: 9999; display: none;">';
     echo '    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">';
@@ -44,17 +44,24 @@ function form_html(){
 
     echo '<script src="' . plugins_url( 'shifti-import/src/scripts/index.js') . '"></script>';
     echo '<script>';
-    echo 'document.getElementById("token").addEventListener("input", function() {'; // Listen for input changes
-    echo '    var tokenInput = this.value;';
-    echo '    var exportButton = document.getElementById("export-button");';
-    echo '    if (tokenInput.trim() === "hello123") {';
-    echo '        exportButton.disabled = false;'; // Enable button if input matches "hello123"
-    echo '    } else {';
-    echo '        exportButton.disabled = true;'; // Disable button if input doesn't match "hello123"
-    echo '    }';
+    echo 'document.getElementById("export-form").addEventListener("submit", function(event) {';
+    echo '    event.preventDefault();'; // Prevent form submission
+    echo '    var progressOverlay = document.getElementById("progress-overlay");';
+    echo '    var progressBar = document.getElementById("progress-bar");';
+    echo '    progressOverlay.style.display = "block";'; // Show progress overlay
+    echo '    progressBar.value = 0;'; // Reset progress bar value
+    echo '    var interval = setInterval(function() {';
+    echo '        if (progressBar.value < 100) {';
+    echo '            progressBar.value += 10;'; // Increment progress bar value
+    echo '        } else {';
+    echo '            clearInterval(interval);'; // Clear interval when progress reaches 100%
+    echo '            progressOverlay.style.display = "none";'; // Hide progress overlay
+    echo '        }';
+    echo '    }, 1000);'; // Interval for updating progress (in milliseconds)
     echo '});';
     echo '</script>';
 }
+
 
 
 
