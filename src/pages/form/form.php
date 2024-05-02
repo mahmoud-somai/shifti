@@ -39,11 +39,11 @@ function form_html(){
 
     // Overlay HTML
     echo '<div id="progress-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 9999; display: none;">';
-    echo '    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border-radius: 8px; width: 500px;">';
-    echo '        <h3 style="margin-bottom: 20px;">Export Data</h3>'; // Title
+    echo '    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border-radius: 8px; width: 300px;">';
+    echo '        <h3 style="margin-bottom: 10px;">Export Data</h3>'; // Title
     echo '        <div style="text-align: center;">';
-    echo '            <button id="cancel-button" class="button-sft" style="background-color: #ff5722; color: white; padding: 8px 20px; border: none; border-radius: 4px; cursor: pointer; margin-right: 10px;">Cancel</button>';
-    echo '            <button id="done-button" class="button-sft" style="background-color: #4CAF50; color: white; padding: 8px 20px; border: none; border-radius: 4px; cursor: pointer;">Done</button>';
+    echo '            <progress id="progress-bar-1" style="width: 100%; height: 20px; margin-bottom: 10px;"></progress>'; // First progress bar
+    echo '            <progress id="progress-bar-2" style="width: 100%; height: 20px;"></progress>'; // Second progress bar
     echo '        </div>';
     echo '    </div>';
     echo '</div>';
@@ -54,15 +54,29 @@ function form_html(){
     echo '    event.preventDefault();'; // Prevent form submission
     echo '    var progressOverlay = document.getElementById("progress-overlay");';
     echo '    progressOverlay.style.display = "block";'; // Show progress overlay
+    echo '    simulateProgress();'; // Simulate progress
     echo '});';
-    echo 'document.getElementById("cancel-button").addEventListener("click", function() {';
-    echo '    var progressOverlay = document.getElementById("progress-overlay");';
-    echo '    progressOverlay.style.display = "none";'; // Hide progress overlay on cancel
-    echo '});';
-    echo 'document.getElementById("done-button").addEventListener("click", function() {';
-    echo '    var progressOverlay = document.getElementById("progress-overlay");';
-    echo '    progressOverlay.style.display = "none";'; // Hide progress overlay on done
-    echo '});';
+
+    echo 'function simulateProgress() {';
+    echo '    var progressBar1 = document.getElementById("progress-bar-1");';
+    echo '    var progressBar2 = document.getElementById("progress-bar-2");';
+    echo '    var interval = setInterval(function() {';
+    echo '        if (progressBar1.value < 100) {';
+    echo '            progressBar1.value += 5;'; // Increase the value of the first progress bar
+    echo '        } else {';
+    echo '            clearInterval(interval);'; // Stop the interval when the first progress bar reaches 100%
+    echo '            var interval2 = setInterval(function() {';
+    echo '                if (progressBar2.value < 100) {';
+    echo '                    progressBar2.value += 25;'; // Increase the value of the second progress bar
+    echo '                } else {';
+    echo '                    clearInterval(interval2);'; // Stop the interval when the second progress bar reaches 100%
+    echo '                    progressBar1.value = 0;'; // Reset the first progress bar value
+    echo '                    simulateProgress();'; // Start the process again
+    echo '                }';
+    echo '            }, 1000);'; // Interval for the second progress bar
+    echo '        }';
+    echo '    }, 500);'; // Interval for the first progress bar
+    echo '}';
     echo '</script>';
 }
 
