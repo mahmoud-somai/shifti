@@ -16,8 +16,23 @@ function header_html(){
     echo '<h2>Documentation</h2>';
     echo '<p style="font-size: 15px;">» You can get a PDF documentation to configure this module :</p>';
     echo '<ul style="list-style-type: disc; padding-left: 50px; margin-left: 0;">'; // Set margin-left to 0
-    echo '<li style="margin-bottom: 20px; padding-left: 10px;"><a href="#" style="font-size: 15px; padding: 15px 10px; text-decoration: underline;">English</a></li>'; // Add padding-left to li
-    echo '<li style="margin-bottom: 20px; padding-left: 10px;"><a href="#" style="font-size: 15px; padding: 15px 10px; text-decoration: underline;">French</a></li>'; // Add padding-left to li
+
+    // Add French documentation upload form
+    echo '<li style="margin-bottom: 20px; padding-left: 10px;">';
+    echo '<form method="post" action="#" enctype="multipart/form-data">';
+    echo '<input type="file" name="french_documentation" accept=".pdf" style="display: none;" onchange="this.form.submit()">';
+    echo '<label for="french_documentation" style="font-size: 15px; padding: 15px 10px; text-decoration: underline; cursor: pointer;">French Documentation</label>';
+    echo '</form>';
+    echo '</li>';
+
+    // Add English documentation upload form
+    echo '<li style="margin-bottom: 20px; padding-left: 10px;">';
+    echo '<form method="post" action="#" enctype="multipart/form-data">';
+    echo '<input type="file" name="english_documentation" accept=".pdf" style="display: none;" onchange="this.form.submit()">';
+    echo '<label for="english_documentation" style="font-size: 15px; padding: 15px 10px; text-decoration: underline; cursor: pointer;">English Documentation</label>';
+    echo '</form>';
+    echo '</li>';
+
     echo '</ul>';
     echo '</div>';
 
