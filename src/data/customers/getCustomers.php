@@ -63,7 +63,7 @@ function get_workers(){
         $role = !empty($user->roles) ? $user->roles[0] : null;
         
         // Check if the user's role is not "customer"
-        if ($role !== 'customer') {
+        if ($role != 'customer') {
             $worker = [];
             $worker['id'] = $user->ID;
             $worker['date_created'] = $user->user_registered;
