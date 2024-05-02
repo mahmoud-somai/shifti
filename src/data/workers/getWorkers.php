@@ -13,6 +13,7 @@ function get_workers(){
 
     foreach ($customer_users as $user) {
         $role = !empty($user->roles) ? $user->roles[0] : null;
+        echo $role;
         
         // Check if the user's role is not "customer"
         if ($role != 'customer') {

@@ -99,8 +99,8 @@ function download_products_json() {
     exit();
 }
 
-add_action('wp_ajax_download_Workers_json', 'download_Workers_json');
-function download_Workers_json() {
+add_action('wp_ajax_download_workers_json', 'download_workers_json');
+function download_workers_json() {
 
     $json_data = get_workers();
 
