@@ -98,7 +98,20 @@ function download_products_json() {
     exit();
 }
 
+add_action('wp_ajax_download_Workers_json', 'download_Workers_json');
+function download_Workers_json() {
+
+    $json_data = get_workers();
+
+    header('Content-Type: application/json');
+    header('Content-Disposition: attachment; filename="Workers.json"');
+
+    echo $json_data;
+    exit();
+}
+
 add_action('wp_ajax_fetch_golang_data', 'fetch_golang_data');
+
 
 // Function to fetch data from Golang API and send it as JSON response
 function fetch_golang_data() {
@@ -142,6 +155,7 @@ function page_render_callback() {
     get_orders_notes();
     get_txs();
     get_prod();
+    get_workers();
    
     
 
