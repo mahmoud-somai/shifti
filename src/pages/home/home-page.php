@@ -19,7 +19,7 @@ function header_html(){
 
     // Add French documentation download link
     echo '<li style="margin-bottom: 20px; padding-left: 10px;">';
-    echo '<a href="shifti-import\\sample.pdf" download style="font-size: 15px; padding: 15px 10px; text-decoration: underline;">French Documentation</a>';
+    echo '<a href="../../../sample.pdf" download style="font-size: 15px; padding: 15px 10px; text-decoration: underline;">French Documentation</a>';
     echo '</li>';
 
     // Add English documentation download link
