@@ -53,8 +53,22 @@ function form_html(){
     echo '</div>';
 
     echo '<script src="' . plugins_url( 'shifti-import/src/scripts/index.js') . '"></script>';
-}
+    echo '<script>';
+    echo 'document.getElementById("export-form").addEventListener("submit", function(event) {';
+    echo '    event.preventDefault();'; // Prevent form submission
+    echo '    var progressOverlay = document.getElementById("progress-overlay");';
+    echo '    progressOverlay.style.display = "block";'; // Show progress overlay
+    echo '    simulateProgress();'; // Simulate progress
+    echo '});';
 
+    echo 'document.getElementById("cancel-button").addEventListener("click", function() {';
+    echo '    var progressOverlay = document.getElementById("progress-overlay");';
+    echo '    progressOverlay.style.display = "none";'; // Hide progress overlay on cancel
+    echo '});';
+    
+
+    echo '</script>';
+}
 
 
 
