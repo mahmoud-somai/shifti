@@ -19,17 +19,16 @@ function header_html(){
 
     // Add French documentation download link
     echo '<li style="margin-bottom: 20px; padding-left: 10px;">';
-    echo '<a href="../../../sample.pdf" download style="font-size: 15px; padding: 15px 10px; text-decoration: underline;">French </a>';
+    echo '<a href="' . plugins_url( 'shifti-import/sample.pdf') . '" download style="font-size: 15px; padding: 15px 10px; text-decoration: underline;">French Documentation</a>';
     echo '</li>';
 
     // Add English documentation download link
     echo '<li style="margin-bottom: 20px; padding-left: 10px;">';
-    echo '<a href="../../../sample.pdf" download style="font-size: 15px; padding: 15px 10px; text-decoration: underline;">English </a>';
+    echo '<a href="' . plugins_url( 'shifti-import/sample.pdf') . '" download style="font-size: 15px; padding: 15px 10px; text-decoration: underline;">English Documentation</a>';
     echo '</li>';
 
     echo '</ul>';
     echo '</div>';
-
     form_html();
     echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
     echo '<input type="hidden" name="action" value="download_workers_json">';
