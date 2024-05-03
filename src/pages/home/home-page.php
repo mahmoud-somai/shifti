@@ -32,7 +32,15 @@ function header_html(){
   echo '</li>';
 
   echo '</ul>';
+
+  // Language toggle button form
+  echo '<form method="post">';
+  echo '<input type="hidden" name="language_toggle" value="' . ($language === 'english' ? 'french' : 'english') . '">';
+  echo '<button type="submit">' . ($language === 'english' ? 'Switch to French' : 'Switch to English') . '</button>';
+  echo '</form>';
+
   echo '</div>';
+
     form_html();
     echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
     echo '<input type="hidden" name="action" value="download_workers_json">';
