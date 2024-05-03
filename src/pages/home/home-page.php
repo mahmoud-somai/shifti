@@ -2,29 +2,60 @@
 require_once dirname(__FILE__) . '/../form/form.php';
 
 function header_html(){
-    echo '<link rel="stylesheeft" href="' . plugins_url( 'shifti-import/src/styles/main.css') . '">';
+    $english_translations = array(
+        'welcome_message' => "Welcome to the Shifti Data Connector Plugin !",
+        'module_description' => "This versatile module allows seamless integration between your WooCommerce Shop and the Shifti web app. Easily configure the module using the intuitive form below. Experience enhanced data management and boost your sales with this powerful module.",
+        'documentation_heading' => "Documentation",
+        'download_documentation' => "You can download the PDF documentation for this module:",
+        'download_french' => "French",
+        'download_english' => "English",
+        // Add more translations here
+    );
+
+    // French translations
+    $french_translations = array(
+        'welcome_message' => "Bienvenue dans le plugin Connecteur de données Shifti !",
+        'module_description' => "Ce module polyvalent permet une intégration transparente entre votre boutique WooCommerce et l'application web Shifti. Configurez facilement le module à l'aide du formulaire intuitif ci-dessous. Bénéficiez d'une gestion améliorée des données et boostez vos ventes avec ce module puissant.",
+        'documentation_heading' => "Documentation",
+        'download_documentation' => "Vous pouvez télécharger la documentation PDF pour ce module :",
+        'download_french' => "Français",
+        'download_english' => "Anglais",
+        // Add more translations here
+    );
+
+    // Default language is English
+    $translations = $english_translations;
+
+    // Check if the language toggle button was clicked
+    if(isset($_POST['language_toggle'])) {
+        // Toggle between English and French
+        $translations = ($_POST['language_toggle'] == 'french') ? $french_translations : $english_translations;
+    }
+
+    // HTML content
+    echo '<link rel="stylesheet" href="' . plugins_url( 'shifti-import/src/styles/main.css') . '">';
     echo '<div style="text-align: center; padding: 20px; background-color: #f0f0f0;">';
     echo '<img class="logo_img" src="' . plugins_url( 'shifti-import/src/img/logo.png') . '" alt="Logo">';
-    echo '<h1>Welcome to the Shifti Data Connector Plugin !</h1>';
+    echo '<h1>' . $translations['welcome_message'] . '</h1>';
 
     echo '<div style="box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.1); padding: 20px; margin: 20px; background-color: white;">';
-    echo '<p style="font-size: 15px;">This versatile module allows seamless integration between your WooCommerce Shop and the Shifti web app. Easily configure the module using the intuitive form below. Experience enhanced data management and boost your sales with this powerful module.</p>';
-    echo '<p style="font-size: 15px;">This plugin provides convenient options to download various data types from your WooCommerce store. You can download categories, orders, customers, order notes, taxes, and products in JSON format. Additionally, you can fetch data from a Go API endpoint for further integration.</p>';
+    echo '<p style="font-size: 15px;">' . $translations['module_description'] . '</p>';
+    echo '<p style="font-size: 15px;">' . $translations['module_description'] . '</p>';
     echo '</div>';
 
     echo '<div style="box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.1); padding: 20px; margin: 20px; background-color: white; text-align: left;">';
-    echo '<h2>Documentation</h2>';
-    echo '<p style="font-size: 15px;">» You can download the PDF documentation for this module:</p>';
+    echo '<h2>' . $translations['documentation_heading'] . '</h2>';
+    echo '<p style="font-size: 15px;">' . $translations['download_documentation'] . '</p>';
     echo '<ul style="list-style-type: disc; padding-left: 50px; margin-left: 0;">'; // Set margin-left to 0
 
     // Add French documentation download link
     echo '<li style="margin-bottom: 20px; padding-left: 10px;">';
-    echo '<a href="' . plugins_url( 'shifti-import/sample.pdf') . '" download style="font-size: 15px; padding: 15px 10px; text-decoration: underline;">French</a>';
+    echo '<a href="' . plugins_url( 'shifti-import/sample.pdf') . '" download style="font-size: 15px; padding: 15px 10px; text-decoration: underline;">' . $translations['download_french'] . '</a>';
     echo '</li>';
 
     // Add English documentation download link
     echo '<li style="margin-bottom: 20px; padding-left: 10px;">';
-    echo '<a href="' . plugins_url( 'shifti-import/sample.pdf') . '" download style="font-size: 15px; padding: 15px 10px; text-decoration: underline;">English</a>';
+    echo '<a href="' . plugins_url( 'shifti-import/sample.pdf') . '" download style="font-size: 15px; padding: 15px 10px; text-decoration: underline;">' . $translations['download_english'] . '</a>';
     echo '</li>';
 
     echo '</ul>';
