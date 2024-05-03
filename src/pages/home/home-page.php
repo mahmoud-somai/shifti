@@ -33,25 +33,20 @@ function header_html(){
     echo '</ul>';
 
     // Language toggle button form
-    echo '<form method="post" id="language-form">';
     echo '<input
     value="favorite-button"
-    name="language_toggle"
-    id="language-toggle"
+    name="favorite-checkbox"
+    id="favorite"
     ' . ($language === 'english' ? '' : 'checked="checked"') . '
     type="checkbox"
   />
-  <label class="container" for="language-toggle">
+  <label class="container" for="favorite">
 
     <div class="action">
       <span class="option-1">' . ($language === 'english' ? 'French' : 'Français') . '</span>
       <span class="option-2">' . ($language === 'english' ? 'English' : 'Anglais') . '</span>
     </div>
   </label>';
-  
-  echo '<input type="submit" style="display: none;">'; // Hide the submit button
-  
-  echo '</form>';
 
   echo '</div>';
 
