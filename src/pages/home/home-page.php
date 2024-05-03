@@ -34,22 +34,9 @@ function header_html(){
 
     // Language toggle button form
     echo '<form method="post">';
-    echo '<input
-    value="favorite-button"
-    name="favorite-checkbox"
-    id="favorite"
-    ' . ($language === 'english' ? '' : 'checked="checked"') . '
-    type="checkbox"
-  />
-  <label class="container" for="favorite">
-
-    <div class="action">
-      <span class="option-1">' . ($language === 'english' ? 'French' : 'Français') . '</span>
-      <span class="option-2">' . ($language === 'english' ? 'English' : 'Anglais') . '</span>
-    </div>
-  </label>';
-
-  echo '</div>';
+    echo '<input type="hidden" name="language_toggle" value="' . ($language === 'english' ? 'french' : 'english') . '">';
+    echo '<button type="submit">' . ($language === 'english' ? 'Switch to French' : 'Switch to English') . '</button>';
+    echo '</form>';
 
     echo '</div>';
     form_html();
