@@ -28,7 +28,7 @@
   position: absolute;
   transform: translate(-50%, -50%);
   width: 150px;
-  background: rgba(236, 236, 238, 0.253);
+  background: rgba(255, 6, 6, 0.253);
   height: 3px;
   border-radius: 7px;
 }
@@ -37,7 +37,7 @@
   width: 1px;
   height: 3px;
   border-radius: 7px;
-  background: rgb(255, 255, 255);
+  background: rgb(0, 0, 0);
   transition: 0.5s;
   animation: loading1274 2s ease infinite;
 }
