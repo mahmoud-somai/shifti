@@ -7,7 +7,7 @@ function header_html(){
     // HTML content
     echo '<link rel="stylesheet" href="' . plugins_url( 'shifti-import/src/styles/main.css') . '">';
     echo '<div style="text-align: center; padding: 20px; background-color: #f0f0f0;">';
-    echo '<img class="logo_img" src="' . plugins_url( 'shifti-import/src/img/logo.png') . '" alt="Logo">';
+    echo '<img class="logo_img" src="' . plugins_url( 'shifti-import/src/img/logo.png') . '" alt="Logo Shifti">';
     echo '<h1>' . ($language === 'english' ? 'Welcome to the Shifti Data Connector Plugin !' : 'Bienvenue dans le plugin de connexion de données Shifti !') . '</h1>';
 
     echo '<div style="box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.1); padding: 20px; margin: 20px; background-color: white;">';
@@ -33,10 +33,22 @@ function header_html(){
     echo '</ul>';
 
     // Language toggle button form
-    echo '<form method="post">';
-    echo '<input type="hidden" name="language_toggle" value="' . ($language === 'english' ? 'french' : 'english') . '">';
-    echo '<button type="submit">' . ($language === 'english' ? 'Switch to French' : 'Switch to English') . '</button>';
-    echo '</form>';
+    echo '<input
+    value="favorite-button"
+    name="favorite-checkbox"
+    id="favorite"
+    ' . ($language === 'english' ? '' : 'checked="checked"') . '
+    type="checkbox"
+  />
+  <label class="container" for="favorite">
+
+    <div class="action">
+      <span class="option-1">' . ($language === 'english' ? 'French' : 'Français') . '</span>
+      <span class="option-2">' . ($language === 'english' ? 'English' : 'Anglais') . '</span>
+    </div>
+  </label>';
+
+  echo '</div>';
 
     echo '</div>';
     form_html();
