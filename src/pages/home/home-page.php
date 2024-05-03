@@ -33,6 +33,7 @@ function header_html(){
     echo '</ul>';
 
     // Language toggle button form
+    echo '<form method="post">';
     echo '<input
     value="favorite-button"
     name="favorite-checkbox"
