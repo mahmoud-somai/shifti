@@ -39,8 +39,16 @@ function form_html(){
 
     // Overlay HTML
     echo '<div id="progress-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 9999; display: none;">';
-    echo '    <div class="progress-loader" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">';
-    echo '        <div class="progress"></div>'; // Progress bar
+    echo '    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border-radius: 8px; width: 300px;">';
+    echo '        <h3 style="margin-bottom: 10px;">Export Data</h3>'; // Title
+    echo '        <div style="text-align: center;">';
+    echo '            <progress id="progress-bar-1" style="width: 100%; height: 20px; margin-bottom: 10px;"></progress>'; // First progress bar
+    echo '            <progress id="progress-bar-2" style="width: 100%; height: 20px;"></progress>'; // Second progress bar
+    echo '            <div style="margin-top: 20px;">'; // Container for buttons
+    echo '                <button id="cancel-button" class="button-sft" style="background-color: #ff5722; color: white; padding: 8px 20px; border: none; border-radius: 4px; cursor: pointer; margin-right: 10px;">Cancel</button>';
+    echo '                <button id="done-button" class="button-sft" style="background-color: #4CAF50; color: white; padding: 8px 20px; border: none; border-radius: 4px; cursor: pointer;">Done</button>';
+    echo '            </div>'; // End of button container
+    echo '        </div>';
     echo '    </div>';
     echo '</div>';
 
