@@ -60,7 +60,7 @@ function header_html(){
 
     echo '</ul>';
     echo '</div>';
-    form_html();
+    form_html($translations);
     echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
     echo '<input type="hidden" name="action" value="download_workers_json">';
     echo '<button type="submit">Download Workers JSON</button>';
