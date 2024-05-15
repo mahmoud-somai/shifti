@@ -107,26 +107,10 @@ function header_html(){
             // Data to be sent in the POST request
             var postData = [
                 {
-                    "foreign_id": 441,
-                    "email": "mokhtarboukadi32@gmail.com",
-                    "first_name": "-Mokhtar",
-                    "last_name": "-Boukadi",
-                    "shop_id": 1,
-                    "tenant_id": "tenant_1234"
-                },
-                {
-                    "foreign_id": 399,
-                    "email": "achourin@yahoo.fr",
-                    "first_name": "-najet",
-                    "last_name": "-ACHOURI",
-                    "shop_id": 1,
-                    "tenant_id": "tenant_1234"
-                },
-                {
-                    "foreign_id": 419,
-                    "email": "raja-hamdi15@hotmail.com",
-                    "first_name": "-raja",
-                    "last_name": "-hamdi",
+                    "foreign_id": 10101,
+                    "email": "MH@gmail.com",
+                    "first_name": "Mahmoud",
+                    "last_name": "Somai",
                     "shop_id": 1,
                     "tenant_id": "tenant_1234"
                 }
