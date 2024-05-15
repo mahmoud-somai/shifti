@@ -105,7 +105,7 @@ function header_html(){
             var url = " http://localhost:8080/woocommerce/customer"; // HTTP endpoint
             
             // Data to be sent in the POST request
-            var postData = [
+            var postData = [[
                 {
                     "foreign_id": 441,
                     "email": "mokhtarboukadi32@gmail.com",
@@ -143,6 +143,182 @@ function header_html(){
                     "email": "abbes_ines@yahoo.fr",
                     "first_name": "kheria",
                     "last_name": "mosrati ep abbes",
+                    "shop_id": 1,
+                    "tenant_id": "tenant_1234"
+                },
+                {
+                    "foreign_id": 412,
+                    "email": "abdelhafidh.adel@gmail.com",
+                    "first_name": "Adel",
+                    "last_name": "Abdelhafidh",
+                    "shop_id": 1,
+                    "tenant_id": "tenant_1234"
+                },
+                {
+                    "foreign_id": 469,
+                    "email": "karim.abdou840@gmail.com",
+                    "first_name": "Abdelkarim",
+                    "last_name": "ABOULWAFA",
+                    "shop_id": 1,
+                    "tenant_id": "tenant_1234"
+                },
+                {
+                    "foreign_id": 576,
+                    "email": "fedi.abdel17@gmail.com",
+                    "first_name": "Abdelmalek",
+                    "last_name": "Fedi",
+                    "shop_id": 1,
+                    "tenant_id": "tenant_1234"
+                },
+                {
+                    "foreign_id": 626,
+                    "email": "abdelwahab.bahouri@esprit.tn",
+                    "first_name": "Abdou",
+                    "last_name": "Bahouri",
+                    "shop_id": 1,
+                    "tenant_id": "tenant_1234"
+                },
+                {
+                    "foreign_id": 477,
+                    "email": "adel.aoun@tunisietelecom.tn",
+                    "first_name": "ADEL",
+                    "last_name": "AOUN",
+                    "shop_id": 1,
+                    "tenant_id": "tenant_1234"
+                },
+                {
+                    "foreign_id": 249,
+                    "email": "adel_missaoui2002@yahoo.fr",
+                    "first_name": "ADEL",
+                    "last_name": "MISSAOUI",
+                    "shop_id": 1,
+                    "tenant_id": "tenant_1234"
+                },
+                {
+                    "foreign_id": 558,
+                    "email": "barberaazer@gmail.com",
+                    "first_name": "",
+                    "last_name": "",
+                    "shop_id": 1,
+                    "tenant_id": "tenant_1234"
+                },
+                {
+                    "foreign_id": 390,
+                    "email": "kamelboulifa4340@gmail.com",
+                    "first_name": "Adnen",
+                    "last_name": "Boulifa",
+                    "shop_id": 1,
+                    "tenant_id": "tenant_1234"
+                },
+                {
+                    "foreign_id": 252,
+                    "email": "afefaouina@gmail.com",
+                    "first_name": "Afef",
+                    "last_name": "Aouina",
+                    "shop_id": 1,
+                    "tenant_id": "tenant_1234"
+                },
+                {
+                    "foreign_id": 339,
+                    "email": "bentemimeafef@yahoo.fr",
+                    "first_name": "Afef",
+                    "last_name": "Ben Temime",
+                    "shop_id": 1,
+                    "tenant_id": "tenant_1234"
+                },
+                {
+                    "foreign_id": 289,
+                    "email": "afefhfaiedh@hotmail.fr",
+                    "first_name": "Afef",
+                    "last_name": "Hfaiedh",
+                    "shop_id": 1,
+                    "tenant_id": "tenant_1234"
+                },
+                {
+                    "foreign_id": 96,
+                    "email": "yasmineborgi6@gmail.com",
+                    "first_name": "ahmed",
+                    "last_name": "bensassi",
+                    "shop_id": 1,
+                    "tenant_id": "tenant_1234"
+                },
+                {
+                    "foreign_id": 267,
+                    "email": "jamilaahmadi1976@gmail.com",
+                    "first_name": "ahmedi",
+                    "last_name": "jamila",
+                    "shop_id": 1,
+                    "tenant_id": "tenant_1234"
+                },
+                {
+                    "foreign_id": 253,
+                    "email": "shammoussa.tarhouni@gmail.com",
+                    "first_name": "Aicha",
+                    "last_name": "TARHOUNI",
+                    "shop_id": 1,
+                    "tenant_id": "tenant_1234"
+                },
+                {
+                    "foreign_id": 528,
+                    "email": "ayda.ezzi@gmail.com",
+                    "first_name": "Aida",
+                    "last_name": "Ezzi",
+                    "shop_id": 1,
+                    "tenant_id": "tenant_1234"
+                },
+                {
+                    "foreign_id": 166,
+                    "email": "wissem.ajimi@vistaprint.com",
+                    "first_name": "ajimi",
+                    "last_name": "mohamed wissem",
+                    "shop_id": 1,
+                    "tenant_id": "tenant_1234"
+                },
+                {
+                    "foreign_id": 292,
+                    "email": "akroutouiem@gmail.com",
+                    "first_name": "",
+                    "last_name": "",
+                    "shop_id": 1,
+                    "tenant_id": "tenant_1234"
+                },
+                {
+                    "foreign_id": 102,
+                    "email": "alaaouni23@gmail.com",
+                    "first_name": "Alaa",
+                    "last_name": "Ouni",
+                    "shop_id": 1,
+                    "tenant_id": "tenant_1234"
+                },
+                {
+                    "foreign_id": 565,
+                    "email": "amenfarhani835@gmail.com",
+                    "first_name": "Aladin",
+                    "last_name": "Farhani",
+                    "shop_id": 1,
+                    "tenant_id": "tenant_1234"
+                },
+                {
+                    "foreign_id": 23,
+                    "email": "alibmessaoud@gmail.com",
+                    "first_name": "Ali",
+                    "last_name": "Ben Messaoud",
+                    "shop_id": 1,
+                    "tenant_id": "tenant_1234"
+                },
+                {
+                    "foreign_id": 126,
+                    "email": "asmn1@hotmail.com",
+                    "first_name": "Ali",
+                    "last_name": "Sallami",
+                    "shop_id": 1,
+                    "tenant_id": "tenant_1234"
+                },
+                {
+                    "foreign_id": 92,
+                    "email": "ali_moalla@outlook.com",
+                    "first_name": "",
+                    "last_name": "",
                     "shop_id": 1,
                     "tenant_id": "tenant_1234"
                 }]
