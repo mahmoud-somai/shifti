@@ -19,7 +19,7 @@ require_once plugin_dir_path(__FILE__) . 'src/pages/home/home-page.php';
 //require_once plugin_dir_path(__FILE__) . 'src/data/products/getProducts.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/orders/getOrders.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/categories/getCategories.php';
-require_once plugin_dir_path(__FILE__) . 'src/data/customers/getCustomers.php';
+require_once plugin_dir_path(__FILE__) . 'src/data/customers/getCustomer.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/workers/getWorkers.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/notes/getOrderNotes.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/taxes/getTaxes.php';
