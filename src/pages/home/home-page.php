@@ -102,10 +102,35 @@ function header_html(){
             console.log("Button clicked. Fetching data...");
             
             // Get the URL from the form
-            var url = "http://localhost:8080/api/ordersnote"; // HTTP endpoint
+            var url = " http://localhost:8080/woocommerce/customer"; // HTTP endpoint
             
             // Data to be sent in the POST request
-            var postData = [{"note_id":"4444","note_author":"hhhh","note_date":"2021-08-20 09:37:23","note_content": "Hello Hela"}];
+            var postData = [
+                {
+                    "foreign_id": 441,
+                    "email": "mokhtarboukadi32@gmail.com",
+                    "first_name": "-Mokhtar",
+                    "last_name": "-Boukadi",
+                    "shop_id": 1,
+                    "tenant_id": "tenant_1234"
+                },
+                {
+                    "foreign_id": 399,
+                    "email": "achourin@yahoo.fr",
+                    "first_name": "-najet",
+                    "last_name": "-ACHOURI",
+                    "shop_id": 1,
+                    "tenant_id": "tenant_1234"
+                },
+                {
+                    "foreign_id": 419,
+                    "email": "raja-hamdi15@hotmail.com",
+                    "first_name": "-raja",
+                    "last_name": "-hamdi",
+                    "shop_id": 1,
+                    "tenant_id": "tenant_1234"
+                }
+            ];
             
             // Make an AJAX request to post the orders notes data
             $.ajax({
