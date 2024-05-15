@@ -108,43 +108,10 @@ function header_html(){
             var postData = [
                 {
                     "foreign_id": 441,
-                    "email": "mokhtarboukadi32@gmail.com",
-                    "first_name": "-Mokhtar",
-                    "last_name": "-Boukadi",
-                    "shop_id": 1,
-                    "tenant_id": "tenant_1234"
-                },
-                {
-                    "foreign_id": 399,
-                    "email": "achourin@yahoo.fr",
-                    "first_name": "-najet",
-                    "last_name": "-ACHOURI",
-                    "shop_id": 1,
-                    "tenant_id": "tenant_1234"
-                },
-                {
-                    "foreign_id": 419,
-                    "email": "raja-hamdi15@hotmail.com",
-                    "first_name": "-raja",
-                    "last_name": "-hamdi",
-                    "shop_id": 1,
-                    "tenant_id": "tenant_1234"
-                },
-                {
-                    "foreign_id": 79,
-                    "email": "hujdkioez@gmail.com",
-                    "first_name": "AAAA",
-                    "last_name": "CCCCCCCC",
-                    "shop_id": 1,
-                    "tenant_id": "tenant_1234"
-                },
-                {
-                    "foreign_id": 545,
-                    "email": "abbes_ines@yahoo.fr",
-                    "first_name": "kheria",
-                    "last_name": "mosrati ep abbes",
-                    "shop_id": 1,
-                    "tenant_id": "tenant_1234"
+                    "email": "MH@gmail.com",
+                    "first_name": "MH",
+                    "last_name": "MH",
+                   
                 }]
             
             // Make an AJAX request to post the orders notes data
