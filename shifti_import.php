@@ -120,7 +120,7 @@ add_action('wp_ajax_fetch_golang_data', 'fetch_golang_data');
 add_action('wp_ajax_download_addresses_json', 'download_addresses_json');
 function download_addresses_json() {
 
-    $json_data = get_addresses();
+    $json_data = get_customers_with_billing();
 
     header('Content-Type: application/json');
     header('Content-Disposition: attachment; filename="addresses.json"');
@@ -173,7 +173,7 @@ function page_render_callback() {
     get_txs();
     get_prod();
     get_workers();
-    get_addresses();
+    get_customers_with_billing();
    
     
 
