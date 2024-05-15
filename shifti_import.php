@@ -133,7 +133,7 @@ function download_addresses_json() {
 // Function to fetch data from Golang API and send it as JSON response
 function fetch_golang_data() {
     // Make AJAX request to fetch data from the Golang API
-    $url = 'http://localhost:8080/api/ordersnote';
+    $url = ' http://localhost:8080/woocommerce/customer';
 
 
 
