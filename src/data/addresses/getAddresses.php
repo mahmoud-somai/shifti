@@ -8,13 +8,14 @@ function get_addresses() {
     $orders_query = new WC_Order_Query($args);
     $orders = $orders_query->get_orders();
     $orders_data = [];
+    $processed_foreign_ids = []; // Array to track processed foreign_ids
     foreach ($orders as $order) {
 
         $billing = [];
         $billing['foreign_id'] = method_exists($order, 'get_customer_id') ? $order->get_customer_id() : null;
 
-        // Check if foreign_id is not equal to 0
-        if ($billing['foreign_id'] !== 0) {
+        // Check if foreign_id is not equal to 0 and has not been processed before
+        if ($billing['foreign_id'] !== 0 && !in_array($billing['foreign_id'], $processed_foreign_ids)) {
             $billing['first_name'] = method_exists($order, 'get_billing_first_name') ? $order->get_billing_first_name() : null;
             $billing['last_name'] = method_exists($order, 'get_billing_last_name') ? $order->get_billing_last_name() : null;
             $billing['company'] = method_exists($order, 'get_billing_company') ? $order->get_billing_company() : null;
@@ -27,6 +28,8 @@ function get_addresses() {
             $billing['phone'] = method_exists($order, 'get_billing_phone') ? $order->get_billing_phone() : null;
 
             $orders_data[] = $billing;
+            // Add the foreign_id to the processed_foreign_ids array
+            $processed_foreign_ids[] = $billing['foreign_id'];
         }
     }
     return json_encode($orders_data);
