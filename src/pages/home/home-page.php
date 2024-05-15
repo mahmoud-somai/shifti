@@ -111,6 +111,8 @@ function header_html(){
                     "email": "MH@gmail.com",
                     "first_name": "MH",
                     "last_name": "MH",
+                    "shop_id": 1,
+                    "tenant_id": "tenant_1234"
                    
                 }]
             
