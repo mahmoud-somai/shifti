@@ -19,6 +19,9 @@ function get_customers(){
         $customer['first_name'] = $user->first_name;
         $customer['last_name'] = $user->last_name;
 
+        $customer['shop_id'] = 1; // Adding shop_id attribute with value 1
+        $customer['tenant_id'] = 'tenant_1234'; // Adding tenant_id attribute with value 'tenant_1234'
+
 
         
         // Add customer to the array
