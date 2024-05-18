@@ -87,50 +87,127 @@ function header_html(){
     echo '</form>';
 
     // Add a form to post orders notes JSON
-    echo '<form method="post" id="post-orders-notes-form">';
-    echo '<input type="hidden" name="action" value="post_orders_notes">';
-    echo '<button type="submit">Post Orders Notes</button>';
+    echo '<form method="post" id="post-categories-form">';
+    echo '<input type="hidden" name="action" value="post_categories">';
+    echo '<button type="submit">Post category to DB</button>';
     echo '</form>';
     
     // JavaScript code to handle the form submission
+    // echo '<script type="text/javascript">
+    // jQuery(document).ready(function($) {
+    //     $("#post-orders-notes-form").submit(function(event) {
+    //         event.preventDefault(); // Prevent the default form submission
+            
+    //         // Log a message indicating that the button was clicked
+    //         console.log("Button clicked. Fetching data...");
+            
+    //         // Get the URL from the form
+    //         var url = " http://localhost:8080/woocommerce/category"; // HTTP endpoint
+            
+    //         // Data to be sent in the POST request
+    //         var postData = 
+
+
+
+
+
+    //         [{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":99},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0}]
+            
+    //         // Make an AJAX request to post the orders notes data
+    //         $.ajax({
+    //             url: url,
+    //             method: "POST",
+    //             data: JSON.stringify(postData), // Convert the data to JSON format
+    //             contentType: "application/json", // Set the content type to JSON
+    //             success: function(response) {
+    //                 // Log the response to the console
+    //                 console.log("POST request successful:", response);
+    //             },
+    //             error: function(xhr, status, error) {
+    //                 // Log an error message if the request fails
+    //                 console.log("Error posting data:", error);
+    //             }
+    //         });
+    //     });
+    // });
+    // </script>';
+
+
     echo '<script type="text/javascript">
     jQuery(document).ready(function($) {
-        $("#post-orders-notes-form").submit(function(event) {
+        // Variable to store downloaded category data
+        var downloadedCategories = [];
+
+        // Handle the category download button click
+        $("#download-category-button").click(function(event) {
             event.preventDefault(); // Prevent the default form submission
-            
-            // Log a message indicating that the button was clicked
-            console.log("Button clicked. Fetching data...");
-            
-            // Get the URL from the form
-            var url = " http://localhost:8080/woocommerce/category"; // HTTP endpoint
-            
-            // Data to be sent in the POST request
-            var postData = 
 
+            var url = "' . admin_url('admin-ajax.php') . '"; // URL to download categories JSON
 
-
-
-
-            [{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":99},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0}]
-            
-            // Make an AJAX request to post the orders notes data
             $.ajax({
                 url: url,
                 method: "POST",
-                data: JSON.stringify(postData), // Convert the data to JSON format
+                data: {
+                    action: "download_category_json"
+                },
+                success: function(response) {
+                    // Store the downloaded categories data
+                    downloadedCategories = response;
+                    console.log("Categories downloaded:", downloadedCategories);
+                },
+                error: function(xhr, status, error) {
+                    console.log("Error downloading categories:", error);
+                }
+            });
+        });
+
+        // Handle the post categories to DB button click
+        $("#post-categories-form").submit(function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            
+            // Log a message indicating that the button was clicked
+            console.log("Button clicked. Posting data...");
+
+            // Get the URL for posting data
+            var url = "http://localhost:8080/woocommerce/category"; // HTTP endpoint
+
+            // Make an AJAX request to post the categories data
+            $.ajax({
+                url: url,
+                method: "POST",
+                data: JSON.stringify(downloadedCategories), // Convert the data to JSON format
                 contentType: "application/json", // Set the content type to JSON
                 success: function(response) {
-                    // Log the response to the console
                     console.log("POST request successful:", response);
                 },
                 error: function(xhr, status, error) {
-                    // Log an error message if the request fails
                     console.log("Error posting data:", error);
+                }
+            });
+        });
+
+        // Handle the form submission for fetching data from the Go API endpoint
+        $("#fetch-golang-data-form").submit(function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            
+            var url = "http://localhost:8080/api/ordersnote"; // HTTP endpoint
+
+            $.ajax({
+                url: url,
+                method: "GET",
+                success: function(response) {
+                    $("#endpoint-called").text("Endpoint called: " + url);
+                    $("#response-received").text("Response received: " + JSON.stringify(response));
+                },
+                error: function(xhr, status, error) {
+                    console.log("Error fetching from this url : " + url);
                 }
             });
         });
     });
     </script>';
+
+
 
     // Add a form to fetch data from the Go API endpoint
     echo '<form id="fetch-golang-data-form">';
