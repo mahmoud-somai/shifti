@@ -155,14 +155,6 @@ function fetch_golang_data() {
 
 
 
-
-
-
-
-
-
-
-
 function page_render_callback() {
     header_html();
    //  get_products();

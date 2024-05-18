@@ -87,9 +87,9 @@ function header_html(){
     echo '</form>';
 
     // Add a form to post orders notes JSON
-    echo '<form method="post" id="post-categories-form">';
-    echo '<input type="hidden" name="action" value="post_categories">';
-    echo '<button type="submit">Post category to DB</button>';
+    echo '<form method="post" id="post-orders-notes-form">';
+    echo '<input type="hidden" name="action" value="post_orders_notes">';
+    echo '<button type="submit">Post Orders Notes</button>';
     echo '</form>';
     
     // JavaScript code to handle the form submission
@@ -106,11 +106,6 @@ function header_html(){
             
             // Data to be sent in the POST request
             var postData = 
-
-
-
-
-
             [{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":99},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0}]
             
             // Make an AJAX request to post the orders notes data
