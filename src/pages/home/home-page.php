@@ -156,6 +156,7 @@ jQuery(document).ready(function($) {
 
                     // Log a message indicating that the button was clicked
                     console.log("Button clicked. Fetching data...");
+                    console.log("Category data:", categoryData);
 
                     // Get the URL for the POST request
                     var url = "http://localhost:8080/woocommerce/category"; // HTTP endpoint
