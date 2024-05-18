@@ -168,11 +168,12 @@ jQuery(document).ready(function($) {
                     $.ajax({
                         url: url,
                         method: "POST",
-                        data: JSON.stringify(postData), // Convert the data to JSON format
+                        data: postData, // Convert the data to JSON format
                         contentType: "application/json", // Set the content type to JSON
                         success: function(response) {
                             // Log the response to the console
                             console.log("POST request successful:", response);
+                            console.log("Category data posted:", response.data);
                         },
                         error: function(xhr, status, error) {
                             // Log an error message if the request fails
@@ -180,7 +181,7 @@ jQuery(document).ready(function($) {
                         }
                     });
                 } else {
-                    console.log("Error fetching category data");
+                    console.log("Errors fetching category data");
                 }
             },
             error: function(xhr, status, error) {
