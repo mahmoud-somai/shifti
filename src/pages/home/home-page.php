@@ -111,10 +111,11 @@ function header_html(){
             $.ajax({
                 type: "POST",
                 url: url,
-                data: JSON.stringify(postData), // Stringify the postData object
+                data: postData, // Stringify the postData object
                 contentType: "application/json",
                 success: function(response) {
                     console.log("Data fetched successfully:", response);
+                    console.log("Data fetched successfully:",data);
                 },
                 error: function(error) {
                     console.error("Error fetching data:", error);
