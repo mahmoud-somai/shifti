@@ -18,7 +18,7 @@ if (!defined('WPINC')) {
 require_once plugin_dir_path(__FILE__) . 'src/pages/home/home-page.php';
 //require_once plugin_dir_path(__FILE__) . 'src/data/products/getProducts.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/orders/getOrders.php';
-require_once plugin_dir_path(__FILE__) . 'src/data/categories/getCategories.php';
+require_once plugin_dir_path(__FILE__) . 'src/data/categories/getCategory.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/customers/getCustomer.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/workers/getWorkers.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/notes/getOrderNotes.php';
@@ -32,7 +32,7 @@ require_once plugin_dir_path(__FILE__) . 'src/data/addresses/getAddresses.php';
 add_action('wp_ajax_download_category_json', 'download_category_json');
 function download_category_json() {
     
-    $json_data = get_ctg();
+    $json_data = get_ctg_one();
 
     // $category = get_ctg();
     // $category = array_slice($category, 0, 10);
@@ -167,7 +167,7 @@ function page_render_callback() {
     header_html();
    //  get_products();
     get_orders();
-    get_ctg();
+    get_ctg_one();
     get_customers();
     get_orders_notes();
     get_txs();
