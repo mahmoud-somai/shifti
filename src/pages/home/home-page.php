@@ -102,19 +102,16 @@ function header_html(){
             console.log("Button clicked. Fetching data...");
             
             // Get the URL from the form
-            var url = " http://localhost:8080/woocommerce/customer"; // HTTP endpoint
+            var url = " http://localhost:8080/woocommerce/category"; // HTTP endpoint
             
             // Data to be sent in the POST request
-            var postData = [
-                {
-                    "foreign_id": 441,
-                    "email": "MH@gmail.com",
-                    "first_name": "MH",
-                    "last_name": "MH",
-                    "shop_id": 1,
-                    "tenant_id": "tenant_1234"
-                   
-                }]
+            var postData = 
+
+
+
+
+
+            [{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":99},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0}]
             
             // Make an AJAX request to post the orders notes data
             $.ajax({
