@@ -102,25 +102,36 @@ function header_html(){
             console.log("Button clicked. Fetching data...");
             
             // Get the URL from the form
-            var url = " http://localhost:8080/woocommerce/category"; // HTTP endpoint
+            var url = "http://localhost:8080/woocommerce/category"; // HTTP endpoint
             
             // Data to be sent in the POST request
             var postData = 
-            [{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":99},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0}]
-            
-            // Make an AJAX request to post the orders notes data
+            [{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0}];            
+            // Send the POST request
             $.ajax({
+                type: "POST",
                 url: url,
-                method: "POST",
-                data: JSON.stringify(postData), // Convert the data to JSON format
-                contentType: "application/json", // Set the content type to JSON
+                data: JSON.stringify(postData), // Stringify the postData object
+                contentType: "application/json",
                 success: function(response) {
-                    // Log the response to the console
-                    console.log("POST request successful:", response);
+                    console.log("Data fetched successfully:", response);
                 },
-                error: function(xhr, status, error) {
-                    // Log an error message if the request fails
-                    console.log("Error posting data:", error);
+                error: function(error) {
+                    console.error("Error fetching data:", error);
+                }
+            });
+        });
+
+        $("#download-categories-btn").click(function() {
+            $.ajax({
+                type: "POST",
+                url: "' . admin_url('admin-ajax.php') . '",
+                data: { action: "download_category_json" },
+                success: function(response) {
+                    console.log("Categories JSON data:", response);
+                },
+                error: function(error) {
+                    console.error("Error fetching categories JSON:", error);
                 }
             });
         });
