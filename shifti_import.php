@@ -46,6 +46,14 @@ function download_category_json() {
     echo $json_data;
     exit();
 }
+
+add_action('wp_ajax_get_category_data', 'get_category_data');
+function get_category_data() {
+    $json_data = get_ctg_one();  // Assuming get_ctg_one() returns the desired category data in JSON format
+
+    wp_send_json_success($json_data);
+}
+
 add_action('wp_ajax_download_orders_json', 'download_orders_json');
 function download_orders_json() {
 
