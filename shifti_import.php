@@ -23,7 +23,7 @@ require_once plugin_dir_path(__FILE__) . 'src/data/customers/getCustomer.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/workers/getWorkers.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/notes/getOrderNotes.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/taxes/getTaxes.php';
-require_once plugin_dir_path(__FILE__) . 'src/data/prod/getProd.php';
+require_once plugin_dir_path(__FILE__) . 'src/data/prod/getProduct.php';
 
 
 require_once plugin_dir_path(__FILE__) . 'src/data/addresses/getAddresses.php';
@@ -101,7 +101,7 @@ function download_taxes_json() {
 add_action('wp_ajax_download_products_json', 'download_products_json');
 function download_products_json() {
 
-    $json_data = get_prod();
+    $json_data = get_prods();
 
     header('Content-Type: application/json');
     header('Content-Disposition: attachment; filename="products.json"');
@@ -171,9 +171,10 @@ function page_render_callback() {
     get_customers();
     get_orders_notes();
     get_txs();
-    get_prod();
+    //get_prod();
     get_workers();
     get_customers_with_billing();
+    get_prods();
    
     
 
