@@ -44,6 +44,8 @@ function get_ctg_one(){
         $categories['meta_description'] = null;
         $categories['meta_keywords'] = null;
         $categories['link_rewrite'] = null;
+        $categories['lang_id'] = 1;
+        $categories['shop_id'] = 1;
 
         $category[]=$categories;  
      
