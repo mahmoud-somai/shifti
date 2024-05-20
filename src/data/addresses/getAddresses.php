@@ -5,7 +5,7 @@ function get_customers_with_billing() {
 
     $args = array(
         'role' => 'customer',
-        'number' => 300,
+   
     );
     $customer_users = get_users($args); // Fetch customers with 'customer' role
 
@@ -20,7 +20,7 @@ function get_customers_with_billing() {
 
         $customer['shop_id'] = 1; // Adding shop_id attribute with value 1
         $customer['tenant_id'] = 'tenant_1234'; // Adding tenant_id attribute with value 'tenant_1234'
-        $customer['woo_billing']=1;
+        $customer['woo_billing']="1";
         $customer['woo_shipping']=0;
         $customer['manufacturer_id'] = 1;
         $customer['supplier_id'] = 1;
