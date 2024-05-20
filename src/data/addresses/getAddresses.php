@@ -5,6 +5,7 @@ function get_customers_with_billing() {
 
     $args = array(
         'role' => 'customer',
+        'number' => 300,
     );
     $customer_users = get_users($args); // Fetch customers with 'customer' role
 
