@@ -21,7 +21,7 @@ function get_customers_with_billing() {
         $customer['tenant_id'] = 'tenant_1234'; // Adding tenant_id attribute with value 'tenant_1234'
         $customer['woo_billing']=1;
         $customer['woo_shipping']=0;
-        $customer['manufacturer_id'] = null;
+        $customer['manufacturer_id'] = 1;
         $customer['supplier_id'] = 1;
         $customer['warehouse_id'] = 1;
         $customer['country_id'] = 1;
