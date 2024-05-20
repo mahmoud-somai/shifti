@@ -17,9 +17,29 @@ function get_customers_with_billing() {
         $customer['first_name'] = $user->first_name ?: null;
         $customer['last_name'] = $user->last_name ?: null;
 
-        // Get billing information for this customer
+        $customer['shop_id'] = 1; // Adding shop_id attribute with value 1
+        $customer['tenant_id'] = 'tenant_1234'; // Adding tenant_id attribute with value 'tenant_1234'
+        $customer['woo_billing']=1;
+        $customer['woo_shipping']=0;
+
+
+
+        // Get billing information for this customer and merge into the customer array
         $billing_info = get_billing_info($user->ID);
-        $customer['billing'] = $billing_info;
+        if (!empty($billing_info)) {
+            // Assuming we only need the first billing info entry (if multiple orders exist)
+            $billing = $billing_info[0];
+
+
+            $customer['company'] = $billing['company'];
+            $customer['address_1'] = $billing['address_1'];
+            $customer['address_2'] = $billing['address_2'];
+            $customer['city'] = $billing['city'];
+            $customer['woo_state'] = $billing['woo_state'];
+            $customer['postcode'] = $billing['postcode'];
+            $customer['woo_country'] = $billing['woo_country'];
+            $customer['phone'] = $billing['phone'];
+        }
 
         // Add customer to the array
         $customers[] = $customer;
@@ -27,6 +47,7 @@ function get_customers_with_billing() {
 
     return json_encode($customers);
 }
+
 
 
 function get_billing_info($customer_id) {
