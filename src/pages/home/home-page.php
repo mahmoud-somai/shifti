@@ -86,177 +86,105 @@ function header_html(){
     echo '<button type="submit">Download Addresses JSON</button>';
     echo '</form>';
 
-    // Add a form to post orders notes JSON
-//     echo '<form method="post" id="post-orders-notes-form">';
-//     echo '<input type="hidden" name="action" value="post_orders_notes">';
-//     echo '<button type="submit">Post Category</button>';
-//     echo '</form>';
-    
-//     // JavaScript code to handle the form submission
-//     echo '<script type="text/javascript">
-//     jQuery(document).ready(function($) {
-//         $("#post-orders-notes-form").submit(function(event) {
-//             event.preventDefault(); // Prevent the default form submission
-            
-//             // Log a message indicating that the button was clicked
-//             console.log("Button clicked. Fetching data...");
-            
-//             // Get the URL from the form
-//             var url = " http://localhost:8080/woocommerce/category"; // HTTP endpoint
-            
-//             // Data to be sent in the POST request
-//             var postData = 
+   
+ // Add a form to post data to DB
+ echo '<form method="post" id="post-data-form">';
+ echo '<input type="hidden" name="action" value="post_data">';
+ echo '<button type="submit">Post Data to DB</button>';
+ echo '</form>';
 
+ // JavaScript code to handle the form submission
+ echo '<script type="text/javascript">
+ jQuery(document).ready(function($) {
+     $("#post-data-form").submit(function(event) {
+         event.preventDefault(); // Prevent the default form submission
+         
+         // Fetch the category data using AJAX
+         $.ajax({
+             url: "' . admin_url('admin-ajax.php') . '",
+             method: "POST",
+             data: {
+                 action: "get_category_data"
+             },
+             success: function(response) {
+                 if (response.success) {
+                     var categoryData = response.data;  // Get the category data
 
+                     // Log a message indicating that the button was clicked
+                     console.log("Button clicked. Posting category data...");
+                     console.log("Category data:", categoryData);
 
+                     // Get the URL for the POST request
+                     var categoryUrl = "http://localhost:8080/woocommerce/category"; // HTTP endpoint for categories
 
+                     // Make an AJAX request to post the category data
+                     $.ajax({
+                         url: categoryUrl,
+                         method: "POST",
+                         data: JSON.stringify(categoryData), // Convert the data to JSON format
+                         contentType: "application/json", // Set the content type to JSON
+                         success: function(response) {
+                             // Log the response to the console
+                             console.log("POST request for categories successful:", response);
 
-// [{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":172},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":99},{"tenant_id":"tenant_1234","parent":0},{"tenant_id":"tenant_1234","parent":0}]
-            
-//             // Make an AJAX request to post the orders notes data
-//             $.ajax({
-//                 url: url,
-//                 method: "POST",
-//                 data: JSON.stringify(postData), // Convert the data to JSON format
-//                 contentType: "application/json", // Set the content type to JSON
-//                 success: function(response) {
-//                     // Log the response to the console
-//                     console.log("POST request successful:", response);
-//                 },
-//                 error: function(xhr, status, error) {
-//                     // Log an error message if the request fails
-//                     console.log("Error posting data:", error);
-//                 }
-//             });
-//         });
-//     });
-//     </script>';
+                             // Now, fetch and post the customers data
+                             $.ajax({
+                                 url: "' . admin_url('admin-ajax.php') . '",
+                                 method: "POST",
+                                 data: {
+                                     action: "get_customers_data"
+                                 },
+                                 success: function(response) {
+                                     if (response.success) {
+                                         var customersData = response.data;  // Get the customers data
 
-//post categories
+                                         // Log a message indicating that the button was clicked
+                                         console.log("Posting customers data...");
+                                         console.log("Customers data:", customersData);
 
-echo '<form method="post" id="post-category-form">';
-echo '<input type="hidden" name="action" value="post_category">';
-echo '<button type="submit">Post Category</button>';
-echo '</form>';
+                                         // Get the URL for the POST request
+                                         var customersUrl = "http://localhost:8080/woocommerce/customer"; // HTTP endpoint for customers
 
-// JavaScript code to handle the form submission
-echo '<script type="text/javascript">
-jQuery(document).ready(function($) {
-    $("#post-category-form").submit(function(event) {
-        event.preventDefault(); // Prevent the default form submission
-        
-        // Fetch the category data using AJAX
-        $.ajax({
-            url: "' . admin_url('admin-ajax.php') . '",
-            method: "POST",
-            data: {
-                action: "get_category_data"
-            },
-            success: function(response) {
-                if (response.success) {
-                    var categoryData = response.data;  // Get the category data
-
-                    // Log a message indicating that the button was clicked
-                    console.log("Button clicked. Fetching data...");
-                    console.log("Category data:", categoryData);
-
-                    // Get the URL for the POST request
-                    var url = "http://localhost:8080/woocommerce/category"; // HTTP endpoint
-
-                    // Data to be sent in the POST request
-                    var postData = categoryData;  // Use the fetched category data
-
-                    // Make an AJAX request to post the category data
-                    $.ajax({
-                        url: url,
-                        method: "POST",
-                        data: postData, // Convert the data to JSON format
-                        contentType: "application/json", // Set the content type to JSON
-                        success: function(response) {
-                            // Log the response to the console
-                            console.log("POST request successful:", response);
-                            console.log("Category data posted:", response.data);
-                        },
-                        error: function(xhr, status, error) {
-                            // Log an error message if the request fails
-                            console.log("Error posting data:", error);
-                        }
-                    });
-                } else {
-                    console.log("Errors fetching category data");
-                }
-            },
-            error: function(xhr, status, error) {
-                console.log("Error fetching category data via AJAX:", error);
-            }
-        });
-    });
-});
-</script>';
-
-
-
-
-//post customers
-
-echo '<form method="post" id="post-customers-form">';
-echo '<input type="hidden" name="action" value="post_customers">';
-echo '<button type="submit">Post Customers</button>';
-echo '</form>';
-
-echo '<script type="text/javascript">
-jQuery(document).ready(function($) {
-    $("#post-customers-form").submit(function(event) {
-        event.preventDefault(); // Prevent the default form submission
-        
-        // Fetch the category data using AJAX
-        $.ajax({
-            url: "' . admin_url('admin-ajax.php') . '",
-            method: "POST",
-            data: {
-                action: "get_customers_data"
-            },
-            success: function(response) {
-                if (response.success) {
-                    var customersData = response.data;  // Get the category data
-
-                    // Log a message indicating that the button was clicked
-                    console.log("Button clicked. Fetching data...");
-                    console.log("Category data:", customersData);
-
-                    // Get the URL for the POST request
-                    var url = "http://localhost:8080/woocommerce/customer"; // HTTP endpoint
-
-                    // Data to be sent in the POST request
-                    var postData = customersData;  // Use the fetched category data
-
-                    // Make an AJAX request to post the category data
-                    $.ajax({
-                        url: url,
-                        method: "POST",
-                        data: postData, // Convert the data to JSON format
-                        contentType: "application/json", // Set the content type to JSON
-                        success: function(response) {
-                            // Log the response to the console
-                            console.log("POST request successful:", response);
-                            console.log("Customers data posted:", response.data);
-                        },
-                        error: function(xhr, status, error) {
-                            // Log an error message if the request fails
-                            console.log("Error posting data:", error);
-                        }
-                    });
-                } else {
-                    console.log("Errors fetching Customers data");
-                }
-            },
-            error: function(xhr, status, error) {
-                console.log("Error fetching category data via AJAX:", error);
-            }
-        });
-    });
-});
-</script>';
+                                         // Make an AJAX request to post the customers data
+                                         $.ajax({
+                                             url: customersUrl,
+                                             method: "POST",
+                                             data: JSON.stringify(customersData), // Convert the data to JSON format
+                                             contentType: "application/json", // Set the content type to JSON
+                                             success: function(response) {
+                                                 // Log the response to the console
+                                                 console.log("POST request for customers successful:", response);
+                                             },
+                                             error: function(xhr, status, error) {
+                                                 // Log an error message if the request fails
+                                                 console.log("Error posting customers data:", error);
+                                             }
+                                         });
+                                     } else {
+                                         console.log("Errors fetching customers data");
+                                     }
+                                 },
+                                 error: function(xhr, status, error) {
+                                     console.log("Error fetching customers data via AJAX:", error);
+                                 }
+                             });
+                         },
+                         error: function(xhr, status, error) {
+                             // Log an error message if the request fails
+                             console.log("Error posting category data:", error);
+                         }
+                     });
+                 } else {
+                     console.log("Errors fetching category data");
+                 }
+             },
+             error: function(xhr, status, error) {
+                 console.log("Error fetching category data via AJAX:", error);
+             }
+         });
+     });
+ });
+ </script>';
 
 
 
