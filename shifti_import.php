@@ -65,6 +65,8 @@ function download_orders_json() {
     echo $json_data;
     exit();
 }
+
+
 add_action('wp_ajax_download_customers_json', 'download_customers_json');
 function download_customers_json() {
 
@@ -76,6 +78,13 @@ function download_customers_json() {
     echo $json_data;
     exit();
 }
+add_action('wp_ajax_get_customers_data', 'get_customers_data');
+function get_customers_data() {
+    $json_data = get_customers();  // Assuming get_ctg_one() returns the desired category data in JSON format
+
+    wp_send_json_success($json_data);
+}
+
 add_action('wp_ajax_download_orders_notes_json', 'download_orders_notes_json');
 function download_orders_notes_json() {
 

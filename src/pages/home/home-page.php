@@ -132,6 +132,8 @@ function header_html(){
 //     });
 //     </script>';
 
+//post categories
+
 echo '<form method="post" id="post-category-form">';
 echo '<input type="hidden" name="action" value="post_category">';
 echo '<button type="submit">Post Category</button>';
@@ -191,6 +193,72 @@ jQuery(document).ready(function($) {
     });
 });
 </script>';
+
+
+
+
+//post customers
+
+echo '<form method="post" id="post-customers-form">';
+echo '<input type="hidden" name="action" value="post_customers">';
+echo '<button type="submit">Post Customers</button>';
+echo '</form>';
+
+echo '<script type="text/javascript">
+jQuery(document).ready(function($) {
+    $("#post-customers-form").submit(function(event) {
+        event.preventDefault(); // Prevent the default form submission
+        
+        // Fetch the category data using AJAX
+        $.ajax({
+            url: "' . admin_url('admin-ajax.php') . '",
+            method: "POST",
+            data: {
+                action: "get_customers_data"
+            },
+            success: function(response) {
+                if (response.success) {
+                    var customersData = response.data;  // Get the category data
+
+                    // Log a message indicating that the button was clicked
+                    console.log("Button clicked. Fetching data...");
+                    console.log("Category data:", customersData);
+
+                    // Get the URL for the POST request
+                    var url = "http://localhost:8080/woocommerce/customer"; // HTTP endpoint
+
+                    // Data to be sent in the POST request
+                    var postData = customersData;  // Use the fetched category data
+
+                    // Make an AJAX request to post the category data
+                    $.ajax({
+                        url: url,
+                        method: "POST",
+                        data: postData, // Convert the data to JSON format
+                        contentType: "application/json", // Set the content type to JSON
+                        success: function(response) {
+                            // Log the response to the console
+                            console.log("POST request successful:", response);
+                            console.log("Customers data posted:", response.data);
+                        },
+                        error: function(xhr, status, error) {
+                            // Log an error message if the request fails
+                            console.log("Error posting data:", error);
+                        }
+                    });
+                } else {
+                    console.log("Errors fetching Customers data");
+                }
+            },
+            error: function(xhr, status, error) {
+                console.log("Error fetching category data via AJAX:", error);
+            }
+        });
+    });
+});
+</script>';
+
+
 
     // Add a form to fetch data from the Go API endpoint
     echo '<form id="fetch-golang-data-form">';
