@@ -65,6 +65,7 @@ function get_txs(){
         //     $all_tax_rate_ids[] = $tax_rate_info;
         // }
     } 
+}
     return json_encode($all_tax_rate_ids);
 
     // Output all tax rate IDs with country in the desired format
