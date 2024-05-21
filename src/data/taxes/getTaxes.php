@@ -21,15 +21,15 @@ function get_txs() {
         foreach ($taxes as $tax) {
             // Store only the required tax rate information
             $tax_rate_info = array(
-                "foreign_id" => $tax->tax_rate_id,
+                "foreign_id" =>(int) $tax->tax_rate_id,
                 "name" => $tax->tax_rate_name,
                 "rate" => $tax->tax_rate,
                 "woo_class" => $tax->tax_rate_class,
-                "active"=>"1",
-                "deleted"=>"0",
-                "lang_id"=>"1",
+                "active"=>1,
+                "deleted"=>0,
+                "lang_id"=>1,
                 "tenant_id"=>"tn_123",
-                "shop_id"=>"1"
+                "shop_id"=>1
 
             );
 
