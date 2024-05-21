@@ -4,7 +4,7 @@ function get_txs(){
 
     global $wpdb;
     $tax_classes = WC_Tax::get_tax_classes();
-    $tax_st = WC_Tax::get_rates( 'Standard' );
+    $tax_st = WC_Tax::get_rates( 'service taxe' );
 
     // Check if the tax rates array is empty
     if ( ! empty( $tax_st ) ) {
