@@ -23,42 +23,46 @@ function get_txs(){
 
             if (!empty($taxes)) {
                 foreach ($taxes as $tax) {
+                    $all_tax_rate_ids['foreign_id']=$tax->tax_rate_id,
+                    $all_tax_rate_ids['rate']=$tax->tax_rate,
+                    $all_tax_rate_ids['name']=$tax->tax_rate_name,
+                    $all_tax_rate_ids['class']=$tax->tax_rate_class,
                     // Extract tax rate ID, country, and postcodes
-                    $postcodes = is_array($tax->postcode) ? $tax->postcode : array($tax->postcode);
-                    $postcode_array = array();
-                    foreach ($postcodes as $postcode) {
-                        $postcode_array[] = $postcode;
-                    }
-                    $cities = is_array($tax->city) ? $tax->city : array($tax->city);
-                    $city_array = array();
-                    foreach ($cities as $city) {
-                        $city_array[] = $city;
-                    }
+                    // $postcodes = is_array($tax->postcode) ? $tax->postcode : array($tax->postcode);
+                    // $postcode_array = array();
+                    // foreach ($postcodes as $postcode) {
+                    //     $postcode_array[] = $postcode;
+                    // }
+                    // $cities = is_array($tax->city) ? $tax->city : array($tax->city);
+                    // $city_array = array();
+                    // foreach ($cities as $city) {
+                    //     $city_array[] = $city;
+                    // }
 
-                    $tax_rate_info[] = array(
-                        "id" => $tax->tax_rate_id,
-                        "country" => $tax->tax_rate_country,
-                        "state" => $tax->tax_rate_state,
-                        "postcodes" => $postcode_array,
-                        "cities" => $city_array,
-                        "rate" => $tax->tax_rate,
-                        "name" => $tax->tax_rate_name,
-                        "priority" => $tax->tax_rate_priority,
-                        "compound" => $tax->tax_rate_compound,
-                        "shipping" => $tax->tax_rate_shipping,
-                        "order" => $tax->tax_rate_order,
-                        "class" => $tax->tax_rate_class
-                    );
-                }
-            } else {
-                // If no tax rates found for class, add custom attribute
-                $tax_rate_info[] = array(
-                    "name" => $class,
-                );
-            }
+            //         $tax_rate_info[] = array(
+            //             "id" => $tax->tax_rate_id,
+            //             "country" => $tax->tax_rate_country,
+            //             "state" => $tax->tax_rate_state,
+            //             "postcodes" => $postcode_array,
+            //             "cities" => $city_array,
+            //             "rate" => $tax->tax_rate,
+            //             "name" => $tax->tax_rate_name,
+            //             "priority" => $tax->tax_rate_priority,
+            //             "compound" => $tax->tax_rate_compound,
+            //             "shipping" => $tax->tax_rate_shipping,
+            //             "order" => $tax->tax_rate_order,
+            //             "class" => $tax->tax_rate_class
+            //         );
+            //     }
+            // } else {
+            //     // If no tax rates found for class, add custom attribute
+            //     $tax_rate_info[] = array(
+            //         "name" => $class,
+            //     );
+            // }
 
             // Add tax rate info for the current tax class to the $all_tax_rate_ids array
-            $all_tax_rate_ids[] = $tax_rate_info;
+            // $all_tax_rate_ids[] = $tax_rate_info;
         }
     } 
     return json_encode($all_tax_rate_ids);
