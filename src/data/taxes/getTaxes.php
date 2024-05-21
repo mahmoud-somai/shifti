@@ -24,7 +24,7 @@ function get_txs() {
                 "foreign_id" => $tax->tax_rate_id,
                 "name" => $tax->tax_rate_name,
                 "rate" => $tax->tax_rate,
-                "class" => $tax->tax_rate_class,
+                "woo_class" => $tax->tax_rate_class,
                 "active"=>"1",
                 "deleted"=>"0",
                 "lang_id"=>"1",
