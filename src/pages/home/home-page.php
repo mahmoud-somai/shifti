@@ -121,7 +121,7 @@ function header_html(){
                      $.ajax({
                          url: categoryUrl,
                          method: "POST",
-                         data: categoryData, // Convert the data to JSON format
+                         data: JSON.stringify(categoryData), // Convert the data to JSON format
                          contentType: "application/json", // Set the content type to JSON
                          success: function(response) {
                              // Log the response to the console
@@ -149,11 +149,53 @@ function header_html(){
                                          $.ajax({
                                              url: customersUrl,
                                              method: "POST",
-                                             data: customersData, // Convert the data to JSON format
+                                             data: JSON.stringify(customersData), // Convert the data to JSON format
                                              contentType: "application/json", // Set the content type to JSON
                                              success: function(response) {
                                                  // Log the response to the console
                                                  console.log("POST request for customers successful:", response);
+
+                                                 // Now, fetch and post the tax data
+                                                 $.ajax({
+                                                     url: "' . admin_url('admin-ajax.php') . '",
+                                                     method: "POST",
+                                                     data: {
+                                                         action: "get_tax_data"
+                                                     },
+                                                     success: function(response) {
+                                                         if (response.success) {
+                                                             var taxData = response.data;  // Get the tax data
+
+                                                             // Log a message indicating that the button was clicked
+                                                             console.log("Posting tax data...");
+                                                             console.log("Tax data:", taxData);
+
+                                                             // Get the URL for the POST request
+                                                             var taxUrl = "http://localhost:8080/woocommerce/taxe"; // HTTP endpoint for taxes
+
+                                                             // Make an AJAX request to post the tax data
+                                                             $.ajax({
+                                                                 url: taxUrl,
+                                                                 method: "POST",
+                                                                 data: JSON.stringify(taxData), // Convert the data to JSON format
+                                                                 contentType: "application/json", // Set the content type to JSON
+                                                                 success: function(response) {
+                                                                     // Log the response to the console
+                                                                     console.log("POST request for taxes successful:", response);
+                                                                 },
+                                                                 error: function(xhr, status, error) {
+                                                                     // Log an error message if the request fails
+                                                                     console.log("Error posting tax data:", error);
+                                                                 }
+                                                             });
+                                                         } else {
+                                                             console.log("Errors fetching tax data");
+                                                         }
+                                                     },
+                                                     error: function(xhr, status, error) {
+                                                         console.log("Error fetching tax data via AJAX:", error);
+                                                     }
+                                                 });
                                              },
                                              error: function(xhr, status, error) {
                                                  // Log an error message if the request fails
@@ -185,6 +227,7 @@ function header_html(){
      });
  });
  </script>';
+
 
 
 
