@@ -4,6 +4,8 @@ function get_txs(){
 
     global $wpdb;
     $tax_classes = WC_Tax::get_tax_classes();
+    $tax_classes[] = '';
+
   
     $tax_rates = WC_Tax::get_rates();
  
