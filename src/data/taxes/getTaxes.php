@@ -7,7 +7,7 @@ function get_txs(){
     $tax_st = WC_Tax::get_rates( 'Standard' );
 
     // Check if the tax rates array is empty
-    if ( ! empty( $tax_s ) ) {
+    if ( ! empty( $tax_st ) ) {
         echo 'true';
     } else {
         echo 'false';
