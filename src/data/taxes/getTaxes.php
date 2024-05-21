@@ -15,15 +15,15 @@ function get_txs(){
     if (!empty($tax_classes)) {
         foreach ($tax_classes as $class) {
             $taxes = WC_Tax::get_rates_for_tax_class($class);
-            $tax_rate_info = array(); // Array to store tax rate info for current tax class
-            if (!empty($taxes)) {
+            // $tax_rate_info = array(); // Array to store tax rate info for current tax class
+        
                 foreach ($taxes as $tax) {
                     $all_tax_rate_ids['foreign_id']=$tax->tax_rate_id,
                     $all_tax_rate_ids['rate']=$tax->tax_rate,
                     $all_tax_rate_ids['name']=$tax->tax_rate_name,
                     $all_tax_rate_ids['class']=$tax->tax_rate_class,
                 }
-            }
+            
         }
     }
         return json_encode($all_tax_rate_ids);
