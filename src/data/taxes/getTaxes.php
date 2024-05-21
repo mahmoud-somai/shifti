@@ -4,8 +4,12 @@ function get_txs(){
 
     global $wpdb;
     $tax_classes = WC_Tax::get_tax_classes();
-     echo($woocommerce->get('taxes')); 
+  
     $tax_rates = WC_Tax::get_rates();
+    $tax_st=WC_Tax::get_taxes();
+
+    echo "<h2>Tax Rates</h2>";
+    echo json_encode($tax_st);
     $all_tax_rate_ids = array(); // Array to store all tax rate IDs with country
 
     if (!empty($tax_classes)) {
