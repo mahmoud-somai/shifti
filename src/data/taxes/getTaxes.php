@@ -21,12 +21,13 @@ function get_txs(){
             // echo json_encode($taxes);
             // echo "<br>";
 
-            // if (!empty($taxes)) {
+             if (!empty($taxes)) {
                 foreach ($taxes as $tax) {
                     $all_tax_rate_ids['foreign_id']=$tax->tax_rate_id,
                     $all_tax_rate_ids['rate']=$tax->tax_rate,
                     $all_tax_rate_ids['name']=$tax->tax_rate_name,
                     $all_tax_rate_ids['class']=$tax->tax_rate_class,
+                }
                     // Extract tax rate ID, country, and postcodes
                     // $postcodes = is_array($tax->postcode) ? $tax->postcode : array($tax->postcode);
                     // $postcode_array = array();
@@ -62,10 +63,9 @@ function get_txs(){
             // }
 
             // Add tax rate info for the current tax class to the $all_tax_rate_ids array
-        //     $all_tax_rate_ids[] = $tax_rate_info;
-        // }
+            // $all_tax_rate_ids[] = $tax_rate_info;
+        }
     } 
-}
     return json_encode($all_tax_rate_ids);
 
     // Output all tax rate IDs with country in the desired format
