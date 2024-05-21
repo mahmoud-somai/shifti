@@ -121,7 +121,7 @@ function header_html(){
                      $.ajax({
                          url: categoryUrl,
                          method: "POST",
-                         data: JSON.stringify(categoryData), // Convert the data to JSON format
+                         data: categoryData, // Convert the data to JSON format
                          contentType: "application/json", // Set the content type to JSON
                          success: function(response) {
                              // Log the response to the console
@@ -149,7 +149,7 @@ function header_html(){
                                          $.ajax({
                                              url: customersUrl,
                                              method: "POST",
-                                             data: JSON.stringify(customersData), // Convert the data to JSON format
+                                             data: customersData, // Convert the data to JSON format
                                              contentType: "application/json", // Set the content type to JSON
                                              success: function(response) {
                                                  // Log the response to the console
@@ -177,7 +177,7 @@ function header_html(){
                                                              $.ajax({
                                                                  url: taxUrl,
                                                                  method: "POST",
-                                                                 data: JSON.stringify(taxData), // Convert the data to JSON format
+                                                                 data: taxData, // Convert the data to JSON format
                                                                  contentType: "application/json", // Set the content type to JSON
                                                                  success: function(response) {
                                                                      // Log the response to the console
