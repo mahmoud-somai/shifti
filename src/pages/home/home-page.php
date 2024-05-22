@@ -109,14 +109,12 @@ function header_html(){
              success: function(response) {
                  if (response.success) {
                      var categoryData = response.data;  // Get the category data
-
-                     // Log a message indicating that the button was clicked
+ 
                      console.log("Button clicked. Posting category data...");
                      console.log("Category data:", categoryData);
-
-                     // Get the URL for the POST request
-                     var categoryUrl = "http://localhost:8080/woocommerce/category"; // HTTP endpoint for categories
-
+ 
+                     var categoryUrl = "http://localhost:8080/woocommerce/category";
+ 
                      // Make an AJAX request to post the category data
                      $.ajax({
                          url: categoryUrl,
@@ -124,10 +122,9 @@ function header_html(){
                          data: categoryData, // Convert the data to JSON format
                          contentType: "application/json", // Set the content type to JSON
                          success: function(response) {
-                             // Log the response to the console
                              console.log("POST request for categories successful:", response);
-
-                             // Now, fetch and post the customers data
+ 
+                             // Fetch and post the customers data
                              $.ajax({
                                  url: "' . admin_url('admin-ajax.php') . '",
                                  method: "POST",
@@ -137,14 +134,12 @@ function header_html(){
                                  success: function(response) {
                                      if (response.success) {
                                          var customersData = response.data;  // Get the customers data
-
-                                         // Log a message indicating that the button was clicked
+ 
                                          console.log("Posting customers data...");
                                          console.log("Customers data:", customersData);
-
-                                         // Get the URL for the POST request
-                                         var customersUrl = "http://localhost:8080/woocommerce/customer"; // HTTP endpoint for customers
-
+ 
+                                         var customersUrl = "http://localhost:8080/woocommerce/customer";
+ 
                                          // Make an AJAX request to post the customers data
                                          $.ajax({
                                              url: customersUrl,
@@ -152,10 +147,9 @@ function header_html(){
                                              data: customersData, // Convert the data to JSON format
                                              contentType: "application/json", // Set the content type to JSON
                                              success: function(response) {
-                                                 // Log the response to the console
                                                  console.log("POST request for customers successful:", response);
-
-                                                 // Now, fetch and post the tax data
+ 
+                                                 // Fetch and post the tax data
                                                  $.ajax({
                                                      url: "' . admin_url('admin-ajax.php') . '",
                                                      method: "POST",
@@ -165,14 +159,12 @@ function header_html(){
                                                      success: function(response) {
                                                          if (response.success) {
                                                              var taxData = response.data;  // Get the tax data
-
-                                                             // Log a message indicating that the button was clicked
+ 
                                                              console.log("Posting tax data...");
                                                              console.log("Tax data:", taxData);
-
-                                                             // Get the URL for the POST request
-                                                             var taxUrl = "http://localhost:8080/woocommerce/taxe"; // HTTP endpoint for taxes
-
+ 
+                                                             var taxUrl = "http://localhost:8080/woocommerce/taxe";
+ 
                                                              // Make an AJAX request to post the tax data
                                                              $.ajax({
                                                                  url: taxUrl,
@@ -180,11 +172,47 @@ function header_html(){
                                                                  data: taxData, // Convert the data to JSON format
                                                                  contentType: "application/json", // Set the content type to JSON
                                                                  success: function(response) {
-                                                                     // Log the response to the console
                                                                      console.log("POST request for taxes successful:", response);
+ 
+                                                                     // Fetch and post the product data
+                                                                     $.ajax({
+                                                                         url: "' . admin_url('admin-ajax.php') . '",
+                                                                         method: "POST",
+                                                                         data: {
+                                                                             action: "get_prods_data"
+                                                                         },
+                                                                         success: function(response) {
+                                                                             if (response.success) {
+                                                                                 var productData = response.data;  // Get the product data
+ 
+                                                                                 console.log("Posting product data...");
+                                                                                 console.log("Product data:", productData);
+ 
+                                                                                 var productUrl = "http://localhost:8080/woocommerce/product";
+ 
+                                                                                 // Make an AJAX request to post the product data
+                                                                                 $.ajax({
+                                                                                     url: productUrl,
+                                                                                     method: "POST",
+                                                                                     data: productData, // Convert the data to JSON format
+                                                                                     contentType: "application/json", // Set the content type to JSON
+                                                                                     success: function(response) {
+                                                                                         console.log("POST request for products successful:", response);
+                                                                                     },
+                                                                                     error: function(xhr, status, error) {
+                                                                                         console.log("Error posting product data:", error);
+                                                                                     }
+                                                                                 });
+                                                                             } else {
+                                                                                 console.log("Errors fetching product data");
+                                                                             }
+                                                                         },
+                                                                         error: function(xhr, status, error) {
+                                                                             console.log("Error fetching product data via AJAX:", error);
+                                                                         }
+                                                                     });
                                                                  },
                                                                  error: function(xhr, status, error) {
-                                                                     // Log an error message if the request fails
                                                                      console.log("Error posting tax data:", error);
                                                                  }
                                                              });
@@ -198,7 +226,6 @@ function header_html(){
                                                  });
                                              },
                                              error: function(xhr, status, error) {
-                                                 // Log an error message if the request fails
                                                  console.log("Error posting customers data:", error);
                                              }
                                          });
@@ -212,7 +239,6 @@ function header_html(){
                              });
                          },
                          error: function(xhr, status, error) {
-                             // Log an error message if the request fails
                              console.log("Error posting category data:", error);
                          }
                      });
@@ -258,7 +284,7 @@ function header_html(){
                     // Log the endpoint called
                     $("#endpoint-called").text("Endpoint called: " + url);
                     // Display the response
-                    $("#response-received").text("Response received: " + JSON.stringify(response));
+                    $("#response-received").text("Response received: " + (response));
                 },
                 error: function(xhr, status, error) {
                     // Log an error message if the request fails
