@@ -128,6 +128,13 @@ function download_products_json() {
     exit();
 }
 
+add_action('wp_ajax_get_prods_data', 'get_prods_data');
+function get_prods_data() {
+    $json_data = get_prods();  
+
+    wp_send_json_success($json_data);
+}
+
 add_action('wp_ajax_download_workers_json', 'download_workers_json');
 function download_workers_json() {
 

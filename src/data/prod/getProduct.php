@@ -42,7 +42,7 @@ function get_prods(){
         
 
         $temp_prod['default_image_id'] = null;
-        $temp_prod['manufacturer_id'] = null;
+        $temp_prod['manufacturer_id'] = 1;
         $temp_prod['tax_rule_group_id'] = null;
         $temp_prod['name'] = null;
      
@@ -54,7 +54,7 @@ function get_prods(){
         $temp_prod['description'] = $product->get_description();
         $temp_prod['short_description'] = $product->get_short_description();
 
-        $temp_prod['price']=$product->get_price();
+        $temp_prod['price']=floatval($product->get_price());
 
         $temp_prod['regular_price'] = null;
         $temp_prod['date_on_sale_from'] = null;
@@ -62,7 +62,7 @@ function get_prods(){
         $temp_prod['on_sale'] = null;
 
         $temp_prod['purchasable']=$product->is_purchasable();  
-        $temp_prod['weight']=$product->get_weight();
+        $temp_prod['weight'] = floatval($product->get_weight());
         $temp_prod['height'] = null;
         $temp_prod['width'] = null;
         
