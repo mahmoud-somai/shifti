@@ -40,51 +40,51 @@ function header_html(){
 
     echo '</div>';
     form_html();
-    echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
-    echo '<input type="hidden" name="action" value="download_workers_json">';
-    echo '<button type="submit">Download Workers JSON</button>';
-    echo '</form>';
+    // echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
+    // echo '<input type="hidden" name="action" value="download_workers_json">';
+    // echo '<button type="submit">Download Workers JSON</button>';
+    // echo '</form>';
 
 
-    echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
-    echo '<input type="hidden" name="action" value="download_category_json">';
-    echo '<button type="submit">Download Categories JSON</button>';
-    echo '</form>';
+    // echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
+    // echo '<input type="hidden" name="action" value="download_category_json">';
+    // echo '<button type="submit">Download Categories JSON</button>';
+    // echo '</form>';
 
-    // Add a form to download orders JSON
-    echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
-    echo '<input type="hidden" name="action" value="download_orders_json">';
-    echo '<button type="submit">Download Orders JSON</button>';
-    echo '</form>';
+    // // Add a form to download orders JSON
+    // echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
+    // echo '<input type="hidden" name="action" value="download_orders_json">';
+    // echo '<button type="submit">Download Orders JSON</button>';
+    // echo '</form>';
 
-    // Add a form to download customers JSON
-    echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
-    echo '<input type="hidden" name="action" value="download_customers_json">';
-    echo '<button type="submit">Download Customers JSON</button>';
-    echo '</form>';
+    // // Add a form to download customers JSON
+    // echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
+    // echo '<input type="hidden" name="action" value="download_customers_json">';
+    // echo '<button type="submit">Download Customers JSON</button>';
+    // echo '</form>';
 
-    // Add a form to download orders notes JSON
-    echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
-    echo '<input type="hidden" name="action" value="download_orders_notes_json">';
-    echo '<button type="submit">Download Orders Notes JSON</button>';
-    echo '</form>';
+    // // Add a form to download orders notes JSON
+    // echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
+    // echo '<input type="hidden" name="action" value="download_orders_notes_json">';
+    // echo '<button type="submit">Download Orders Notes JSON</button>';
+    // echo '</form>';
 
-    // Add a form to download taxes JSON
-    echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
-    echo '<input type="hidden" name="action" value="download_taxes_json">';
-    echo '<button type="submit">Download Taxes JSON</button>';
-    echo '</form>';
+    // // Add a form to download taxes JSON
+    // echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
+    // echo '<input type="hidden" name="action" value="download_taxes_json">';
+    // echo '<button type="submit">Download Taxes JSON</button>';
+    // echo '</form>';
 
-    // Add a form to download products JSON
-    echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
-    echo '<input type="hidden" name="action" value="download_products_json">';
-    echo '<button type="submit">Download products JSON</button>';
-    echo '</form>';
+    // // Add a form to download products JSON
+    // echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
+    // echo '<input type="hidden" name="action" value="download_products_json">';
+    // echo '<button type="submit">Download products JSON</button>';
+    // echo '</form>';
 
-    echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
-    echo '<input type="hidden" name="action" value="download_addresses_json">';
-    echo '<button type="submit">Download Addresses JSON</button>';
-    echo '</form>';
+    // echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
+    // echo '<input type="hidden" name="action" value="download_addresses_json">';
+    // echo '<button type="submit">Download Addresses JSON</button>';
+    // echo '</form>';
 
    
  // Add a form to post data to DB
