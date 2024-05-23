@@ -22,7 +22,7 @@
 function form_html(){
     echo '<link rel="stylesheet" href="' . plugins_url( 'shifti-import/src/styles/main.css') . '">';
 
-    echo '<form id="export-form" method="post" id="post-data-form" method="post" action="' . admin_url('admin-ajax.php') . '">'; // Start the form tag
+    echo '<form id="export-form"  id="post-data-form" method="post" action="' . admin_url('admin-ajax.php') . '">'; // Start the form tag
 
     echo '<div class="stf-form" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; margin: 20px auto; background-color: white; width: 50%; text-align: center;">';
     echo '<h2 style="width: 100%; margin-bottom: 10px;">Link Shop</h2>'; 
@@ -34,6 +34,166 @@ function form_html(){
     echo '<button type="submit" id="export-button" class="button-sft" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; width: 30%; display: inline-block; margin-left:25px;">Export Your Shop!</button>'; // Button initially disabled
     echo '</div>';
     echo '</div>';
+
+    echo '<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $("#post-data-form").submit(function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            
+            // Fetch the category data using AJAX
+            $.ajax({
+                url: "' . admin_url('admin-ajax.php') . '",
+                method: "POST",
+                data: {
+                    action: "get_category_data"
+                },
+                success: function(response) {
+                    if (response.success) {
+                        var categoryData = response.data;  // Get the category data
+    
+                        console.log("Button clicked. Posting category data...");
+                        console.log("Category data:", categoryData);
+    
+                        var categoryUrl = "http://localhost:8080/woocommerce/category";
+    
+                        // Make an AJAX request to post the category data
+                        $.ajax({
+                            url: categoryUrl,
+                            method: "POST",
+                            data: categoryData, // Convert the data to JSON format
+                            contentType: "application/json", // Set the content type to JSON
+                            success: function(response) {
+                                console.log("POST request for categories successful:", response);
+    
+                                // Fetch and post the customers data
+                                $.ajax({
+                                    url: "' . admin_url('admin-ajax.php') . '",
+                                    method: "POST",
+                                    data: {
+                                        action: "get_customers_data"
+                                    },
+                                    success: function(response) {
+                                        if (response.success) {
+                                            var customersData = response.data;  // Get the customers data
+    
+                                            console.log("Posting customers data...");
+                                            console.log("Customers data:", customersData);
+    
+                                            var customersUrl = "http://localhost:8080/woocommerce/customer";
+    
+                                            // Make an AJAX request to post the customers data
+                                            $.ajax({
+                                                url: customersUrl,
+                                                method: "POST",
+                                                data: customersData, // Convert the data to JSON format
+                                                contentType: "application/json", // Set the content type to JSON
+                                                success: function(response) {
+                                                    console.log("POST request for customers successful:", response);
+    
+                                                    // Fetch and post the tax data
+                                                    $.ajax({
+                                                        url: "' . admin_url('admin-ajax.php') . '",
+                                                        method: "POST",
+                                                        data: {
+                                                            action: "get_tax_data"
+                                                        },
+                                                        success: function(response) {
+                                                            if (response.success) {
+                                                                var taxData = response.data;  // Get the tax data
+    
+                                                                console.log("Posting tax data...");
+                                                                console.log("Tax data:", taxData);
+    
+                                                                var taxUrl = "http://localhost:8080/woocommerce/taxe";
+    
+                                                                // Make an AJAX request to post the tax data
+                                                                $.ajax({
+                                                                    url: taxUrl,
+                                                                    method: "POST",
+                                                                    data: taxData, // Convert the data to JSON format
+                                                                    contentType: "application/json", // Set the content type to JSON
+                                                                    success: function(response) {
+                                                                        console.log("POST request for taxes successful:", response);
+    
+                                                                        // Fetch and post the product data
+                                                                        $.ajax({
+                                                                            url: "' . admin_url('admin-ajax.php') . '",
+                                                                            method: "POST",
+                                                                            data: {
+                                                                                action: "get_prods_data"
+                                                                            },
+                                                                            success: function(response) {
+                                                                                if (response.success) {
+                                                                                    var productData = response.data;  // Get the product data
+    
+                                                                                    console.log("Posting product data...");
+                                                                                    console.log("Product data:", productData);
+    
+                                                                                    var productUrl = "http://localhost:8080/woocommerce/product";
+    
+                                                                                    // Make an AJAX request to post the product data
+                                                                                    $.ajax({
+                                                                                        url: productUrl,
+                                                                                        method: "POST",
+                                                                                        data: productData, // Convert the data to JSON format
+                                                                                        contentType: "application/json", // Set the content type to JSON
+                                                                                        success: function(response) {
+                                                                                            console.log("POST request for products successful:", response);
+                                                                                        },
+                                                                                        error: function(xhr, status, error) {
+                                                                                            console.log("Error posting product data:", error);
+                                                                                        }
+                                                                                    });
+                                                                                } else {
+                                                                                    console.log("Errors fetching product data");
+                                                                                }
+                                                                            },
+                                                                            error: function(xhr, status, error) {
+                                                                                console.log("Error fetching product data via AJAX:", error);
+                                                                            }
+                                                                        });
+                                                                    },
+                                                                    error: function(xhr, status, error) {
+                                                                        console.log("Error posting tax data:", error);
+                                                                    }
+                                                                });
+                                                            } else {
+                                                                console.log("Errors fetching tax data");
+                                                            }
+                                                        },
+                                                        error: function(xhr, status, error) {
+                                                            console.log("Error fetching tax data via AJAX:", error);
+                                                        }
+                                                    });
+                                                },
+                                                error: function(xhr, status, error) {
+                                                    console.log("Error posting customers data:", error);
+                                                }
+                                            });
+                                        } else {
+                                            console.log("Errors fetching customers data");
+                                        }
+                                    },
+                                    error: function(xhr, status, error) {
+                                        console.log("Error fetching customers data via AJAX:", error);
+                                    }
+                                });
+                            },
+                            error: function(xhr, status, error) {
+                                console.log("Error posting category data:", error);
+                            }
+                        });
+                    } else {
+                        console.log("Errors fetching category data");
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.log("Error fetching category data via AJAX:", error);
+                }
+            });
+        });
+    });
+    </script>';
 
 
     echo '</form>'; // End the form tag
