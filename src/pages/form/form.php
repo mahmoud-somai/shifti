@@ -22,7 +22,7 @@
 function form_html(){
     echo '<link rel="stylesheet" href="' . plugins_url( 'shifti-import/src/styles/main.css') . '">';
 
-    echo '<form id="export-form"  id="post-data-form" method="post" action="' . admin_url('admin-ajax.php') . '">'; // Start the form tag
+    echo '<form id=""   method="post" action="' . admin_url('admin-ajax.php') . '">'; // Start the form tag
 
     echo '<div class="stf-form" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; margin: 20px auto; background-color: white; width: 50%; text-align: center;">';
     echo '<h2 style="width: 100%; margin-bottom: 10px;">Link Shop</h2>'; 
@@ -37,7 +37,7 @@ function form_html(){
 
     echo '<script type="text/javascript">
     jQuery(document).ready(function($) {
-        $("#post-data-form").submit(function(event) {
+        $("#export-form").submit(function(event) {
             event.preventDefault(); // Prevent the default form submission
             
             // Fetch the category data using AJAX
