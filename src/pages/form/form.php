@@ -23,7 +23,7 @@ function form_html(){
     echo '            <progress id="progress-bar" style="width: 100%; height: 20px; margin-bottom: 10px;"></progress>'; 
     echo '            <div id="progress-status" style="margin-top: 10px; font-size: 20px; color: #333;">0%</div>';
     // echo '            <div id="success-messages" style="margin-top: 10px; text-align: left;font-size: 24px;color: #fff; background-color: #5BBCFF; padding: 10px; border-radius: 5px;"></div>';
-    echo '            <div id="success-messages" style="margin-top: 10px; text-align: left; background-color: rgba(91, 188, 255, 0); padding: 15px; border-radius: 5px;font-size: 24px;color: #fff;  display: none;"></div>';
+    echo '            <div id="success-messages" style="margin-top: 10px; text-align: left; background-color: rgba(91, 188, 255, 0); padding: 15px; border-radius: 5px;font-size: 24px;  display: none;"></div>';
     echo '            <div style="margin-top: 20px;">'; 
     echo '                <button id="cancel-button" class="button-sft" style="background-color: #ff5722; color: white; padding: 8px 20px; border: none; border-radius: 4px; cursor: pointer; margin-right: 10px;">Cancel</button>';
     echo '                <button id="done-button" class="button-sft" style="background-color: #4CAF50; color: white; padding: 8px 20px; border: none; border-radius: 4px; cursor: pointer; display: none;">Done</button>';
