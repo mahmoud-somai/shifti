@@ -258,42 +258,42 @@ function header_html(){
 
 
     // Add a form to fetch data from the Go API endpoint
-    echo '<form id="fetch-golang-data-form">';
-    echo '<input type="hidden" name="action" value="fetch_golang_data">'; // Set the action to call fetch_golang_data
-    echo '<button type="submit" id="fetch-golang-data-button">Fetch Data from DB</button>';
-    echo '</form>';
+    // echo '<form id="fetch-golang-data-form">';
+    // echo '<input type="hidden" name="action" value="fetch_golang_data">'; // Set the action to call fetch_golang_data
+    // echo '<button type="submit" id="fetch-golang-data-button">Fetch Data from DB</button>';
+    // echo '</form>';
 
-    // Placeholder elements to display the endpoint and response
-    echo '<div id="endpoint-called"></div>';
-    echo '<div id="response-received"></div>';
+    // // Placeholder elements to display the endpoint and response
+    // echo '<div id="endpoint-called"></div>';
+    // echo '<div id="response-received"></div>';
 
     // JavaScript code to handle the form submission for fetching data from the Go API endpoint
-    echo '<script type="text/javascript">
-    jQuery(document).ready(function($) {
-        $("#fetch-golang-data-form").submit(function(event) {
-            event.preventDefault(); // Prevent the default form submission
+    // echo '<script type="text/javascript">
+    // jQuery(document).ready(function($) {
+    //     $("#fetch-golang-data-form").submit(function(event) {
+    //         event.preventDefault(); // Prevent the default form submission
             
-            // Get the URL from the form
-            var url = "http://localhost:8080/api/ordersnote"; // HTTP endpoint
+    //         // Get the URL from the form
+    //         var url = "http://localhost:8080/api/ordersnote"; // HTTP endpoint
             
-            // Make an AJAX request to the endpoint
-            $.ajax({
-                url: url,
-                method: "GET",
-                success: function(response) {
-                    // Log the endpoint called
-                    $("#endpoint-called").text("Endpoint called: " + url);
-                    // Display the response
-                    $("#response-received").text("Response received: " + (response));
-                },
-                error: function(xhr, status, error) {
-                    // Log an error message if the request fails
-                    console.log("Error fetching from this url : " + url);
-                }
-            });
-        });
-    });
-    </script>';
+    //         // Make an AJAX request to the endpoint
+    //         $.ajax({
+    //             url: url,
+    //             method: "GET",
+    //             success: function(response) {
+    //                 // Log the endpoint called
+    //                 $("#endpoint-called").text("Endpoint called: " + url);
+    //                 // Display the response
+    //                 $("#response-received").text("Response received: " + (response));
+    //             },
+    //             error: function(xhr, status, error) {
+    //                 // Log an error message if the request fails
+    //                 console.log("Error fetching from this url : " + url);
+    //             }
+    //         });
+    //     });
+    // });
+    // </script>';
 
     echo '</div>';
    
