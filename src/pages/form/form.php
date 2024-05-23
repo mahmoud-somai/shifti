@@ -22,6 +22,7 @@ function form_html(){
     echo '        <div style="text-align: center;">';
     echo '            <progress id="progress-bar" style="width: 100%; height: 20px;"></progress>'; 
     echo '            <div id="progress-status" style="margin-top: 10px;">0%</div>';
+    echo '            <div id="success-messages" style="margin-top: 10px; text-align: left;"></div>'; // Success messages container
     echo '            <div style="margin-top: 20px;">'; 
     echo '                <button id="cancel-button" class="button-sft" style="background-color: #ff5722; color: white; padding: 8px 20px; border: none; border-radius: 4px; cursor: pointer; margin-right: 10px;">Cancel</button>';
     echo '                <button id="done-button" class="button-sft" style="background-color: #4CAF50; color: white; padding: 8px 20px; border: none; border-radius: 4px; cursor: pointer; display: none;">Done</button>';
@@ -38,22 +39,25 @@ function form_html(){
             var progressOverlay = $("#progress-overlay");
             var progressBar = $("#progress-bar");
             var progressStatus = $("#progress-status");
+            var successMessages = $("#success-messages");
             var doneButton = $("#done-button");
             
             progressOverlay.show();
             progressBar.val(0);
             progressStatus.text("0%");
+            successMessages.html("");
             
-            var updateProgress = function(progress) {
+            var updateProgress = function(progress, message) {
                 progressBar.val(progress);
                 progressStatus.text(progress + "%");
+                successMessages.append("<p>" + message + "</p>");
             };
             
             var actions = [
-                {action: "get_category_data", url: "http://localhost:8080/woocommerce/category"},
-                {action: "get_customers_data", url: "http://localhost:8080/woocommerce/customer"},
-                {action: "get_tax_data", url: "http://localhost:8080/woocommerce/taxe"},
-                {action: "get_prods_data", url: "http://localhost:8080/woocommerce/product"}
+                {action: "get_category_data", url: "http://localhost:8080/woocommerce/category", message: "Categories exported with success"},
+                {action: "get_customers_data", url: "http://localhost:8080/woocommerce/customer", message: "Customers exported with success"},
+                {action: "get_tax_data", url: "http://localhost:8080/woocommerce/taxe", message: "Taxes exported with success"},
+                {action: "get_prods_data", url: "http://localhost:8080/woocommerce/product", message: "Products exported with success"}
             ];
 
             var currentAction = 0;
@@ -77,7 +81,7 @@ function form_html(){
                                     success: function() {
                                         console.log("POST request for " + action.action + " successful.");
                                         currentAction++;
-                                        updateProgress(Math.round((currentAction / totalActions) * 100));
+                                        updateProgress(Math.round((currentAction / totalActions) * 100), action.message);
                                         performNextAction();
                                     },
                                     error: function(xhr, status, error) {
