@@ -22,7 +22,7 @@
 function form_html(){
     echo '<link rel="stylesheet" href="' . plugins_url( 'shifti-import/src/styles/main.css') . '">';
 
-    echo '<form id=""   method="post" action="' . admin_url('admin-ajax.php') . '">'; // Start the form tag
+    echo '<form id="export-form"   method="post" action="' . admin_url('admin-ajax.php') . '">'; // Start the form tag
 
     echo '<div class="stf-form" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; margin: 20px auto; background-color: white; width: 50%; text-align: center;">';
     echo '<h2 style="width: 100%; margin-bottom: 10px;">Link Shop</h2>'; 
