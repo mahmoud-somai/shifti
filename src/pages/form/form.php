@@ -18,11 +18,11 @@ function form_html(){
     // Overlay HTML
     echo '<div id="progress-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); z-index: 9999; display: none;">';
     echo '    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #f9f9f9; padding: 20px; border-radius: 10px; width: 90%; max-width: 500px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">';
-    echo '        <h1 style="margin-bottom: 15px; color: #4CAF50; font-size: 24px;">Export Data</h1>'; 
+    echo '        <h1 style="margin-bottom: 15px; color: #00215E; font-size: 24px;">Export Data</h1>'; 
     echo '        <div style="text-align: center;">';
     echo '            <progress id="progress-bar" style="width: 100%; height: 20px; margin-bottom: 10px;"></progress>'; 
     echo '            <div id="progress-status" style="margin-top: 10px; font-size: 16px; color: #333;">0%</div>';
-    echo '            <div id="success-messages" style="margin-top: 10px; text-align: left;"></div>'; // Removed color and font-size
+    echo '            <div id="success-messages" font-size:16px style="margin-top: 10px; text-align: left;"></div>'; // Removed color and font-size
     echo '            <div style="margin-top: 20px;">'; 
     echo '                <button id="cancel-button" class="button-sft" style="background-color: #ff5722; color: white; padding: 8px 20px; border: none; border-radius: 4px; cursor: pointer; margin-right: 10px;">Cancel</button>';
     echo '                <button id="done-button" class="button-sft" style="background-color: #4CAF50; color: white; padding: 8px 20px; border: none; border-radius: 4px; cursor: pointer; display: none;">Done</button>';
