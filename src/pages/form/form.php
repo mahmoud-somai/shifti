@@ -72,7 +72,7 @@ function form_html(){
                                 $.ajax({
                                     url: action.url,
                                     method: "POST",
-                                    data: JSON.stringify(data),
+                                    data: data,
                                     contentType: "application/json",
                                     success: function() {
                                         console.log("POST request for " + action.action + " successful.");
