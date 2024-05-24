@@ -57,7 +57,7 @@ function get_category_data() {
 add_action('wp_ajax_download_orders_json', 'download_orders_json');
 function download_orders_json() {
 
-    $json_data = get_odr();
+    $json_data = get_orders();
 
     header('Content-Type: application/json');
     header('Content-Disposition: attachment; filename="orders.json"');
@@ -191,7 +191,7 @@ function fetch_golang_data() {
 function page_render_callback() {
     header_html();
    //  get_products();
-    // get_orders();
+     get_orders();
     get_ctg_one();
     get_customers();
     get_orders_notes();
@@ -200,7 +200,7 @@ function page_render_callback() {
     get_workers();
     get_customers_with_billing();
     get_prods();
-    get_odr()
+
    
     
 
