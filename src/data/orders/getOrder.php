@@ -38,6 +38,7 @@ function get_orders() {
         
         // Count the number of items
         $order_data['total_products'] = count($items);
+        $order_data['total_products_wt'] = count($items);
 
         $orders_data[] = $order_data;
     }
