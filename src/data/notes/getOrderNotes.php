@@ -8,8 +8,7 @@ function get_orders_notes(){
         SELECT *
         FROM $table_perfixed
         WHERE  `comment_type` LIKE  'order_note'
-        LIMIT 3
-
+        
     ");
 
     foreach($results as $note){
