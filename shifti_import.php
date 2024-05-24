@@ -17,7 +17,7 @@ if (!defined('WPINC')) {
 
 require_once plugin_dir_path(__FILE__) . 'src/pages/home/home-page.php';
 //require_once plugin_dir_path(__FILE__) . 'src/data/products/getProducts.php';
-require_once plugin_dir_path(__FILE__) . 'src/data/orders/getOrders.php';
+// require_once plugin_dir_path(__FILE__) . 'src/data/orders/getOrders.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/categories/getCategory.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/customers/getCustomer.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/workers/getWorkers.php';
@@ -191,7 +191,7 @@ function fetch_golang_data() {
 function page_render_callback() {
     header_html();
    //  get_products();
-    get_orders();
+    // get_orders();
     get_ctg_one();
     get_customers();
     get_orders_notes();
