@@ -1,7 +1,7 @@
 <?php
 
 
-function get_orders() {
+function get_odr() {
     global $wpdb;
     $args = array(
         'limit' => -1, 
