@@ -27,7 +27,7 @@ require_once plugin_dir_path(__FILE__) . 'src/data/prod/getProduct.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/orders/getOrder.php';
 
 require_once plugin_dir_path(__FILE__) . 'src/data/addresses/getAddresses.php';
-require_once plugin_dir_path(__FILE__) . 'src/data/line_items/getLineItems.php';
+require_once plugin_dir_path(__FILE__) . 'src/data/orders/getOrderDetails.php';
 
 add_action('wp_ajax_download_category_json', 'download_category_json');
 function download_category_json() {
