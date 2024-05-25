@@ -72,74 +72,7 @@ function get_orders() {
         $order_data['round_type'] = null; 
         $order_data['date_add_foreign'] = method_exists($order, 'get_date_created') ? ($order->get_date_created() ? $order->get_date_created()->format('Y-m-d H:i:s') : null) : null;
 
-        $product_items = []; 
 
-        if (method_exists($order, 'get_items')) {
-            $items = $order->get_items();
-        } else {
-            $items = [];
-        }
-        
-        foreach ($items as $item) {
-            $id = method_exists($item, 'get_id') ? $item->get_id() : null;
-            $product_name = method_exists($item, 'get_name') ? $item->get_name() : null;
-            $product_id = method_exists($item, 'get_product_id') ? $item->get_product_id() : null;
-            $quantity = method_exists($item, 'get_quantity') ? $item->get_quantity() : null;
-            $subtotal = method_exists($item, 'get_subtotal') ? $item->get_subtotal() : null;
-
-            $product_items[] = array(
-                'foreign_id' => $id,
-                'product_name' => $product_name,
-                'product_id' => $product_id,
-                'product_quantity' => $quantity,  
-                'product_price' => $subtotal, 
-                'product_attribute_id' => null,
-                "tax_rules_group_id" => null,
-                "order_invoice_id" => null,
-                "id_warehouse_id" => null,
-                "customization_id" => null,
-                'product_quantity_reinjected' => null,
-                'group_reduction' => null,
-                'discount_quantity_applied' => null,
-                'download_hash' => null,
-                'download_deadline' => null,
-                'product_quantity_in_stock' => null,
-                'product_quantity_return' => null,
-                'product_quantity_refunded' => null,
-                'reduction_percent' => null,
-                'reduction_amount' => null,
-                'reduction_amount_tax_incl' => null,
-                'reduction_amount_tax_excl' => null,
-                'product_quantity_discount' => null,
-                'product_ean13' => null,
-                'product_isbn' => null,
-                'product_upc' => null,
-                'product_mpn' => null,
-                'product_reference' => null,
-                'product_supplier_reference' => null,
-                'product_weight' => null,
-                'tax_computation_method' => null,
-                'ecotax' => null,
-                'ecotax_tax_rate' => null,
-                'download_nb' => null,
-                'unit_price_tax_incl' => null,
-                'unit_price_tax_excl' => null,
-                'total_price_tax_incl' => null,
-                'total_price_tax_excl' => null,
-                'total_shipping_price_tax_excl' => null,
-                'total_shipping_price_tax_incl' => null,
-                'purchase_supplier_price' => null,
-                'original_product_price' => null,
-                'original_wholesale_price' => null,
-                'total_refunded_tax_excl' => null,
-                'total_refunded_tax_inclt' => null,
-
-
-                
-            );
-        }
-        
-        $order_data['line_items'] = $product_items;
         $orders_data[] = $order_data;
     }
 
