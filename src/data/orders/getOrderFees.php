@@ -19,16 +19,15 @@ function get_odr_fee() {
         foreach ($fees as $fee_id => $fee) {
             $fee_name       = $fee->get_name();
             $fee_tax_class  = $fee->get_tax_class();
-            $fee_tax_status = $fee->get_tax_status();
             $fee_total      = $fee->get_total();
             $fee_total_tax  = $fee->get_total_tax();
 
             $order_fees = array(
+                'order_id' => $order_id,
                 'fee_name'       => $fee_name,
                 'fee_tax_class'  => $fee_tax_class,
-                'fee_tax_status' => $fee_tax_status,
-                'fee_total'      => $fee_total,
-                'fee_total_tax'  => $fee_total_tax,
+                'total'      => $fee_total,
+                'total_tax'  => $fee_total_tax,
             );
             $order_fees_data[]=$order_fees;
         }
