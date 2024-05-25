@@ -13,10 +13,11 @@ function get_ord_car() {
         if ($customer_id === 0 || $customer_id === null) {
             continue;
         }
-        
+
+
         $order_id = $order->get_id();
         $shipping_items = $order->get_items('shipping');
-        foreach ($shipping_items as $item) {
+        foreach ($shipping_items as $item_id => $item) {
             $id = method_exists($item, 'get_id') ? $item->get_id() : null;
             $shipping_name = method_exists($item, 'get_method_title') ? $item->get_method_title() : null;
             $shipping_cost_tax_excl = method_exists($item, 'get_total') ? $item->get_total() : null;
