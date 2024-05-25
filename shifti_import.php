@@ -82,7 +82,7 @@ function download_orders_details_json() {
 add_action('wp_ajax_download_orders_fees_json', 'download_orders_fees_json');
 function download_orders_fees_json() {
 
-    $json_data = get_ord_fee();
+    $json_data = get_odr_fee();
 
     header('Content-Type: application/json');
     header('Content-Disposition: attachment; filename="order_details.json"');
