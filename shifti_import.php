@@ -85,7 +85,7 @@ function download_orders_fees_json() {
     $json_data = get_odr_fee();
 
     header('Content-Type: application/json');
-    header('Content-Disposition: attachment; filename="order_details.json"');
+    header('Content-Disposition: attachment; filename="order_fees.json"');
 
     echo $json_data;
     exit();
