@@ -95,7 +95,7 @@ function download_orders_fees_json() {
 add_action('wp_ajax_download_orders_carriers_json', 'download_orders_carriers_json');
 function download_orders_carriers_json() {
 
-    $json_data = get_odr_car();
+    $json_data = get_ord_car();
 
     header('Content-Type: application/json');
     header('Content-Disposition: attachment; filename="order_carriers.json"');
