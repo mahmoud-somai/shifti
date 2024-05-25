@@ -1,5 +1,5 @@
 <?
-function get_line_items() {
+function get_ord_det() {
     global $wpdb;
     $args = array(
         'limit' => -1, 

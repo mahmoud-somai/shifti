@@ -67,9 +67,9 @@ function download_orders_json() {
 }
 
 add_action('wp_ajax_download_orders_details_json', 'download_orders_details_json');
-function download_orders_ddeails_json() {
+function download_orders_details_json() {
 
-    $json_data = get_line_items();
+    $json_data = get_ord_det();
 
     header('Content-Type: application/json');
     header('Content-Disposition: attachment; filename="order_details.json"');
@@ -212,7 +212,7 @@ function page_render_callback() {
     get_workers();
     get_customers_with_billing();
     get_prods();
-    get_line_items();
+    get_ord_det();
 
    
     
