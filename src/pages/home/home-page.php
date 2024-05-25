@@ -62,6 +62,11 @@ function header_html(){
     echo '<button type="submit">Download Details JSON</button>';
     echo '</form>';
 
+    echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
+    echo '<input type="hidden" name="action" value="download_orders_fees_json">';
+    echo '<button type="submit">Download Fees JSON</button>';
+    echo '</form>';
+
     // // Add a form to download customers JSON
     // echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
     // echo '<input type="hidden" name="action" value="download_customers_json">';
