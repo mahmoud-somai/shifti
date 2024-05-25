@@ -14,9 +14,9 @@ function get_orders() {
         $order_data = [];
 
         // Retrieve order properties with null coalescing operator
-        $order_data['shop_id']=1;
-        $order_data['lang_id']=1;
-        $order_data['tenant_id']="tenant_id_159";
+        $order_data['shop_id'] = 1;
+        $order_data['lang_id'] = 1;
+        $order_data['tenant_id'] = "tenant_id_159";
         $order_data['foreign_id'] = (int) ($order->get_id() ?? null);
         $order_data['reference'] = $order->get_id() ?? null;
 
@@ -28,6 +28,12 @@ function get_orders() {
         $order_data['total_paid'] = (float) (method_exists($order, 'get_total') ? $order->get_total() : null);
         $order_data['total_paid_real'] = (float) (method_exists($order, 'get_total') ? $order->get_total() : null);
         $order_data['customer_id'] = (int) (method_exists($order, 'get_customer_id') ? $order->get_customer_id() : null);
+
+        // Skip orders where customer_id is 0 or null
+        if ($order_data['customer_id'] === 0 || $order_data['customer_id'] === null) {
+            continue;
+        }
+
         $order_data['payment'] = method_exists($order, 'get_payment_method_title') ? $order->get_payment_method_title() : null;
         $order_data['note'] = method_exists($order, 'get_customer_note') ? $order->get_customer_note() : null;
         $order_data['delivery_date'] = method_exists($order, 'get_date_completed') ? ($order->get_date_completed() ? $order->get_date_completed()->format('Y-m-d H:i:s.u') : null) : null;
@@ -75,14 +81,12 @@ function get_orders() {
         }
         
         foreach ($items as $item) {
-            $id             = method_exists($item, 'get_id') ? $item->get_id() : null;
-            $product_name   = method_exists($item, 'get_name') ? $item->get_name() : null;
-            $product_id     = method_exists($item, 'get_product_id') ? $item->get_product_id() : null;
-            $quantity       = method_exists($item, 'get_quantity') ? $item->get_quantity() : null;
-            $subtotal       = method_exists($item, 'get_subtotal') ? $item->get_subtotal() : null;
+            $id = method_exists($item, 'get_id') ? $item->get_id() : null;
+            $product_name = method_exists($item, 'get_name') ? $item->get_name() : null;
+            $product_id = method_exists($item, 'get_product_id') ? $item->get_product_id() : null;
+            $quantity = method_exists($item, 'get_quantity') ? $item->get_quantity() : null;
+            $subtotal = method_exists($item, 'get_subtotal') ? $item->get_subtotal() : null;
 
-
-        
             $product_items[] = array(
                 'id' => $id,
                 'product_name' => $product_name,
@@ -92,7 +96,6 @@ function get_orders() {
             );
         }
         
-
         $order_data['line_items'] = $product_items;
         $orders_data[] = $order_data;
     }
