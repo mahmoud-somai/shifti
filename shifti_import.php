@@ -29,6 +29,7 @@ require_once plugin_dir_path(__FILE__) . 'src/data/orders/getOrder.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/addresses/getAddresses.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/orders/getOrderDetails.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/orders/getOrderFees.php';
+require_once plugin_dir_path(__FILE__) . 'src/data/orders/getOrderCarriers.php';
 
 add_action('wp_ajax_download_category_json', 'download_category_json');
 function download_category_json() {
@@ -90,6 +91,19 @@ function download_orders_fees_json() {
     echo $json_data;
     exit();
 }
+
+add_action('wp_ajax_download_orders_carriers_json', 'download_orders_carriers_json');
+function download_orders_carriers_json() {
+
+    $json_data = get_odr_car();
+
+    header('Content-Type: application/json');
+    header('Content-Disposition: attachment; filename="order_carriers.json"');
+
+    echo $json_data;
+    exit();
+}
+
 
 
 add_action('wp_ajax_download_customers_json', 'download_customers_json');
@@ -227,6 +241,7 @@ function page_render_callback() {
     get_prods();
     get_ord_det();
     get_odr_fee();
+    get_odr_car();
 
    
     
