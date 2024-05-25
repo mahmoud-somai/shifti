@@ -66,23 +66,34 @@ function get_orders() {
         $order_data['round_type'] = null; 
         $order_data['date_add_foreign'] = method_exists($order, 'get_date_created') ? ($order->get_date_created() ? $order->get_date_created()->format('Y-m-d H:i:s') : null) : null;
 
+        $product_items = []; 
 
-        $items = $order->get_items();
+        if (method_exists($order, 'get_items')) {
+            $items = $order->get_items();
+        } else {
+            $items = [];
+        }
+        
         foreach ($items as $item) {
-           
-          //  $sku            = method_exists($item->get_product(), 'get_sku') ? $item->get_product()->get_sku() : null;
-            //$item_price     = method_exists($item->get_product(), 'get_price') ? $item->get_product()->get_price() : null;
-           // $item_product_meta_data_array = method_exists($item, 'get_meta_data') ? $item->get_meta_data() : null;
+            $id             = method_exists($item, 'get_id') ? $item->get_id() : null;
+            $product_name   = method_exists($item, 'get_name') ? $item->get_name() : null;
+            $product_id     = method_exists($item, 'get_product_id') ? $item->get_product_id() : null;
+            $quantity       = method_exists($item, 'get_quantity') ? $item->get_quantity() : null;
+            $subtotal       = method_exists($item, 'get_subtotal') ? $item->get_subtotal() : null;
+
+
+        
+            $product_items[] = array(
+                'id' => $id,
+                'product_name' => $product_name,
+                'product_id' => $product_id,
+                'product_quantity' => $quantity,  
+                'product_price' => $subtotal, 
+            );
+        }
         
 
-            $order_data["product_id"]=method_exists($item, 'get_id') ? $item->get_id() : null;
-            $order_data["product_name"]=method_exists($item, 'get_name') ? $item->get_name() : null;
-            $order_data["product_quantity"]=method_exists($item, 'get_quantity') ? $item->get_quantity() : null;
-            $order_data["product_price"]=method_exists($item, 'get_subtotal') ? $item->get_subtotal() : null;
-        }
-
-
-
+        $order_data['line_items'] = $product_items;
         $orders_data[] = $order_data;
     }
 
