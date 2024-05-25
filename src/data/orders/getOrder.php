@@ -18,7 +18,7 @@ function get_orders() {
         $order_data['lang_id'] = 1;
         $order_data['tenant_id'] = "tenant_id_159";
         $order_data['foreign_id'] = (int) ($order->get_id() ?? null);
-        $order_data['reference'] = $order->get_id() ?? null;
+        $order_data['reference'] = strval($order->get_id() ?? null);
 
         $order_data['woo_status'] = method_exists($order, 'get_status') ? $order->get_status() : null;
         $order_data['woo_currency'] = method_exists($order, 'get_currency') ? $order->get_currency() : null;
