@@ -73,6 +73,7 @@ function get_orders() {
         $order_data['date_add_foreign'] = method_exists($order, 'get_date_created') ? ($order->get_date_created() ? $order->get_date_created()->format('Y-m-d H:i:s') : null) : null;
 
 
+  
         $orders_data[] = $order_data;
     }
 
