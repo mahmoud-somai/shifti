@@ -27,7 +27,7 @@ require_once plugin_dir_path(__FILE__) . 'src/data/prod/getProduct.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/orders/getOrder.php';
 
 require_once plugin_dir_path(__FILE__) . 'src/data/addresses/getAddresses.php';
-
+require_once plugin_dir_path(__FILE__) . 'src/data/line_items/getLineItems.php';
 
 add_action('wp_ajax_download_category_json', 'download_category_json');
 function download_category_json() {
@@ -61,6 +61,18 @@ function download_orders_json() {
 
     header('Content-Type: application/json');
     header('Content-Disposition: attachment; filename="orders.json"');
+
+    echo $json_data;
+    exit();
+}
+
+add_action('wp_ajax_download_orders_details_json', 'download_orders_details_json');
+function download_orders_ddeails_json() {
+
+    $json_data = get_line_items();
+
+    header('Content-Type: application/json');
+    header('Content-Disposition: attachment; filename="order_details.json"');
 
     echo $json_data;
     exit();
@@ -200,6 +212,7 @@ function page_render_callback() {
     get_workers();
     get_customers_with_billing();
     get_prods();
+    get_line_items();
 
    
     
