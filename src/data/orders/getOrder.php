@@ -66,6 +66,23 @@ function get_orders() {
         $order_data['round_type'] = null; 
         $order_data['date_add_foreign'] = method_exists($order, 'get_date_created') ? ($order->get_date_created() ? $order->get_date_created()->format('Y-m-d H:i:s') : null) : null;
 
+
+        $items = $order->get_items();
+        foreach ($items as $item) {
+           
+          //  $sku            = method_exists($item->get_product(), 'get_sku') ? $item->get_product()->get_sku() : null;
+            //$item_price     = method_exists($item->get_product(), 'get_price') ? $item->get_product()->get_price() : null;
+           // $item_product_meta_data_array = method_exists($item, 'get_meta_data') ? $item->get_meta_data() : null;
+        
+
+            $order_data["product_id"]=method_exists($item, 'get_id') ? $item->get_id() : null;
+            $order_data["product_name"]=method_exists($item, 'get_name') ? $item->get_name() : null;
+            $order_data["product_quantity"]=method_exists($item, 'get_quantity') ? $item->get_quantity() : null;
+            $order_data["product_price"]=method_exists($item, 'get_subtotal') ? $item->get_subtotal() : null;
+        }
+
+
+
         $orders_data[] = $order_data;
     }
 
