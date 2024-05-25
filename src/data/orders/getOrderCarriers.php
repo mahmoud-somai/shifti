@@ -37,7 +37,7 @@ function get_ord_car() {
 
 
             );
-            $line_items_data[] = $shipping_items;
+            $line_items_data[] = $line_item;
         }
 
 
