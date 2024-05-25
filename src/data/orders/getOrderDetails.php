@@ -21,7 +21,7 @@ function get_ord_det() {
             $product_name = method_exists($item, 'get_name') ? $item->get_name() : null;
             $product_id = method_exists($item, 'get_product_id') ? $item->get_product_id() : null;
             $quantity = method_exists($item, 'get_quantity') ? $item->get_quantity() : null;
-            $subtotal = method_exists($item, 'get_subtotal') ? $item->get_subtotal() : null;
+            $subtotal = (float) method_exists($item, 'get_subtotal') ? $item->get_subtotal() : null;
             $line_item = array(
                 'order_id' => $order_id,
                 'foreign_id' => $id,
