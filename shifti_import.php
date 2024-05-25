@@ -241,7 +241,7 @@ function page_render_callback() {
     get_prods();
     get_ord_det();
     get_odr_fee();
-    get_odr_car();
+    get_ord_car();
 
    
     
