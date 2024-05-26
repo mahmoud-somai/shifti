@@ -25,7 +25,7 @@ function get_ord_txs() {
            
             $line_item = array(
                 'order_id' => $order_id,
-                'foreign_id' => $tax_item_id,
+               // 'foreign_id' => $tax_item_id,
                 'tax_id' => $tax_item_rate_id,
             );
             $line_items_data[] = $line_item;
