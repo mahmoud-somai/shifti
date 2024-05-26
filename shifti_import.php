@@ -71,6 +71,15 @@ function download_orders_json() {
     exit();
 }
 
+add_action('wp_ajax_get_orders_data', 'get_orders_data');
+function get_orders_data() {
+    $json_data = get_orders();  
+
+    wp_send_json_success($json_data);
+}
+
+
+
 add_action('wp_ajax_download_orders_details_json', 'download_orders_details_json');
 function download_orders_details_json() {
 

@@ -60,6 +60,7 @@ function form_html(){
                 {action: "get_customers_data", url: "http://localhost:8080/woocommerce/customer", message: "Customers exported with success"},
                 {action: "get_tax_data", url: "http://localhost:8080/woocommerce/taxe", message: "Taxes exported with success"},
                 {action: "get_prods_data", url: "http://localhost:8080/woocommerce/product", message: "Products exported with success"}
+                {action: "get_orders_data", url: "http://localhost:8080/woocommerce/order", message: "orders exported with success"}
             ];
 
             var currentAction = 0;
