@@ -32,6 +32,7 @@ require_once plugin_dir_path(__FILE__) . 'src/data/orders/getOrderFees.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/orders/getOrderCarriers.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/orders/getOrderTaxes.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/shipping/getShipping.php';
+require_once plugin_dir_path(__FILE__) . 'src/data/billing/getBilling.php';
 
 add_action('wp_ajax_download_category_json', 'download_category_json');
 function download_category_json() {
@@ -130,6 +131,17 @@ function download_shipping_json() {
     exit();
 }
 
+add_action('wp_ajax_download_billing_json', 'download_billing_json');
+function download_billing_json() {
+
+    $json_data = get_billing();
+
+    header('Content-Type: application/json');
+    header('Content-Disposition: attachment; filename="Billing.json"');
+
+    echo $json_data;
+    exit();
+}
 
 
 add_action('wp_ajax_download_customers_json', 'download_customers_json');
@@ -270,6 +282,7 @@ function page_render_callback() {
     get_ord_car();
     get_ord_txs();
     get_shipping();
+    get_billing();
 
    
     

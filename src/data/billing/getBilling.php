@@ -6,7 +6,8 @@ function get_billing() {
     );
     $orders_query = new WC_Order_Query($args);
     $orders = $orders_query->get_orders();
-    $line_items_data = [];
+    $all_orders_data = []; // Array to store shipping data for all orders
+
     foreach ($orders as $order) {
         // Check if customer_id is not 0 or null
         $customer_id = method_exists($order, 'get_customer_id') ? $order->get_customer_id() : null;
@@ -14,35 +15,26 @@ function get_billing() {
             continue;
         }
 
-
         $order_id = $order->get_id();
-        $shipping_items = $order->get_items('shipping');
-        foreach ($shipping_items as $item_id => $item) {
-            $id = method_exists($item, 'get_id') ? $item->get_id() : null;
-            $shipping_name = method_exists($item, 'get_method_title') ? $item->get_method_title() : null;
-            $shipping_cost_tax_excl = method_exists($item, 'get_total') ? $item->get_total() : null;
-            $shipping_cost_tax_incl =  method_exists($item, 'get_total_tax') ? $item->get_total_tax() : null;
-            $line_item = array(
-                'order_id' => $order_id,
-                'foreign_id' => $id,
-                'name' => $shipping_name,
-                'shipping_cost_tax_excl' => floatval($shipping_cost_tax_excl),
-                'shipping_cost_tax_incl' =>floatval($shipping_cost_tax_incl),
-                'order_invoice' => null,
-                "weight" => null,
-                "tracking_number" => null,
-                "date_added" => null,
-                "carrier_id" => null,
-                
+        $billing = [];
+        $billing['order_id'] = $order_id;
+        $billing['first_name'] = method_exists($order, 'get_billing_first_name') ? $order->get_billing_first_name() : null;
+        $billing['last_name'] = method_exists($order, 'get_billing_last_name') ? $order->get_billing_last_name() : null;
+        $billing['company'] = method_exists($order, 'get_billing_company') ? $order->get_billing_company() : null;
+        $billing['address_1'] = method_exists($order, 'get_billing_address_1') ? $order->get_billing_address_1() : null;
+        $billing['address_2'] = method_exists($order, 'get_billing_address_2') ? $order->get_billing_address_2() : null;
+        $billing['city'] = method_exists($order, 'get_billing_city') ? $order->get_billing_city() : null;
+        $billing['state'] = method_exists($order, 'get_billing_state') ? $order->get_billing_state() : null;
+        $billing['postcode'] = method_exists($order, 'get_billing_postcode') ? $order->get_billing_postcode() : null;
+        $billing['country'] = method_exists($order, 'get_billing_country') ? $order->get_billing_country() : null;
+        $billing['email'] = method_exists($order, 'get_billing_email') ? $order->get_billing_email() : null;
+        $billing['phone'] = method_exists($order, 'get_billing_phone') ? $order->get_billing_phone() : null;
 
-
-            );
-            $line_items_data[] = $line_item;
-        }
-
-
+        // Add the shipping data to the all_orders_data array
+        $all_orders_data[] = $billing;
     }
-    return json_encode($line_items_data);
 
+    // Return the JSON-encoded array of all orders' shipping data
+    return json_encode($all_orders_data);
 }
 ?>
