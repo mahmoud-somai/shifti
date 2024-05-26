@@ -30,6 +30,7 @@ require_once plugin_dir_path(__FILE__) . 'src/data/addresses/getAddresses.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/orders/getOrderDetails.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/orders/getOrderFees.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/orders/getOrderCarriers.php';
+require_once plugin_dir_path(__FILE__) . 'src/data/orders/getOrderTaxes.php';
 
 add_action('wp_ajax_download_category_json', 'download_category_json');
 function download_category_json() {
@@ -99,6 +100,18 @@ function download_orders_carriers_json() {
 
     header('Content-Type: application/json');
     header('Content-Disposition: attachment; filename="order_carriers.json"');
+
+    echo $json_data;
+    exit();
+}
+
+add_action('wp_ajax_download_orders_taxes_json', 'download_orders_taxes_json');
+function download_orders_taxes_json() {
+
+    $json_data = get_ord_txs();
+
+    header('Content-Type: application/json');
+    header('Content-Disposition: attachment; filename="order_taxes.json"');
 
     echo $json_data;
     exit();
@@ -242,6 +255,7 @@ function page_render_callback() {
     get_ord_det();
     get_odr_fee();
     get_ord_car();
+    get_ord_txs();
 
    
     
