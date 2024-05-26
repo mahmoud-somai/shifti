@@ -27,9 +27,10 @@ function get_shipping() {
         $line_items_data['postcode'] = method_exists($order, 'get_shipping_postcode') ? $order->get_shipping_postcode() : null;
         $line_items_data['country'] = method_exists($order, 'get_shipping_country') ? $order->get_shipping_country() : null;
         $line_items_data['phone'] = method_exists($order, 'get_shipping_phone') ? $order->get_shipping_phone() : null;
+        return json_encode($line_items_data);
         }
 
-        return json_encode($line_items_data);
+       
     }
    
 
