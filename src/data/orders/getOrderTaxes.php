@@ -16,7 +16,7 @@ function get_ord_txs() {
 
 
         $order_id = $order->get_id();
-        $tax_items = $order->get_items('tax'):
+        $tax_items = $order->get_items('tax');
         foreach ($tax_items as $item_id => $item) {
             $tax_item_id = method_exists($item,'get_id')? $item->get_id() :null;
             $tax_item_rate_id = method_exists($item,'get_rate_id')? $item->get_rate_id() :null;
