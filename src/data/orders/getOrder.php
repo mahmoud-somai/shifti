@@ -38,11 +38,11 @@ function get_orders() {
         $order_data['note'] = method_exists($order, 'get_customer_note') ? $order->get_customer_note() : null;
         $order_data['delivery_date'] = method_exists($order, 'get_date_completed') ? ($order->get_date_completed() ? $order->get_date_completed()->format('Y-m-d H:i:s.u') : null) : null;
 
-        $order_data['address_delivery_id'] = null; 
-        $order_data['address_invoice_id'] = null; 
-        $order_data['cart_id'] = null; 
+        $order_data['address_delivery_id'] = 1; 
+        $order_data['address_invoice_id'] = 1; 
+        $order_data['cart_id'] = 1; 
         $order_data['currency_id'] = 1; 
-        $order_data['carrier_id'] = null; 
+        $order_data['carrier_id'] = 1; 
         $order_data['module'] = null; 
         $order_data['total_paid_tax_incl'] = null; 
         $order_data['total_paid_tax_excl'] = null; 
