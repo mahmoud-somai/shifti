@@ -27,9 +27,6 @@ function get_ord_txs() {
                 'order_id' => $order_id,
                 'foreign_id' => $tax_item_id,
                 'tax_id' => $tax_item_rate_id,
-                
-
-
             );
             $line_items_data[] = $line_item;
         }
@@ -37,6 +34,6 @@ function get_ord_txs() {
 
     }
     return json_encode($line_items_data);
-
+}
 
 ?>
