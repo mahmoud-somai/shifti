@@ -87,11 +87,11 @@ function header_html(){
     echo '<button type="submit">Download Billing JSON</button>';
     echo '</form>';
 
-    // // Add a form to download customers JSON
-    // echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
-    // echo '<input type="hidden" name="action" value="download_customers_json">';
-    // echo '<button type="submit">Download Customers JSON</button>';
-    // echo '</form>';
+    // Add a form to download customers JSON
+    echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
+    echo '<input type="hidden" name="action" value="download_customers_json">';
+    echo '<button type="submit">Download Customers JSON</button>';
+    echo '</form>';
 
     // // Add a form to download orders notes JSON
     echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
@@ -111,10 +111,10 @@ function header_html(){
     // echo '<button type="submit">Download products JSON</button>';
     // echo '</form>';
 
-    // echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
-    // echo '<input type="hidden" name="action" value="download_addresses_json">';
-    // echo '<button type="submit">Download Addresses JSON</button>';
-    // echo '</form>';
+    echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
+    echo '<input type="hidden" name="action" value="download_addresses_json">';
+    echo '<button type="submit">Download Addresses JSON</button>';
+    echo '</form>';
 
    
  // Add a form to post data to DB
