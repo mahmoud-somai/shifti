@@ -6,7 +6,8 @@ function get_shipping() {
     );
     $orders_query = new WC_Order_Query($args);
     $orders = $orders_query->get_orders();
-    $line_items_data = [];
+    $all_orders_data = []; // Array to store shipping data for all orders
+
     foreach ($orders as $order) {
         // Check if customer_id is not 0 or null
         $customer_id = method_exists($order, 'get_customer_id') ? $order->get_customer_id() : null;
@@ -14,8 +15,8 @@ function get_shipping() {
             continue;
         }
 
-
         $order_id = $order->get_id();
+        $line_items_data = [];
         $line_items_data['order_id'] = $order_id;
         $line_items_data['first_name'] = method_exists($order, 'get_shipping_first_name') ? $order->get_shipping_first_name() : null;
         $line_items_data['last_name'] = method_exists($order, 'get_shipping_last_name') ? $order->get_shipping_last_name() : null;
@@ -27,12 +28,12 @@ function get_shipping() {
         $line_items_data['postcode'] = method_exists($order, 'get_shipping_postcode') ? $order->get_shipping_postcode() : null;
         $line_items_data['country'] = method_exists($order, 'get_shipping_country') ? $order->get_shipping_country() : null;
         $line_items_data['phone'] = method_exists($order, 'get_shipping_phone') ? $order->get_shipping_phone() : null;
-        return json_encode($line_items_data);
-        }
 
-       
+        // Add the shipping data to the all_orders_data array
+        $all_orders_data[] = $line_items_data;
     }
-   
 
-
+    // Return the JSON-encoded array of all orders' shipping data
+    return json_encode($all_orders_data);
+}
 ?>
