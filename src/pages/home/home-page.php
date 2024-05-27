@@ -284,241 +284,241 @@ function header_html(){
 //  });
 //  </script>';
 
-echo '<script type="text/javascript">
-jQuery(document).ready(function($) {
-    $("#post-data-form").submit(function(event) {
-        event.preventDefault(); // Prevent the default form submission
+// echo '<script type="text/javascript">
+// jQuery(document).ready(function($) {
+//     $("#post-data-form").submit(function(event) {
+//         event.preventDefault(); // Prevent the default form submission
         
-        // Fetch the category data using AJAX
-        $.ajax({
-            url: "' . admin_url('admin-ajax.php') . '",
-            method: "POST",
-            data: {
-                action: "get_category_data"
-            },
-            success: function(response) {
-                if (response.success) {
-                    var categoryData = response.data;  // Get the category data
+//         // Fetch the category data using AJAX
+//         $.ajax({
+//             url: "' . admin_url('admin-ajax.php') . '",
+//             method: "POST",
+//             data: {
+//                 action: "get_category_data"
+//             },
+//             success: function(response) {
+//                 if (response.success) {
+//                     var categoryData = response.data;  // Get the category data
 
-                    console.log("Button clicked. Posting category data...");
-                    console.log("Category data:", categoryData);
+//                     console.log("Button clicked. Posting category data...");
+//                     console.log("Category data:", categoryData);
 
-                    var categoryUrl = "http://localhost:8080/woocommerce/category";
+//                     var categoryUrl = "http://localhost:8080/woocommerce/category";
 
-                    // Make an AJAX request to post the category data
-                    $.ajax({
-                        url: categoryUrl,
-                        method: "POST",
-                        data: categoryData, // Convert the data to JSON format
-                        contentType: "application/json", // Set the content type to JSON
-                        success: function(response) {
-                            console.log("POST request for categories successful:", response);
+//                     // Make an AJAX request to post the category data
+//                     $.ajax({
+//                         url: categoryUrl,
+//                         method: "POST",
+//                         data: categoryData, // Convert the data to JSON format
+//                         contentType: "application/json", // Set the content type to JSON
+//                         success: function(response) {
+//                             console.log("POST request for categories successful:", response);
 
-                            // Fetch and post the customers data
-                            $.ajax({
-                                url: "' . admin_url('admin-ajax.php') . '",
-                                method: "POST",
-                                data: {
-                                    action: "get_customers_data"
-                                },
-                                success: function(response) {
-                                    if (response.success) {
-                                        var customersData = response.data;  // Get the customers data
+//                             // Fetch and post the customers data
+//                             $.ajax({
+//                                 url: "' . admin_url('admin-ajax.php') . '",
+//                                 method: "POST",
+//                                 data: {
+//                                     action: "get_customers_data"
+//                                 },
+//                                 success: function(response) {
+//                                     if (response.success) {
+//                                         var customersData = response.data;  // Get the customers data
 
-                                        console.log("Posting customers data...");
-                                        console.log("Customers data:", customersData);
+//                                         console.log("Posting customers data...");
+//                                         console.log("Customers data:", customersData);
 
-                                        var customersUrl = "http://localhost:8080/woocommerce/customer";
+//                                         var customersUrl = "http://localhost:8080/woocommerce/customer";
 
-                                        // Make an AJAX request to post the customers data
-                                        $.ajax({
-                                            url: customersUrl,
-                                            method: "POST",
-                                            data: customersData, // Convert the data to JSON format
-                                            contentType: "application/json", // Set the content type to JSON
-                                            success: function(response) {
-                                                console.log("POST request for customers successful:", response);
+//                                         // Make an AJAX request to post the customers data
+//                                         $.ajax({
+//                                             url: customersUrl,
+//                                             method: "POST",
+//                                             data: customersData, // Convert the data to JSON format
+//                                             contentType: "application/json", // Set the content type to JSON
+//                                             success: function(response) {
+//                                                 console.log("POST request for customers successful:", response);
 
-                                                // Fetch and post the tax data
-                                                $.ajax({
-                                                    url: "' . admin_url('admin-ajax.php') . '",
-                                                    method: "POST",
-                                                    data: {
-                                                        action: "get_tax_data"
-                                                    },
-                                                    success: function(response) {
-                                                        if (response.success) {
-                                                            var taxData = response.data;  // Get the tax data
+//                                                 // Fetch and post the tax data
+//                                                 $.ajax({
+//                                                     url: "' . admin_url('admin-ajax.php') . '",
+//                                                     method: "POST",
+//                                                     data: {
+//                                                         action: "get_tax_data"
+//                                                     },
+//                                                     success: function(response) {
+//                                                         if (response.success) {
+//                                                             var taxData = response.data;  // Get the tax data
 
-                                                            console.log("Posting tax data...");
-                                                            console.log("Tax data:", taxData);
+//                                                             console.log("Posting tax data...");
+//                                                             console.log("Tax data:", taxData);
 
-                                                            var taxUrl = "http://localhost:8080/woocommerce/taxe";
+//                                                             var taxUrl = "http://localhost:8080/woocommerce/taxe";
 
-                                                            // Make an AJAX request to post the tax data
-                                                            $.ajax({
-                                                                url: taxUrl,
-                                                                method: "POST",
-                                                                data: taxData, // Convert the data to JSON format
-                                                                contentType: "application/json", // Set the content type to JSON
-                                                                success: function(response) {
-                                                                    console.log("POST request for taxes successful:", response);
+//                                                             // Make an AJAX request to post the tax data
+//                                                             $.ajax({
+//                                                                 url: taxUrl,
+//                                                                 method: "POST",
+//                                                                 data: taxData, // Convert the data to JSON format
+//                                                                 contentType: "application/json", // Set the content type to JSON
+//                                                                 success: function(response) {
+//                                                                     console.log("POST request for taxes successful:", response);
 
-                                                                    // Fetch and post the product data
-                                                                    $.ajax({
-                                                                        url: "' . admin_url('admin-ajax.php') . '",
-                                                                        method: "POST",
-                                                                        data: {
-                                                                            action: "get_prods_data"
-                                                                        },
-                                                                        success: function(response) {
-                                                                            if (response.success) {
-                                                                                var productData = response.data;  // Get the product data
+//                                                                     // Fetch and post the product data
+//                                                                     $.ajax({
+//                                                                         url: "' . admin_url('admin-ajax.php') . '",
+//                                                                         method: "POST",
+//                                                                         data: {
+//                                                                             action: "get_prods_data"
+//                                                                         },
+//                                                                         success: function(response) {
+//                                                                             if (response.success) {
+//                                                                                 var productData = response.data;  // Get the product data
 
-                                                                                console.log("Posting product data...");
-                                                                                console.log("Product data:", productData);
+//                                                                                 console.log("Posting product data...");
+//                                                                                 console.log("Product data:", productData);
 
-                                                                                var productUrl = "http://localhost:8080/woocommerce/product";
+//                                                                                 var productUrl = "http://localhost:8080/woocommerce/product";
 
-                                                                                // Make an AJAX request to post the product data
-                                                                                $.ajax({
-                                                                                    url: productUrl,
-                                                                                    method: "POST",
-                                                                                    data: productData, // Convert the data to JSON format
-                                                                                    contentType: "application/json", // Set the content type to JSON
-                                                                                    success: function(response) {
-                                                                                        console.log("POST request for products successful:", response);
+//                                                                                 // Make an AJAX request to post the product data
+//                                                                                 $.ajax({
+//                                                                                     url: productUrl,
+//                                                                                     method: "POST",
+//                                                                                     data: productData, // Convert the data to JSON format
+//                                                                                     contentType: "application/json", // Set the content type to JSON
+//                                                                                     success: function(response) {
+//                                                                                         console.log("POST request for products successful:", response);
 
-                                                                                        // Fetch and post the orders data
-                                                                                        $.ajax({
-                                                                                            url: "' . admin_url('admin-ajax.php') . '",
-                                                                                            method: "POST",
-                                                                                            data: {
-                                                                                                action: "get_orders_data"
-                                                                                            },
-                                                                                            success: function(response) {
-                                                                                                if (response.success) {
-                                                                                                    var ordersData = response.data;  // Get the orders data
+//                                                                                         // Fetch and post the orders data
+//                                                                                         $.ajax({
+//                                                                                             url: "' . admin_url('admin-ajax.php') . '",
+//                                                                                             method: "POST",
+//                                                                                             data: {
+//                                                                                                 action: "get_orders_data"
+//                                                                                             },
+//                                                                                             success: function(response) {
+//                                                                                                 if (response.success) {
+//                                                                                                     var ordersData = response.data;  // Get the orders data
 
-                                                                                                    console.log("Posting orders data...");
-                                                                                                    console.log("Orders data:", ordersData);
+//                                                                                                     console.log("Posting orders data...");
+//                                                                                                     console.log("Orders data:", ordersData);
 
-                                                                                                    var ordersUrl = "http://localhost:8080/woocommerce/order";
+//                                                                                                     var ordersUrl = "http://localhost:8080/woocommerce/order";
 
-                                                                                                    // Make an AJAX request to post the orders data
-                                                                                                    $.ajax({
-                                                                                                        url: ordersUrl,
-                                                                                                        method: "POST",
-                                                                                                        data: ordersData, // Convert the data to JSON format
-                                                                                                        contentType: "application/json", // Set the content type to JSON
-                                                                                                        success: function(response) {
-                                                                                                            console.log("POST request for orders successful:", response);
+//                                                                                                     // Make an AJAX request to post the orders data
+//                                                                                                     $.ajax({
+//                                                                                                         url: ordersUrl,
+//                                                                                                         method: "POST",
+//                                                                                                         data: ordersData, // Convert the data to JSON format
+//                                                                                                         contentType: "application/json", // Set the content type to JSON
+//                                                                                                         success: function(response) {
+//                                                                                                             console.log("POST request for orders successful:", response);
 
-                                                                                                            // Fetch and post the order details data
-                                                                                                            $.ajax({
-                                                                                                                url: "' . admin_url('admin-ajax.php') . '",
-                                                                                                                method: "POST",
-                                                                                                                data: {
-                                                                                                                    action: "get_orders_det_data"
-                                                                                                                },
-                                                                                                                success: function(response) {
-                                                                                                                    if (response.success) {
-                                                                                                                        var orderDetailsData = response.data;  // Get the order details data
+//                                                                                                             // Fetch and post the order details data
+//                                                                                                             $.ajax({
+//                                                                                                                 url: "' . admin_url('admin-ajax.php') . '",
+//                                                                                                                 method: "POST",
+//                                                                                                                 data: {
+//                                                                                                                     action: "get_orders_det_data"
+//                                                                                                                 },
+//                                                                                                                 success: function(response) {
+//                                                                                                                     if (response.success) {
+//                                                                                                                         var orderDetailsData = response.data;  // Get the order details data
 
-                                                                                                                        console.log("Posting order details data...");
-                                                                                                                        console.log("Order details data:", orderDetailsData);
+//                                                                                                                         console.log("Posting order details data...");
+//                                                                                                                         console.log("Order details data:", orderDetailsData);
 
-                                                                                                                        var orderDetailsUrl = "http://localhost:8080/woocommerce/orderdetails";
+//                                                                                                                         var orderDetailsUrl = "http://localhost:8080/woocommerce/orderdetails";
 
-                                                                                                                        // Make an AJAX request to post the order details data
-                                                                                                                        $.ajax({
-                                                                                                                            url: orderDetailsUrl,
-                                                                                                                            method: "POST",
-                                                                                                                            data: orderDetailsData, // Convert the data to JSON format
-                                                                                                                            contentType: "application/json", // Set the content type to JSON
-                                                                                                                            success: function(response) {
-                                                                                                                                console.log("POST request for order details successful:", response);
-                                                                                                                            },
-                                                                                                                            error: function(xhr, status, error) {
-                                                                                                                                console.log("Error posting order details data:", error);
-                                                                                                                            }
-                                                                                                                        });
-                                                                                                                    } else {
-                                                                                                                        console.log("Errors fetching order details data");
-                                                                                                                    }
-                                                                                                                },
-                                                                                                                error: function(xhr, status, error) {
-                                                                                                                    console.log("Error fetching order details data via AJAX:", error);
-                                                                                                                }
-                                                                                                            });
-                                                                                                        },
-                                                                                                        error: function(xhr, status, error) {
-                                                                                                            console.log("Error posting orders data:", error);
-                                                                                                        }
-                                                                                                    });
-                                                                                                } else {
-                                                                                                    console.log("Errors fetching orders data");
-                                                                                                }
-                                                                                            },
-                                                                                            error: function(xhr, status, error) {
-                                                                                                console.log("Error fetching orders data via AJAX:", error);
-                                                                                            }
-                                                                                        });
-                                                                                    },
-                                                                                    error: function(xhr, status, error) {
-                                                                                        console.log("Error posting product data:", error);
-                                                                                    }
-                                                                                });
-                                                                            } else {
-                                                                                console.log("Errors fetching product data");
-                                                                            }
-                                                                        },
-                                                                        error: function(xhr, status, error) {
-                                                                            console.log("Error fetching product data via AJAX:", error);
-                                                                        }
-                                                                    });
-                                                                },
-                                                                error: function(xhr, status, error) {
-                                                                    console.log("Error posting tax data:", error);
-                                                                }
-                                                            });
-                                                        } else {
-                                                            console.log("Errors fetching tax data");
-                                                        }
-                                                    },
-                                                    error: function(xhr, status, error) {
-                                                        console.log("Error fetching tax data via AJAX:", error);
-                                                    }
-                                                });
-                                            },
-                                            error: function(xhr, status, error) {
-                                                console.log("Error posting customers data:", error);
-                                            }
-                                        });
-                                    } else {
-                                        console.log("Errors fetching customers data");
-                                    }
-                                },
-                                error: function(xhr, status, error) {
-                                    console.log("Error fetching customers data via AJAX:", error);
-                                }
-                            });
-                        },
-                        error: function(xhr, status, error) {
-                            console.log("Error posting category data:", error);
-                        }
-                    });
-                } else {
-                    console.log("Errors fetching category data");
-                }
-            },
-            error: function(xhr, status, error) {
-                console.log("Error fetching category data via AJAX:", error);
-            }
-        });
-    });
-});
-</script>';
+//                                                                                                                         // Make an AJAX request to post the order details data
+//                                                                                                                         $.ajax({
+//                                                                                                                             url: orderDetailsUrl,
+//                                                                                                                             method: "POST",
+//                                                                                                                             data: orderDetailsData, // Convert the data to JSON format
+//                                                                                                                             contentType: "application/json", // Set the content type to JSON
+//                                                                                                                             success: function(response) {
+//                                                                                                                                 console.log("POST request for order details successful:", response);
+//                                                                                                                             },
+//                                                                                                                             error: function(xhr, status, error) {
+//                                                                                                                                 console.log("Error posting order details data:", error);
+//                                                                                                                             }
+//                                                                                                                         });
+//                                                                                                                     } else {
+//                                                                                                                         console.log("Errors fetching order details data");
+//                                                                                                                     }
+//                                                                                                                 },
+//                                                                                                                 error: function(xhr, status, error) {
+//                                                                                                                     console.log("Error fetching order details data via AJAX:", error);
+//                                                                                                                 }
+//                                                                                                             });
+//                                                                                                         },
+//                                                                                                         error: function(xhr, status, error) {
+//                                                                                                             console.log("Error posting orders data:", error);
+//                                                                                                         }
+//                                                                                                     });
+//                                                                                                 } else {
+//                                                                                                     console.log("Errors fetching orders data");
+//                                                                                                 }
+//                                                                                             },
+//                                                                                             error: function(xhr, status, error) {
+//                                                                                                 console.log("Error fetching orders data via AJAX:", error);
+//                                                                                             }
+//                                                                                         });
+//                                                                                     },
+//                                                                                     error: function(xhr, status, error) {
+//                                                                                         console.log("Error posting product data:", error);
+//                                                                                     }
+//                                                                                 });
+//                                                                             } else {
+//                                                                                 console.log("Errors fetching product data");
+//                                                                             }
+//                                                                         },
+//                                                                         error: function(xhr, status, error) {
+//                                                                             console.log("Error fetching product data via AJAX:", error);
+//                                                                         }
+//                                                                     });
+//                                                                 },
+//                                                                 error: function(xhr, status, error) {
+//                                                                     console.log("Error posting tax data:", error);
+//                                                                 }
+//                                                             });
+//                                                         } else {
+//                                                             console.log("Errors fetching tax data");
+//                                                         }
+//                                                     },
+//                                                     error: function(xhr, status, error) {
+//                                                         console.log("Error fetching tax data via AJAX:", error);
+//                                                     }
+//                                                 });
+//                                             },
+//                                             error: function(xhr, status, error) {
+//                                                 console.log("Error posting customers data:", error);
+//                                             }
+//                                         });
+//                                     } else {
+//                                         console.log("Errors fetching customers data");
+//                                     }
+//                                 },
+//                                 error: function(xhr, status, error) {
+//                                     console.log("Error fetching customers data via AJAX:", error);
+//                                 }
+//                             });
+//                         },
+//                         error: function(xhr, status, error) {
+//                             console.log("Error posting category data:", error);
+//                         }
+//                     });
+//                 } else {
+//                     console.log("Errors fetching category data");
+//                 }
+//             },
+//             error: function(xhr, status, error) {
+//                 console.log("Error fetching category data via AJAX:", error);
+//             }
+//         });
+//     });
+// });
+// </script>';
 
 
 

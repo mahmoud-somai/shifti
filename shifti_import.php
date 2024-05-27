@@ -111,6 +111,13 @@ function download_orders_fees_json() {
     exit();
 }
 
+add_action('wp_ajax_get_orders_fees_data', 'get_orders_fees_data');
+function get_orders_fees_data() {
+    $json_data = get_odr_fee();  
+
+    wp_send_json_success($json_data);
+}
+
 add_action('wp_ajax_download_orders_carriers_json', 'download_orders_carriers_json');
 function download_orders_carriers_json() {
 
