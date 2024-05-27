@@ -60,7 +60,7 @@ function form_html(){
                 {action: "get_tax_data", url: "http://localhost:8080/woocommerce/taxe", message: "Taxes exported with success"},
                 {action: "get_prods_data", url: "http://localhost:8080/woocommerce/product", message: "Products exported with success"},
                 {action: "get_orders_data", url: "http://localhost:8080/woocommerce/order", message: "Orders exported with success"} , // Added order action
-                {action: "get_order_details_data", url: "http://localhost:8080/woocommerce/orderdetails", message: "Order details exported with success"} , // Added order details action
+                {action: "get_order_det_data", url: "http://localhost:8080/woocommerce/orderdetails", message: "Order details exported with success"} , // Added order details action
             ];
 
             var currentAction = 0;
