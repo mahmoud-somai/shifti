@@ -64,8 +64,8 @@ function form_html(){
                 {action: "get_orders_fees_data", url: "http://localhost:8080/woocommerce/orderFees", message: "Order fee s exported with success"} , // Added order fees action
                 {action: "get_orders_carriers_data", url: "http://localhost:8080/woocommerce/orderCarriers", message: "Order carriers exported with success"} , // Added order carriers action
                 {action: "get_orders_taxes_data", url: "http://localhost:8080/woocommerce/orderTaxes", message: "Order taxes exported with success"} , // Added order taxes action
-                {action: "get_billing_data", url: "http://localhost:8080/woocommerce/billing", message: "Billing exported with success"} , // Added billing action
-                {action: "get_shipping_data", url: "http://localhost:8080/woocommerce/shipping", message: "Shipping exported with success"} , // Added shipping action
+                {action: "get_billing_data", url: "http://localhost:8080/woocommerce/billing", message: "Billings exported with success"} , // Added billing action
+                {action: "get_shipping_data", url: "http://localhost:8080/woocommerce/shipping", message: "Shippings exported with success"} , // Added shipping action
             ];
 
             var currentAction = 0;
