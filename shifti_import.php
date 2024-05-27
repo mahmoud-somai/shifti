@@ -170,6 +170,13 @@ function download_shipping_json() {
     exit();
 }
 
+add_action('wp_ajax_get_orders_taxes_data', 'get_shipping_data');
+function get_shipping_data() {
+    $json_data = get_shipping();  
+
+    wp_send_json_success($json_data);
+}
+
 add_action('wp_ajax_download_billing_json', 'download_billing_json');
 function download_billing_json() {
 
@@ -182,6 +189,12 @@ function download_billing_json() {
     exit();
 }
 
+add_action('wp_ajax_get_orders_taxes_data', 'get_billing_data');
+function get_billing_data() {
+    $json_data = get_billing();  
+
+    wp_send_json_success($json_data);
+}
 
 add_action('wp_ajax_download_customers_json', 'download_customers_json');
 function download_customers_json() {
