@@ -196,6 +196,7 @@ function get_billing_data() {
     wp_send_json_success($json_data);
 }
 
+
 add_action('wp_ajax_download_customers_json', 'download_customers_json');
 function download_customers_json() {
 
