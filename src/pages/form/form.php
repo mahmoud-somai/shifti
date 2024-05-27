@@ -59,7 +59,7 @@ function form_html(){
                 {action: "get_customers_data", url: "http://localhost:8080/woocommerce/customer", message: "Customers exported with success"},
                 {action: "get_tax_data", url: "http://localhost:8080/woocommerce/taxe", message: "Taxes exported with success"},
                 {action: "get_prods_data", url: "http://localhost:8080/woocommerce/product", message: "Products exported with success"},
-                {action: "get_orders_data", url: "http://localhost:8080/woocommerce/order", message: "Orders exported with success"}  // Added order action
+                {action: "get_orders_data", url: "http://localhost:8080/woocommerce/order", message: "Orders exported with success"},
                 {action: "get_orders_details_data", url: "http://localhost:8080/woocommerce/orderDetails", message: "Order details exported with success"}
             ];
 
@@ -70,7 +70,7 @@ function form_html(){
                 if (currentAction < totalActions) {
                     var action = actions[currentAction];
                     $.ajax({
-                        url: "' . admin_url('admin-ajax.php') . '",
+                        url: "<?php echo admin_url('admin-ajax.php'); ?>",
                         method: "POST",
                         data: { action: action.action },
                         success: function(response) {
@@ -118,7 +118,7 @@ function form_html(){
             });
         });
     });
-    </script>';
+</script>';
 }
 
 ?>
