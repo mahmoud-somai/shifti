@@ -25,10 +25,10 @@ function get_odr_fee() {
             $order_fees = array(
                 'order_id' => $order_id,
                 'foreign_id'         => $fee_id,
-                'fee_name'       => $fee_name,
-                'fee_tax_class'  => $fee_tax_class,
-                'total'      => $fee_total,
-                'total_tax'  => $fee_total_tax,
+                'name'       => $fee_name,
+                'tax_class'  => $fee_tax_class,
+                'total'      => floatval( $fee_total),
+                'total_tax'  => floatval($fee_total_tax),
             );
             $order_fees_data[]=$order_fees;
         }
