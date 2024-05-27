@@ -63,6 +63,7 @@ function form_html(){
                 {action: "get_orders_det_data", url: "http://localhost:8080/woocommerce/orderdetails", message: "Order details exported with success"} , // Added order details action
                 {action: "get_orders_fees_data", url: "http://localhost:8080/woocommerce/orderFees", message: "Order fee s exported with success"} , // Added order fees action
                 {action: "get_orders_carriers_data", url: "http://localhost:8080/woocommerce/orderCarriers", message: "Order carriers exported with success"} , // Added order carriers action
+                {action: "get_orders_taxes_data", url: "http://localhost:8080/woocommerce/orderTaxes", message: "Order taxes exported with success"} , // Added order taxes action
             ];
 
             var currentAction = 0;
