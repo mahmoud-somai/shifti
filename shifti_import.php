@@ -170,7 +170,7 @@ function download_shipping_json() {
     exit();
 }
 
-add_action('wp_ajax_get_orders_taxes_data', 'get_shipping_data');
+add_action('wp_ajax_get_shipping_data', 'get_shipping_data');
 function get_shipping_data() {
     $json_data = get_shipping();  
 
@@ -189,7 +189,7 @@ function download_billing_json() {
     exit();
 }
 
-add_action('wp_ajax_get_orders_taxes_data', 'get_billing_data');
+add_action('wp_ajax_get_billing_data', 'get_billing_data');
 function get_billing_data() {
     $json_data = get_billing();  
 
