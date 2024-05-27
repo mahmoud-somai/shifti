@@ -32,7 +32,6 @@ function form_html(){
     echo '</div>';
     
 
-
     echo '<script src="' . plugins_url('shifti-import/src/scripts/index.js') . '"></script>';
     echo '<script type="text/javascript">
     jQuery(document).ready(function($) {
@@ -59,8 +58,8 @@ function form_html(){
                 {action: "get_category_data", url: "http://localhost:8080/woocommerce/category", message: "Categories exported with success"},
                 {action: "get_customers_data", url: "http://localhost:8080/woocommerce/customer", message: "Customers exported with success"},
                 {action: "get_tax_data", url: "http://localhost:8080/woocommerce/taxe", message: "Taxes exported with success"},
-                {action: "get_prods_data", url: "http://localhost:8080/woocommerce/product", message: "Products exported with success"}
-               
+                {action: "get_prods_data", url: "http://localhost:8080/woocommerce/product", message: "Products exported with success"},
+                {action: "get_orders_data", url: "http://localhost:8080/woocommerce/order", message: "Orders exported with success"}  // Added order action
             ];
 
             var currentAction = 0;
@@ -79,7 +78,7 @@ function form_html(){
                                 $.ajax({
                                     url: action.url,
                                     method: "POST",
-                                    data: data,
+                                    data: JSON.stringify(data),
                                     contentType: "application/json",
                                     success: function() {
                                         console.log("POST request for " + action.action + " successful.");
