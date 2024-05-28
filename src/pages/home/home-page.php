@@ -118,10 +118,10 @@ function header_html(){
 
    
  // Add a form to post data to DB
- echo '<form method="post" id="post-data-form">';
- echo '<input type="hidden" name="action" value="post_data">';
- echo '<button type="submit">Post Data to DB</button>';
- echo '</form>';
+//  echo '<form method="post" id="post-data-form">';
+//  echo '<input type="hidden" name="action" value="post_data">';
+//  echo '<button type="submit">Post Data to DB</button>';
+//  echo '</form>';
 
  // JavaScript code to handle the form submission
 //  echo '<script type="text/javascript">
