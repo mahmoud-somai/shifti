@@ -9,7 +9,7 @@ function get_some() {
     // Add other properties as needed
     // $properties['some_other_property'] = some_function_to_get_property();
 
-    echo json_encode($properties)
+    echo json_encode($properties);
 
     return json_encode($properties);
 }
