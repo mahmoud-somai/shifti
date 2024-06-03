@@ -318,17 +318,17 @@ function fetch_golang_data() {
 }
 
 
-// add_action('wp_ajax_some_data_json', 'download_some_data_json');
-// function download_some_data() {
+add_action('wp_ajax_some_data_json', 'download_some_data_json');
+function download_some_data() {
 
-//     $json_data = get_some();
+    $json_data = get_some();
 
-//     header('Content-Type: application/json');
-//     header('Content-Disposition: attachment; filename="some.json"');
+    header('Content-Type: application/json');
+    header('Content-Disposition: attachment; filename="some.json"');
 
-//     echo $json_data;
-//     exit();
-// }
+    echo $json_data;
+    exit();
+}
 
 
 function page_render_callback() {
