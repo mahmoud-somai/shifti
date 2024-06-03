@@ -42,10 +42,10 @@ function header_html(){
     form_html();
 
 
-        echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
-    echo '<input type="hidden" name="action" value="download_some_data_json">';
-    echo '<button type="submit">Download some data JSON</button>';
-    echo '</form>';
+    //     echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
+    // echo '<input type="hidden" name="action" value="download_some_data_json">';
+    // echo '<button type="submit">Download some data JSON</button>';
+    // echo '</form>';
 
 
     // echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
@@ -102,10 +102,10 @@ function header_html(){
     // echo '</form>';
 
     // // Add a form to download orders notes JSON
-    // echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
-    // echo '<input type="hidden" name="action" value="download_orders_notes_json">';
-    // echo '<button type="submit">Download Orders Notes JSON</button>';
-    // echo '</form>';
+    echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
+    echo '<input type="hidden" name="action" value="download_orders_notes_json">';
+    echo '<button type="submit">Download Orders Notes JSON</button>';
+    echo '</form>';
 
     // // Add a form to download taxes JSON
     // echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
