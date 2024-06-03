@@ -319,7 +319,7 @@ function fetch_golang_data() {
 
 
 add_action('wp_ajax_some_data_json', 'download_some_data_json');
-function download_some_data() {
+function download_some_data_json() {
 
     $json_data = get_some();
 
