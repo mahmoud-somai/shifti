@@ -33,6 +33,7 @@ require_once plugin_dir_path(__FILE__) . 'src/data/orders/getOrderCarriers.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/orders/getOrderTaxes.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/shipping/getShipping.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/billing/getBilling.php';
+require_once plugin_dir_path(__FILE__) . 'src/data/missingdata/complete.php';
 
 add_action('wp_ajax_download_category_json', 'download_category_json');
 function download_category_json() {
@@ -317,6 +318,18 @@ function fetch_golang_data() {
 }
 
 
+add_action('wp_ajax_some_data_json', 'download_some_data_json');
+function download_some_data() {
+
+    $json_data = get_some();
+
+    header('Content-Type: application/json');
+    header('Content-Disposition: attachment; filename="some.json"');
+
+    echo $json_data;
+    exit();
+}
+
 
 function page_render_callback() {
     header_html();
@@ -336,6 +349,9 @@ function page_render_callback() {
     get_ord_txs();
     get_shipping();
     get_billing();
+
+
+    get_some();
 
    
     

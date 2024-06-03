@@ -40,6 +40,14 @@ function header_html(){
 
     echo '</div>';
     form_html();
+
+
+        echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
+    echo '<input type="hidden" name="action" value="download_some_data_json">';
+    echo '<button type="submit">Download some data JSON</button>';
+    echo '</form>';
+
+
     // echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
     // echo '<input type="hidden" name="action" value="download_workers_json">';
     // echo '<button type="submit">Download Workers JSON</button>';
