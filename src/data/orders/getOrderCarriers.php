@@ -42,6 +42,7 @@ function get_ord_car() {
 
 
     }
+    echo json_encode($line_items_data);
     return json_encode($line_items_data);
 
 }

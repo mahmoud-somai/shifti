@@ -23,8 +23,8 @@ function get_odr_fee() {
             $fee_total_tax  = $fee->get_total_tax();
 
             $order_fees = array(
-                'order_id' => $order_id,
-                'foreign_id'         => $fee_id,
+                'order_id'   => $order_id,
+                'foreign_id' => $fee_id,
                 'name'       => $fee_name,
                 'tax_class'  => $fee_tax_class,
                 'total'      => floatval( $fee_total),
