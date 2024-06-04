@@ -10,7 +10,7 @@ function form_html() {
     echo '<span style="font-size: 16px; color: #333; width: 20%; text-align: left; display: inline-block;">Plugin Token : </span>';
     echo '<input type="text" name="plugin-token" id="token" style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; width: 40%; height:35px; display: inline-block;">';
     echo '<input type="hidden" name="action" value="post_data">';
-    echo '<button type="submit" id="export-button" class="button-sft" style="background-color: #008DDA; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; width: 30%; display: inline-block; margin-left:25px;">Export Your Shop To SHIFTI</button>';
+    echo '<button type="submit" id="export-button" class="button-sft" style="background-color: #008DDA; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; width: 30%; display: inline-block; margin-left:25px;">Export Your Shop!</button>';
     echo '</div>';
     echo '</div>';
     echo '</form>';
@@ -18,7 +18,7 @@ function form_html() {
     // Overlay HTML
     echo '<div id="progress-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); z-index: 9999; display: none;">';
     echo '    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 30px; border-radius: 10px; width: 90%; max-width: 500px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">';
-    echo '        <h1 style="margin-bottom: 20px; color: #00215E; font-size: 24px;">Export Data </h1>'; 
+    echo '        <h1 style="margin-bottom: 20px; color: #00215E; font-size: 24px;">Export Data</h1>'; 
     echo '        <div style="text-align: center;">';
     echo '            <progress id="progress-bar" style="width: 100%; height: 20px; margin-bottom: 10px;"></progress>'; 
     echo '            <div id="progress-status" style="margin-top: 10px; font-size: 20px; color: #333;">0%</div>';
@@ -34,6 +34,8 @@ function form_html() {
     echo '<script src="' . plugins_url('shifti-import/src/scripts/index.js') . '"></script>';
     echo '<script type="text/javascript">
     jQuery(document).ready(function($) {
+        var cancelExport = false;
+
         $("#export-form").submit(function(event) {
             event.preventDefault(); 
             var progressOverlay = $("#progress-overlay");
@@ -46,6 +48,7 @@ function form_html() {
             progressBar.val(0);
             progressStatus.text("0%");
             successMessages.html("");
+            cancelExport = false;
             
             var updateProgress = function(progress, message) {
                 progressBar.val(progress);
@@ -72,6 +75,11 @@ function form_html() {
             var increment = 100 / totalActions;
 
             var performNextAction = function() {
+                if (cancelExport) {
+                    progressOverlay.hide();
+                    return;
+                }
+
                 if (currentAction < totalActions) {
                     var action = actions[currentAction];
                     $.ajax({
@@ -115,6 +123,7 @@ function form_html() {
             performNextAction();
 
             $("#cancel-button").click(function() {
+                cancelExport = true;
                 progressOverlay.hide();
             });
             
