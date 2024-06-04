@@ -24,7 +24,7 @@ require_once plugin_dir_path(__FILE__) . 'src/data/workers/getWorkers.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/notes/getOrderNotes.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/taxes/getTaxes.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/prod/getProduct.php';
-require_once plugin_dir_path(__FILE__) . 'src/data/orders/getOrders.php';
+require_once plugin_dir_path(__FILE__) . 'src/data/orders/getOrder.php';
 
 require_once plugin_dir_path(__FILE__) . 'src/data/addresses/getAddresses.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/orders/getOrderDetails.php';
