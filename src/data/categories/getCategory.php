@@ -36,14 +36,7 @@ function get_ctg_one(){
         $categories['description']=$cat->description;
 
 
-        $categories['level_depth'] = null;
-        $categories['active'] = null;
-        $categories['is_root_category'] = null;
-        $categories['position'] = null;
-        $categories['meta_title'] = null;
-        $categories['meta_description'] = null;
-        $categories['meta_keywords'] = null;
-        $categories['link_rewrite'] = null;
+
         $categories['lang_id'] = 1;
         $categories['shop_id'] = 1;
 
