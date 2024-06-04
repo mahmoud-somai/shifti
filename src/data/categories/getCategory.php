@@ -31,6 +31,7 @@ function get_ctg_one(){
         $categories['parent']=$cat->parent;
 
         
+        
         $categories['foreign_id']=$cat->term_id;
         $categories['name']=$cat->name;
         $categories['description']=$cat->description;
