@@ -1,6 +1,6 @@
 <?php
 
-function form_html(){
+function form_html() {
     echo '<link rel="stylesheet" href="' . plugins_url('shifti-import/src/styles/main.css') . '">';
 
     echo '<form id="export-form" method="post" action="' . admin_url('admin-ajax.php') . '">';
@@ -17,12 +17,12 @@ function form_html(){
 
     // Overlay HTML
     echo '<div id="progress-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); z-index: 9999; display: none;">';
-    echo '    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #f9f9f9; padding: 20px; border-radius: 10px; width: 90%; max-width: 500px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">';
-    echo '        <h1 style="margin-bottom: 15px; color: #00215E; font-size: 24px;">Export Data</h1>'; 
+    echo '    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 30px; border-radius: 10px; width: 90%; max-width: 500px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">';
+    echo '        <h1 style="margin-bottom: 20px; color: #00215E; font-size: 24px;">Export Data</h1>'; 
     echo '        <div style="text-align: center;">';
     echo '            <progress id="progress-bar" style="width: 100%; height: 20px; margin-bottom: 10px;"></progress>'; 
     echo '            <div id="progress-status" style="margin-top: 10px; font-size: 20px; color: #333;">0%</div>';
-    echo '            <div id="success-messages" style="margin-top: 10px; text-align: left;font-size: 28px;color: #fff; background-color: #5BBCFF; padding: 10px; border-radius: 5px;"></div>';
+    echo '            <div id="success-messages" style="margin-top: 10px; text-align: left; font-size: 18px; color: #fff; background-color: #5BBCFF; padding: 10px; border-radius: 5px;"></div>';
     echo '            <div style="margin-top: 20px;">'; 
     echo '                <button id="cancel-button" class="button-sft" style="background-color: #ff5722; color: white; padding: 8px 20px; border: none; border-radius: 4px; cursor: pointer; margin-right: 10px;">Cancel</button>';
     echo '                <button id="done-button" class="button-sft" style="background-color: #4CAF50; color: white; padding: 8px 20px; border: none; border-radius: 4px; cursor: pointer; display: none;">Done</button>';
@@ -31,7 +31,6 @@ function form_html(){
     echo '    </div>';
     echo '</div>';
     
-
     echo '<script src="' . plugins_url('shifti-import/src/scripts/index.js') . '"></script>';
     echo '<script type="text/javascript">
     jQuery(document).ready(function($) {
@@ -59,13 +58,13 @@ function form_html(){
                 {action: "get_customers_data", url: "http://localhost:8080/woocommerce/customer", message: "Customers exported with success"},
                 {action: "get_tax_data", url: "http://localhost:8080/woocommerce/taxe", message: "Taxes exported with success"},
                 {action: "get_prods_data", url: "http://localhost:8080/woocommerce/product", message: "Products exported with success"},
-                {action: "get_orders_data", url: "http://localhost:8080/woocommerce/order", message: "Orders exported with success"} , // Added order action
-                {action: "get_orders_det_data", url: "http://localhost:8080/woocommerce/orderdetails", message: "Order details exported with success"} , // Added order details action
-                {action: "get_orders_fees_data", url: "http://localhost:8080/woocommerce/orderFees", message: "Order fee s exported with success"} , // Added order fees action
-                {action: "get_orders_carriers_data", url: "http://localhost:8080/woocommerce/orderCarriers", message: "Order carriers exported with success"} , // Added order carriers action
-                {action: "get_orders_taxes_data", url: "http://localhost:8080/woocommerce/orderTaxes", message: "Order taxes exported with success"} , // Added order taxes action
-                {action: "get_billing_data", url: "http://localhost:8080/woocommerce/billing", message: "Billing exported with success"} , // Added billing action
-                {action: "get_shipping_data", url: "http://localhost:8080/woocommerce/shipping", message: "Shipping exported with success"} , // Added shipping action
+                {action: "get_orders_data", url: "http://localhost:8080/woocommerce/order", message: "Orders exported with success"},
+                {action: "get_orders_det_data", url: "http://localhost:8080/woocommerce/orderdetails", message: "Order details exported with success"},
+                {action: "get_orders_fees_data", url: "http://localhost:8080/woocommerce/orderFees", message: "Order fees exported with success"},
+                {action: "get_orders_carriers_data", url: "http://localhost:8080/woocommerce/orderCarriers", message: "Order carriers exported with success"},
+                {action: "get_orders_taxes_data", url: "http://localhost:8080/woocommerce/orderTaxes", message: "Order taxes exported with success"},
+                {action: "get_billing_data", url: "http://localhost:8080/woocommerce/billing", message: "Billing exported with success"},
+                {action: "get_shipping_data", url: "http://localhost:8080/woocommerce/shipping", message: "Shipping exported with success"}
             ];
 
             var currentAction = 0;
