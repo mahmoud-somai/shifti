@@ -14,36 +14,33 @@ function get_ord_car_tx() {
             continue;
         }
 
-
         $order_id = $order->get_id();
         $shipping_items = $order->get_items('shipping');
         $tax_items = $order->get_items('tax');
 
-        
-            // foreach ($tax_items as $item_id => $item) {  
-            //     $tax_item_rate_id = $item->get_rate_id();
-            // }
+        // Store tax rates by item ID for easier lookup later
+        $tax_rates = [];
+        foreach ($tax_items as $item_id => $item) {  
+            $tax_item_rate_id = $item->get_rate_id();
+            $tax_rates[$item_id] = $tax_item_rate_id;
+        }
 
         foreach ($shipping_items as $item_id => $item) {
             $id = method_exists($item, 'get_id') ? $item->get_id() : null;
+            $total = method_exists($item,'get_total_tax') ? $item->get_total_tax() : null;
 
-            $total   = method_exists($item,'get_total_tax') ? $item->get_total_tax():nul;
-            $tax_item_rate_id = $item->get_rate_id();
-            
+            // Fetch tax_id for the shipping item, if it exists
+            $tax_id = isset($tax_rates[$item_id]) ? $tax_rates[$item_id] : null;
+
             $line_item = array(
                 'foreign_id' => $id,
-                'total' =>floatval($total),
-                'tax_id' => $tax_item_rate_id,s
-                
+                'total' => floatval($total),
+                'tax_id' => $tax_id
             );
             $line_items_data[] = $line_item;
         }
-
-
     }
     echo json_encode($line_items_data);
     return json_encode($line_items_data);
-    
-
 }
 ?>
