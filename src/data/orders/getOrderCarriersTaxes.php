@@ -1,5 +1,5 @@
 <?php
-function get_ord_car() {
+function get_ord_car_tx() {
     global $wpdb;
     $args = array(
         'limit' => -1, 
