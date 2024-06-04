@@ -18,7 +18,7 @@ function form_html() {
     // Overlay HTML
     echo '<div id="progress-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); z-index: 9999; display: none;">';
     echo '    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 30px; border-radius: 10px; width: 90%; max-width: 500px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">';
-    echo '        <h1 style="margin-bottom: 20px; color: #00215E; font-size: 24px;">Export Data</h1>'; 
+    echo '        <h1 style="margin-bottom: 20px; color: #00215E; font-size: 24px;">Export Data To Shifti workplace</h1>'; 
     echo '        <div style="text-align: center;">';
     echo '            <progress id="progress-bar" style="width: 100%; height: 20px; margin-bottom: 10px;"></progress>'; 
     echo '            <div id="progress-status" style="margin-top: 10px; font-size: 20px; color: #333;">0%</div>';
@@ -69,7 +69,8 @@ function form_html() {
 
             var currentAction = 0;
             var totalActions = actions.length;
-            
+            var increment = 100 / totalActions;
+
             var performNextAction = function() {
                 if (currentAction < totalActions) {
                     var action = actions[currentAction];
@@ -88,7 +89,7 @@ function form_html() {
                                     success: function() {
                                         console.log("POST request for " + action.action + " successful.");
                                         currentAction++;
-                                        updateProgress(Math.round((currentAction / totalActions) * 100), action.message);
+                                        updateProgress(Math.round(currentAction * increment), action.message);
                                         performNextAction();
                                     },
                                     error: function(xhr, status, error) {
