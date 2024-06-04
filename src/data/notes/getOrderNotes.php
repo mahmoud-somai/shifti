@@ -19,7 +19,7 @@ function get_orders_notes(){
             'note_content' => $note->comment_content,
         );
     }
-
+    $order_note['language'] = get_locale();
     return json_encode($order_note);
 
 }
