@@ -20,17 +20,18 @@ function get_ord_car_tx() {
 
         // Store tax rates by item ID for easier lookup later
         $tax_rates = [];
-        foreach ($tax_items as $item_id => $item) {  
+        foreach ($tax_items as $item) {  
             $tax_item_rate_id = $item->get_rate_id();
-            $tax_rates[$item_id] = $tax_item_rate_id;
+            $tax_rates[] = $tax_item_rate_id; // Collect all tax rate IDs
         }
 
-        foreach ($shipping_items as $item_id => $item) {
+        // Iterate over shipping items
+        foreach ($shipping_items as $item) {
             $id = method_exists($item, 'get_id') ? $item->get_id() : null;
-            $total = method_exists($item,'get_total_tax') ? $item->get_total_tax() : null;
+            $total = method_exists($item, 'get_total_tax') ? $item->get_total_tax() : null;
 
-            // Fetch tax_id for the shipping item, if it exists
-            $tax_id = isset($tax_rates[$item_id]) ? $tax_rates[$item_id] : null;
+            // Fetch the first tax_id from the collected tax rates
+            $tax_id = !empty($tax_rates) ? reset($tax_rates) : null;
 
             $line_item = array(
                 'foreign_id' => $id,
