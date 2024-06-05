@@ -5,7 +5,7 @@ function get_prods(){
     global $wpdb;
 
     $args = array(
-        'limit' => 10,
+        'limit' => -1,
         'status'=> array( 'draft', 'pending', 'private', 'publish' ),
     );
 
@@ -93,7 +93,7 @@ function get_prods(){
         $tab_prod[] = $temp_prod;
     }
 
-    echo json_encode($tab_prod);
+    //echo json_encode($tab_prod);
     return json_encode($tab_prod);
 }
 ?>
