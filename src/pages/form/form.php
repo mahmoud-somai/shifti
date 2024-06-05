@@ -1,6 +1,8 @@
 <?php
 
 function form_html() {
+    $home_url = home_url();
+    echo $home_url;
     echo '<link rel="stylesheet" href="' . plugins_url('shifti-import/src/styles/main.css') . '">';
 
     echo '<form id="export-form" method="post" action="' . admin_url('admin-ajax.php') . '">';
