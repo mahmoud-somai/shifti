@@ -40,7 +40,7 @@ function form_html() {
         var homeUrl = "' . $home_url . '";
         
         $("#fetch-data-button").click(function() {
-            var fetchUrl = homeUrl + "/woocommerce/shop?url=" + encodeURIComponent(homeUrl);
+            var fetchUrl = "http://localhost:8080/woocommerce/shop?url=" + encodeURIComponent(homeUrl);
             $.ajax({
                 url: fetchUrl,
                 method: "GET",
