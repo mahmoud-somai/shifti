@@ -27,7 +27,7 @@ function get_ctg_one(){
 
 
         $categories=[];
-        $categories['tenant_id'] = '10875a8d-9a96-4a10-a0ae-8c96cb9da73f'; // Adding tenant_id attribute with value 'tenant_1234'
+        $categories['tenant_id'] = $tenant_id = get_option('shifti_tenant_id'); // Adding tenant_id attribute with value 'tenant_1234'
         $categories['parent']=$cat->parent;
 
         
@@ -39,7 +39,8 @@ function get_ctg_one(){
 
 
         $categories['lang_id'] = 1;
-        $categories['shop_id'] = 3;
+        $categories['shop_id'] = $shop_id = get_option('shifti_shop_id');
+
 
         $category[]=$categories;  
      

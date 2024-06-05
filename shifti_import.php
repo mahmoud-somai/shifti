@@ -295,6 +295,22 @@ function download_addresses_json() {
 }
 
 
+function store_shop_data() {
+    if (isset($_POST['shop_id']) && isset($_POST['tenant_id'])) {
+        $shop_id = sanitize_text_field($_POST['shop_id']);
+        $tenant_id = sanitize_text_field($_POST['tenant_id']);
+        
+        update_option('shifti_shop_id', $shop_id);
+        update_option('shifti_tenant_id', $tenant_id);
+        
+        wp_send_json_success('Data stored successfully');
+    } else {
+        wp_send_json_error('Missing data');
+    }
+}
+add_action('wp_ajax_store_shop_data', 'store_shop_data');
+
+
 // Function to fetch data from Golang API and send it as JSON response
 function fetch_golang_data() {
     // Make AJAX request to fetch data from the Golang API
