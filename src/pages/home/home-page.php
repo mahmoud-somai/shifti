@@ -60,10 +60,10 @@ function header_html(){
     // echo '</form>';
 
     // // Add a form to download orders JSON
-    // echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
-    // echo '<input type="hidden" name="action" value="download_orders_json">';
-    // echo '<button type="submit">Download Orders JSON</button>';
-    // echo '</form>';
+    echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
+    echo '<input type="hidden" name="action" value="download_orders_json">';
+    echo '<button type="submit">Download Orders JSON</button>';
+    echo '</form>';
 
     // echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
     // echo '<input type="hidden" name="action" value="download_orders_details_json">';
