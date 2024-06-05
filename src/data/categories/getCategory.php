@@ -2,6 +2,8 @@
 
 function get_ctg_one(){
     global $wp_query;
+    $shop_id = get_option('shifti_shop_id');
+    $tenant_id = get_option('shifti_tenant_id');
 
     $taxonomy     = 'product_cat';
     $orderby      = 'name';  
@@ -27,7 +29,7 @@ function get_ctg_one(){
 
 
         $categories=[];
-        $categories['tenant_id'] = get_option('shifti_tenant_id'); // Adding tenant_id attribute with value 'tenant_1234'
+        $categories['tenant_id'] = $tenant_id; // Adding tenant_id attribute with value 'tenant_1234'
         $categories['parent']=$cat->parent;
 
         
@@ -39,8 +41,7 @@ function get_ctg_one(){
 
 
         $categories['lang_id'] = 1;
-        $categories['shop_id'] =  get_option('shifti_shop_id');
-
+        $categories['shop_id'] = $shop_id;
 
         $category[]=$categories;  
      
@@ -48,9 +49,10 @@ function get_ctg_one(){
   }
 
 
-
+//   echo "<br>";
+//   echo json_encode($category);
+//   echo "<br>";
   return json_encode($category);
-
 
 }
 ?>
