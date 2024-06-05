@@ -136,6 +136,7 @@ function form_html() {
                                     contentType: "application/json",
                                     success: function() {
                                         console.log("POST request for " + action.action + " successful.");
+                                        console.log("Data:", data);
                                         currentAction++;
                                         updateProgress(Math.round(currentAction * increment), action.message);
                                         performNextAction();
