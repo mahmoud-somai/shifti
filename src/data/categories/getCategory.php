@@ -41,7 +41,7 @@ function get_ctg_one(){
 
 
         $categories['lang_id'] = 1;
-        $categories['shop_id'] = $shop_id;
+        $categories['shop_id'] = (int)$shop_id;
 
         $category[]=$categories;  
      
