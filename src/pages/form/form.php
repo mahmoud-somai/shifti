@@ -38,7 +38,7 @@ function form_html() {
     echo '<script type="text/javascript">
     jQuery(document).ready(function($) {
         var homeUrl = "' . $home_url . '";
-        var fetchUrl = "http://localhost:8080/woocommerce/shop?url=" + homeUrl+"/";
+        var fetchUrl = "http://localhost:8080/woocommerce/shop?url=" + encodeURIComponent(homeUrl)+"/";
 
         // Automatically fetch data when the page loads
         $.ajax({
