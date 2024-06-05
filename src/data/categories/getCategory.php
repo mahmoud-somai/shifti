@@ -27,7 +27,7 @@ function get_ctg_one(){
 
 
         $categories=[];
-        $categories['tenant_id'] = 'tenant_1234'; // Adding tenant_id attribute with value 'tenant_1234'
+        $categories['tenant_id'] = '10875a8d-9a96-4a10-a0ae-8c96cb9da73f'; // Adding tenant_id attribute with value 'tenant_1234'
         $categories['parent']=$cat->parent;
 
         
