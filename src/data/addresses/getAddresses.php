@@ -18,8 +18,8 @@ function get_customers_with_billing() {
         $customer['first_name'] = $user->first_name ?: null;
         $customer['last_name'] = $user->last_name ?: null;
 
-        $customer['shop_id'] = 1; // Adding shop_id attribute with value 1
-        $customer['tenant_id'] = 'tenant_1234'; // Adding tenant_id attribute with value 'tenant_1234'
+        $customer['shop_id'] = 3; // Adding shop_id attribute with value 1
+        $customer['tenant_id'] = '10875a8d-9a96-4a10-a0ae-8c96cb9da73f'; // Adding tenant_id attribute with value 'tenant_1234'
         $customer['woo_billing']="1";
         $customer['woo_shipping']="0";
 

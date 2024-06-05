@@ -28,8 +28,8 @@ function get_txs() {
                 "active"=>1,
                 "deleted"=>0,
                 "lang_id"=>1,
-                "tenant_id"=>"tn_123",
-                "shop_id"=>1
+                "tenant_id"=>"10875a8d-9a96-4a10-a0ae-8c96cb9da73f",
+                "shop_id"=>3
 
             );
 
