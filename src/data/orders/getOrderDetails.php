@@ -1,6 +1,8 @@
 <?php
 function get_ord_det() {
     global $wpdb;
+    $shop_id = get_option('shifti_shop_id');
+    $tenant_id = get_option('shifti_tenant_id');
     $args = array(
         'limit' => -1, 
     );
@@ -23,7 +25,7 @@ function get_ord_det() {
             $quantity = method_exists($item, 'get_quantity') ? $item->get_quantity() : null;
             $subtotal =  method_exists($item, 'get_subtotal') ? $item->get_subtotal() : null;
             $line_item = array(
-                'shop_id' => 3, // '1' is the default value for the shop_id
+                'shop_id' => (int)$shop_id, // '1' is the default value for the shop_id
                 'order_id' => $order_id,
                 'foreign_id' => $id,
                 'product_name' => $product_name,

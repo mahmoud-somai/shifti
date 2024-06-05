@@ -2,6 +2,9 @@
 
 function get_orders() {
     global $wpdb;
+    $shop_id = get_option('shifti_shop_id');
+    $tenant_id = get_option('shifti_tenant_id');
+
     $args = array(
         'limit' => -1, 
     );
@@ -14,9 +17,9 @@ function get_orders() {
         $order_data = [];
 
         // Retrieve order properties with null coalescing operator
-        $order_data['shop_id'] = 3;
+        $order_data['shop_id'] = (int)$shop_id;
         $order_data['lang_id'] = 1;
-        $order_data['tenant_id'] = "10875a8d-9a96-4a10-a0ae-8c96cb9da73f";
+        $order_data['tenant_id'] = $tenant_id;
         $order_data['foreign_id'] = (int) ($order->get_id() ?? null);
         $order_data['reference'] = strval($order->get_id() ?? null);
 

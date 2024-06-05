@@ -3,6 +3,8 @@
 function get_customers(){
 
     global $wp_query;
+    $shop_id = get_option('shifti_shop_id');
+    $tenant_id = get_option('shifti_tenant_id');
 
     $args = array(
         'role' => 'customer',
@@ -19,8 +21,8 @@ function get_customers(){
         $customer['first_name'] = $user->first_name;
         $customer['last_name'] = $user->last_name;
 
-        $customer['shop_id'] = 3; // Adding shop_id attribute with value 1
-        $customer['tenant_id'] = '10875a8d-9a96-4a10-a0ae-8c96cb9da73f'; // Adding tenant_id attribute with value 'tenant_1234'
+        $customer['shop_id'] = (int)$shop_id; // Adding shop_id attribute with value 1
+        $customer['tenant_id'] = $tenant_id; // Adding tenant_id attribute with value 'tenant_1234'
 
 
         

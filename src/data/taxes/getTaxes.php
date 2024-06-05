@@ -5,7 +5,8 @@ function get_txs() {
     if ( ! class_exists( 'WC_Tax' ) ) {
         return json_encode([]);
     }
-
+    $shop_id = get_option('shifti_shop_id');
+    $tenant_id = get_option('shifti_tenant_id');
     // Get all tax classes
     $tax_classes = WC_Tax::get_tax_classes();
     $tax_classes[] = ''; // Add the standard tax class
@@ -28,8 +29,8 @@ function get_txs() {
                 "active"=>1,
                 "deleted"=>0,
                 "lang_id"=>1,
-                "tenant_id"=>"10875a8d-9a96-4a10-a0ae-8c96cb9da73f",
-                "shop_id"=>3
+                "tenant_id"=>$tenant_id,
+                "shop_id"=>(int)$shop_id
 
             );
 

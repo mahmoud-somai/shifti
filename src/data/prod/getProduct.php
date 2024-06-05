@@ -3,6 +3,8 @@
 function get_prods(){
 
     global $wpdb;
+    $shop_id = get_option('shifti_shop_id');
+    $tenant_id = get_option('shifti_tenant_id');
 
     $args = array(
         'limit' => -1,
@@ -34,8 +36,8 @@ function get_prods(){
 
                     
         $temp_prod['foreign_id']=$product->get_id();
-        $temp_prod['tenant_id']="10875a8d-9a96-4a10-a0ae-8c96cb9da73f";
-        $temp_prod['shop_id']=3;
+        $temp_prod['tenant_id']=$tenant_id;
+        $temp_prod['shop_id']=(int)$shop_id;
         $temp_prod['lang_id']=1;
         $temp_prod['tax_id']=1;
         $temp_prod['ecotax']=0;
