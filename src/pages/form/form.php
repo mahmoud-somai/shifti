@@ -37,9 +37,12 @@ function form_html() {
 
     echo '<script type="text/javascript">
     jQuery(document).ready(function($) {
+        var homeUrl = "' . $home_url . '";
+        
         $("#fetch-data-button").click(function() {
+            var fetchUrl = homeUrl + "/woocommerce/shop?url=" + encodeURIComponent(homeUrl);
             $.ajax({
-                url: "http://localhost:8080/woocommerce/shop?url=https://staging-masmoudi.shifti.co/",
+                url: fetchUrl,
                 method: "GET",
                 success: function(response) {
                     console.log("Data fetched successfully:", response);
@@ -142,7 +145,6 @@ function form_html() {
                                     },
                                     error: function(xhr, status, error) {
                                         console.log("Error posting data for " + action.action + ": " + error);
-                                        console.log("Data:", data);
                                         progressOverlay.hide();
                                     }
                                 });
