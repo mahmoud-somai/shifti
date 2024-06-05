@@ -39,7 +39,7 @@ function get_ctg_one(){
 
 
         $categories['lang_id'] = 1;
-        $categories['shop_id'] = $shop_id = get_option('shifti_shop_id');
+        $categories['shop_id'] =  get_option('shifti_shop_id');
 
 
         $category[]=$categories;  
@@ -48,9 +48,7 @@ function get_ctg_one(){
   }
 
 
-  echo "<br>";
-  echo json_encode($category);
-  echo "<br>";
+
   return json_encode($category);
 
 
