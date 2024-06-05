@@ -38,38 +38,38 @@ function form_html() {
     echo '<script type="text/javascript">
     jQuery(document).ready(function($) {
         var homeUrl = "' . $home_url . '";
-        
-        $("#fetch-data-button").click(function() {
-            var fetchUrl = "http://localhost:8080/woocommerce/shop?url=" + homeUrl+"/";
-            $.ajax({
-                url: fetchUrl,
-                method: "GET",
-                success: function(response) {
-                    console.log("Data fetched successfully:", response);
-                    // Send fetched data to server to store it
-                    $.ajax({
-                        url: "' . admin_url('admin-ajax.php') . '",
-                        method: "POST",
-                        data: {
-                            action: "store_shop_data",
-                            shop_id: response.shop_id,
-                            tenant_id: response.tenant_id
-                        },
-                        success: function(storeResponse) {
-                            console.log("Data stored successfully:", storeResponse);
-                        },
-                        error: function(xhr, status, error) {
-                            console.log("Error storing data:", error);
-                        }
-                    });
-                },
-                error: function(xhr, status, error) {
-                    console.log("Error fetching data:", error);
-                }
-            });
+        var fetchUrl = "http://localhost:8080/woocommerce/shop?url=" + encodeURIComponent(homeUrl)+"/";
+
+        // Automatically fetch data when the page loads
+        $.ajax({
+            url: fetchUrl,
+            method: "GET",
+            success: function(response) {
+                console.log("Data fetched successfully:", response);
+                // Send fetched data to server to store it
+                $.ajax({
+                    url: "' . admin_url('admin-ajax.php') . '",
+                    method: "POST",
+                    data: {
+                        action: "store_shop_data",
+                        shop_id: response.shop_id,
+                        tenant_id: response.tenant_id
+                    },
+                    success: function(storeResponse) {
+                        console.log("Data stored successfully:", storeResponse);
+                    },
+                    error: function(xhr, status, error) {
+                        console.log("Error storing data:", error);
+                    }
+                });
+            },
+            error: function(xhr, status, error) {
+                console.log("Error fetching data:", error);
+            }
         });
     });
     </script>';
+
     
 
 
