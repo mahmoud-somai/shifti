@@ -41,7 +41,7 @@ function get_orders() {
         $order_data['address_delivery_id'] = 1; 
         $order_data['address_invoice_id'] = 1; 
         $order_data['cart_id'] = 1; 
-        $order_data['currency_id'] = 10; 
+        $order_data['currency_id'] = 2; 
         $order_data['carrier_id'] = 1; 
         $order_data['module'] = null; 
         $order_data['total_paid_tax_incl'] = null; 
