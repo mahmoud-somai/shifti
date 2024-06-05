@@ -5,7 +5,7 @@ function get_prods(){
     global $wpdb;
 
     $args = array(
-        'limit' => -1,
+        'limit' => 10,
         'status'=> array( 'draft', 'pending', 'private', 'publish' ),
     );
 
@@ -41,7 +41,7 @@ function get_prods(){
         $temp_prod['ecotax']=0;
         
 
-        $temp_prod['default_image_id'] = null;
+        $temp_prod['default_image_id'] = $product->get_image_id();
         $temp_prod['manufacturer_id'] = 1;
         $temp_prod['tax_rule_group_id'] = null;
         $temp_prod['name'] = null;
@@ -93,7 +93,7 @@ function get_prods(){
         $tab_prod[] = $temp_prod;
     }
 
-    //echo json_encode($tab_prod);
+    echo json_encode($tab_prod);
     return json_encode($tab_prod);
 }
 ?>
