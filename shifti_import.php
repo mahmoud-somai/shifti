@@ -280,6 +280,20 @@ function download_workers_json() {
     exit();
 }
 
+add_action('wp_ajax_get_order_carrier_taxes_data', 'get_order_carrier_taxes_data');
+function get_order_carrier_taxes_data() {
+    $json_data = get_ord_car_tx();  
+
+    wp_send_json_success($json_data);
+}
+
+add_action('wp_ajax_get_order_details_taxes_data', 'get_order_details_taxes_data');
+function get_order_details_taxes_data() {
+    $json_data = get_ord_det_tx();  
+
+    wp_send_json_success($json_data);
+}
+
 add_action('wp_ajax_fetch_golang_data', 'fetch_golang_data');
 
 
