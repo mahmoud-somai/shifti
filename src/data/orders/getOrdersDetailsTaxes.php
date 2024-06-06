@@ -92,7 +92,7 @@
 // }
 
 
-<?php
+
 function get_ord_det_tx() {
     global $wpdb;
 
@@ -144,7 +144,6 @@ function get_ord_det_tx() {
 
 
 
-?>
 
 
 
