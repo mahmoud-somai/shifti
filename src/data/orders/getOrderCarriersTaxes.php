@@ -34,9 +34,9 @@ function get_ord_car_tx() {
             $tax_id = !empty($tax_rates) ? reset($tax_rates) : null;
 
             $line_item = array(
-                'foreign_id' => $id,
+                'order_carrier_id' => $id,
                 'total' => floatval($total),
-                'tax_id' => $tax_id
+                'tax_id' => $tax_id,
             );
             $line_items_data[] = $line_item;
         }
