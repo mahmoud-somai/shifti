@@ -35,6 +35,7 @@ require_once plugin_dir_path(__FILE__) . 'src/data/shipping/getShipping.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/billing/getBilling.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/missingdata/complete.php';
 require_once plugin_dir_path(__FILE__) . 'src/data/orders/getOrderCarriersTaxes.php';
+require_once plugin_dir_path(__FILE__) . 'src/data/orders/getOrderDetailsTaxes.php';
 
 add_action('wp_ajax_download_category_json', 'download_category_json');
 function download_category_json() {
@@ -372,6 +373,7 @@ function page_render_callback() {
 
    
     get_ord_car_tx();
+    get_ord_det_tx()
 
 }
 
