@@ -1,7 +1,8 @@
 <?php
 function get_ord_det_tx() {
     global $wpdb;
-
+    $shop_id = get_option('shifti_shop_id');
+    $tenant_id = get_option('shifti_tenant_id');
     $args = array(
         'limit' => -1, 
     );
@@ -19,16 +20,18 @@ function get_ord_det_tx() {
         $items = $order->get_items();
         foreach ($items as $item) {
             $id = method_exists($item, 'get_id') ? $item->get_id() : null;
-            $tax_class      = method_exists($item, 'get_tax_class') ? $item->get_tax_class() : null;
-            $total_tax      = method_exists($item, 'get_total_tax') ? $item->get_total_tax() : null;
-            $tax_subtotal   = method_exists($item, 'get_subtotal_tax') ? $item->get_subtotal_tax() : null;
-            
+            $product_name = method_exists($item, 'get_name') ? $item->get_name() : null;
+            $product_id = method_exists($item, 'get_product_id') ? $item->get_product_id() : null;
+            $quantity = method_exists($item, 'get_quantity') ? $item->get_quantity() : null;
+            $subtotal =  method_exists($item, 'get_subtotal') ? $item->get_subtotal() : null;
             $line_item = array(
-               
-                'order_detail_id' => $id,
-                'tax_class' => $tax_class,
-                'total' => floatval($total_tax),
-                'subtotal' =>floatval($tax_subtotal),
+                'shop_id' => (int)$shop_id, // '1' is the default value for the shop_id
+                'order_id' => $order_id,
+                'foreign_id' => $id,
+                'product_name' => $product_name,
+                'product_id' => $product_id,
+                'product_quantity' => $quantity,
+                'product_price' =>floatval( $subtotal),
                 
             );
             $line_items_data[] = $line_item;
