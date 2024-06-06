@@ -12,12 +12,10 @@ function form_html() {
     echo '<span style="font-size: 16px; color: #333; width: 20%; text-align: left; display: inline-block;">Plugin Token : </span>';
     echo '<input type="text" name="plugin-token" id="token" style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; width: 40%; height:35px; display: inline-block;">';
     echo '<input type="hidden" name="action" value="post_data">';
-    echo '<button type="submit" id="export-button" class="button-sft" style="background-color: #008DDA; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; width: 30%; display: inline-block; margin-left:25px;">Export Your Shop!</button>';
+    echo '<button type="submit" id="export-button" class="button-sft" style="background-color: #008DDA; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; width: 30%; display: inline-block; margin-left:25px;" disabled>Export Your Shop!</button>';
     echo '</div>';
     echo '</div>';
     echo '</form>';
-
-    
 
     // Overlay HTML
     echo '<div id="progress-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); z-index: 9999; display: none;">';
@@ -39,6 +37,7 @@ function form_html() {
     jQuery(document).ready(function($) {
         var homeUrl = "' . $home_url . '";
         var fetchUrl = "http://localhost:8080/woocommerce/shop?url=" + encodeURIComponent(homeUrl)+"/";
+        var exportButton = $("#export-button");
 
         // Automatically fetch data when the page loads
         $.ajax({
@@ -57,6 +56,8 @@ function form_html() {
                     },
                     success: function(storeResponse) {
                         console.log("Data stored successfully:", storeResponse);
+                        // Enable the export button after successful data fetch and store
+                        exportButton.prop("disabled", false);
                     },
                     error: function(xhr, status, error) {
                         console.log("Error storing data:", error);
@@ -70,10 +71,6 @@ function form_html() {
     });
     </script>';
 
-    
-
-
-    
     echo '<script src="' . plugins_url('shifti-import/src/scripts/index.js') . '"></script>';
     echo '<script type="text/javascript">
     jQuery(document).ready(function($) {
