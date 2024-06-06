@@ -42,7 +42,7 @@ function get_ord_det_tx() {
             $line_items_data[] = $line_item;
         }
     }
-    echo json_encode($line_items_data);
+    //echo json_encode($line_items_data);
     return json_encode($line_items_data);
 }
 ?>
