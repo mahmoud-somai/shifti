@@ -19,11 +19,10 @@ function get_ord_det_tx() {
         $items = $order->get_items();
         foreach ($items as $item) {
             $id = method_exists($item, 'get_id') ? $item->get_id() : null;
-            
-
             $tax_class      = method_exists($item, 'get_tax_class') ? $item->get_tax_class() : null;
             $total_tax      = method_exists($item, 'get_total_tax') ? $item->get_total_tax() : null;
             $tax_subtotal   = method_exists($item, 'get_subtotal_tax') ? $item->get_subtotal_tax() : null;
+            
             $line_item = array(
                
                 'order_detail_id' => $id,

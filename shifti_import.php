@@ -373,7 +373,7 @@ function page_render_callback() {
 
    
     get_ord_car_tx();
-    get_ord_det_tx()
+    get_ord_det_tx();
 
 }
 
