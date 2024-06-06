@@ -112,7 +112,7 @@ function get_ord_det_tx() {
         $order_id = $order->get_id();
         $items = $order->get_items();
         foreach ($items as $item) {
-            $id = method_exists($item, 'get_id') ? $item->get_id() : null;
+            $order_detail_id = method_exists($item, 'get_id') ? $item->get_id() : null;
             $tax_class = method_exists($item, 'get_tax_class') ? $item->get_tax_class() : null;
             $total_tax = method_exists($item, 'get_total_tax') ? $item->get_total_tax() : null;
             $tax_subtotal = method_exists($item, 'get_subtotal_tax') ? $item->get_subtotal_tax() : null;
@@ -120,15 +120,12 @@ function get_ord_det_tx() {
             // Get the first tax ID
             $tax_id = null;
             $taxes = $item->get_taxes();
-            if (isset($taxes['total'])) {
-                foreach ($taxes['total'] as $id => $tax_total) {
-                    $tax_id = $id;
-                    break; // Take the first tax ID found
-                }
+            if (isset($taxes['total']) && !empty($taxes['total'])) {
+                $tax_id = array_key_first($taxes['total']); // Get the first tax ID key
             }
             
             $line_item = array(
-                'order_detail_id' => $id,
+                'order_detail_id' => $order_detail_id,
                 'tax_class' => $tax_class,
                 'total' => floatval($total_tax),
                 'subtotal' => floatval($tax_subtotal),
