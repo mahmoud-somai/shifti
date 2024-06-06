@@ -75,7 +75,7 @@ function get_ord_det_tx() {
             
             $line_item = array(
                 'order_detail_id' => $id,
-                'tax_class' => $tax_class,
+                'tax_class' =>(int) $tax_class,
                 'total' => floatval($total_tax),
                 'subtotal' => floatval($tax_subtotal),
                 'tax_id' => $tax_id,
