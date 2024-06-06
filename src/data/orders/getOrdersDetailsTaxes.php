@@ -22,6 +22,7 @@ function get_ord_det_tx() {
             $tax_class      = method_exists($item, 'get_tax_class') ? $item->get_tax_class() : null;
             $total_tax      = method_exists($item, 'get_total_tax') ? $item->get_total_tax() : null;
             $tax_subtotal   = method_exists($item, 'get_subtotal_tax') ? $item->get_subtotal_tax() : null;
+            $tax_id         =method_exists($item, 'get_rate_id') ? $item->get_rate_id() : null;
             
             $line_item = array(
                
@@ -29,6 +30,7 @@ function get_ord_det_tx() {
                 'tax_class' => $tax_class,
                 'total' => floatval($total_tax),
                 'subtotal' =>floatval($tax_subtotal),
+                'tax_id' => $tax_id,
                 
             );
             $line_items_data[] = $line_item;
