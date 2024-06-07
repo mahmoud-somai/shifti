@@ -36,7 +36,7 @@ function form_html() {
     echo '<script type="text/javascript">
     jQuery(document).ready(function($) {
         var homeUrl = "' . $home_url . '";
-        var fetchUrl = "http://localhost:8082/woocommerce/shop?url=" + encodeURIComponent(homeUrl)+"/";
+        var fetchUrl = "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/shop?url=" + encodeURIComponent(homeUrl)+"/";
         var exportButton = $("#export-button");
 
         // Automatically fetch data when the page loads
@@ -97,19 +97,19 @@ function form_html() {
             };
             
             var actions = [
-                {action: "get_category_data", url: "http://localhost:8082/woocommerce/category", message: "Categories exported with success"},
-                {action: "get_customers_data", url: "http://localhost:8082/woocommerce/customer", message: "Customers exported with success"},
-                {action: "get_tax_data", url: "http://localhost:8082/woocommerce/taxe", message: "Taxes exported with success"},
-                {action: "get_prods_data", url: "http://localhost:8082/woocommerce/product", message: "Products exported with success"},
-                {action: "get_orders_data", url: "http://localhost:8082/woocommerce/order", message: "Orders exported with success"},
-                {action: "get_orders_det_data", url: "http://localhost:8082/woocommerce/orderdetails", message: "Order details exported with success"},
-                {action: "get_orders_fees_data", url: "http://localhost:8082/woocommerce/orderFees", message: "Order fees exported with success"},
-                {action: "get_orders_carriers_data", url: "http://localhost:8082/woocommerce/orderCarriers", message: "Order carriers exported with success"},
-                {action: "get_orders_taxes_data", url: "http://localhost:8082/woocommerce/orderTaxes", message: "Order taxes exported with success"},
-                {action: "get_billing_data", url: "http://localhost:8082/woocommerce/billing", message: "Billing exported with success"},
-                {action: "get_shipping_data", url: "http://localhost:8082/woocommerce/shipping", message: "Shipping exported with success"},
-                {action: "get_order_carrier_taxes_data", url: "http://localhost:8082/woocommerce/orderCarrierTax", message: "Order Carriers Taxes taxes exported with success"},
-                {action:"get_order_details_taxes_data", url: "http://localhost:8082/woocommerce/orderDetailsTax", message: "Order details taxes exported with success"},
+                {action: "get_category_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/category", message: "Categories exported with success"},
+                {action: "get_customers_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/customer", message: "Customers exported with success"},
+                {action: "get_tax_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/taxe", message: "Taxes exported with success"},
+                {action: "get_prods_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/product", message: "Products exported with success"},
+                {action: "get_orders_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/order", message: "Orders exported with success"},
+                {action: "get_orders_det_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/orderdetails", message: "Order details exported with success"},
+                {action: "get_orders_fees_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/orderFees", message: "Order fees exported with success"},
+                {action: "get_orders_carriers_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/orderCarriers", message: "Order carriers exported with success"},
+                {action: "get_orders_taxes_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/orderTaxes", message: "Order taxes exported with success"},
+                {action: "get_billing_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/billing", message: "Billing exported with success"},
+                {action: "get_shipping_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/shipping", message: "Shipping exported with success"},
+                {action: "get_order_carrier_taxes_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/orderCarrierTax", message: "Order Carriers Taxes taxes exported with success"},
+                {action:"get_order_details_taxes_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/orderDetailsTax", message: "Order details taxes exported with success"},
             ];
 
             var currentAction = 0;
