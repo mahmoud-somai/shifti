@@ -28,7 +28,7 @@ function get_ord_car() {
                 'name' => $shipping_name,
                 'shipping_cost_tax_excl' => floatval($shipping_cost_tax_excl),
                 'shipping_cost_tax_incl' =>floatval($shipping_cost_tax_incl),
-                'order_invoice' => null,
+                'order_invoice_id' => null,
                 "weight" => null,
                 "tracking_number" => null,
                 "date_added" => null,
