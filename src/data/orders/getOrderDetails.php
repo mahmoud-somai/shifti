@@ -35,7 +35,7 @@ function get_ord_det() {
                 'product_attribute_id' => null,
                 "tax_rules_group_id" => null,
                 "order_invoice_id" => null,
-                "id_warehouse_id" => null,
+                "warehouse_id" => null,
                 "customization_id" => null,
                 'product_quantity_reinjected' => null,
                 'group_reduction' => null,
