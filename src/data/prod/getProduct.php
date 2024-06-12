@@ -44,8 +44,6 @@ function get_prods(){
         
 
         $temp_prod['default_image_id'] = (int) $product->get_image_id();
-        $temp_prod['manufacturer_id'] = 1;
-        $temp_prod['tax_rule_group_id'] = null;
         $temp_prod['name'] = null;
      
         $temp_prod['reference']=$product->get_sku();
