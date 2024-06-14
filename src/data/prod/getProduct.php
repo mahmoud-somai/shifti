@@ -79,7 +79,7 @@ function get_prods() {
         // Add the product to the array
         $tab_prod[] = $temp_prod;
     }
-
+    echo json_encode($tab_prod);
     return json_encode($tab_prod);
 }
 ?>
