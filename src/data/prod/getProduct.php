@@ -37,8 +37,8 @@ function get_prods() {
         $temp_prod['type'] = $product->get_type();
         $temp_prod['status'] = $product->get_status();
 
-        $temp_prod['description'] = $product->get_description();
-        $temp_prod['short_description'] = $product->get_short_description();
+       // $temp_prod['description'] = $product->get_description();
+        //$temp_prod['short_description'] = $product->get_short_description();
 
         $temp_prod['price'] = floatval($product->get_price());
 
