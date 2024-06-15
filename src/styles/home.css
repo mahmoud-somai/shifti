@@ -1,19 +1,14 @@
-/* styles.css */
+/* Existing styles */
 
 .header-container {
     text-align: center;
     padding: 20px;
     background-color: #f0f0f0;
-    position: relative; /* Add position relative to the container */
 }
 
-.language-switch {
-    position: absolute; /* Position it absolutely relative to the container */
-    top: 10px; /* Adjust the top position as needed */
-    right: 10px; /* Adjust the right position as needed */
+.logo_img {
+    /* Add styles for the logo if needed */
 }
-
-
 
 .content-box {
     box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.1);
@@ -41,7 +36,29 @@
     text-decoration: underline;
 }
 
-
-p{
+p {
     font-size: 16px;
+}
+
+/* New styles for the language switch button */
+
+.language-switch {
+    position: absolute; /* Position it absolutely relative to the container */
+    top: 10px; /* Adjust the top position as needed */
+    right: 10px; /* Adjust the right position as needed */
+}
+
+.language-switch button {
+    font-size: 15px;
+    padding: 10px 15px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+.language-switch button:hover {
+    background-color: #e0e0e0;
 }
