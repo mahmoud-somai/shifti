@@ -57,12 +57,26 @@ p {
 }
 
 .flag-icon {
-    width: 26px; /* Set the desired width */
-    height: 26px; /* Set the desired height */
+    width: 32px; /* Set the desired width */
+    height: 32px; /* Set the desired height */
     transition: transform 0.3s;
-    border-radius: 25%;
 }
 
 .flag-icon:hover {
+    transform: scale(1.1);
+}
+
+/* New styles for the download icon */
+
+.download-icon {
+    width: 24px; /* Set the desired width */
+    height: 24px; /* Set the desired height */
+    vertical-align: middle; /* Align the icon vertically with the text */
+    margin-right: 8px; /* Space between the icon and the text */
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.download-icon:hover {
     transform: scale(1.1);
 }

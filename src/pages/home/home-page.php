@@ -36,14 +36,20 @@ function header_html(){
     echo '<p>' . ($language === 'english' ? '» You can download the PDF documentation for this module:' : '» Vous pouvez télécharger la documentation PDF pour ce module :') . '</p>';
     echo '<ul>';
 
-    // Add French documentation download link
+    // Add French documentation download link with image
     echo '<li>';
-    echo '<a href="' . plugins_url('shifti-import/sample.pdf') . '" download>' . ($language === 'english' ? 'French' : 'Français') . '</a>';
+    echo '<a href="' . plugins_url('shifti-import/sample.pdf') . '" download>';
+    echo '<img src="' . plugins_url('shifti-import/src/img/download_logo.png') . '" alt="Download French Documentation" class="download-icon">';
+    echo '</a>';
+    echo ($language === 'english' ? 'French' : 'Français');
     echo '</li>';
 
-    // Add English documentation download link
+    // Add English documentation download link with image
     echo '<li>';
-    echo '<a href="' . plugins_url('shifti-import/sample.pdf') . '" download>' . ($language === 'english' ? 'English' : 'Anglais') . '</a>';
+    echo '<a href="' . plugins_url('shifti-import/sample.pdf') . '" download>';
+    echo '<img src="' . plugins_url('shifti-import/src/img/download_logo.png') . '" alt="Download English Documentation" class="download-icon">';
+    echo '</a>';
+    echo ($language === 'english' ? 'English' : 'Anglais');
     echo '</li>';
 
     echo '</ul>';
