@@ -5,10 +5,10 @@ function header_html(){
     $language = isset($_POST['language_toggle']) ? $_POST['language_toggle'] : 'english';
 
     // Link to the external CSS file
-    echo '<link rel="stylesheet" href="' . plugins_url('shifti-import/src/styles/styles.css') . '">';
+    echo '<link rel="stylesheet" href="' . plugins_url('shifti-import/src/styles/home.css') . '">';
 
     echo '<div class="header-container">';
-    
+
     // Language toggle button form at the top
     echo '<div class="language-switch">';
     echo '<form method="post">';
@@ -42,7 +42,7 @@ function header_html(){
 
     echo '</ul>';
     echo '</div>';
-
+    
     form_html();
     echo '</div>';
 }

@@ -4,6 +4,7 @@
     text-align: center;
     padding: 20px;
     background-color: #f0f0f0;
+    position: relative; /* Add position relative to the container */
 }
 
 .logo_img {
