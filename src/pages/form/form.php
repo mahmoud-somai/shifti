@@ -92,7 +92,6 @@ function form_html() {
             
             var updateProgress = function(progress, message) {
                 progressBar.val(progress);
-                progressBar.css("width", progress + "%");
                 progressStatus.text(progress + "%");
                 successMessages.append("<p>" + message + "</p>");
             };
