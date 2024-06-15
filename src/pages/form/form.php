@@ -84,7 +84,7 @@ function form_html() {
         $("#export-form").submit(function(event) {
             event.preventDefault();
             var inputVal = $("#token").val();
-            if (inputVal !== tenantId) {
+            if (inputVal !== tenantId || inputVal === "") {
                 alert("This shop doesn\'t exist");
                 return;
             }
@@ -145,7 +145,7 @@ function form_html() {
                                 $.ajax({
                                     url: action.url,
                                     method: "POST",
-                                    data: data,
+                                    data: JSON.stringify(data),
                                     contentType: "application/json",
                                     success: function() {
                                         console.log("POST request for " + action.action + " successful.");
