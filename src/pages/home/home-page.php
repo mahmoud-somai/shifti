@@ -38,7 +38,7 @@ function header_html(){
 
     // Add French documentation download link with image
     echo '<li>';
-    echo '<a href="' . plugins_url('shifti-import/sample.pdf') . '" download>';
+    echo '<a href="' . plugins_url('shifti-import/sampleFR.pdf') . '" download>';
     echo '<img src="' . plugins_url('shifti-import/src/img/download_logo.png') . '" alt="Download French Documentation" class="download-icon">';
     echo '</a>';
     echo ($language === 'english' ? 'French' : 'Français');
