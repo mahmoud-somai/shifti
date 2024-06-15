@@ -4,11 +4,16 @@
     text-align: center;
     padding: 20px;
     background-color: #f0f0f0;
+    position: relative; /* Add position relative to the container */
 }
 
-.logo_img {
-    /* Add styles for the logo if needed */
+.language-switch {
+    position: absolute; /* Position it absolutely relative to the container */
+    top: 10px; /* Adjust the top position as needed */
+    right: 10px; /* Adjust the right position as needed */
 }
+
+
 
 .content-box {
     box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.1);
@@ -35,6 +40,7 @@
     padding: 15px 10px;
     text-decoration: underline;
 }
+
 
 p{
     font-size: 16px;

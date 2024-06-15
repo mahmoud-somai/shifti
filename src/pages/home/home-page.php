@@ -5,9 +5,18 @@ function header_html(){
     $language = isset($_POST['language_toggle']) ? $_POST['language_toggle'] : 'english';
 
     // Link to the external CSS file
-    echo '<link rel="stylesheet" href="' . plugins_url('shifti-import/src/styles/home.css') . '">';
+    echo '<link rel="stylesheet" href="' . plugins_url('shifti-import/src/styles/styles.css') . '">';
 
     echo '<div class="header-container">';
+    
+    // Language toggle button form at the top
+    echo '<div class="language-switch">';
+    echo '<form method="post">';
+    echo '<input type="hidden" name="language_toggle" value="' . ($language === 'english' ? 'french' : 'english') . '">';
+    echo '<button type="submit">' . ($language === 'english' ? 'Switch to French' : 'Switch to English') . '</button>';
+    echo '</form>';
+    echo '</div>';
+
     echo '<img class="logo_img" src="' . plugins_url('shifti-import/src/img/logo.png') . '" alt="Logo Shifti">';
     echo '<h1>' . ($language === 'english' ? 'Welcome to the Shifti Data Connector Plugin !' : 'Bienvenue dans le plugin de connexion de données Shifti !') . '</h1>';
 
@@ -32,14 +41,8 @@ function header_html(){
     echo '</li>';
 
     echo '</ul>';
-
-    // Language toggle button form
-    echo '<form method="post">';
-    echo '<input type="hidden" name="language_toggle" value="' . ($language === 'english' ? 'french' : 'english') . '">';
-    echo '<button type="submit">' . ($language === 'english' ? 'Switch to French' : 'Switch to English') . '</button>';
-    echo '</form>';
-
     echo '</div>';
+
     form_html();
     echo '</div>';
 }
