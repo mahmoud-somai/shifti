@@ -3,31 +3,31 @@
 function form_html() {
     $home_url = home_url();
   
-    echo '<link rel="stylesheet" href="' . plugins_url('shifti-import/src/styles/main.css') . '">';
+    echo '<link rel="stylesheet" href="' . plugins_url('shifti-import/src/styles/form.css') . '">';
 
     echo '<form id="export-form" method="post" action="' . admin_url('admin-ajax.php') . '">';
-    echo '<div class="stf-form" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; margin: 20px auto; background-color: white; width: 50%; text-align: center;">';
-    echo '<h2 style="width: 100%; margin-bottom: 10px;">Link Shop</h2>'; 
-    echo '<div class="form-group" style="display: inline-block; width: 100%;">';
-    echo '<span style="font-size: 16px; color: #333; width: 20%; text-align: left; display: inline-block;">Plugin Token : </span>';
-    echo '<input type="text" name="plugin-token" id="token" style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; width: 40%; height:35px; display: inline-block;">';
+    echo '<div class="stf-form">';
+    echo '<h2>Link Shop</h2>'; 
+    echo '<div class="form-group">';
+    echo '<span>Plugin Token : </span>';
+    echo '<input type="text" name="plugin-token" id="token">';
     echo '<input type="hidden" name="action" value="post_data">';
-    echo '<button type="submit" id="export-button" class="button-sft" style="background-color: #008DDA; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; width: 30%; display: inline-block; margin-left:25px;" disabled>Export Your Shop!</button>';
+    echo '<button type="submit" id="export-button" class="button-sft" disabled>Export Your Shop!</button>';
     echo '</div>';
     echo '</div>';
     echo '</form>';
 
     // Overlay HTML
-    echo '<div id="progress-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); z-index: 9999; display: none;">';
-    echo '    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 30px; border-radius: 10px; width: 90%; max-width: 500px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">';
-    echo '        <h1 style="margin-bottom: 20px; color: #00215E; font-size: 24px;">Export Data</h1>'; 
+    echo '<div id="progress-overlay">';
+    echo '    <div class="progress-container">';
+    echo '        <h1>Export Data</h1>'; 
     echo '        <div style="text-align: center;">';
-    echo '            <progress id="progress-bar" style="width: 100%; height: 20px; margin-bottom: 10px;"></progress>'; 
-    echo '            <div id="progress-status" style="margin-top: 10px; font-size: 20px; color: #333;">0%</div>';
-    echo '            <div id="success-messages" style="margin-top: 10px; text-align: left; font-size: 18px; color: #fff; background-color: #5BBCFF; padding: 10px; border-radius: 5px;"></div>';
-    echo '            <div style="margin-top: 20px;">'; 
-    echo '                <button id="cancel-button" class="button-sft" style="background-color: #ff5722; color: white; padding: 8px 20px; border: none; border-radius: 4px; cursor: pointer; margin-right: 10px;">Cancel</button>';
-    echo '                <button id="done-button" class="button-sft" style="background-color: #4CAF50; color: white; padding: 8px 20px; border: none; border-radius: 4px; cursor: pointer; display: none;">Done</button>';
+    echo '            <progress id="progress-bar"></progress>'; 
+    echo '            <div id="progress-status">0%</div>';
+    echo '            <div id="success-messages"></div>';
+    echo '            <div class="button-container">'; 
+    echo '                <button id="cancel-button" class="button-sft">Cancel</button>';
+    echo '                <button id="done-button" class="button-sft">Done</button>';
     echo '            </div>'; 
     echo '        </div>';
     echo '    </div>';
