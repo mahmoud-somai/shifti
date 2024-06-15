@@ -50,16 +50,18 @@ p {
 }
 
 .language-switch button {
-    font-size: 15px;
-    padding: 10px 15px;
+    background: none;
+    border: none;
     cursor: pointer;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s;
+    padding: 0;
 }
 
-.language-switch button:hover {
-    background-color: #e0e0e0;
+.flag-icon {
+    width: 32px; /* Set the desired width */
+    height: 32px; /* Set the desired height */
+    transition: transform 0.3s;
+}
+
+.flag-icon:hover {
+    transform: scale(1.1);
 }

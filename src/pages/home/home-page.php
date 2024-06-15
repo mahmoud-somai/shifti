@@ -13,7 +13,13 @@ function header_html(){
     echo '<div class="language-switch">';
     echo '<form method="post">';
     echo '<input type="hidden" name="language_toggle" value="' . ($language === 'english' ? 'french' : 'english') . '">';
-    echo '<button type="submit">' . ($language === 'english' ? 'Switch to French' : 'Switch to English') . '</button>';
+    echo '<button type="submit">';
+    if ($language === 'english') {
+        echo '<img src="' . plugins_url('shifti-import/src/img/french_flag.png') . '" alt="Switch to French" class="flag-icon">';
+    } else {
+        echo '<img src="' . plugins_url('shifti-import/src/img/english_flag.png') . '" alt="Switch to English" class="flag-icon">';
+    }
+    echo '</button>';
     echo '</form>';
     echo '</div>';
 
