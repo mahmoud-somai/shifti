@@ -110,7 +110,7 @@ function form_html() {
             var actions = [
                 {action: "get_category_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/category", message: "Categories exported with success"},
                 {action: "get_customers_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/customer", message: "Customers exported with success"},
-                {action: "get_tax_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/taxe", message: "Taxes exported with success"},
+                {action: "get_tax_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/taxe", message: "Taxe exported with success"},
                 {action: "get_prods_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/product", message: "Products exported with success"},
                 {action: "get_orders_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/order", message: "Orders exported with success"},
                 {action: "get_orders_det_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/orderdetails", message: "Order details exported with success"},
