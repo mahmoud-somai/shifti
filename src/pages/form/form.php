@@ -22,7 +22,9 @@ function form_html() {
     echo '    <div class="progress-container">';
     echo '        <h1>Export Data</h1>'; 
     echo '        <div style="text-align: center;">';
-    echo '            <progress id="progress-bar" max="100" value="0"></progress>'; 
+    echo '            <div id="progress-bar-container">';
+    echo '                <div id="progress-bar"></div>';
+    echo '            </div>';
     echo '            <div id="progress-status">0%</div>';
     echo '            <div id="success-messages"></div>';
     echo '            <div class="button-container">'; 
@@ -38,6 +40,7 @@ function form_html() {
         var homeUrl = "' . $home_url . '";
         var fetchUrl = "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/shop?url=" + encodeURIComponent(homeUrl)+"/";
         var exportButton = $("#export-button");
+        var tenantId = "";
 
         // Automatically fetch data when the page loads
         $.ajax({
@@ -45,6 +48,7 @@ function form_html() {
             method: "GET",
             success: function(response) {
                 console.log("Data fetched successfully:", response);
+                tenantId = response.tenant_id;
                 // Send fetched data to server to store it
                 $.ajax({
                     url: "' . admin_url('admin-ajax.php') . '",
@@ -56,8 +60,6 @@ function form_html() {
                     },
                     success: function(storeResponse) {
                         console.log("Data stored successfully:", storeResponse);
-                        // Enable the export button after successful data fetch and store
-                        exportButton.prop("disabled", false);
                     },
                     error: function(xhr, status, error) {
                         console.log("Error storing data:", error);
@@ -68,30 +70,39 @@ function form_html() {
                 console.log("Error fetching data:", error);
             }
         });
-    });
-    </script>';
 
-    echo '<script src="' . plugins_url('shifti-import/src/scripts/index.js') . '"></script>';
-    echo '<script type="text/javascript">
-    jQuery(document).ready(function($) {
-        var cancelExport = false;
+        // Check tenant_id on input change
+        $("#token").on("input", function() {
+            var inputVal = $(this).val();
+            if (inputVal === tenantId) {
+                exportButton.prop("disabled", false);
+            } else {
+                exportButton.prop("disabled", true);
+            }
+        });
 
         $("#export-form").submit(function(event) {
-            event.preventDefault(); 
+            event.preventDefault();
+            var inputVal = $("#token").val();
+            if (inputVal !== tenantId) {
+                alert("This shop doesn\'t exist");
+                return;
+            }
+            
             var progressOverlay = $("#progress-overlay");
             var progressBar = $("#progress-bar");
             var progressStatus = $("#progress-status");
             var successMessages = $("#success-messages");
             var doneButton = $("#done-button");
-            
+
             progressOverlay.show();
-            progressBar.val(0);
+            progressBar.width("0%");
             progressStatus.text("0%");
             successMessages.html("");
             cancelExport = false;
             
             var updateProgress = function(progress, message) {
-                progressBar.val(progress);
+                progressBar.width(progress + "%");
                 progressStatus.text(progress + "%");
                 successMessages.append("<p>" + message + "</p>");
             };
