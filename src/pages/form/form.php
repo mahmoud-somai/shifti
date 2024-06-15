@@ -40,15 +40,13 @@ function form_html() {
         var homeUrl = "' . $home_url . '";
         var fetchUrl = "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/shop?url=" + encodeURIComponent(homeUrl)+"/";
         var exportButton = $("#export-button");
-        var tenantId = "";
-
+    
         // Automatically fetch data when the page loads
         $.ajax({
             url: fetchUrl,
             method: "GET",
             success: function(response) {
                 console.log("Data fetched successfully:", response);
-                tenantId = response.tenant_id;
                 // Send fetched data to server to store it
                 $.ajax({
                     url: "' . admin_url('admin-ajax.php') . '",
@@ -60,6 +58,8 @@ function form_html() {
                     },
                     success: function(storeResponse) {
                         console.log("Data stored successfully:", storeResponse);
+                        // Enable the export button after successful data fetch and store
+                        exportButton.prop("disabled", false);
                     },
                     error: function(xhr, status, error) {
                         console.log("Error storing data:", error);
@@ -70,39 +70,30 @@ function form_html() {
                 console.log("Error fetching data:", error);
             }
         });
-
-        // Check tenant_id on input change
-        $("#token").on("input", function() {
-            var inputVal = $(this).val();
-            if (inputVal === tenantId) {
-                exportButton.prop("disabled", false);
-            } else {
-                exportButton.prop("disabled", true);
-            }
-        });
-
+    });
+    </script>';
+    
+    echo '<script src="' . plugins_url('shifti-import/src/scripts/index.js') . '"></script>';
+    echo '<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        var cancelExport = false;
+    
         $("#export-form").submit(function(event) {
-            event.preventDefault();
-            var inputVal = $("#token").val();
-            if (inputVal !== tenantId || inputVal === "") {
-                alert("This shop doesn\'t exist");
-                return;
-            }
-            
+            event.preventDefault(); 
             var progressOverlay = $("#progress-overlay");
             var progressBar = $("#progress-bar");
             var progressStatus = $("#progress-status");
             var successMessages = $("#success-messages");
             var doneButton = $("#done-button");
-
+            
             progressOverlay.show();
-            progressBar.width("0%");
+            progressBar.val(0);
             progressStatus.text("0%");
             successMessages.html("");
             cancelExport = false;
             
             var updateProgress = function(progress, message) {
-                progressBar.width(progress + "%");
+                progressBar.val(progress);
                 progressStatus.text(progress + "%");
                 successMessages.append("<p>" + message + "</p>");
             };
@@ -110,7 +101,7 @@ function form_html() {
             var actions = [
                 {action: "get_category_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/category", message: "Categories exported with success"},
                 {action: "get_customers_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/customer", message: "Customers exported with success"},
-                {action: "get_tax_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/taxe", message: "Taxe exported with success"},
+                {action: "get_tax_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/taxe", message: "Taxes exported with success"},
                 {action: "get_prods_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/product", message: "Products exported with success"},
                 {action: "get_orders_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/order", message: "Orders exported with success"},
                 {action: "get_orders_det_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/orderdetails", message: "Order details exported with success"},
@@ -122,17 +113,17 @@ function form_html() {
                 {action: "get_order_carrier_taxes_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/orderCarrierTax", message: "Order Carriers Taxes exported with success"},
                 {action:"get_order_details_taxes_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/orderDetailsTax", message: "Order details taxes exported with success"},
             ];
-
+    
             var currentAction = 0;
             var totalActions = actions.length;
             var increment = 100 / totalActions;
-
+    
             var performNextAction = function() {
                 if (cancelExport) {
                     progressOverlay.hide();
                     return;
                 }
-
+    
                 if (currentAction < totalActions) {
                     var action = actions[currentAction];
                     $.ajax({
@@ -145,7 +136,7 @@ function form_html() {
                                 $.ajax({
                                     url: action.url,
                                     method: "POST",
-                                    data: JSON.stringify(data),
+                                    data: data,
                                     contentType: "application/json",
                                     success: function() {
                                         console.log("POST request for " + action.action + " successful.");
@@ -174,7 +165,7 @@ function form_html() {
             };
             
             performNextAction();
-
+    
             $("#cancel-button").click(function() {
                 cancelExport = true;
                 progressOverlay.hide();
