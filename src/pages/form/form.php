@@ -92,6 +92,7 @@ function form_html() {
             
             var updateProgress = function(progress, message) {
                 progressBar.val(progress);
+                progressBar.find('::before').css('width', progress + '%');
                 progressStatus.text(progress + "%");
                 successMessages.append("<p>" + message + "</p>");
             };
@@ -176,5 +177,7 @@ function form_html() {
     });
     </script>';
 }
-
 ?>
+
+
+
