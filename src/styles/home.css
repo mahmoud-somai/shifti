@@ -57,9 +57,10 @@ p {
 }
 
 .flag-icon {
-    width: 32px; /* Set the desired width */
-    height: 32px; /* Set the desired height */
+    width: 26px; /* Set the desired width */
+    height: 26px; /* Set the desired height */
     transition: transform 0.3s;
+    border-radius: 25%;
 }
 
 .flag-icon:hover {
