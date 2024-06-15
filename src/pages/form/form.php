@@ -16,15 +16,13 @@ function form_html() {
     echo '</div>';
     echo '</div>';
     echo '</form>';
-
+    
     // Overlay HTML
     echo '<div id="progress-overlay">';
     echo '    <div class="progress-container">';
     echo '        <h1>Export Data</h1>'; 
     echo '        <div style="text-align: center;">';
-    echo '            <div id="progress-bar-container">';
-    echo '                <div id="progress-bar"></div>';
-    echo '            </div>';
+    echo '            <progress id="progress-bar" max="100" value="0"></progress>'; 
     echo '            <div id="progress-status">0%</div>';
     echo '            <div id="success-messages"></div>';
     echo '            <div class="button-container">'; 
@@ -34,7 +32,7 @@ function form_html() {
     echo '        </div>';
     echo '    </div>';
     echo '</div>';
-
+    
     echo '<script type="text/javascript">
     jQuery(document).ready(function($) {
         var homeUrl = "' . $home_url . '";
