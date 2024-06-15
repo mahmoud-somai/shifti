@@ -3,7 +3,7 @@
 function form_html() {
     $home_url = home_url();
   
-    echo '<link rel="stylesheet" href="' . plugins_url('shifti-import/src/styles/styles.css') . '">';
+    echo '<link rel="stylesheet" href="' . plugins_url('shifti-import/src/styles/form.css') . '">';
 
     echo '<form id="export-form" method="post" action="' . admin_url('admin-ajax.php') . '">';
     echo '<div class="stf-form">';
