@@ -41,7 +41,7 @@ function header_html(){
     echo '<a href="' . plugins_url('shifti-import/sampleFR.pdf') . '" download>';
     echo '<img src="' . plugins_url('shifti-import/src/img/download_logo.png') . '" alt="Download French Documentation" class="download-icon">';
     echo '</a>';
-    echo ($language === 'english' ? 'French' : 'Français');
+    echo ($language === 'english' ? 'French Documentation' : 'Documentation en Français');
     echo '</li>';
 
     // Add English documentation download link with image
@@ -49,7 +49,7 @@ function header_html(){
     echo '<a href="' . plugins_url('shifti-import/sample.pdf') . '" download>';
     echo '<img src="' . plugins_url('shifti-import/src/img/download_logo.png') . '" alt="Download English Documentation" class="download-icon">';
     echo '</a>';
-    echo ($language === 'english' ? 'English' : 'Anglais');
+    echo ($language === 'english' ? 'English Documentation' : 'Documentation en Anglais');
     echo '</li>';
 
     echo '</ul>';
