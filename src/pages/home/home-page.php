@@ -56,10 +56,10 @@ function header_html(){
     echo '</div>';
     
     form_html();
-        echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
-    echo '<input type="hidden" name="action" value="download_category_json">';
-    echo '<button type="submit">Download Categories JSON</button>';
-    echo '</form>';
+    //     echo '<form method="post" action="' . admin_url('admin-ajax.php') . '">';
+    // echo '<input type="hidden" name="action" value="download_category_json">';
+    // echo '<button type="submit">Download Categories JSON</button>';
+    // echo '</form>';
     echo '</div>';
 }
 ?>
