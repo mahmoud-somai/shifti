@@ -52,8 +52,9 @@ function get_ctg_one(){
 //   echo "<br>";
 //   echo json_encode($category);
 //   echo "<br>";
+echo json_encode($category);
   return json_encode($category);
-  echo json_encode($category);
+  
 
 }
 ?>
