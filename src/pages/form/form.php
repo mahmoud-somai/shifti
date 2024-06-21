@@ -17,7 +17,7 @@ function form_html() {
     echo '</div>';
     echo '</form>';
     
-    // Overlay HTML
+    // Progress Overlay HTML
     echo '<div id="progress-overlay">';
     echo '    <div class="progress-container">';
     echo '        <h1>Export Data</h1>'; 
@@ -33,8 +33,9 @@ function form_html() {
     echo '    </div>';
     echo '</div>';
 
+    // Invalid Credentials Overlay HTML
     echo '<div id="invalid-credentials-overlay" style="display:none;">';
-    echo '    <div class="invalid-credentials-container">';
+    echo '    <div class="overlay-container">';
     echo '        <h1>Invalid Credentials</h1>';
     echo '        <button id="close-invalid-credentials" class="button-sft">Close</button>';
     echo '    </div>';
@@ -43,58 +44,54 @@ function form_html() {
     echo '<script type="text/javascript">
     jQuery(document).ready(function($) {
         var homeUrl = "' . $home_url . '";
-        var fetchUrl = "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/shop?url=" + encodeURIComponent(homeUrl) + "/";
+        var fetchUrl = "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/shop?url=" + encodeURIComponent(homeUrl)+"/";
         var exportButton = $("#export-button");
-        var invalidCredentialsOverlay = $("#invalid-credentials-overlay");
-        var closeInvalidCredentials = $("#close-invalid-credentials");
-
-        function validateTenantId() {
-            var tenantId = $("#token").val();
-            if (!tenantId) {
-                exportButton.prop("disabled", true);
-                return;
+        var tenantId = "";
+        
+        // Automatically fetch data when the page loads
+        $.ajax({
+            url: fetchUrl,
+            method: "GET",
+            success: function(response) {
+                console.log("Data fetched successfully:", response);
+                tenantId = response.tenant_id; // Store the tenant_id
+                // Send fetched data to server to store it
+                $.ajax({
+                    url: "' . admin_url('admin-ajax.php') . '",
+                    method: "POST",
+                    data: {
+                        action: "store_shop_data",
+                        shop_id: response.shop_id,
+                        tenant_id: response.tenant_id
+                    },
+                    success: function(storeResponse) {
+                        console.log("Data stored successfully:", storeResponse);
+                    },
+                    error: function(xhr, status, error) {
+                        console.log("Error storing data:", error);
+                    }
+                });
+            },
+            error: function(xhr, status, error) {
+                console.log("Error fetching data:", error);
             }
+        });
 
-            $.ajax({
-                url: fetchUrl,
-                method: "GET",
-                success: function(response) {
-                    if (response.valid) {
-                        $.ajax({
-                            url: "' . admin_url('admin-ajax.php') . '",
-                            method: "POST",
-                            data: {
-                                action: "store_shop_data",
-                                shop_id: response.shop_id,
-                                tenant_id: response.tenant_id
-                            },
-                            success: function(storeResponse) {
-                                exportButton.prop("disabled", false);
-                            },
-                            error: function(xhr, status, error) {
-                                console.log("Error storing data:", error);
-                            }
-                        });
-                    } else {
-                        invalidCredentialsOverlay.show();
-                        exportButton.prop("disabled", true);
-                    }
-                },
-                error: function(xhr, status, error) {
-                    if (xhr.status == 401) {
-                        invalidCredentialsOverlay.show();
-                    } else {
-                        console.log("Error fetching data:", error);
-                    }
-                    exportButton.prop("disabled", true);
-                }
-            });
-        }
+        // Validate tenant ID on input change
+        $("#token").on("input", function() {
+            var inputVal = $(this).val();
+            if (inputVal === tenantId) {
+                exportButton.prop("disabled", false);
+                $("#invalid-credentials-overlay").hide();
+            } else {
+                exportButton.prop("disabled", true);
+                $("#invalid-credentials-overlay").show();
+            }
+        });
 
-        $("#token").on("input", validateTenantId);
-
-        closeInvalidCredentials.click(function() {
-            invalidCredentialsOverlay.hide();
+        // Hide invalid credentials overlay on close button click
+        $("#close-invalid-credentials").click(function() {
+            $("#invalid-credentials-overlay").hide();
         });
     });
     </script>';
