@@ -17,8 +17,8 @@ function form_html() {
     echo '</div>';
     echo '</form>';
     
-    // Overlay HTML
-    echo '<div id="progress-overlay">';
+    // Progress Overlay HTML
+    echo '<div id="progress-overlay" style="display:none;">';
     echo '    <div class="progress-container">';
     echo '        <h1>Export Data</h1>'; 
     echo '        <div style="text-align: center;">';
@@ -30,6 +30,14 @@ function form_html() {
     echo '                <button id="done-button" class="button-sft">Done</button>';
     echo '            </div>'; 
     echo '        </div>';
+    echo '    </div>';
+    echo '</div>';
+    
+    // Invalid Credentials Overlay HTML
+    echo '<div id="invalid-credentials-overlay" style="display:none;">';
+    echo '    <div class="invalid-credentials-container">';
+    echo '        <h1>Invalid Credentials</h1>';
+    echo '        <button id="close-invalid-credentials" class="button-sft">Close</button>';
     echo '    </div>';
     echo '</div>';
     
@@ -83,6 +91,8 @@ function form_html() {
             var progressStatus = $("#progress-status");
             var successMessages = $("#success-messages");
             var doneButton = $("#done-button");
+            var invalidCredentialsOverlay = $("#invalid-credentials-overlay");
+            var closeInvalidCredentials = $("#close-invalid-credentials");
             
             progressOverlay.show();
             progressBar.val(0);
@@ -145,16 +155,25 @@ function form_html() {
                                     error: function(xhr, status, error) {
                                         console.log("Error posting data for " + action.action + ": " + error);
                                         progressOverlay.hide();
+                                        if(xhr.status === 401) { // Assuming 401 Unauthorized for invalid credentials
+                                            invalidCredentialsOverlay.show();
+                                        }
                                     }
                                 });
                             } else {
                                 console.log("Error fetching data for " + action.action);
                                 progressOverlay.hide();
+                                if(response.error === "invalid_tenant_id") { // Replace with actual error response for invalid tenant_id
+                                    invalidCredentialsOverlay.show();
+                                }
                             }
                         },
                         error: function(xhr, status, error) {
                             console.log("Error fetching data via AJAX for " + action.action + ": " + error);
                             progressOverlay.hide();
+                            if(xhr.status === 401) { // Assuming 401 Unauthorized for invalid credentials
+                                invalidCredentialsOverlay.show();
+                            }
                         }
                     });
                 } else {
@@ -171,6 +190,10 @@ function form_html() {
             
             doneButton.click(function() {
                 progressOverlay.hide();
+            });
+
+            closeInvalidCredentials.click(function() {
+                invalidCredentialsOverlay.hide();
             });
         });
     });
