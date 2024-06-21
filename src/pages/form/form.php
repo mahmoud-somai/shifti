@@ -53,15 +53,19 @@ function form_html() {
         // Hide the overlay initially
         $("#invalid-credentials-overlay").hide();
         
-        // Validate tenant ID on input change
-        $("#token").on("input", function() {
-            var inputVal = $(this).val();
+        // Handle export button click
+        $("#export-button").click(function() {
+            var inputVal = $("#token").val();
             if (inputVal === tenantId) {
+                // Proceed with export
+                $("#invalid-credentials-overlay").hide();
                 exportButton.prop("disabled", false);
-                $("#invalid-credentials-overlay").hide(); // Hide overlay when valid
+                // You can trigger form submission here or handle it as needed
+                // For example:
+                // $("#export-form").submit();
             } else {
-                exportButton.prop("disabled", true);
-                $("#invalid-credentials-overlay").show(); // Show overlay when invalid
+                // Show invalid credentials overlay
+                $("#invalid-credentials-overlay").show();
             }
         });
 
