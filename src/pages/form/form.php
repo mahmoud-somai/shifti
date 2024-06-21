@@ -34,13 +34,14 @@ function form_html() {
     echo '</div>';
 
     // Invalid Credentials Overlay HTML
-    echo '<div id="invalid-credentials-overlay" style="display:none;  top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; border-radius: 10px; z-index: 1000;">';
-    echo '    <div class="overlay-container">';
-    echo '        <h1 style="margin-top: 0;">Invalid Credentials</h1>';
-    echo '        <p>The tenant ID you entered is incorrect. Please try again.</p>';
-    echo '        <button id="close-invalid-credentials" class="button-sft" style="margin-top: 20px;">Close</button>';
-    echo '    </div>';
-    echo '</div>';
+  // Invalid Credentials Overlay HTML with background color
+echo '<div id="invalid-credentials-overlay" style="display:none; background-color: #FFB1B1;">';
+echo '    <div class="overlay-container">';
+echo '        <h1>Invalid Credentials</h1>';
+echo '        <button id="close-invalid-credentials" class="button-sft">Close</button>';
+echo '    </div>';
+echo '</div>';
+
     
     echo '<script type="text/javascript">
     jQuery(document).ready(function($) {
