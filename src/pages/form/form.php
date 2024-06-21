@@ -34,10 +34,9 @@ function form_html() {
     echo '</div>';
 
     // Invalid Credentials Overlay HTML
-    echo '<div id="invalid-credentials-overlay" style="display:none;">';
+    echo '<div id="invalid-credentials-overlay" style="display:none; background-color: red; color: white; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 20px; border-radius: 5px;">';
     echo '    <div class="overlay-container">';
     echo '        <h1>Invalid Credentials</h1>';
-    echo '        <button id="close-invalid-credentials" class="button-sft">Close</button>';
     echo '    </div>';
     echo '</div>';
     
@@ -86,12 +85,10 @@ function form_html() {
             } else {
                 exportButton.prop("disabled", true);
                 $("#invalid-credentials-overlay").show();
+                setTimeout(function() {
+                    $("#invalid-credentials-overlay").hide();
+                }, 5000);
             }
-        });
-
-        // Hide invalid credentials overlay on close button click
-        $("#close-invalid-credentials").click(function() {
-            $("#invalid-credentials-overlay").hide();
         });
     });
     </script>';
