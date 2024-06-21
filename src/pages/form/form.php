@@ -34,8 +34,7 @@ function form_html() {
     echo '</div>';
 
     // Invalid Credentials Overlay HTML
-  // Invalid Credentials Overlay HTML with background color
-echo '<div id="invalid-credentials-overlay" style="display:none; widh:200px; background-color: #FFB1B1;">';
+echo '<div id="invalid-credentials-overlay" style="display:none; widh:100px; background-color: #FFB1B1;">';
 echo '    <div class="overlay-container">';
 echo '        <h1>Invalid Credentials</h1>';
 echo '        <button id="close-invalid-credentials" class="button-sft">Close</button>';
