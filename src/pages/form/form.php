@@ -34,9 +34,10 @@ function form_html() {
     echo '</div>';
 
     // Invalid Credentials Overlay HTML
-    echo '<div id="invalid-credentials-overlay" style="display:none; background-color: red; color: white; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 20px; border-radius: 5px;">';
+    echo '<div id="invalid-credentials-overlay" style="display:none;">';
     echo '    <div class="overlay-container">';
     echo '        <h1>Invalid Credentials</h1>';
+    echo '        <button id="close-invalid-credentials" class="button-sft">Close</button>';
     echo '    </div>';
     echo '</div>';
     
@@ -65,8 +66,6 @@ function form_html() {
                     },
                     success: function(storeResponse) {
                         console.log("Data stored successfully:", storeResponse);
-                        // Enable the export button after successful data fetch and store
-                        exportButton.prop("disabled", false);
                     },
                     error: function(xhr, status, error) {
                         console.log("Error storing data:", error);
@@ -78,44 +77,50 @@ function form_html() {
             }
         });
 
-        $("#export-form").submit(function(event) {
-            event.preventDefault();
-            var inputVal = $("#token").val();
-            var progressOverlay = $("#progress-overlay");
-            var invalidCredentialsOverlay = $("#invalid-credentials-overlay");
-
+        // Validate tenant ID on input change
+        $("#token").on("input", function() {
+            var inputVal = $(this).val();
             if (inputVal === tenantId) {
-                // Proceed with the export process if tenantId matches
-                progressOverlay.show();
-                performExport();
+                exportButton.prop("disabled", false);
+                $("#invalid-credentials-overlay").hide();
             } else {
-               
-                $("#token").css("border", "2px solid red");
-                invalidCredentialsOverlay.show();
-                setTimeout(function() {
-                    invalidCredentialsOverlay.hide();
-                    $("#token").css("border", "");
-                }, 5000);
+                exportButton.prop("disabled", true);
+                $("#invalid-credentials-overlay").show();
             }
         });
 
-        var performExport = function() {
+        // Hide invalid credentials overlay on close button click
+        $("#close-invalid-credentials").click(function() {
+            $("#invalid-credentials-overlay").hide();
+        });
+    });
+    </script>';
+    
+    echo '<script src="' . plugins_url('shifti-import/src/scripts/index.js') . '"></script>';
+    echo '<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        var cancelExport = false;
+    
+        $("#export-form").submit(function(event) {
+            event.preventDefault(); 
+            var progressOverlay = $("#progress-overlay");
             var progressBar = $("#progress-bar");
             var progressStatus = $("#progress-status");
             var successMessages = $("#success-messages");
             var doneButton = $("#done-button");
-            var cancelExport = false;
-
+            
+            progressOverlay.show();
             progressBar.val(0);
             progressStatus.text("0%");
             successMessages.html("");
-
+            cancelExport = false;
+            
             var updateProgress = function(progress, message) {
                 progressBar.val(progress);
                 progressStatus.text(progress + "%");
                 successMessages.append("<p>" + message + "</p>");
             };
-
+            
             var actions = [
                 {action: "get_category_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/category", message: "Categories exported with success"},
                 {action: "get_customers_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/customer", message: "Customers exported with success"},
@@ -131,17 +136,17 @@ function form_html() {
                 {action: "get_order_carrier_taxes_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/orderCarrierTax", message: "Order Carriers Taxes exported with success"},
                 {action:"get_order_details_taxes_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/orderDetailsTax", message: "Order details taxes exported with success"},
             ];
-
+    
             var currentAction = 0;
             var totalActions = actions.length;
             var increment = 100 / totalActions;
-
+    
             var performNextAction = function() {
                 if (cancelExport) {
                     progressOverlay.hide();
                     return;
                 }
-
+    
                 if (currentAction < totalActions) {
                     var action = actions[currentAction];
                     $.ajax({
@@ -181,22 +186,20 @@ function form_html() {
                     doneButton.show();
                 }
             };
-
+            
             performNextAction();
-
+    
             $("#cancel-button").click(function() {
                 cancelExport = true;
                 progressOverlay.hide();
             });
-
+            
             doneButton.click(function() {
                 progressOverlay.hide();
             });
-        };
+        });
     });
     </script>';
-
-    // echo '<script src="' . plugins_url('shifti-import/src/scripts/index.js') . '"></script>';
 }
 
 ?>
