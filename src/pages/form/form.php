@@ -65,6 +65,8 @@ function form_html() {
                     },
                     success: function(storeResponse) {
                         console.log("Data stored successfully:", storeResponse);
+                        // Enable the export button after successful data fetch and store
+                        exportButton.prop("disabled", false);
                     },
                     error: function(xhr, status, error) {
                         console.log("Error storing data:", error);
@@ -76,48 +78,44 @@ function form_html() {
             }
         });
 
-        // Validate tenant ID on input change
-        $("#token").on("input", function() {
-            var inputVal = $(this).val();
+        $("#export-form").submit(function(event) {
+            event.preventDefault();
+            var inputVal = $("#token").val();
+            var progressOverlay = $("#progress-overlay");
+            var invalidCredentialsOverlay = $("#invalid-credentials-overlay");
+
             if (inputVal === tenantId) {
-                exportButton.prop("disabled", false);
-                $("#invalid-credentials-overlay").hide();
+                // Proceed with the export process if tenantId matches
+                progressOverlay.show();
+                performExport();
             } else {
-                exportButton.prop("disabled", true);
-                $("#invalid-credentials-overlay").show();
+               
+                $("#token").css("border", "2px solid red");
+                invalidCredentialsOverlay.show();
                 setTimeout(function() {
-                    $("#invalid-credentials-overlay").hide();
+                    invalidCredentialsOverlay.hide();
+                    $("#token").css("border", "");
                 }, 5000);
             }
         });
-    });
-    </script>';
-    
-    echo '<script src="' . plugins_url('shifti-import/src/scripts/index.js') . '"></script>';
-    echo '<script type="text/javascript">
-    jQuery(document).ready(function($) {
-        var cancelExport = false;
-    
-        $("#export-form").submit(function(event) {
-            event.preventDefault(); 
-            var progressOverlay = $("#progress-overlay");
+
+        var performExport = function() {
             var progressBar = $("#progress-bar");
             var progressStatus = $("#progress-status");
             var successMessages = $("#success-messages");
             var doneButton = $("#done-button");
-            
-            progressOverlay.show();
+            var cancelExport = false;
+
             progressBar.val(0);
             progressStatus.text("0%");
             successMessages.html("");
-            cancelExport = false;
-            
+
             var updateProgress = function(progress, message) {
                 progressBar.val(progress);
                 progressStatus.text(progress + "%");
                 successMessages.append("<p>" + message + "</p>");
             };
-            
+
             var actions = [
                 {action: "get_category_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/category", message: "Categories exported with success"},
                 {action: "get_customers_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/customer", message: "Customers exported with success"},
@@ -133,17 +131,17 @@ function form_html() {
                 {action: "get_order_carrier_taxes_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/orderCarrierTax", message: "Order Carriers Taxes exported with success"},
                 {action:"get_order_details_taxes_data", url: "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/orderDetailsTax", message: "Order details taxes exported with success"},
             ];
-    
+
             var currentAction = 0;
             var totalActions = actions.length;
             var increment = 100 / totalActions;
-    
+
             var performNextAction = function() {
                 if (cancelExport) {
                     progressOverlay.hide();
                     return;
                 }
-    
+
                 if (currentAction < totalActions) {
                     var action = actions[currentAction];
                     $.ajax({
@@ -183,20 +181,22 @@ function form_html() {
                     doneButton.show();
                 }
             };
-            
+
             performNextAction();
-    
+
             $("#cancel-button").click(function() {
                 cancelExport = true;
                 progressOverlay.hide();
             });
-            
+
             doneButton.click(function() {
                 progressOverlay.hide();
             });
-        });
+        };
     });
     </script>';
+
+    // echo '<script src="' . plugins_url('shifti-import/src/scripts/index.js') . '"></script>';
 }
 
 ?>
