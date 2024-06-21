@@ -17,8 +17,8 @@ function form_html() {
     echo '</div>';
     echo '</form>';
     
-    // Progress Overlay HTML
-    echo '<div id="progress-overlay" style="display:none;">';
+    // Overlay HTML
+    echo '<div id="progress-overlay">';
     echo '    <div class="progress-container">';
     echo '        <h1>Export Data</h1>'; 
     echo '        <div style="text-align: center;">';
@@ -32,8 +32,7 @@ function form_html() {
     echo '        </div>';
     echo '    </div>';
     echo '</div>';
-    
-    // Invalid Credentials Overlay HTML
+
     echo '<div id="invalid-credentials-overlay" style="display:none;">';
     echo '    <div class="invalid-credentials-container">';
     echo '        <h1>Invalid Credentials</h1>';
@@ -44,37 +43,58 @@ function form_html() {
     echo '<script type="text/javascript">
     jQuery(document).ready(function($) {
         var homeUrl = "' . $home_url . '";
-        var fetchUrl = "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/shop?url=" + encodeURIComponent(homeUrl)+"/";
+        var fetchUrl = "https://bs9ksq1d-8082.euw.devtunnels.ms/woocommerce/shop?url=" + encodeURIComponent(homeUrl) + "/";
         var exportButton = $("#export-button");
-    
-        // Automatically fetch data when the page loads
-        $.ajax({
-            url: fetchUrl,
-            method: "GET",
-            success: function(response) {
-                console.log("Data fetched successfully:", response);
-                // Send fetched data to server to store it
-                $.ajax({
-                    url: "' . admin_url('admin-ajax.php') . '",
-                    method: "POST",
-                    data: {
-                        action: "store_shop_data",
-                        shop_id: response.shop_id,
-                        tenant_id: response.tenant_id
-                    },
-                    success: function(storeResponse) {
-                        console.log("Data stored successfully:", storeResponse);
-                        // Enable the export button after successful data fetch and store
-                        exportButton.prop("disabled", false);
-                    },
-                    error: function(xhr, status, error) {
-                        console.log("Error storing data:", error);
-                    }
-                });
-            },
-            error: function(xhr, status, error) {
-                console.log("Error fetching data:", error);
+        var invalidCredentialsOverlay = $("#invalid-credentials-overlay");
+        var closeInvalidCredentials = $("#close-invalid-credentials");
+
+        function validateTenantId() {
+            var tenantId = $("#token").val();
+            if (!tenantId) {
+                exportButton.prop("disabled", true);
+                return;
             }
+
+            $.ajax({
+                url: fetchUrl,
+                method: "GET",
+                success: function(response) {
+                    if (response.valid) {
+                        $.ajax({
+                            url: "' . admin_url('admin-ajax.php') . '",
+                            method: "POST",
+                            data: {
+                                action: "store_shop_data",
+                                shop_id: response.shop_id,
+                                tenant_id: response.tenant_id
+                            },
+                            success: function(storeResponse) {
+                                exportButton.prop("disabled", false);
+                            },
+                            error: function(xhr, status, error) {
+                                console.log("Error storing data:", error);
+                            }
+                        });
+                    } else {
+                        invalidCredentialsOverlay.show();
+                        exportButton.prop("disabled", true);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    if (xhr.status == 401) {
+                        invalidCredentialsOverlay.show();
+                    } else {
+                        console.log("Error fetching data:", error);
+                    }
+                    exportButton.prop("disabled", true);
+                }
+            });
+        }
+
+        $("#token").on("input", validateTenantId);
+
+        closeInvalidCredentials.click(function() {
+            invalidCredentialsOverlay.hide();
         });
     });
     </script>';
@@ -91,8 +111,6 @@ function form_html() {
             var progressStatus = $("#progress-status");
             var successMessages = $("#success-messages");
             var doneButton = $("#done-button");
-            var invalidCredentialsOverlay = $("#invalid-credentials-overlay");
-            var closeInvalidCredentials = $("#close-invalid-credentials");
             
             progressOverlay.show();
             progressBar.val(0);
@@ -155,25 +173,16 @@ function form_html() {
                                     error: function(xhr, status, error) {
                                         console.log("Error posting data for " + action.action + ": " + error);
                                         progressOverlay.hide();
-                                        if(xhr.status === 401) { // Assuming 401 Unauthorized for invalid credentials
-                                            invalidCredentialsOverlay.show();
-                                        }
                                     }
                                 });
                             } else {
                                 console.log("Error fetching data for " + action.action);
                                 progressOverlay.hide();
-                                if(response.error === "invalid_tenant_id") { // Replace with actual error response for invalid tenant_id
-                                    invalidCredentialsOverlay.show();
-                                }
                             }
                         },
                         error: function(xhr, status, error) {
                             console.log("Error fetching data via AJAX for " + action.action + ": " + error);
                             progressOverlay.hide();
-                            if(xhr.status === 401) { // Assuming 401 Unauthorized for invalid credentials
-                                invalidCredentialsOverlay.show();
-                            }
                         }
                     });
                 } else {
@@ -190,10 +199,6 @@ function form_html() {
             
             doneButton.click(function() {
                 progressOverlay.hide();
-            });
-
-            closeInvalidCredentials.click(function() {
-                invalidCredentialsOverlay.hide();
             });
         });
     });
