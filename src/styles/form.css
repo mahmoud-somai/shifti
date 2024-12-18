@@ -110,17 +110,3 @@
     #progress-overlay .button-container {
     margin-top: 20px;
     }
-
-    #test-icon-button {
-        background-color: #0073aa;
-        color: #fff;
-        border: none;
-        padding: 8px 12px;
-        font-size: 14px;
-        cursor: pointer;
-        margin-top: 10px;
-    }
-    
-    #test-icon-button img {
-        margin-right: 5px;
-    }
