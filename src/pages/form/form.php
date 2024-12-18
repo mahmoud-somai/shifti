@@ -14,8 +14,15 @@ function form_html() {
     echo '<input type="hidden" name="action" value="post_data">';
     echo '<button type="submit" id="export-button" class="button-sft" disabled>Export Your Shop!</button>';
     echo '</div>';
+
+    echo '<h2>Tax Data</h2>';
+    echo '<button id="fetch-taxes-button" class="button-sft" type="button">Show Taxes</button>';
+    echo '<div id="taxes-container"></div>'; // Container for displaying the tax data
+
     echo '</div>';
     echo '</form>';
+
+    
     
     // Progress Overlay HTML
     echo '<div id="progress-overlay">';

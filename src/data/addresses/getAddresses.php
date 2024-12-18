@@ -42,11 +42,7 @@ function get_customers_with_billing() {
             $customer['woo_state'] = $billing['woo_state'];
             $customer['postcode'] = $billing['postcode'];
             $customer['woo_country'] = $billing['woo_country'];
-            $customer['phone'] = $billing['phone'];
-
-
- 
-            
+            $customer['phone'] = $billing['phone'];   
         }
 
         // Add customer to the array
